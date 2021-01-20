@@ -104,6 +104,8 @@ With a default param we can simplify previous code snippet:
         return `${greeting}, ${name}`;
     }
 
+Also note the **template string** in back-ticks with **string substitutions**.
+
 ### Rest Parameters
 With rest params we can define an unknown amount of parameters.
 
@@ -166,3 +168,113 @@ We can use spread parameters in arrays or objects to not have to repeat ourselve
     const newArray = [...oldArray, newValue];
 
 Notice how the original array did not change, we call this principle **immutability**. Instead of changing it we created a new state.
+
+### Generics
+In collections or constructs like methods we can make use of generics to code behavior that we can employ, regardless of the type of data.
+
+    function method<T>(arg: T): T{
+        return arg;
+    }
+
+Or with an array of a generic type:
+
+    function method<T>(arg: T[]): T[]{
+        return arg;
+    }
+
+We can either create an array of some type or extend the array to a custom type to pass a valid argument to this function.  
+We can also say a generic type should adhere to some interface:
+
+    interface Shape {
+        area(): number;
+    }
+    function allAreas<T extends Shape>(...args: T[]): number {
+        let total = 0;
+        args.forEach (x => {
+            total += x.area();
+        });
+        return total;
+    }
+
+Now we can create multiple classes implementing the Shape interface with their own area() methods and pass them to allAreas().
+
+## Classes, Interfaces and Inheritance
+
+### Constructor Parameters with Accessors
+A class fully written out contains a lot of 'boilerplate' code:
+
+    class Car {
+        make: string;
+        model: string;
+
+        constructor(make: string, model: string){
+            this.make = make;
+            this.model = model;
+        }
+    }
+
+Typescript makes writing this a breeze, by allowing accessors in the constructor params:
+
+    class Car {
+        constructor(public make: string, public model: string)
+    }
+
+Typescript will create the public fields and assignments for us.
+
+### Interfaces
+We use interfaces as blueprints of code that define a particular schema. Artifacts (classes, function signatures, etc.) implementing an interface should comply with this schema.
+
+    interface Vehicle {
+        make: string;
+    }
+
+    class Car implements Vehicle {
+        make: string;
+    }
+
+This way we make sure every vehicle has the field 'make'. We use this to create consistency in our code.  
+Interfaces can also contain optionals:
+
+    interface Exception {
+        message: string;
+        id?: number;
+    }
+
+We can do more with interfaces than just implement them and build more complex ones:
+
+    interface ErrorHandler {
+        exceptions: Exception[];
+        logException(message: string, id?: number): void
+    }
+
+Or define interfaces for standalone object types, useful to define a templated constructor or method signature:
+
+    interface ExceptionHandlerSettings {
+        logAllExceptions: boolean;
+    }
+
+Here is an example of the implementation of these:
+
+    class CustomErrorHandler implements ErrorHandler {
+        exceptions: Exception[] = [];
+        logAllExceptions: boolean
+
+        constructor(settings: ExceptionHandlerSettings){
+            this.logAllExceptions = settings.logAllExceptions;
+        }
+        logException(message: string, id?: number): void{
+            this exceptions.push({message, id});
+        }
+    }
+
+We can also **instantiate interfaces** in typescript, without involving any classes:
+
+    interface A {
+        a
+    }
+    const instance = <A> { a: 3};
+    instance.a = 5;
+
+This means you can create a **mocking library** very easily.
+
+### Interfaces and Mocking
