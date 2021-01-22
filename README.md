@@ -278,3 +278,242 @@ We can also **instantiate interfaces** in typescript, without involving any clas
 This means you can create a **mocking library** very easily.
 
 ### Interfaces and Mocking
+This instantiation of interfaces helps mocking frameworks to mock our dependencies. What happens behind the curtains looks something like this...
+
+Our code:
+
+    interface AuthService {
+        isAuthenticated
+    }
+
+    class Stuff {
+        constructor(private AuthService){}
+
+        execute(){
+            if(srv.isAuthenticated()){ console.log('access granted') }
+        } else { console.log('you do not have access') }
+    }
+
+Mock:
+
+    class MockAuthService implements AuthService {
+        isAuthenticated(){ return true; }
+    }
+
+    const srv = new MockAuthService()
+    const stuff = new Stuff(srv);
+
+We can instead simply create a mock by instantiating the interface instead:
+
+    const authServiceInstance = <AuthService>{};
+
+However, **be aware** that you are responsible for adding required method(s), because it starts as an empty object.
+
+### Class Inheritance
+We can also extend members and functionality from other classes using inheritance. In the following example Sedan inherits the member 'make'. Like in other OOP languages we can overwrite methods if needed and we can use the parent constructor using the super() method: 
+
+    class Sedan extends Car {
+        model: string;
+        constructor(make: string, model: string){
+            super(make);
+            this.model = model;
+        }
+    }
+
+## Decorators
+
+Decorators are a way to add metadata to class declarations for use by dependency injection or compilation directives. By creating decorators, we are defining special annotations (@Something) that may have an impact on the way our classes, methods or functions behave or just alter the data we define in fields or parameters.
+
+### Class Decorator
+Here is a simple example:
+
+    function Banana(target: Function): void {
+        target.prototype.banana = function(): void {
+            console.log('We have bananas!')
+        }
+    }
+
+    @Banana
+    class FruitBasket {
+        constructor(){}
+    }
+
+    const basket = new FruitBasket();
+    basket.banana();
+
+With a custom signature:
+
+    function Banana(message: string){
+        function Banana(target: Function) {
+            target.prototype.banana = function(): void {
+                console.log(message)
+            }
+        }
+    }
+
+    @Banana('Delicious bananas!!!')
+    class FruitBasket {
+        constructor(){}
+    }
+
+### Property Decorator
+Could be used to log log the values assigned to class fields when instantiating objects: 
+
+    function Jedi(target: Object, ke: string){
+        let propertyValue: string = this(key);
+        if (delete this[key]){
+            Object.defineProperty(target, key, {
+                get: function(){
+                    return propertyValue;
+                },
+                set: function(newValue){
+                    propertyValue = newValue;
+                    console.log(`${propertyValue} is a Jedi`);
+                }
+            });
+        }
+    }
+
+    class Character{
+        @Jedi
+        name: string;
+    }
+
+    const character = new Character();
+    character.name = 'Luke';
+
+Or when reacting to data changes:
+
+    function NameChanger(callbackObject: any): Function{
+        return function(target: Object, key: string): void {
+            let propertyValue: string = this[key];
+            if (delete this[key]){
+                Object.defineProperty(target, key, {
+                    get: function() {
+                        return propertyValue;
+                    },
+                    set: function(newValue){
+                        propertyValue = newValue;
+                        callbackObject.changeName.call(this, propertyValue);
+                    }
+                });
+            }
+        }
+    }
+
+    class Character{
+        @NameChanger({
+            changeName: function(newValue: string): void{
+                console.log(`You are now known as ${newValue}`);
+            }
+        });
+        name: string;
+    }
+
+    let character = new Character();
+    character.name = 'Anakin';
+
+This will trigger the custom function 'changeName()' when the name property is changed.
+
+### Method Decorator
+It is used to detect, log or intervene. Logging example:
+
+    function Log(){
+        return function(target, propertyKey: string, descriptor: PropertyDescriptor){
+            const oldMethod = descriptor.value;
+            descriptor.value = function newFunc(...args:any[]){
+                let result = oldMethod.apply(this, args);
+                console.log(`${propertyKey} is called with ${args.join(', ')} and result ${result}`);
+                return result;
+            }
+        }
+    }
+
+    class Hero{
+        @Log()
+        attack(...args:[]){ return args.join(); }
+    }
+
+    const hero = new Hero();
+    hero.attack();
+
+### Parameter Decorator
+Used to look into the parameter value of functions or constructors and perform operations elsewhere, such as logging or replicating data:
+
+    function Log(target: Function, key: string, parameterIndex: number){
+        const functionLogged = key || target.prototype.constructor.name;
+        console.log(`The parameter in position ${parameterIndex} at ${functionLogged} has been decorated`);
+    }
+
+    class Greeter {
+        greeting: string;
+
+        constructor(@Log phrase: string){
+            this.greeting = phrase;
+        }
+    }
+
+## Advanced Types
+
+### Partial
+Object that includes only *part* of an interface:
+
+    interface Hero {
+        name: string;
+        power: number;
+    }
+
+    const hero: Partial<Hero> = {
+        name = 'Iron Man';
+    }
+
+### Record
+How we create dictionaries in Typescript:
+
+    interface Hero {
+        powers: {
+            [key: string]: number
+        }
+    }
+
+Or with a Record:
+
+    interface Hero {
+        powers: Record<string, number>
+    }
+
+### Union
+We can mix types with unions:
+
+    interface Hero {
+        powers: number[] | Record<string, number>;
+    }
+
+### Nullable
+We can allow Types to be null or undefined:
+
+    interface Hero {
+        powers: number[] | null | undefined;
+    }
+
+*Note to check nullable values before using them!*
+**Optional chaining**:
+
+    for (let i = 0; i < hero.powers?.length; i++){
+        ...
+    }
+
+### Modules
+Export from file 'my-service':
+
+    export class MyService {
+        getData() { ... }
+    }
+
+Import:
+
+    import { MyService } from './my-service';
+
+# Angular
+
+## Components
