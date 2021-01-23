@@ -517,3 +517,68 @@ Import:
 # Angular
 
 ## Components
+
+
+
+
+
+
+
+
+
+## Testing
+Common commands:
+>ng test  
+>npm test  
+>ng test --watch false  
+>npm test --watch false  
+>ng test --code-coverage  
+>ng test --karma-config karma.conf.js --watch false
+
+To always get code coverage, edit *angular.json*:
+
+    "test": {
+        "options": {
+            "codeCoverage": true
+        }
+    }
+
+To run tests on *Edge* browser:
+>npm install karma-edge-launcher --save-dev
+
+To run tests on *FireFox* browser:
+>npm install karma-firefox-launcher --save-dev
+
+And edit *karma.conf.js*:
+
+    plugins: [ 
+        require('karma-edge-launcher'),
+        require('karma-firefox-launcher')
+     ]
+    ...
+    browsers: ['Chrome','Edge','Firefox']
+
+Or don't edit browsers array and run individually:
+>ng test --browsers Edge  
+>ng test --browsers Firefox
+
+## Testing with Other Frameworks
+
+### Jest
+[Full Manual Guide](https://www.amadousall.com/how-to-set-up-angular-unit-testing-with-jest/)
+
+Automated migration:
+>ng add @briebug/jest-schematic
+
+Common commands:
+>ng test  
+>npm test  
+>ng test --coverage  
+>npx jest --coverage  
+>ng test --watch  
+>npx jest --watch  
+>ng test --watchAll  
+>npx jest --watchAll
+
+### Mocha
+[Full Manual Guide](https://www.radzen.com/blog/testing-angular-webpack-mocha/)
