@@ -5,6 +5,8 @@ dist-ssr
 /out-tsc
 public
 .firebaserc
+# Only exists if Bazel was run
+/bazel-out
 
 # dependencies
 node_modules
@@ -27,6 +29,7 @@ functions/lib
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+.history/*
 
 # misc
 /.sass-cache
