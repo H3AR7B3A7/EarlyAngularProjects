@@ -8,6 +8,14 @@ Angular is a TypeScript-based open-source web application framework led by the A
 - **Install Typescript**: npm install -g typescript
 - **Install Angular**: npm install -g @angular/cli
 
+### VSC Extensions:
+- Angular Essentials
+- Angular Language service
+- Angular Snippets
+- Nx Console
+- TSLint
+- Material Icon Theme
+
 ## Creating a Project
 Navigate to the desired folder and use following commands:
 >ng n <name>
@@ -522,8 +530,20 @@ Import:
 
 ## Components
 
+### Create
+>ng generate component <name>
 
+Example component decorator:
 
+    @Component({
+        selector: 'app-hero',
+        templateUrl: './hero.component.html',
+        styleUrls: ['./hero.component.css']
+    })
+
+To render the template of the new component we add the selector to *app.component.html*:
+
+    <app-hero></app-hero>
 
 
 
