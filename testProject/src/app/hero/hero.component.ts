@@ -15,21 +15,21 @@ export class HeroComponent implements OnInit {
   currentClasses = {
     star: true,
     active: false
-  }
+  };
 
-  currentStyle1 = 'color: greenyellow; width: 100px'
+  currentStyle1 = 'color: greenyellow; width: 100px';
 
   currentStyle2 = {
     color: 'greenyellow',
     width: '100px'
-  }
+  };
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  public onClick(){
+  public onClick(): void{
     this.buttonText = 'That tickles!';
     this.buttonStyle = 'background-color: lightblue';
   }
