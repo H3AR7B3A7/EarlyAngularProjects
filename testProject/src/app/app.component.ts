@@ -9,10 +9,14 @@ export class AppComponent {
   title = 'testProject';
 
   // Input Binding
-  heroName = 'Spiderman';
+  heroName1 = 'Spiderman';
+  heroName2 = 'Batman';
 
   // Output Binding
-  onLike(): void{
-    window.alert(`I like ${this.heroName}`);
+  onLike1(): void{
+    window.alert(`I like ${this.heroName1}`);
+  }
+  onLike2(): void{
+    window.alert(`I like ${this.heroName2}`);
   }
 }

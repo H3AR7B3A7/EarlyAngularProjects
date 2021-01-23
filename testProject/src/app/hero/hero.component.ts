@@ -17,11 +17,12 @@ export class HeroComponent implements OnInit {
   };
 
   // Binding Styles
-  currentStyle1 = 'color: greenyellow; width: 100px';
+  currentStyle1 = 'color: green; width: 100px; margin: auto;';
 
   currentStyle2 = {
-    color: 'greenyellow',
-    width: '100px'
+    color: 'green',
+    width: '100px',
+    margin: 'auto',
   };
 
   // Button
@@ -37,9 +38,14 @@ export class HeroComponent implements OnInit {
   liked = new EventEmitter();
 
   // Event Binding
-  public onClick(): void{
-    this.buttonText = 'That tickles!';
-    this.buttonStyle = 'background-color: lightblue';
+  public onClick(): void {
+    if (this.buttonText === 'Click Me!') {
+      this.buttonText = 'That tickles!';
+      this.buttonStyle = 'background-color: lightblue';
+    } else {
+      this.buttonText = 'Click Me!';
+      this.buttonStyle = '';
+    }
   }
 
   constructor() { }
