@@ -530,7 +530,7 @@ Import:
 
 ## Components
 
-### Create
+### Create a Component
 >ng generate component <name>
 
 Example component decorator:
@@ -544,6 +544,16 @@ Example component decorator:
 To render the template of the new component we add the selector to *app.component.html*:
 
     <app-hero></app-hero>
+
+### Binding Components in Templates
+See *'testProject'* for examples of:
+- Variable Binding
+- Class Binding
+- Style Binding
+- Event Binding
+- Input Binding
+- Output Binding
+
 
 
 
