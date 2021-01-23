@@ -1,0 +1,17 @@
+<h1>{{ title }} works!</h1>
+
+<span>{{ title }}</span><br>
+<span [innerText]="title"></span>
+
+<p [attr.aria-label]="'myText'">Test</p>
+
+<p class="star">Test</p>
+<p [class.star]="isLiked">Test</p>
+<p [class]="currentClasses">Test</p>
+
+<p style="color: greenyellow">Test</p>
+<p [style]="currentStyle1">Test</p>
+<p [style]="currentStyle2">Test</p>
+
+<button (click)="onClick()" [style]="buttonStyle">{{buttonText}}</button>
+
