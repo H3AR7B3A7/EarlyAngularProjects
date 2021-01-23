@@ -1,12 +1,12 @@
 # compiled output
 dist
 dist-ssr
-/tmp
-/out-tsc
+tmp
+out-tsc
 public
 .firebaserc
 # Only exists if Bazel was run
-/bazel-out
+bazel-out
 
 # dependencies
 node_modules
@@ -14,8 +14,8 @@ functions/node_modules
 functions/lib
 
 # IDEs and editors
-/.firebase
-/.idea
+.firebase
+.idea
 .project
 .classpath
 .c9/
@@ -32,19 +32,20 @@ functions/lib
 .history/*
 
 # misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
+.sass-cache
+connect.lock
+coverage
+libpeerconnection.log
 npm-debug.log
 testem.log
-/typings
+typings
 yarn-error.log
 
 # e2e
-/e2e/*.js
+e2e
+e2e/*.js
 !/e2e/protractor.conf.js
-/e2e/*.map
+e2e/*.map
 
 # System Files
 .DS_Store
