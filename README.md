@@ -1,5 +1,6 @@
 # Getting Started With Angular
 [Official Angular Pages](https://angular.io/)
+
 Angular is a TypeScript-based open-source web application framework led by the Angular Team at Google and by a community of individuals and corporations. Angular is a complete rewrite from the same team that built AngularJS.
 
 ### Installation
@@ -14,6 +15,9 @@ Navigate to the desired folder and use following commands:
 
 # Typescript
 [Official Typescript pages](https://www.typescriptlang.org/)
+
+TypeScript is an open-source language which builds on JavaScript, one of the world’s most used tools, by adding static type definitions.  
+Types provide a way to describe the shape of an object, providing better documentation, and allowing TypeScript to validate that your code is working correctly.
 
 ## Let
 We use 'let' instead of 'var' to make sure our variable doesn't leak outside the scope:
