@@ -6,17 +6,17 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./hero.component.css']
 })
 export class HeroComponent implements OnInit {
-  // Binding Variables
+  // Variable Binding
   title = 'Hero';
   isLiked = true;
 
-  // Binding Classes
+  // Class Binding
   currentClasses = {
     star: true,
     active: false
   };
 
-  // Binding Styles
+  // Style Binding
   currentStyle1 = 'color: green; width: 100px; margin: auto;';
 
   currentStyle2 = {
@@ -25,7 +25,7 @@ export class HeroComponent implements OnInit {
     margin: 'auto',
   };
 
-  // Button
+  // Button Variables
   buttonText = 'Click Me!';
   buttonStyle: string | undefined;
 
