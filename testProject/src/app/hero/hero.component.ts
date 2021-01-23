@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-hero',
@@ -6,17 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hero.component.css']
 })
 export class HeroComponent implements OnInit {
+  // Binding Variables
   title = 'Hero';
   isLiked = true;
 
-  buttonText = 'Click Me!';
-  buttonStyle: string | undefined;
-
+  // Binding Classes
   currentClasses = {
     star: true,
     active: false
   };
 
+  // Binding Styles
   currentStyle1 = 'color: greenyellow; width: 100px';
 
   currentStyle2 = {
@@ -24,14 +24,26 @@ export class HeroComponent implements OnInit {
     width: '100px'
   };
 
-  constructor() { }
+  // Button
+  buttonText = 'Click Me!';
+  buttonStyle: string | undefined;
 
-  ngOnInit(): void {
-  }
+  // Input Binding: Component passing DOWN data to child component.
+  @Input()
+  name!: string;
 
+  // Output Binding: Component passing data UP to parent component.
+  @Output()
+  liked = new EventEmitter();
+
+  // Event Binding
   public onClick(): void{
     this.buttonText = 'That tickles!';
     this.buttonStyle = 'background-color: lightblue';
   }
 
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 }

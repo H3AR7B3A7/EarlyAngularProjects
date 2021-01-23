@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'testProject';
+
+  // Input Binding
+  heroName = 'Spiderman';
+
+  // Output Binding
+  onLike(): void{
+    window.alert(`I like ${this.heroName}`);
+  }
 }
