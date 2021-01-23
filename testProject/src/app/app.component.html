@@ -1,2 +1,6 @@
-<app-hero [name]="heroName1" (liked)="onLike1()"></app-hero>
+<app-hero [name]="heroName1" (liked)="onLike1($event)"></app-hero>
 <app-hero [name]="heroName2" (liked)="onLike2()"></app-hero>
+<app-hero [name]="heroName3" (liked)="onLike1($event)"></app-hero> <!-- Using same function as 1, passing name: string -->
+<app-hero #heroCmp [name]="heroName4" (liked)="onLike1($event)"></app-hero>
+<!-- Local Reference -->
+<br><p>{{ heroCmp.name }}</p>

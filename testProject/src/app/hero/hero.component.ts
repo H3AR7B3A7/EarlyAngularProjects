@@ -48,8 +48,11 @@ export class HeroComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor() {
+    // Mostly to set initial values, shouldn't contain logic.
+  }
 
   ngOnInit(): void {
+    // Can be used to initialize components with data from external sources.
   }
 }
