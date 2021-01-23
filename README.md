@@ -553,10 +553,63 @@ See *'testProject'* for examples of:
 - Event Binding
 - Input Binding
 - Output Binding
+- Local References
 
+### Encapsulating CSS Styling
+ViewEncapsulation enumeration values:
+- Emulated: Default, an emulation of native scoping in shadow DOM
+- Native: Only works in browsers that support shadow DOM
+- None: No encapsulation
 
+Example:
 
+    import { Component, ViewEncapsulation } from '@angular/core';
 
+    @Component({
+        selector: 'app-hero',
+        templateUrl: './hero.component.html',
+        styleUrls: ['./hero.component.css'],
+        encapsulation: ViewEncapsulation.Emulated
+    })
+
+### Changing Detection Strategies
+Every component has a *'change detector'* that compares changed properties with their previous values. This can be a performance bottleneck for components that render hundreds of items in a list. In this case we might want to use the **OnPush* strategy which only triggers the change detection when the reference of *@Input* properties change.
+
+Example:
+
+    import { Component, ChangeDetectionStrategy } from '@angular/core';
+
+    @Component({
+        selector: 'app-hero',
+        templateUrl: './hero.component.html',
+        changeDetection: ChangeDetectionStrategy.OnPush
+    })
+
+## The Component Lifecycle
+Available lifecycle hooks:
+- OnInit
+- OnDestroy
+- OnChanges
+- DoCheck
+- AfterContentInit
+- AfterContentChecked
+- AfterViewInit
+- AfterViewChecked
+
+### The OnInit Interface
+The *ngOnInit()* method is called upon the initialization of a component. At this point all input bindings and data-bound properties have been set. The *OnInit* hook can for example be used to initialize components with data from external sources.
+
+### The OnDestroy Interface
+The *ngOnDestroy()* method is called upon destruction of a component. Components get destroyed through using the *ngIf directive* or by *routing* to other components using a URI. When this happens it can be useful to use the OnDestroy interface to clean up:
+- Resetting timers & intervals
+- Unsubscribing from observable streams
+
+### The OnChanges Interface
+The *ngOnChanges()* method is called when the binding of a value changes. It accepts an object of type SimpleChanges as a parameter. The resulting objects holds a previousValue and currentValue, but also a boolean which tells us wether it is the 'first' change.
+
+## Directives
+
+## Pipes
 
 
 
