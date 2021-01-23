@@ -4,22 +4,27 @@ import { HeroComponent } from './hero.component';
 
 describe('HeroComponent', () => {
   let component: HeroComponent;
-  let fixture: ComponentFixture<HeroComponent>;
+  // let fixture: ComponentFixture<HeroComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ HeroComponent ]
-    })
-    .compileComponents();
-  });
+  // beforeEach(async () => {
+  //   await TestBed.configureTestingModule({
+  //     declarations: [ HeroComponent ]
+  //   })
+  //   .compileComponents();
+  // });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HeroComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  // beforeEach(() => {
+  //   fixture = TestBed.createComponent(HeroComponent);
+  //   component = fixture.componentInstance;
+  //   fixture.detectChanges();
+  // });
 
   it('should create', () => {
+    // Isolated Testing: Faster testing without TestBed...
+    // Can't test templates, but faster to test just the component.
+    component = new HeroComponent();
+    component.ngOnInit();
+
     expect(component).toBeTruthy();
   });
 });
