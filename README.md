@@ -728,6 +728,10 @@ To change this behavior we can also make the pipe impure:
 
 If the object changes a lot and they are many, this can affect performance.
 
+## Custom Directives
+To create a directive *in the current directory*:
+>ng generate directive <name>
+
 
 
 
