@@ -1,0 +1,40 @@
+<h1>For Loops and Conditionals</h1>
+<h2>All heroes:</h2>
+<ol>
+  <li *ngFor="let hero of listOfHeroes; index as myIndex">
+    Index = {{ myIndex + 1 }}, Id = {{ hero.id }}, Name = {{ hero.name }}
+  </li>
+</ol>
+
+<h2>All Avengers:</h2>
+<ol>
+  <ng-container *ngFor="let hero of listOfHeroes; index as myIndex">
+    <li *ngIf="hero.team === 'Avengers'">
+      Index = {{ myIndex + 1 }}, Id = {{ hero.id }}, Name = {{ hero.name }}
+    </li>
+  </ng-container>
+</ol>
+
+<h2>All Justice League:</h2>
+<ol>
+  <ng-container
+    *ngFor="let hero of listOfHeroes; index as myIndex; trackBy: identify"
+  >
+    <li *ngIf="hero.team === 'Justice League'">
+      Index = {{ myIndex + 1 }}, Id = {{ hero.id }}, Name = {{ hero.name }},
+      _Internal Object Identity = {{ identify }}
+    </li>
+  </ng-container>
+</ol>
+
+<h1>Switch Cases</h1>
+<ng-container *ngFor="let hero of listOfHeroes">
+  <ng-container [ngSwitch]="hero.team">
+    <div *ngSwitchCase="'Avengers'">
+      {{ hero.name }} is an Avenger.
+    </div>
+    <div *ngSwitchCase="'Justice League'">
+      {{ hero.name }} is in the Justice League.
+    </div>
+  </ng-container>
+</ng-container>
