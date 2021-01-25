@@ -666,7 +666,7 @@ Built in _structural directives_:
 See _[jestProject](jestProject)_ for more examples.
 
 To create just an interface model:
->ng generate interface hero --type=model
+>ng generate interface <name> --type=model
 
 ### ngIf
 
@@ -696,6 +696,38 @@ Used as a switch statement evaluating some property and rendering the appropriat
     </ng-container>
 
 ## Pipes
+Pipes allow us to filter and map the outcome of our expressions on a view level. They transform data in the desired format and display the output in the template.
+
+Some default examples:
+
+    <p>{{ 'Example' | uppercase }}</p>
+    <p>{{ 'Example' | lowercase }}</p>
+    <p>{{ 0.123 | percent }}</p>
+    <p>{{ 100 | currency }}</p>
+    <p>{{ 100 | currency:'EUR' }}</p>
+    <p>{{ listOfHeroes | slice:2:4 }}</p>
+    <p>{{ today | date }}</p>
+    <p>{{ today | date:'fullDate' }}</p>
+    <p>{{ hero | json }}</p>
+    <p>{{ delayedHero | async }}</p>
+
+## Custom Pipes
+To create a pipe *in the current directory*:
+>ng generate pipe <name>
+
+Pipes are pure by default, which means they will not update when a value gets changed, only when a new value is assigned. So when we add an object to an existing array or change a value of an object and want it to be affected by the pipe we create a new array/object (immutability principle):
+
+    listOfHeroes: Hero[] = [...heroes, heroX];
+
+To change this behavior we can also make the pipe impure:
+
+    @Pipe({
+      name: 'sort',
+      pure: false
+    })
+
+If the object changes a lot and they are many, this can affect performance.
+
 
 
 
