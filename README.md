@@ -546,7 +546,7 @@ To render the template of the new component we add the selector to *app.componen
     <app-hero></app-hero>
 
 ### Binding Components in Templates
-See *'testProject'* for examples of:
+See *[testProject](testProject)* for examples of:
 - Variable Binding
 - Class Binding
 - Style Binding
@@ -617,6 +617,8 @@ Built in *structural directives*:
 - ngIf
 - ngFor
 - ngSwitch
+
+See *[jestProject](jestProject)* for more examples.
 
 ### ngIf
 Used for the conditional rendering of HTML elements in the DOM.
