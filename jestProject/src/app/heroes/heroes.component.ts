@@ -7,7 +7,8 @@ import { heroes, Hero } from 'src/app/heroes/hero.model';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-  listOfHeroes: Hero[] = heroes;
+  listOfHeroes0: Hero[] = [...heroes];
+  listOfHeroes1: Hero[] = [...heroes];
 
   identify(index: number, hero: Hero): number {
     return hero.id;

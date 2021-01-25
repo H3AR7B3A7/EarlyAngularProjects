@@ -1,14 +1,14 @@
 <h1>For Loops and Conditionals</h1>
 <h2>All heroes:</h2>
 <ol>
-  <li *ngFor="let hero of listOfHeroes; index as myIndex">
+  <li *ngFor="let hero of listOfHeroes0; index as myIndex">
     Index = {{ myIndex + 1 }}, Id = {{ hero.id }}, Name = {{ hero.name }}
   </li>
 </ol>
 
 <h2>All Avengers:</h2>
 <ol>
-  <ng-container *ngFor="let hero of listOfHeroes; index as myIndex">
+  <ng-container *ngFor="let hero of listOfHeroes0; index as myIndex">
     <li *ngIf="hero.team === 'Avengers'">
       Index = {{ myIndex + 1 }}, Id = {{ hero.id }}, Name = {{ hero.name }}
     </li>
@@ -18,7 +18,7 @@
 <h2>All Justice League:</h2>
 <ol>
   <ng-container
-    *ngFor="let hero of listOfHeroes; index as myIndex; trackBy: identify"
+    *ngFor="let hero of listOfHeroes0; index as myIndex; trackBy: identify"
   >
     <li *ngIf="hero.team === 'Justice League'">
       Index = {{ myIndex + 1 }}, Id = {{ hero.id }}, Name = {{ hero.name }},
@@ -28,7 +28,7 @@
 </ol>
 
 <h1>Switch Cases</h1>
-<ng-container *ngFor="let hero of listOfHeroes">
+<ng-container *ngFor="let hero of listOfHeroes0">
   <ng-container [ngSwitch]="hero.team">
     <div *ngSwitchCase="'Avengers'">
       {{ hero.name }} is an Avenger.
@@ -38,3 +38,10 @@
     </div>
   </ng-container>
 </ng-container>
+
+<h1>Sorted List:</h1>
+<ol>
+  <li *ngFor="let hero of listOfHeroes1 | sort:'name'; index as myIndex">
+    Index = {{ myIndex + 1 }}, Id = {{ hero.id }}, Name = {{ hero.name | uppercase }}
+  </li>
+</ol>
