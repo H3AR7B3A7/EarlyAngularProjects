@@ -608,6 +608,29 @@ The *ngOnDestroy()* method is called upon destruction of a component. Components
 The *ngOnChanges()* method is called when the binding of a value changes. It accepts an object of type SimpleChanges as a parameter. The resulting objects holds a previousValue and currentValue, but also a boolean which tells us wether it is the 'first' change.
 
 ## Directives
+Directives are HTML attributes that extend the behavior or the appearance of standard HTML elements. When we apply them to an HTML element or even an Angular component, we can add custom behavior to it or alter its appearance. There are three types:
+- Components
+- Structural directives
+- Attribute directives
+
+Built in *structural directives*:
+- ngIf
+- ngFor
+- ngSwitch
+
+### ngIf
+Used for the conditional rendering of HTML elements in the DOM.
+
+    <p *ngIf="team === 'Avengers'; else noHero">{{ name }} is an avenger!</p>
+    <ng-template #noHero>
+        <p>No avengers found</p>
+    </ng-template>
+
+### ngFor
+Used for iterating through a collection of elements and render a template for each one.
+
+### ngSwitch
+
 
 ## Pipes
 
