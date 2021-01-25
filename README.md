@@ -679,11 +679,27 @@ Used for the conditional rendering of HTML elements in the DOM.
 
 ### ngFor
 
-Used for iterating through a collection of elements and render a template for each one.
+Used for iterating through a collection of elements and rendering a template for each one.
+
+    <ul>
+      <li *ngFor="let hero of listOfHeroes>
+        {{ hero.name }}
+      </li>
+    </ul>
 
 ### ngSwitch
+Used as a switch statement evaluating some property and rendering the appropriate HTML element.
+
+    <ng-container [ngSwitch]="hero.team">
+      <div *ngSwitchCase="'Avengers'">{{ hero.name }} is an Avenger.</div>
+      <div *ngSwitchCase="'Justice League'">{{ hero.name }} is in the Justice League.</div>
+    </ng-container>
 
 ## Pipes
+
+
+
+
 
 ## Testing
 
