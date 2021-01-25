@@ -1,6 +1,10 @@
+:host {
+  --backgroundColor: lightcyan;
+}
+
 * {
   display: inline-block;
   text-align: center;
   padding-right: 1rem;
-  background-color: lightcyan;
+  background-color: var(--backgroundColor);
 }

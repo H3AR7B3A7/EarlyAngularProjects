@@ -1,0 +1,32 @@
+:host {
+  --backgroundColor:#d3d3d3;
+  --padding: 10px;
+  --footerFont: Verdana, Geneva, Tahoma, sans-serif;
+  --validColor: #008000;
+  --invalidColor: #ff0000;
+  --white: #ffffff;
+  --radius: 5px;
+}
+
+.copyright {
+  background-color: var(--backgroundColor);
+  padding: var(--padding);
+  font-family: var(--footerFont);
+}
+
+input {
+  background-color: var(--white);
+  border-radius: var(--radius);
+}
+
+input:focus{
+  outline: none;
+}
+
+.valid {
+  border-color: var(--validColor);
+}
+
+.invalid {
+  border-color: var(--invalidColor);
+}
