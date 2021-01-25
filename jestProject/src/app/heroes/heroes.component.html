@@ -45,3 +45,17 @@
     Index = {{ myIndex + 1 }}, Id = {{ hero.id }}, Name = {{ hero.name | uppercase }}
   </li>
 </ol>
+
+<h1>Custom Directives</h1>
+<h2>Numeric validation</h2>
+<input appNumeric type="numeric">
+
+<br><br>
+
+<h2>Permission Check</h2>
+<div *appPermission="['admin','agent']">
+  Only for users with permission...
+</div>
+
+<br>
+<p appCopyright></p>
