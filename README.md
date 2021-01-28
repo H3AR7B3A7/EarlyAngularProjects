@@ -688,6 +688,7 @@ Used for iterating through a collection of elements and rendering a template for
     </ul>
 
 ### ngSwitch
+
 Used as a switch statement evaluating some property and rendering the appropriate HTML element.
 
     <ng-container [ngSwitch]="hero.team">
@@ -696,6 +697,7 @@ Used as a switch statement evaluating some property and rendering the appropriat
     </ng-container>
 
 ## Pipes
+
 Pipes allow us to filter and map the outcome of our expressions on a view level. They transform data in the desired format and display the output in the template.
 
 Some default examples:
@@ -712,6 +714,7 @@ Some default examples:
     <p>{{ delayedHero | async }}</p>
 
 ## Custom Pipes
+
 To create a pipe *in the current directory*:
 >ng generate pipe <name>
 
@@ -729,8 +732,33 @@ To change this behavior we can also make the pipe impure:
 If the object changes a lot and they are many, this can affect performance.
 
 ## Custom Directives
+
 To create a directive *in the current directory*:
 >ng generate directive <name>
+
+## Modules
+
+To create a module:
+>ng generate module <name>
+
+They contain:
+- Declarations: Registered components, directives and pipes
+- Imports: Other modules containing declarations to be used by this module
+- Exports: Artifacts available for other modules (aka the public API)
+- Providers: Provided services, accessible from any module
+- Bootstrap: Main component, 'AppModule'
+
+### Registering Components with a Module
+
+You can do this by running the command inside the module folder or using the module option.
+
+Using the module option:
+>ng generate component cars/carList --module=cars
+
+### Exposing Module Features
+
+
+
 
 
 
@@ -739,7 +767,11 @@ To create a directive *in the current directory*:
 
 ## Testing
 
-Common commands:
+### Testing With(out) Testbed
+
+When Angular CLI generates components it also generates tests in *.spec.ts. These contain some boilerplate implementing a testbed for template testing. You can check [this example](jestProject/src/app/heroes/heroes.component.spec.ts). When we aren't testing against the template however, we can speed up testing by not using the testbed like in [this example](testProject/src/app/hero/hero.component.spec.ts).
+
+### Common commands
 
 > ng test  
 > npm test  
