@@ -1,1 +1,6 @@
-<p>car-list works!</p>
+<h1>car-list works!</h1>
+<ol>
+  <li *ngFor="let car of cars; index as myIndex">
+    Index = {{ myIndex + 1 }}, Brand = {{ car.brand }}, Model = {{ car.carModel }}, Type = {{ car.type }}
+  </li>
+</ol>
