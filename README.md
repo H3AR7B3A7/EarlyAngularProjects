@@ -738,6 +738,8 @@ To create a directive *in the current directory*:
 
 ## Modules
 
+See _[ModulesAndStructure](ModulesAndStructure)_ for examples on the following topics. 
+
 To create a module:
 >ng generate module <name>
 
@@ -762,6 +764,7 @@ To be able to add the the features template to the apps template using the selec
 - Import the module in app.module.ts.
 
 ### Modules Separation
+
 By functionality:
 - **Root** module: The main module, 'AppModule'
 - **Feature** modules: A set of functionalities (ex: Orders, Products, Customers, ...)
@@ -797,7 +800,12 @@ When we created the environment, we can define the appropriate configurations in
 When running **ng build --configuration=production** the CLI will replace the default environment file with the one for production.
 
 ## Dependency Injection
+In previous examples our data was tightly coupled to our component, meaning it was declared inside them.
+- In real world application our data is rarely static.
+- We only want our component to handle 'presenting' the data, and not be concerned on how to get the data.
 
+We can generate a **service** that we can use to inject our data in any class that needs it.
+>ng generate service cars/car
 
 
 
