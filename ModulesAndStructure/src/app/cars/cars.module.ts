@@ -8,6 +8,7 @@ import { CarListComponent } from './car-list/car-list.component';
   declarations: [CarListComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [CarListComponent]
 })
 export class CarsModule { }
