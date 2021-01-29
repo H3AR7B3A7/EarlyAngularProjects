@@ -757,6 +757,46 @@ Using the module option:
 
 ### Exposing Module Features
 
+To be able to add the the features template to the apps template using the selector we need to:
+- Add the component to the exports in the features module.ts. 
+- Import the module in app.module.ts.
+
+### Modules Separation
+By functionality:
+- **Root** module: The main module, 'AppModule'
+- **Feature** modules: A set of functionalities (ex: Orders, Products, Customers, ...)
+- **Core** modules: Application wide artifacts (ex: Navbar, Footer, Loading spinner, ...)
+- **Shared** modules: Reusable artifacts imported by different feature modules
+
+By loading:
+- **Eager** loaded modules: Declared in imports
+- **Lazy** loaded modules: Through navigation
+
+## Configuration & Environments
+
+We can run commands in different environments by using the following option in the CLI:
+>ng <command> --configuration=<name>
+
+We can add other environments to the defaults (development and production) by creating the matching configuration files in the *environments folder*. The naming convention to follow here is: *environment.{name}.ts*.
+
+The environment file exports an environment object. By default a boolean 'production' property is already set. We need to define all required properties in this object. For example the URL of the backend API will be set here.
+
+When we created the environment, we can define the appropriate configurations in the *angular.json*: 
+
+    "configurations": {
+        "production": {
+            "fileReplacements": [
+                {
+                    "replace": "src/environments/environment.ts",
+                    "with": "src/environments/environment.prod.ts"
+                }
+            ]
+        }
+    }
+
+When running **ng build --configuration=production** the CLI will replace the default environment file with the one for production.
+
+## Dependency Injection
 
 
 
@@ -769,7 +809,7 @@ Using the module option:
 
 ### Testing With(out) Testbed
 
-When Angular CLI generates components it also generates tests in *.spec.ts. These contain some boilerplate implementing a testbed for template testing. You can check [this example](jestProject/src/app/heroes/heroes.component.spec.ts). When we aren't testing against the template however, we can speed up testing by not using the testbed like in [this example](testProject/src/app/hero/hero.component.spec.ts).
+When Angular CLI generates components it also generates tests in *.spec.ts. These contain some boilerplate implementing a testbed for template testing, like in [this default example](jestProject/src/app/heroes/heroes.component.spec.ts). When we aren't testing against the template however, we can speed up testing by not using the testbed like in [this faster example](testProject/src/app/hero/hero.component.spec.ts).
 
 ### Common commands
 
@@ -814,7 +854,7 @@ Or don't edit browsers array and run individually:
 
 ### Jest
 
-[Full Manual Guide](https://www.amadousall.com/how-to-set-up-angular-unit-testing-with-jest/)
+[Full Migration Manual](https://www.amadousall.com/how-to-set-up-angular-unit-testing-with-jest/)
 
 Automated migration:
 
@@ -833,4 +873,4 @@ Common commands:
 
 ### Mocha
 
-[Full Manual Guide](https://www.radzen.com/blog/testing-angular-webpack-mocha/)
+[Full Migration Manual](https://www.radzen.com/blog/testing-angular-webpack-mocha/)
