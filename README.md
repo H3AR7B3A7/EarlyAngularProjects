@@ -812,6 +812,12 @@ We can generate a **service** that we can use to inject our data in any class th
 
 ### Share a Dependency Through Components
 
+Add selector to parent template:
+
+    <app-favorite-cars></app-favorite-cars>
+
+Add the service to providers in parent component:
+
     @Component({
         selector: 'app-car-list',
         templateUrl: './car-list.component.html',
