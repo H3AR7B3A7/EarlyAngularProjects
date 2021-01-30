@@ -763,7 +763,7 @@ To be able to add the the features template to the apps template using the selec
 - Add the component to the exports in the features module.ts. 
 - Import the module in app.module.ts.
 
-### Modules Separation
+### Module Separation
 
 By functionality:
 - **Root** module: The main module, 'AppModule'
@@ -800,6 +800,7 @@ When we created the environment, we can define the appropriate configurations in
 When running **ng build --configuration=production** the CLI will replace the default environment file with the one for production.
 
 ## Dependency Injection
+
 In previous examples our data was tightly coupled to our component, meaning it was declared inside them.
 - In real world application our data is rarely static.
 - We only want our component to handle 'presenting' the data, and not be concerned on how to get the data.
@@ -808,6 +809,15 @@ We can generate a **service** that we can use to inject our data in any class th
 >ng generate service cars/car
 
 
+
+### Share a Dependency Through Components
+
+    @Component({
+        selector: 'app-car-list',
+        templateUrl: './car-list.component.html',
+        styleUrls: ['./car-list.component.css'],
+        providers: [CarService]
+    })
 
 
 
