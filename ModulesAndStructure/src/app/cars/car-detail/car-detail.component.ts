@@ -14,7 +14,7 @@ export class CarDetailComponent implements OnInit {
   @Input()
   serialNumber!: number;
 
-  constructor(@Host() private carDetailService: CarDetailService) { }
+  constructor(private carDetailService: CarDetailService) { }
 
   ngOnInit(): void {
     this.car = this.carDetailService.getCar(this.serialNumber);
