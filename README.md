@@ -847,6 +847,65 @@ The **@SkipSelf()** and **@Self()** decorators will respectively make the inject
 
 #### Overriding Providers
 
+The provider argument we used before was a shorthand for:
+
+    providers: [{provide: CarService, useClass: CarService}]
+
+The useClass property overwrites the initial implementation. It could also take a factory function that returns one of multiple services depending on a condition:
+
+    export function carFactory(isFavorite: boolean){
+        return () => {
+            if (isFavorite) {
+                return new FavoriteCarService();
+            }
+            return new CarService();
+        };
+    }
+    ...
+    providers: [{provide: CarService, useFactory: carFactory(true)}]
+
+If the 2 services also inject other dependencies into their constructor, we have to add them to the **deps** property of the provide object literal:
+
+    providers: [{provide: CarService, useFactory: carFactory(true), deps: [HttpClient]}]
+
+And inject it into the factory:
+
+    export function carFactory(isFavorite: boolean){
+        return (http: HttpClient) => {
+            if (isFavorite) {
+                return new FavoriteCarService();
+            }
+            return new CarService();
+        };
+    }
+
+### Dependency Injection of Values
+
+When the dependency we want to provide is not a class, but a value, we can use the **useValue** syntax:
+
+    export interface AppConfig {
+        title: string,
+        version: number
+    }
+
+    export const appSettings: AppConfig = {
+        title: 'My app'
+        version: 1.0
+    ;}
+
+We can't pass an interface to providers, so we create an **InjectionToken**:
+
+    export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');
+    ...
+    providers: [{provide: APP_CONFIG, useValue: appSettings}]
+    ...
+    constructor (@Inject(APP_CONFIG) config: AppConfig){
+        this.title = config.title;
+        this.version = config.version;
+    }
+
+## Asynchronous Data Services
+
 
 
 
