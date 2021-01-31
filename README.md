@@ -825,6 +825,31 @@ Add the service to providers in parent component:
         providers: [CarService]
     })
 
+#### Restricting DI Down the Tree
+
+We can restrict DI down to only one level by using the 'viewProviders' attribute:
+
+    @Component({
+        selector: 'app-car-list',
+        templateUrl: './car-list.component.html',
+        styleUrls: ['./car-list.component.css'],
+        viewProviders: [CarService]
+    })
+
+#### Restricting Provider Lookup
+
+The **@Host()** decorator will prevent bubbling up the hierarchy to look for the dependency, it will instead throw an exception.
+
+    constructor(@Host() private carService: CarService) { }
+
+The **@Optional()** decorator will prevent this error.
+The **@SkipSelf()** and **@Self()** decorators will respectively make the injector skip or check the local injector of the current component. When skipping it will start looking higher in the hierarchy.
+
+#### Overriding Providers
+
+
+
+
 
 
 
