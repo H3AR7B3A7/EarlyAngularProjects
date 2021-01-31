@@ -8,6 +8,7 @@ import { CarService } from '../car.service';
   styleUrls: ['./favorite-cars.component.css']
 })
 export class FavoriteCarsComponent implements OnInit {
+
   cars!: Car[];
 
   constructor(private carService: CarService) { }
@@ -15,5 +16,4 @@ export class FavoriteCarsComponent implements OnInit {
   ngOnInit(): void {
     this.cars = this.carService.getCars();
   }
-
 }

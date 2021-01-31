@@ -5,3 +5,11 @@
   </li>
 </ol>
 <app-favorite-cars></app-favorite-cars>
+<h3>Car detail for serialNumber: 2</h3>
+<app-car-detail [serialNumber]="2"></app-car-detail>
+<h3>Dedicated Details-services for each car</h3>
+<ul>
+  <li *ngFor="let car of cars">
+    <app-car-detail [serialNumber]="car.serialNumber"></app-car-detail>
+  </li>
+</ul>
