@@ -19,6 +19,7 @@ Angular is a TypeScript-based open-source web application framework led by the A
 - TSLint
 - Material Icon Theme
 
+
 ## Creating a Project
 
 Navigate to the desired folder and use following commands:
@@ -26,12 +27,14 @@ Navigate to the desired folder and use following commands:
 > ng n <name>
 > ng serve
 
+
 # Typescript
 
 [Official Typescript pages](https://www.typescriptlang.org/)
 
 TypeScript is an open-source language which builds on JavaScript, one of the world’s most used tools, by adding static type definitions.  
 Types provide a way to describe the shape of an object, providing better documentation, and allowing TypeScript to validate that your code is working correctly.
+
 
 ## Let
 
@@ -49,10 +52,12 @@ This will transpile to:
         ...
     }
 
+
 ## Const
 
 We should prefer to use 'const' where ever possible to create constants, or variables that never change.
 This goes only for the top level of the variable, and thus object properties can still be changed.
+
 
 ## Types
 
@@ -106,6 +111,7 @@ Most of the time Typescript is able to figure out what type a variable is suppos
 ### Void
 
 As in other languages we use this type to annotate that a function does not return a value.
+
 
 ## Functions
 
@@ -185,6 +191,7 @@ But arrow functions also allows lexical scoping of _this_:
 
 If we were to use the actual function instead of the arrow function this.name would be _Undefined_.
 
+
 ## Common Typescript Features
 
 ### Spread parameter
@@ -226,6 +233,7 @@ We can also say a generic type should adhere to some interface:
     }
 
 Now we can create multiple classes implementing the Shape interface with their own area() methods and pass them to allAreas().
+
 
 ## Classes, Interfaces and Inheritance
 
@@ -352,6 +360,7 @@ We can also extend members and functionality from other classes using inheritanc
             this.model = model;
         }
     }
+
 
 ## Decorators
 
@@ -490,6 +499,7 @@ Used to look into the parameter value of functions or constructors and perform o
         }
     }
 
+
 ## Advanced Types
 
 ### Partial
@@ -556,6 +566,7 @@ Import:
 
     import { MyService } from './my-service';
 
+
 # Angular
 
 ## Components
@@ -621,6 +632,7 @@ Example:
         changeDetection: ChangeDetectionStrategy.OnPush
     })
 
+
 ## The Component Lifecycle
 
 Available lifecycle hooks:
@@ -648,6 +660,7 @@ The _ngOnDestroy()_ method is called upon destruction of a component. Components
 ### The OnChanges Interface
 
 The _ngOnChanges()_ method is called when the binding of a value changes. It accepts an object of type SimpleChanges as a parameter. The resulting objects holds a previousValue and currentValue, but also a boolean which tells us wether it is the 'first' change.
+
 
 ## Directives
 
@@ -696,6 +709,7 @@ Used as a switch statement evaluating some property and rendering the appropriat
       <div *ngSwitchCase="'Justice League'">{{ hero.name }} is in the Justice League.</div>
     </ng-container>
 
+
 ## Pipes
 
 Pipes allow us to filter and map the outcome of our expressions on a view level. They transform data in the desired format and display the output in the template.
@@ -712,6 +726,7 @@ Some default examples:
     <p>{{ today | date:'fullDate' }}</p>
     <p>{{ hero | json }}</p>
     <p>{{ delayedHero | async }}</p>
+
 
 ## Custom Pipes
 
@@ -735,6 +750,7 @@ If the object changes a lot and they are many, this can affect performance.
 
 To create a directive *in the current directory*:
 >ng generate directive <name>
+
 
 ## Modules
 
@@ -774,6 +790,7 @@ By functionality:
 By loading:
 - **Eager** loaded modules: Declared in imports
 - **Lazy** loaded modules: Through navigation
+
 
 ## Configuration & Environments
 
@@ -904,12 +921,49 @@ We can't pass an interface to providers, so we create an **InjectionToken**:
         this.version = config.version;
     }
 
+
 ## Asynchronous Data Services
 
+Strategies:
+- Callback
+- Promise
+- Observables
 
+### Callback Hell
 
+    getRootFolder(folder => {
+        getAssetsFolder(folder, assets => {
+            getPhotos(assets, photos => {
+                ...
+            })
+        })
+    })
 
+### Promises
 
+    getRootFolder()
+        .then(getAssetsFolder)
+        .then(getPhotos)
+
+Limitations:
+- They cannot be canceled
+- They are immediately executed
+- They are one time operations, no easy retry
+- They respond with only one value
+
+### Observables
+
+Observables will emit values over a period of time.
+To create an observable:
+- Operator "of"
+- Keyword "new" Observable
+
+*It is good practice to name observable variables ending with "$".*
+
+Observables maintain a list of observers and inform them of data changes.
+- Subscribe
+- toPromise
+- pipe
 
 
 
