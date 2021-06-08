@@ -3,3 +3,15 @@
 <p>{{ callbackExample }}</p>
 <p>{{ observableExample }}</p>
 
+<h3>Users:</h3>
+
+<ul>
+  <li *ngFor="let user of users$">
+    {{ user.name }}
+  </li>
+</ul>
+
+<h3>User Details:</h3>
+
+<p>{{ userDetails | json }}</p>
+<p>{{ userMessage }}</p>

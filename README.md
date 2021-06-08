@@ -967,6 +967,13 @@ Observables maintain a list of observers and inform them of data changes.
 
 
 
+### Reactive Functional Programming
+
+
+
+
+
+
 ## Testing
 
 ### Testing With(out) Testbed
