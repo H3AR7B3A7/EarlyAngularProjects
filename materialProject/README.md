@@ -6,5 +6,5 @@
 
 >ng g m shared/material --flat
 
-import all the modules into the material.modules.ts
+export all the modules in the material.modules.ts
 import MaterialModule into app.modules.ts
