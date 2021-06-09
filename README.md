@@ -10,6 +10,11 @@ Angular is a TypeScript-based open-source web application framework led by the A
 - **Install Typescript**: npm install -g typescript
 - **Install Angular**: npm install -g @angular/cli
 
+### Some libraries
+
+- Material
+> ng add @angular/material
+
 ### VSC Extensions:
 
 - Angular Essentials
