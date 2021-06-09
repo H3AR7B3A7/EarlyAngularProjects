@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http'
+import { from } from 'rxjs';
 
 interface User {
   name: string
@@ -32,7 +33,7 @@ export class AppComponent {
 
     this.getUsers().subscribe(data => { // Subscribe to watch for changes
       this.users$ = data
-      this.users$.sort((a,b) => a.name.localeCompare(b.name))
+      this.users$.sort((a, b) => a.name.localeCompare(b.name))
     }, error => {
       console.log(error);
     })
@@ -41,11 +42,11 @@ export class AppComponent {
       .then(
         response => {
           this.userDetails = response
-      })
+        })
       .catch(
         error => {
           console.log(error)
-      })
+        })
       .finally(() => {
         this.userMessage = "Details loaded..."
       })
@@ -81,14 +82,17 @@ export class AppComponent {
 
   ngOnInit(): void {
     const source = of('red', 'blue', 'black', 'white')
+    const source2 = from(['red', 'blue', 'black', 'white'])
 
-    setTimeout(() => {
-      source.subscribe(
-        data => console.log(data),
-        error=> console.log("error"),
-        () => console.log("complete")
-      )
-    }, 1000)
+    source.subscribe(
+      data => console.log(data),
+      error => console.log("error"),
+      () => console.log("complete")
+    )
+
+    source2.subscribe(
+      data => console.log(data)
+    )
 
     new Observable<string>(observer => {
       setTimeout(() => {
@@ -113,10 +117,8 @@ export class AppComponent {
     return this.http.get<User[]>('https://jsonplaceholder.cypress.io/users')
   }
 
-  viewUser(): Observable<User>{
+  viewUser(): Observable<User> {
     return this.http.get<User>('https://jsonplaceholder.cypress.io/users/1')
   }
 
 }
-
-
