@@ -1,6 +1,6 @@
 <mat-grid-list cols="2" rowHeight="2:1">
   <mat-grid-tile class="tile">
-    <p class="video-desc">Local:</p>
+    <p class="video-desc" color="'primary'">Local:</p>
     <video #local_video [autoplay]="true" [muted]="true"></video>
   </mat-grid-tile>
   <mat-grid-tile class="tile">
@@ -10,8 +10,8 @@
 </mat-grid-list>
 
 <div class="button-row">
-  <button mat-raised-button color="primary" (click)="startLocalVideo()">Start</button>
-  <button mat-raised-button color="primary" (click)="pauseLocalVideo()">Stop</button>
-  <button mat-raised-button color="primary" (click)="call()">Call</button>
-  <button mat-raised-button color="primary" (click)="hangUp()">End Call</button>
+  <button *ngIf="!localVideoActive" mat-icon-button color="primary" (click)="startLocalVideo()"><mat-icon>wifi</mat-icon></button>
+  <button *ngIf="localVideoActive" mat-icon-button color="primary" (click)="pauseLocalVideo()"><mat-icon>wifi_off</mat-icon></button>
+  <button *ngIf="!inCall" mat-icon-button color="primary" (click)="call()"><mat-icon>phone</mat-icon></button>
+  <button *ngIf="inCall" mat-icon-button color="primary" (click)="hangUp()"><mat-icon>cancel</mat-icon></button>
 </div>

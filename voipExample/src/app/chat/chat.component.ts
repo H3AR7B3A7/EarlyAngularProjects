@@ -46,6 +46,7 @@ export class ChatComponent implements AfterViewInit {
       track.enabled = false
     })
     this.localVideo.nativeElement.srcObject = undefined
+    this.localVideoActive = false
   }
 
   startLocalVideo(): void {
@@ -53,6 +54,7 @@ export class ChatComponent implements AfterViewInit {
       track.enabled = true
     })
     this.localVideo.nativeElement.srcObject = this.localStream
+    this.localVideoActive = true
   }
 
   private createPeerConnection() {
@@ -247,6 +249,6 @@ export class ChatComponent implements AfterViewInit {
   hangUp(): void {
     this.dataService.sendMessage({type: 'hangup', data: ''});
     this.closeCall();
+    this.inCall = false
   }
-
 }
