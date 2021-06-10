@@ -580,6 +580,11 @@ Import:
 
 > ng generate component <name>
 
+--dry-run (Run without making changes to see what would happen)  
+--skip-tests (Don't generate spec.ts)  
+--inline-style (Don't generate stylesheet)  
+--inline-template (Don't generate html template)
+
 Example component decorator:
 
     @Component({
