@@ -15,6 +15,9 @@ Angular is a TypeScript-based open-source web application framework led by the A
 - Material
 > ng add @angular/material
 
+- Flex Layout
+> npm i @angular/flex-layout
+
 ### VSC Extensions:
 
 - Angular Essentials
