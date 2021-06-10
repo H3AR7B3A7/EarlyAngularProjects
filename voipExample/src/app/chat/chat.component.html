@@ -1,1 +1,17 @@
-<p>chat works!</p>
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile class="tile">
+    <p class="video-desc">Local:</p>
+    <video #local_video [autoplay]="true" [muted]="true"></video>
+  </mat-grid-tile>
+  <mat-grid-tile class="tile">
+    <p class="video-desc">Remote:</p>
+    <video #local_video [autoplay]="true"></video>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<div class="button-row">
+  <button mat-raised-button color="primary">Start</button>
+  <button mat-raised-button color="primary">Stop</button>
+  <button mat-raised-button color="primary">Call</button>
+  <button mat-raised-button color="primary">End Call</button>
+</div>
