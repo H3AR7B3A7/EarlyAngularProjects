@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 
     <div style="text-align: center;">
       <button mat-raised-button>Sign In</button>
-      <mat-checkbox   class="example-margin"
+      <mat-checkbox   style="margin: 0 12px;"
                       color="primary">
         Remember me
       </mat-checkbox>

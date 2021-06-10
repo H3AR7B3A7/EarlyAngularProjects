@@ -5,8 +5,8 @@ import { AppComponent } from './app.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
-  { path: 'flexbox', loadChildren: () => import('./flexbox-example/flexbox-example.module').then(m => m.FlexboxExampleModule)},
-  { path: '**', redirectTo: 'flexbox'}
+  { path: 'content', loadChildren: () => import('./content/content.module').then(m => m.ContentModule)},
+  { path: '**', redirectTo: 'content'}
 ]
 
 @NgModule({
