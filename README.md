@@ -18,6 +18,8 @@ Angular is a TypeScript-based open-source web application framework led by the A
 - Flex Layout
 > npm i @angular/flex-layout
 
+See: [Flexbox Layout Examples](https://tburleson-layouts-demos.firebaseapp.com/#/docs)
+
 ### VSC Extensions:
 
 - Angular Essentials
