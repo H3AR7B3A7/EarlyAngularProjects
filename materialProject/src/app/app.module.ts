@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
-
+import { Routes, RouterModule } from '@angular/router'
 import { AppComponent } from './app.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToolbarComponent } from './toolbar/toolbar.component'
-import { MaterialModule } from './shared/material.module';
-import { FormsModule } from '@angular/forms';
+
+const routes: Routes = [
+  { path: 'flexbox', loadChildren: () => import('./flexbox-example/flexbox-example.module').then(m => m.FlexboxExampleModule)},
+  { path: '**', redirectTo: 'flexbox'}
+]
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    FormsModule
+    RouterModule.forRoot(routes),
   ],
   providers: [],
   bootstrap: [AppComponent]
