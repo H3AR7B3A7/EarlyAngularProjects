@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+<div [ngClass]="{ 'dark-theme-mode': isDarkTheme }" class="mat-app-background">
+  <router-outlet></router-outlet>
+  <input
+    type="checkbox"
+    [(ngModel)]="isDarkTheme"
+    (change)="storeThemeSelection()"
+  />
+  Dark Theme
+</div>
