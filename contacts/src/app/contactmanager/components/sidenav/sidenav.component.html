@@ -5,18 +5,23 @@
     [opened]="!isScreenSmall"
     [mode]="isScreenSmall ? 'over' : 'side'"
   >
-    <mat-toolbar color="grey"> Navigation </mat-toolbar>
+    <mat-toolbar color="grey"> Contact Lists </mat-toolbar>
     <mat-list>
-      <mat-list-item> Pepper </mat-list-item>
-      <mat-list-item> Salt </mat-list-item>
-      <mat-list-item> Paprika </mat-list-item>
+      <mat-list-item>
+        <button mat-button>Pepper</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button>Salt</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button>Paprika</button>
+      </mat-list-item>
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content class="sidenav-content">
-    <button type="button" mat-button (click)="sidenav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <app-toolbar></app-toolbar>
-    <router-outlet></router-outlet>
+    <app-toolbar (toggleSidenav)="sidenav.toggle()"></app-toolbar>
+    <div class="content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

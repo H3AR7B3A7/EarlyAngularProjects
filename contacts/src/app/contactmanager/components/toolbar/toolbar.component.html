@@ -1,1 +1,8 @@
-<p>toolbar works!</p>
+<mat-toolbar color="grey">
+<button mat-button class="sidenav-toggle" (click)="toggleSidenav.emit()">
+<mat-icon>menu</mat-icon>
+</button>
+<button mat-button class="action">Add</button>
+<button mat-button class="action">Edit</button>
+<button mat-button class="action" color="warn">Delete</button>
+</mat-toolbar>
