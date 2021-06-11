@@ -589,6 +589,7 @@ Import:
 --skip-tests (Don't generate spec.ts)  
 --inline-style (Don't generate stylesheet)  
 --inline-template (Don't generate html template)
+--flat (Generate without parent folder)  
 
 Example component decorator:
 
@@ -773,6 +774,10 @@ See _[ModulesAndStructure](ModulesAndStructure)_ for examples on the following t
 
 To create a module:
 >ng generate module <name>
+
+--dry-run (Run without making changes to see what would happen)  
+--flat (Generate without parent folder)  
+--routing (Generate routing module)
 
 They contain:
 - Declarations: Registered components, directives and pipes
