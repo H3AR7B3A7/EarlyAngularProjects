@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-content',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainContentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    if (!sessionStorage.getItem('auth-token')) { //should check if auth-toke is valid, not just present
+      this.redirect()
+    }
   }
 
+  redirect(): void {
+    this.router.navigate(['contacts/login'])
+  }
 }

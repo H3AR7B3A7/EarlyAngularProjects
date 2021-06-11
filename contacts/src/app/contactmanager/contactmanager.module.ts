@@ -6,12 +6,15 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '../shared/material.module';
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
     path: '', component: ContactmanagerAppComponent,
     children: [
-      {path: '', component: MainContentComponent}
+      {path: '', component: MainContentComponent},
+      {path: 'login', component: LoginComponent}
     ]
   },
   { path: '**', redirectTo: '' }
@@ -23,11 +26,13 @@ const routes: Routes = [
     ToolbarComponent,
     MainContentComponent,
     SidenavComponent,
+    LoginComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ]
 })
 export class ContactmanagerModule { }
