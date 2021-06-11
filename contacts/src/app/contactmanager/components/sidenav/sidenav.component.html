@@ -1,7 +1,19 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav class="sidenav"> Sidenav content </mat-sidenav>
+  <mat-sidenav
+    #sidenav
+    class="sidenav mat-elevation-z10"
+    [opened]="!isScreenSmall"
+    [mode]="isScreenSmall ? 'over' : 'side'"
+  >
+    <mat-toolbar color="grey"> Navigation </mat-toolbar>
+    <mat-list>
+      <mat-list-item> Pepper </mat-list-item>
+      <mat-list-item> Salt </mat-list-item>
+      <mat-list-item> Paprika </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
   <mat-sidenav-content class="sidenav-content">
-    <button type="button" mat-button (click)="sidenav.open()">
+    <button type="button" mat-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
     <app-toolbar></app-toolbar>
