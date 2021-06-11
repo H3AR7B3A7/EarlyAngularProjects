@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'contacts';
+  isDarkTheme: boolean = false;
+
+  ngOnInit() {
+    this.isDarkTheme = localStorage.getItem('theme') === "dark" ? true : false
+  }
+
+  storeThemeSelection(): void {
+    localStorage.setItem('theme', this.isDarkTheme ? "dark" : "light")
+  }
 }

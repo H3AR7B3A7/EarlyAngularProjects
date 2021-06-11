@@ -1,0 +1,18 @@
+.sidenav-container {
+  flex: 1;
+  height: 100% !important;
+  min-height: 100% !important;
+  width: 100%;
+  min-width: 100%;
+}
+
+.sidenav-content{
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidenav{
+  width: 240px;
+}
