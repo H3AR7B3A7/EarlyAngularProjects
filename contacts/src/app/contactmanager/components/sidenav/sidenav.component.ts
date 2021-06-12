@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core'
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout'
 
 const SMALL_WIDTH_BREAKPOINT = 720
 

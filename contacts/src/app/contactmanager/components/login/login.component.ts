@@ -1,12 +1,12 @@
-import { HttpClient, HttpHeaders, HttpXhrBackend } from '@angular/common/http';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders, HttpXhrBackend } from '@angular/common/http'
+import { Component, OnInit, Output, EventEmitter } from '@angular/core'
+import { Router } from '@angular/router'
 
-const AUTH_API = 'http://localhost:8080/api/auth/';
+const AUTH_API = 'http://localhost:8080/api/auth/'
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
-const http: HttpClient = new HttpClient(new HttpXhrBackend({ build: () => new XMLHttpRequest() }));
+}
+const http: HttpClient = new HttpClient(new HttpXhrBackend({ build: () => new XMLHttpRequest() }))
 
 @Component({
   selector: 'app-login',
