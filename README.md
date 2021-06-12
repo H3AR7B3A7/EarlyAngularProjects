@@ -981,16 +981,20 @@ To create an observable:
 *It is good practice to name observable variables ending with "$".*
 
 Observables maintain a list of observers and inform them of data changes.
-- Subscribe
-- toPromise
-- pipe
-
-
+- **Subscribe** : We can subscribe to an observable to follow multiple changes.
+- **toPromise** : We can use it to get a promise (single change).
+- **pipe** : We can pipe observed changes before subscribing to them.
+The pipe method allows for multiple params (from 'rxjs/operators') manipulating data like a recipe. 
 
 ### Reactive Functional Programming
 
+A programming paradigm for reactive programming (asynchronous dataflow programming) using the building blocks of functional programming (e.g. map, reduce, filter). FRP has been used for programming graphical user interfaces (GUIs), robotics, games, and music, aiming to simplify these problems by explicitly modeling time.
 
+### Angular In Memory Web API
 
+An in-memory web api for Angular demos and tests that emulates CRUD operations over a RESTy API. It intercepts Angular Http and HttpClient requests that would otherwise go to the remote server and redirects them to an in-memory data store that you control.
+
+> npm install angular-in-memory-web-api --save-dev
 
 
 
