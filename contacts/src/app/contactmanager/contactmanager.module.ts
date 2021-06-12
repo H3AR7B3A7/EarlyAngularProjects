@@ -15,8 +15,9 @@ const routes: Routes = [
   {
     path: '', component: ContactmanagerAppComponent,
     children: [
+      {path: 'login', component: LoginComponent},
+      {path: ':id', component: MainContentComponent},
       {path: '', component: MainContentComponent},
-      {path: 'login', component: LoginComponent}
     ]
   },
   { path: '**', redirectTo: '' }

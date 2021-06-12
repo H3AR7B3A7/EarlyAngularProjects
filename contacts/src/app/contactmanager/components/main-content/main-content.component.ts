@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core'
-import { Router } from '@angular/router'
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Contact } from '../../models/Contact';
+import { ContactService } from '../../services/contact.service';
 
 @Component({
   selector: 'app-main-content',
@@ -8,15 +11,27 @@ import { Router } from '@angular/router'
 })
 export class MainContentComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  contacts!: Observable<Contact[]>
+
+  constructor(
+    private route: ActivatedRoute,
+    private contactService: ContactService
+  ) { }
 
   ngOnInit(): void {
-    if (!sessionStorage.getItem('auth-token')) { //should check if auth-toke is valid, not just present
-      this.redirect()
-    }
-  }
+    this.route.params.subscribe(params => {
+      const listId = params['id']
 
-  redirect(): void {
-    this.router.navigate(['contacts/login'])
+      this.contacts = this.contactService.contacts
+      this.contacts.subscribe(data => {
+        console.log(data)
+      })
+
+      let data: any = null
+      if (data = window.sessionStorage.getItem('auth-user')) {
+        data = JSON.parse(data)
+        this.contactService.loadContacts(listId, data.token)
+      }
+    })
   }
 }
