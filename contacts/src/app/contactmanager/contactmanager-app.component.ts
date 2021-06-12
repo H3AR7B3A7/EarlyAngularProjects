@@ -1,20 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-contactmanager-app',
   template: `
     <p style="height: 94vh;">
-      <app-sidenav></app-sidenav>
+      <app-sidenav (activate)="receiveLoginEvent($event)"></app-sidenav>
     </p>
   `,
   styles: [
   ]
 })
-export class ContactmanagerAppComponent implements OnInit {
+export class ContactmanagerAppComponent {
+  @Output() loginEvent = new EventEmitter<boolean>()
 
   constructor() { }
 
-  ngOnInit(): void {
+  sendLoginEvent() :void {
+    console.log('event sent 2')
+    this.loginEvent.emit(true)
   }
 
+  receiveLoginEvent($event: any) {
+    console.log('event received 1')
+    this.sendLoginEvent()
+  }
 }

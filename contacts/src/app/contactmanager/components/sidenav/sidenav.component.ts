@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 
 const SMALL_WIDTH_BREAKPOINT = 720
@@ -9,6 +9,7 @@ const SMALL_WIDTH_BREAKPOINT = 720
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
+  @Output() loginEvent = new EventEmitter<boolean>()
 
   public isScreenSmall!: boolean;
 
@@ -21,6 +22,16 @@ export class SidenavComponent implements OnInit {
     .subscribe((state: BreakpointState) => {
       this.isScreenSmall = state.matches
     })
+  }
+
+  sendLoginEvent() :void {
+    console.log('event sent 1')
+    this.loginEvent.emit(true)
+  }
+
+  receiveLoginEvent($event: any) {
+    console.log('event received 0')
+    this.sendLoginEvent()
   }
 
 }

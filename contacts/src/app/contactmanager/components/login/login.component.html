@@ -2,7 +2,6 @@
   <mat-card>
     <h1>Login</h1>
     <form
-      *ngIf="!isLoggedIn"
       name="form"
       #f="ngForm"
       (ngSubmit)="onSubmit()"

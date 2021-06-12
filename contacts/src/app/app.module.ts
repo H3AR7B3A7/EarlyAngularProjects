@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatIconModule,
     MatSlideToggleModule,
     MatToolbarModule,
+    MatButtonModule,
     FormsModule,
     FlexLayoutModule,
   ],
