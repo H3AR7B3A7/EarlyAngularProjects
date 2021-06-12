@@ -8,7 +8,9 @@
     <mat-toolbar color="grey"> Contact Lists </mat-toolbar>
     <mat-nav-list>
       <mat-list-item *ngFor="let contactList of contactLists | async">
-        <button mat-button [routerLink]="['/contacts', contactList.id]">{{ contactList.name }}</button>
+        <a matLine [routerLink]="['/contacts', contactList.id]">
+          {{ contactList.name }}
+        </a>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
