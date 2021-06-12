@@ -992,9 +992,22 @@ A programming paradigm for reactive programming (asynchronous dataflow programmi
 
 ### Angular In Memory Web API
 
-An in-memory web api for Angular demos and tests that emulates CRUD operations over a RESTy API. It intercepts Angular Http and HttpClient requests that would otherwise go to the remote server and redirects them to an in-memory data store that you control.
+An in-memory web api for Angular demos and tests (not for production) that emulates CRUD operations over a REST API. It intercepts Angular Http and HttpClient requests that would otherwise go to the remote server and redirects them to an in-memory data store that you control.
 
+- Install the package
 > npm install angular-in-memory-web-api --save-dev
+
+- Generate a service
+> ng g s services/data --skip-tests
+
+- Make the DataService class implement InMemoryDbService
+- Implement the 'createDb' function and make it return an array (with or w/o data)
+- Add HttpClientInMemoryWebApiModule.forRoot(DataService) to the imports in the module.ts
+
+*We use .forRoot to implement the service as a singleton for the whole application.*
+
+
+
 
 
 
