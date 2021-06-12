@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, Observable } from 'rxjs'
 import { Contact } from '../models/Contact'
@@ -23,8 +23,14 @@ export class ContactService {
     this._contactLists = new BehaviorSubject<ContactList[]>([])
   }
 
-  loadContactLists(userId : number) {
-    return this.http.get<ContactList[]>(API + userId)
+  loadContactLists(userId : number, token: string) {
+    const httpOptions = {
+      headers: new HttpHeaders(
+        { 'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token }
+      )
+    }
+    return this.http.get<ContactList[]>(API + 'lists/' + userId, httpOptions)
       .subscribe(data => {
         this.dataStore.contactLists = data
         this._contactLists.next(Object.assign({}, this.dataStore).contactLists)

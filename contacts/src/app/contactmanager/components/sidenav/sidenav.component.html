@@ -6,17 +6,11 @@
     [mode]="isScreenSmall ? 'over' : 'side'"
   >
     <mat-toolbar color="grey"> Contact Lists </mat-toolbar>
-    <mat-list>
-      <mat-list-item>
-        <button mat-button>Pepper</button>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let contactList of contactLists | async">
+        <button mat-button>{{ contactList.name }}</button>
       </mat-list-item>
-      <mat-list-item>
-        <button mat-button>Salt</button>
-      </mat-list-item>
-      <mat-list-item>
-        <button mat-button>Paprika</button>
-      </mat-list-item>
-    </mat-list>
+    </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="sidenav-content">
     <app-toolbar (toggleSidenav)="sidenav.toggle()"></app-toolbar>

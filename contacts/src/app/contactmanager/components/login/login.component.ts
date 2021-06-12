@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpXhrBackend } from '@angular/common/http'
 import { Component, OnInit, Output, EventEmitter } from '@angular/core'
 import { Router } from '@angular/router'
+import { ContactService } from '../../services/contact.service'
 
 const AUTH_API = 'http://localhost:8080/api/auth/'
 const httpOptions = {
@@ -24,7 +25,9 @@ export class LoginComponent implements OnInit {
   // errorMessage = ''
   // roles: string[] = []
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     if (sessionStorage.getItem('auth-token')) {
@@ -43,18 +46,19 @@ export class LoginComponent implements OnInit {
       window.sessionStorage.setItem('auth-token', data.accessToken)
       window.sessionStorage.removeItem('auth-user')
       window.sessionStorage.setItem('auth-user', JSON.stringify(data))
-      // this.isLoginFailed = false
+
       this.isLoggedIn = true
-      this.sendLoginEvent()
+
+      // this.isLoginFailed = false
       // this.roles = this.tokenStorage.getUser().roles
-      console.warn('logged in')
+
+      this.sendLoginEvent() // TODO: We probably want a data sharing service instead of 3 @outputs...
       this.redirect()
       this.reloadPage()
     },
       err => {
-        // this.isLoginFailed = true;
-        // this.reloadPage()
         console.warn('failed to log in')
+        // this.isLoginFailed = true;
         // this.errorMessage = err.error.message;
       })
   }
@@ -68,7 +72,7 @@ export class LoginComponent implements OnInit {
     window.location.reload()
   }
 
-  sendLoginEvent() :void { // TODO: We probably want a data sharing service instead of 3 @outputs...
+  sendLoginEvent(): void { // TODO: We probably want a data sharing service instead of 3 @outputs...
     console.log('event sent 0')
     this.loginEvent.emit(true)
   }

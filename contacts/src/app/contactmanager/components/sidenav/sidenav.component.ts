@@ -1,5 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core'
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout'
+import { ContactService } from '../../services/contact.service';
+import { Observable } from 'rxjs';
+import { ContactList } from '../../models/ContactList';
 
 const SMALL_WIDTH_BREAKPOINT = 720
 
@@ -13,7 +16,12 @@ export class SidenavComponent implements OnInit {
 
   public isScreenSmall!: boolean;
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  contactLists!: Observable<ContactList[]>
+
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private contactService: ContactService
+  ) { }
 
   ngOnInit(): void {
     this.breakpointObserver
@@ -22,6 +30,17 @@ export class SidenavComponent implements OnInit {
     .subscribe((state: BreakpointState) => {
       this.isScreenSmall = state.matches
     })
+
+    this.contactLists = this.contactService.contactLists
+    this.contactLists.subscribe(data => {
+      console.log(data)
+    })
+
+    let data: any = null
+    if(data = window.sessionStorage.getItem('auth-user')) {
+      data = JSON.parse(data)
+      this.contactService.loadContactLists(data.id, data.token)
+    }
   }
 
   sendLoginEvent() :void {
