@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ContactmanagerAppComponent } from './contactmanager-app.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { MainContentComponent } from './components/main-content/main-content.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { RouterModule, Routes } from '@angular/router';
-import { MaterialModule } from '../shared/material.module';
-import { LoginComponent } from './components/login/login.component';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { ContactmanagerAppComponent } from './contactmanager-app.component'
+import { ToolbarComponent } from './components/toolbar/toolbar.component'
+import { MainContentComponent } from './components/main-content/main-content.component'
+import { SidenavComponent } from './components/sidenav/sidenav.component'
+import { RouterModule, Routes } from '@angular/router'
+import { MaterialModule } from '../shared/material.module'
+import { LoginComponent } from './components/login/login.component'
+import { FormsModule } from '@angular/forms'
+import { ContactService } from './services/contact.service'
 
 const routes: Routes = [
   {
@@ -33,6 +34,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MaterialModule,
     FormsModule
+  ],
+  providers: [
+    ContactService
   ]
 })
 export class ContactmanagerModule { }
