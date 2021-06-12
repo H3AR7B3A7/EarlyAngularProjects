@@ -14,11 +14,8 @@ export class AppComponent {
   constructor(private router: Router) { }
 
   ngOnInit() {
-
     this.isDarkTheme = localStorage.getItem('theme') === "dark" ? true : false
-    if (sessionStorage.getItem('auth-token')) {
-      this.isLoggedIn = true;
-    }
+    this.checkLoggedInStatus
   }
 
   storeThemeSelection(): void {
@@ -34,7 +31,14 @@ export class AppComponent {
 
   receiveLoginEvent($event: any) {
     console.log('event received 2')
-    this.isLoggedIn=true
+    this.checkLoggedInStatus()
   }
 
+  checkLoggedInStatus():void{
+    if (sessionStorage.getItem('auth-token')) {
+      this.isLoggedIn = true
+    } else {
+      this.isLoggedIn = false
+    }
+  }
 }

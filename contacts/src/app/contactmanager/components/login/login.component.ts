@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if (sessionStorage.getItem('auth-token')) {
       this.isLoggedIn = true;
-      this.redirect()
       // this.roles = this.tokenStorage.getUser().roles
+      this.redirect()
     }
   }
 
@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
       // this.roles = this.tokenStorage.getUser().roles
       console.warn('logged in')
       this.redirect()
+      this.reloadPage()
     },
       err => {
         // this.isLoginFailed = true;
@@ -59,14 +60,15 @@ export class LoginComponent implements OnInit {
   }
 
   redirect(): void {
-    this.router.navigate(['..'])
+    this.router.navigate(['/contacts'])
+    // this.reloadPage()
   }
 
   reloadPage(): void {
     window.location.reload()
   }
 
-  sendLoginEvent() :void {
+  sendLoginEvent() :void { // TODO: We probably want a data sharing service instead of 3 @outputs...
     console.log('event sent 0')
     this.loginEvent.emit(true)
   }
