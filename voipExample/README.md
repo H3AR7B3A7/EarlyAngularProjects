@@ -16,12 +16,19 @@ A very basic application that allows video conferencing.
 ### Start the signaling server
 
 - With node:
+  - Set WS_ENDPOINT in data.service.ts to:  
+  const WS_ENDPOINT = 'ws:localhost:8081'
 
-> node .\server\signalling_server.js
+  - Start signaling server  
+  > node .\server\signalling_server.js
 
 - With Spring
+  - Set WS_ENDPOINT in data.service.ts to:  
+  export const WS_ENDPOINT = 'ws:localhost:8080/socket'
 
-The spring implementation can be found [here](https://github.com/H3AR7B3A7/SignallingServer).
+  - Start the signaling server  
+  The spring implementation can be found [here](https://github.com/H3AR7B3A7/SignallingServer).
+  Pull and run the spring project.
 
 ### Serve the application
 
