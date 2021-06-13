@@ -85,6 +85,7 @@ export class ChatComponent implements AfterViewInit {
       this.peerConnection.onsignalingstatechange = null
       this.peerConnection.ontrack = null
       this.remoteVideo.nativeElement.srcObject = undefined
+      this.inCall = false
     }
     if (this.peerConnection != undefined) {
       this.peerConnection.getTransceivers().forEach(transceiver => {
