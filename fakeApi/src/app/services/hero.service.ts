@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators'
 import { Hero } from '../models/Hero';
 
 const heroesUrl ='api/heroes/'
@@ -14,8 +15,20 @@ export class HeroService {
     private http: HttpClient
   ) { }
 
+  // getHeroes(): Observable<Hero[]> {
+  //   return this.http.get<Hero[]>(heroesUrl, {
+  //     headers : new HttpHeaders({'Authorization': 'Bearer ' + this.getToken()})
+  //   })
+  // }
+
   getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(heroesUrl)
+    return this.http.get<Hero[]>(heroesUrl).pipe(
+      retry(2),
+      catchError((error: HttpErrorResponse) => {
+        console.error(error)
+        return throwError(error)
+      })
+    )
   }
 
   createHero(name: string, team: string): Observable<Hero> {
@@ -29,5 +42,9 @@ export class HeroService {
 
   deleteHero(id: number): Observable<any> {
     return this.http.delete<Hero[]>(heroesUrl + id)
+  }
+
+  private getToken(): string {
+    return 'myToken' // Get token from browser storage
   }
 }

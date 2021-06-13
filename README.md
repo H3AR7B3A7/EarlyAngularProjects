@@ -1012,6 +1012,56 @@ The HttpClientModule provides a variety of Angular services that we can use to h
 
 The HttpClient service has methods representing all the possible HTTP verbs and return observable streams we can subscribe to.
 
+### Auth Interceptor
+
+We can create a service and implement HttpInterceptor, or we can use:
+> ng g interceptor auth
+
+That implements the method:
+```
+intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    return next.handle(req)
+}
+```
+
+And add a provider to the module:
+```
+providers: [
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass: AuthInterceptorService;
+        multi: true
+    }
+],
+```
+
+### Handling HTTP Errors
+
+We can pipe our HTTP requests to catch errors using catchError:
+```
+import { catchError, retry } from 'rxjs/operators'
+...
+getHeroes(): Observable<Hero[]> {
+    return this.http.get<Hero[]>(heroesUrl).pipe(
+        retry(2),
+        catchError((error: HttpErrorResponse) => {
+            console.error(error)
+            return throwError(error)
+        })
+    )
+}
+```
+*We can also easily add some retry logic.*
+
+### Cleaning Up Resources
+
+- Unsubscribe from observables manually
+- Use the *async* pipe
+
+
+
+
+
 
 
 
