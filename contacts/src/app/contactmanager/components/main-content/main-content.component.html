@@ -1,7 +1,10 @@
-<mat-card>
+<mat-card class="logo" *ngIf="contacts.length==0">
+  <mat-icon color="primary" inline=true>people_outline</mat-icon>
+</mat-card>
+<mat-card *ngIf="contacts.length!=0">
   <h1>Contacts</h1>
   <mat-selection-list>
-    <mat-list-option *ngFor="let contact of contacts | async">
+    <mat-list-option *ngFor="let contact of contacts">
       {{ contact.name }} | {{ contact.email }} | {{ contact.number }}
     </mat-list-option>
   </mat-selection-list>

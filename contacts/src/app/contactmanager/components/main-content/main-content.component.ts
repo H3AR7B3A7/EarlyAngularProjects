@@ -11,7 +11,8 @@ import { ContactService } from '../../services/contact.service';
 })
 export class MainContentComponent implements OnInit {
 
-  contacts!: Observable<Contact[]>
+  contacts$?: Observable<Contact[]>
+  contacts: Contact[] = []
 
   constructor(
     private route: ActivatedRoute,
@@ -22,9 +23,9 @@ export class MainContentComponent implements OnInit {
     this.route.params.subscribe(params => {
       const listId = params['id']
 
-      this.contacts = this.contactService.contacts
-      this.contacts.subscribe(data => {
-        console.log(data)
+      this.contacts$ = this.contactService.contacts
+      this.contacts$.subscribe(data => {
+        this.contacts = data
       })
 
       let data: any = null

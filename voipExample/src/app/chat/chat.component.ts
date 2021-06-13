@@ -84,6 +84,7 @@ export class ChatComponent implements AfterViewInit {
       this.peerConnection.onicegatheringstatechange = null
       this.peerConnection.onsignalingstatechange = null
       this.peerConnection.ontrack = null
+      this.remoteVideo.nativeElement.srcObject = undefined
     }
     if (this.peerConnection != undefined) {
       this.peerConnection.getTransceivers().forEach(transceiver => {
@@ -250,5 +251,6 @@ export class ChatComponent implements AfterViewInit {
     this.dataService.sendMessage({type: 'hangup', data: ''});
     this.closeCall();
     this.inCall = false
+    this.remoteVideo.nativeElement.srcObject = undefined
   }
 }
