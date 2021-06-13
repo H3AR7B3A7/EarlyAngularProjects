@@ -4,3 +4,12 @@
     <p>{{ hero.name }} from {{ hero.team }} (id: {{ hero.id }})</p>
   </li>
 </ul>
+<div>
+  <button (click)="add('Thor', 'Avengers')">Add Thor</button>
+</div>
+<div>
+  <button (click)="edit(heroes[0])">Change Spiderman</button>
+</div>
+<div>
+  <button (click)="remove(heroes[4])">Remove the Hulk</button>
+</div>

@@ -13,32 +13,32 @@ export class DataService implements InMemoryDbService {
     return {
       heroes: [
         {
-          id: 0,
+          id: 1,
           name: 'Spiderman',
           team: 'Avengers'
         },
         {
-          id: 1,
+          id: 2,
           name: 'Flash',
           team: 'Justice League'
         },
         {
-          id: 2,
+          id: 3,
           name: 'Ironman',
           team: 'Avengers'
         },
         {
-          id: 3,
+          id: 4,
           name: 'Superman',
           team: 'Justice League'
         },
         {
-          id: 4,
+          id: 5,
           name: 'Hulk',
           team: 'Avengers'
         },
         {
-          id: 5,
+          id: 6,
           name: 'Batman',
           team: 'Justice League'
         },

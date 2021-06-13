@@ -54,7 +54,26 @@ export class AppComponent implements OnInit{
     this.getHeroes()
   }
 
-  private getHeroes(){
+  private getHeroes(): void{
     this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes)
+  }
+
+  add(name: string, team: string): void{
+    this.heroService.createHero(name, team).subscribe(hero =>
+      this.heroes.push(hero))
+  }
+
+  edit(hero: Hero): void {
+    const existingHero = {id: hero.id, name: 'Captain America', team:'Avengers'}
+    this.heroService.editHero(hero.id, existingHero).subscribe(() => {
+      this.heroes.find(hero => hero.id)!.name = 'Captain America'
+      this.heroes.find(hero => hero.id)!.team = 'Avengers'
+    })
+  }
+
+  remove(hero: Hero): void {
+    this.heroService.deleteHero(hero.id).subscribe(() => {
+      this.heroes = this.heroes.filter(selected => selected !== hero)
+    })
   }
 }
