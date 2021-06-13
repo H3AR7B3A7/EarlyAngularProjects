@@ -1006,7 +1006,11 @@ An in-memory web api for Angular demos and tests (not for production) that emula
 
 *We use .forRoot to implement the service as a singleton for the whole application.*
 
+### HttpClientModule
 
+The HttpClientModule provides a variety of Angular services that we can use to handle asynchronous HTTP communication.
+
+The HttpClient service has methods representing all the possible HTTP verbs and return observable streams we can subscribe to.
 
 
 
