@@ -4,8 +4,8 @@ import { Subject } from 'rxjs'
 import { webSocket } from 'rxjs/webSocket'
 import { Message } from '../types/message'
 
-export const WS_ENDPOINT = 'ws:localhost:8080/socket'
-// export const WS_ENDPOINT = 'ws:localhost:8081'
+const WS_ENDPOINT = 'ws:localhost:8080/socket'
+// const WS_ENDPOINT = 'ws:localhost:8081'
 
 @Injectable({
   providedIn: 'root'
