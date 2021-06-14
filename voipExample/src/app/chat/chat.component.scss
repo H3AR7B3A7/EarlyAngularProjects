@@ -9,6 +9,11 @@ p.video-desc {
   left: 10px;
 }
 
+.local-vid {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
 .button-row {
   text-align: center;
 }
