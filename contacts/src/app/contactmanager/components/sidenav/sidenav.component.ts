@@ -25,11 +25,11 @@ export class SidenavComponent implements OnInit {
 
   ngOnInit(): void {
     this.breakpointObserver
-    // .observe([ Breakpoints.XSmall ])
-    .observe([`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`])
-    .subscribe((state: BreakpointState) => {
-      this.isScreenSmall = state.matches
-    })
+      // .observe([ Breakpoints.XSmall ])
+      .observe([`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`])
+      .subscribe((state: BreakpointState) => {
+        this.isScreenSmall = state.matches
+      })
 
     this.contactLists = this.contactService.contactLists
     // this.contactLists.subscribe(data => {
@@ -37,19 +37,9 @@ export class SidenavComponent implements OnInit {
     // })
 
     let data: any = null
-    if(data = window.sessionStorage.getItem('auth-user')) {
+    if (data = window.sessionStorage.getItem('auth-object')) {
       data = JSON.parse(data)
       this.contactService.loadContactLists(data.id, data.token)
     }
   }
-
-  // sendLoginEvent() :void {
-  //   console.log('event sent 1')
-  //   this.loginEvent.emit(true)
-  // }
-
-  // receiveLoginEvent($event: any) {
-  //   console.log('event received 0')
-  //   this.sendLoginEvent()
-  // }
 }
