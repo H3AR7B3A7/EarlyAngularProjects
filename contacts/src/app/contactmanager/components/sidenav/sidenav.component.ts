@@ -42,14 +42,4 @@ export class SidenavComponent implements OnInit {
       this.contactService.loadContactLists(data.id, data.token)
     }
   }
-
-  // sendLoginEvent() :void {
-  //   console.log('event sent 1')
-  //   this.loginEvent.emit(true)
-  // }
-
-  // receiveLoginEvent($event: any) {
-  //   console.log('event received 0')
-  //   this.sendLoginEvent()
-  // }
 }
