@@ -42,8 +42,9 @@ export class LoginComponent implements OnInit {
       username: this.form.username,
       password: this.form.password
     }, httpOptions).subscribe((data: any) => {
+      console.warn(data)
       window.sessionStorage.removeItem('auth-token')
-      window.sessionStorage.setItem('auth-token', data.accessToken)
+      window.sessionStorage.setItem('auth-token', data.username)
       window.sessionStorage.removeItem('auth-user')
       window.sessionStorage.setItem('auth-user', JSON.stringify(data))
 
@@ -52,9 +53,9 @@ export class LoginComponent implements OnInit {
       // this.isLoginFailed = false
       // this.roles = this.tokenStorage.getUser().roles
 
-      this.sendLoginEvent() // TODO: We probably want a data sharing service instead of 3 @outputs...
+      // this.sendLoginEvent() // TODO: We probably want a data sharing service instead of 3 @outputs...
       this.redirect()
-      this.reloadPage()
+      this.reloadPage() // TODO: find cleaner way for to GET to succeed
     },
       err => {
         console.warn('failed to log in')
@@ -72,8 +73,8 @@ export class LoginComponent implements OnInit {
     window.location.reload()
   }
 
-  sendLoginEvent(): void { // TODO: We probably want a data sharing service instead of 3 @outputs...
-    console.log('event sent 0')
-    this.loginEvent.emit(true)
-  }
+  // sendLoginEvent(): void { // TODO: We probably want a data sharing service instead of 3 @outputs...
+  //   console.log('event sent 0')
+  //   this.loginEvent.emit(true)
+  // }
 }

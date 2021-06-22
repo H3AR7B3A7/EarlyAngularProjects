@@ -9,13 +9,13 @@ import { Router } from '@angular/router'
 export class AppComponent {
   title = 'contacts'
   isDarkTheme: boolean = false
-  isLoggedIn: boolean = false
+  isLoggedIn: boolean = true
 
   constructor(private router: Router) { }
 
   ngOnInit() {
     this.isDarkTheme = localStorage.getItem('theme') === "dark" ? true : false
-    this.checkLoggedInStatus
+    this.checkLoggedInStatus()
   }
 
   storeThemeSelection(): void {
@@ -27,18 +27,24 @@ export class AppComponent {
     window.sessionStorage.removeItem('auth-token')
     window.sessionStorage.removeItem('auth-user')
     this.router.navigate(['contacts/login'])
+    this.reloadPage()
   }
 
-  receiveLoginEvent($event: any) {
-    console.log('event received 2')
-    this.checkLoggedInStatus()
-  }
+  // receiveLoginEvent($event: any) {
+  //   console.log('event received 2')
+  //   this.checkLoggedInStatus()
+  // }
 
-  checkLoggedInStatus():void{
-    if (sessionStorage.getItem('auth-token')) {
+  checkLoggedInStatus():void{ // should be a service
+    console.warn(sessionStorage.getItem('auth-token'))
+    if (sessionStorage.getItem('auth-token') != null) {
       this.isLoggedIn = true
     } else {
       this.isLoggedIn = false
     }
+  }
+
+  reloadPage(): void {
+    window.location.reload()
   }
 }

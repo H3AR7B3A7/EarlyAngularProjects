@@ -43,13 +43,13 @@ export class SidenavComponent implements OnInit {
     }
   }
 
-  sendLoginEvent() :void {
-    console.log('event sent 1')
-    this.loginEvent.emit(true)
-  }
+  // sendLoginEvent() :void {
+  //   console.log('event sent 1')
+  //   this.loginEvent.emit(true)
+  // }
 
-  receiveLoginEvent($event: any) {
-    console.log('event received 0')
-    this.sendLoginEvent()
-  }
+  // receiveLoginEvent($event: any) {
+  //   console.log('event received 0')
+  //   this.sendLoginEvent()
+  // }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Contact } from '../../models/Contact';
 import { ContactService } from '../../services/contact.service';
@@ -16,7 +16,8 @@ export class MainContentComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +34,22 @@ export class MainContentComponent implements OnInit {
         data = JSON.parse(data)
         this.contactService.loadContacts(listId, data.token)
       }
+
+      this.checkLoggedInStatus()
     })
+  }
+
+  checkLoggedInStatus():void{
+    console.warn(sessionStorage.getItem('auth-token'))
+    if (sessionStorage.getItem('auth-token') != null) {
+
+    } else {
+      this.redirect()
+    }
+  }
+
+  redirect(): void {
+    this.router.navigate(['/contacts/login'])
+    // this.reloadPage()
   }
 }

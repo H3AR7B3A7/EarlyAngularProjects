@@ -18,7 +18,7 @@
   <mat-sidenav-content class="sidenav-content">
     <app-toolbar (toggleSidenav)="sidenav.toggle()"></app-toolbar>
     <div class="content-wrapper">
-      <router-outlet (activate)="receiveLoginEvent($event)"></router-outlet>
+      <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
