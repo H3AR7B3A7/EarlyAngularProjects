@@ -5,7 +5,14 @@
   <mat-toolbar color="primary" class="toolbar">
     <span>MyContacts</span>
     <span class="spacer"></span>
-    <button *ngIf="isLoggedIn" mat-raised-button color="primary" (click)="logout()">Logout</button>
+    <button
+      *ngIf="isLoggedIn"
+      mat-raised-button
+      color="primary"
+      (click)="logout()"
+    >
+      Logout
+    </button>
     <mat-slide-toggle
       class="darkmode"
       labelPosition="before"

@@ -15,7 +15,7 @@ export class ContactmanagerAppComponent {
 
   constructor() { }
 
-  sendLoginEvent() :void {
+  sendLoginEvent(): void {
     console.log('event sent 2')
     this.loginEvent.emit(true)
   }

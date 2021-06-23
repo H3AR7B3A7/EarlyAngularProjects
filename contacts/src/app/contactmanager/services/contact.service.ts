@@ -42,19 +42,19 @@ export class ContactService {
   addContactList(name: string, userId: number) {
     const list = { name, userId }
     return this.http.post<ContactList>(API + 'lists/', list)
-    .subscribe(data => {
-      this.dataStore.contactLists.push(data)
-    }, error => {
-      console.warn("Failed to add list!");
-    })
+      .subscribe(data => {
+        this.dataStore.contactLists.push(data)
+      }, error => {
+        console.warn("Failed to add list!");
+      })
   }
 
   deleteContactList(listId: number) {
     console.log('test')
     return this.http.delete<ContactList[]>(API + 'delete/lists/' + listId)
-    .subscribe(() => {
-      delete this.dataStore.contactLists[listId]
-    })
+      .subscribe(() => {
+        delete this.dataStore.contactLists[listId]
+      })
   }
 
 

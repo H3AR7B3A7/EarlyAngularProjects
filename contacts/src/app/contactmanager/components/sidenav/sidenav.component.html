@@ -7,48 +7,72 @@
   >
     <mat-toolbar color="grey"> Contact Lists </mat-toolbar>
     <mat-nav-list>
-      <mat-list-item *ngFor="let contactList of contactLists | async">
+      <mat-list-item *ngFor="let contactList of contactLists$ | async">
         <a matLine [routerLink]="['/contacts', contactList.id]">
           {{ contactList.name }}
         </a>
       </mat-list-item>
-      <button mat-raised-button color="primary" (click)="createNewListModal(createList)"><mat-icon>group_add</mat-icon></button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="createNewListModal(createList)"
+      >
+        <mat-icon>group_add</mat-icon>
+      </button>
 
-      <ng-template #createList let-modal >
-        <div [ngClass]="{ 'dark-theme-mode': isDarkTheme }" class="mat-app-background content">
-        <div class="modal-header">
-          <h1 class="modal-title" id="modal-basic-title">Create New List</h1>
-        </div>
+      <ng-template #createList let-modal>
+        <div
+          [ngClass]="{ 'dark-theme-mode': isDarkTheme }"
+          class="mat-app-background content"
+        >
+          <div class="modal-header">
+            <h1 class="modal-title" id="modal-basic-title">Create New List</h1>
+          </div>
 
-        <div class="modal-body">
-          <form
-            id="ngForm"
-            name="newListForm"
-            #f="ngForm"
-            (ngSubmit)="addNewList()"
-            novalidate>
-            <mat-form-field class="full-width">
-              <mat-label>Name</mat-label>
-              <input
-                matInput
-                placeholder="New List"
-                name="name"
-                type="text"
-                [(ngModel)]="form.name"
-                required
-                #name="ngModel"
-              />
-            </mat-form-field>
-          </form>
-        </div>
+          <div class="modal-body">
+            <form
+              id="ngForm"
+              name="newListForm"
+              #f="ngForm"
+              (ngSubmit)="addNewList()"
+              novalidate
+            >
+              <mat-form-field class="full-width">
+                <mat-label>Name</mat-label>
+                <input
+                  matInput
+                  placeholder="New List"
+                  name="name"
+                  type="text"
+                  [(ngModel)]="form.name"
+                  required
+                  #name="ngModel"
+                />
+              </mat-form-field>
+            </form>
+          </div>
 
-        <div class="modal-footer">
-          <button form="ngForm" [disabled]="!f.form.valid" mat-raised-button color="primary" class="m-1">Add</button>
-          <button mat-raised-button color="warn" class="m-1" (click)="modal.close('Save click')">Close</button>
+          <div class="modal-footer">
+            <button
+              form="ngForm"
+              [disabled]="!f.form.valid"
+              mat-raised-button
+              color="primary"
+              class="m-1"
+            >
+              Add
+            </button>
+            <button
+              mat-raised-button
+              color="warn"
+              class="m-1"
+              (click)="modal.close('Save click')"
+            >
+              Close
+            </button>
+          </div>
         </div>
-      </div>
       </ng-template>
-
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="sidenav-content">

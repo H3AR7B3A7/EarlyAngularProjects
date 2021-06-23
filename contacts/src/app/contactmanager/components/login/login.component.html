@@ -1,12 +1,7 @@
 <div class="form">
   <mat-card>
     <h1>Login</h1>
-    <form
-      name="loginForm"
-      #f="ngForm"
-      (ngSubmit)="onSubmit()"
-      novalidate
-    >
+    <form name="loginForm" #f="ngForm" (ngSubmit)="onSubmit()" novalidate>
       <mat-form-field class="full-width">
         <mat-label>User Name</mat-label>
         <input

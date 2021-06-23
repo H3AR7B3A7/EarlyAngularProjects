@@ -17,12 +17,12 @@ export class SidenavComponent implements OnInit {
 
   public isScreenSmall!: boolean;
 
-  contactLists!: Observable<ContactList[]>
+  contactLists$!: Observable<ContactList[]>
 
   closeModal: string | undefined
-  isDarkTheme! :boolean
+  isDarkTheme!: boolean
 
-  form : any = { }
+  form: any = {}
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -38,7 +38,7 @@ export class SidenavComponent implements OnInit {
         this.isScreenSmall = state.matches
       })
 
-    this.contactLists = this.contactService.contactLists
+    this.contactLists$ = this.contactService.contactLists
     // this.contactLists.subscribe(data => {
     //   console.log(data)
     // })
@@ -52,7 +52,7 @@ export class SidenavComponent implements OnInit {
 
   createNewListModal(content: any) {
     this.isDarkTheme = localStorage.getItem('theme') == 'dark' ? true : false
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
       this.closeModal = `Closed with: ${res}`;
     }, (res) => {
       this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
@@ -65,11 +65,11 @@ export class SidenavComponent implements OnInit {
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
   }
 
-  addNewList(){
+  addNewList() {
     let userId = JSON.parse(sessionStorage.getItem('auth-object')!).id
     this.contactService.addContactList(this.form.name, userId)
     // this.modalService.dismissAll()
