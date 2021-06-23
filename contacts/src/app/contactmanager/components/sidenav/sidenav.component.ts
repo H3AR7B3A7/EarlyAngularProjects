@@ -39,7 +39,7 @@ export class SidenavComponent implements OnInit {
     let data: any = null
     if (data = window.sessionStorage.getItem('auth-object')) {
       data = JSON.parse(data)
-      this.contactService.loadContactLists(data.id, data.token)
+      this.contactService.loadContactLists(data.id)
     }
   }
 }

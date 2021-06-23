@@ -20,19 +20,13 @@ export class ContactService {
   }
 
   constructor(private http: HttpClient) {
-    this.dataStore = { contacts: [], contactLists: []}
+    this.dataStore = { contacts: [], contactLists: [] }
     this._contactLists = new BehaviorSubject<ContactList[]>([])
     this._contacts = new BehaviorSubject<Contact[]>([])
   }
 
-  loadContactLists(userId : number, token: string) {
-    const httpOptions = {
-      headers: new HttpHeaders(
-        { 'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token }
-      )
-    }
-    return this.http.get<ContactList[]>(API + 'lists/' + userId, httpOptions)
+  loadContactLists(userId: number) {
+    return this.http.get<ContactList[]>(API + 'lists/' + userId)
       .subscribe(data => {
         this.dataStore.contactLists = data
         this._contactLists.next(Object.assign({}, this.dataStore).contactLists)
@@ -45,14 +39,18 @@ export class ContactService {
     return this._contactLists.asObservable()
   }
 
-  loadContacts(listId: number, token: string){
-    const httpOptions = {
-      headers: new HttpHeaders(
-        { 'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token }
-      )
-    }
-    return this.http.get<Contact[]>(API + listId, httpOptions)
+  addContactList(name: string, userId: number) {
+    const list = { name, userId }
+    return this.http.post<ContactList>(API + 'lists/', list)
+    .subscribe(data => {
+      this.dataStore.contactLists.push(data)
+    }, error => {
+      console.warn("Failed to add list!");
+    })
+  }
+
+  loadContacts(listId: number) {
+    return this.http.get<Contact[]>(API + listId)
       .subscribe(data => {
         this.dataStore.contacts = data
         this._contacts.next(Object.assign({}, this.dataStore).contacts)

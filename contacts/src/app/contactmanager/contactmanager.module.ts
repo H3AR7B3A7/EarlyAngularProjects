@@ -9,7 +9,8 @@ import { MaterialModule } from '../shared/material.module'
 import { LoginComponent } from './components/login/login.component'
 import { FormsModule } from '@angular/forms'
 import { ContactService } from './services/contact.service'
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { AuthInterceptorService } from './services/auth-interceptor.service'
 
 const routes: Routes = [
   {
@@ -39,7 +40,12 @@ const routes: Routes = [
     HttpClientModule
   ],
   providers: [
-    ContactService
+    ContactService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
   ]
 })
 export class ContactmanagerModule { }

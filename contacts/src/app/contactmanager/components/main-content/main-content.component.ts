@@ -30,11 +30,7 @@ export class MainContentComponent implements OnInit {
         this.contacts = data
       })
 
-      let data: any = null
-      if (data = window.sessionStorage.getItem('auth-object')) {
-        data = JSON.parse(data)
-        this.contactService.loadContacts(listId, data.token)
-      }
+      this.contactService.loadContacts(listId)
 
       this.auth.checkLoggedInStatus()
     })

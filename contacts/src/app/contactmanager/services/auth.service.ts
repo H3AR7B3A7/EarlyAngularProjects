@@ -31,7 +31,7 @@ export class AuthService {
       window.sessionStorage.setItem('auth-object', JSON.stringify(data))
       this.isLoggedIn = true
       // this.router.navigate(['/contacts'])
-      window.location.reload()
+      window.location.reload() // This can be cleaner
     },
       err => {
         console.warn('Failed to log in due to: ' + err.message)
