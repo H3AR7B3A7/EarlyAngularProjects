@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Contact } from '../../models/Contact';
 import { AuthService } from '../../services/auth.service';
@@ -14,25 +14,34 @@ export class MainContentComponent implements OnInit {
 
   contacts$?: Observable<Contact[]>
   contacts: Contact[] = []
+  currentListId: number = 0
 
   constructor(
     private route: ActivatedRoute,
     private contactService: ContactService,
-    private auth: AuthService
-  ) { }
+    private auth: AuthService,
+    private router: Router
+  ) {
+    router.events.subscribe(() => this.loadContactsForList())
+  }
 
   ngOnInit(): void {
+    this.auth.checkLoggedInStatus()
+
+    this.contacts$ = this.contactService.contacts
+    this.contacts$.subscribe(data => {
+      this.contacts = data
+    })
+  }
+
+  loadContactsForList() {
     this.route.params.subscribe(params => {
       const listId = params['id']
 
-      this.contacts$ = this.contactService.contacts
-      this.contacts$.subscribe(data => {
-        this.contacts = data
-      })
-
-      this.contactService.loadContacts(listId)
-
-      this.auth.checkLoggedInStatus()
+      if (listId != this.currentListId && listId != null) {
+        this.currentListId = listId
+        this.contactService.loadContacts(listId)
+      }
     })
   }
 }
