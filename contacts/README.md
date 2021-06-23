@@ -9,6 +9,25 @@ Frontend for a contact manager application. Backend implementation can be found 
 
 > npm install jwt-decode
 
+### Ng-Bootstrap
+
+> npm i bootstrap
+
+In angular.json:
+
+```
+...
+],
+"styles": [
+  "src/styles.scss",
+  "node_modules/bootstrap/dist/css/bootstrap.min.css"
+]
+...
+```
+
+> npm i @ng-bootstrap/ng-bootstrap@11.0.0-beta.1 --force
+
+
 
 
 ---

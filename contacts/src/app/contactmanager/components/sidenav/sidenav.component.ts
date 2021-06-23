@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/l
 import { ContactService } from '../../services/contact.service';
 import { Observable } from 'rxjs';
 import { ContactList } from '../../models/ContactList';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 const SMALL_WIDTH_BREAKPOINT = 720
 
@@ -18,9 +19,13 @@ export class SidenavComponent implements OnInit {
 
   contactLists!: Observable<ContactList[]>
 
+  closeModal: string | undefined
+  isDarkTheme! :boolean
+
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +45,25 @@ export class SidenavComponent implements OnInit {
     if (data = window.sessionStorage.getItem('auth-object')) {
       data = JSON.parse(data)
       this.contactService.loadContactLists(data.id)
+    }
+  }
+
+  createNewListModal(content: any) {
+    this.isDarkTheme = localStorage.getItem('theme') == 'dark' ? true : false
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
+      this.closeModal = `Closed with: ${res}`;
+    }, (res) => {
+      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
     }
   }
 }
