@@ -22,6 +22,8 @@ export class SidenavComponent implements OnInit {
   closeModal: string | undefined
   isDarkTheme! :boolean
 
+  form : any = { }
+
   constructor(
     private breakpointObserver: BreakpointObserver,
     private contactService: ContactService,
@@ -65,5 +67,11 @@ export class SidenavComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+
+  onSubmit(){
+    let userId = JSON.parse(sessionStorage.getItem('auth-object')!).id
+    this.contactService.addContactList(this.form.name, userId)
+    window.location.reload()
   }
 }
