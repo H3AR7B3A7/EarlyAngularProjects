@@ -49,6 +49,16 @@ export class ContactService {
     })
   }
 
+  deleteContactList(listId: number) {
+    console.log('test')
+    return this.http.delete<ContactList[]>(API + 'delete/lists/' + listId)
+    .subscribe(() => {
+      delete this.dataStore.contactLists[listId]
+    })
+  }
+
+
+
   loadContacts(listId: number) {
     return this.http.get<Contact[]>(API + listId)
       .subscribe(data => {
