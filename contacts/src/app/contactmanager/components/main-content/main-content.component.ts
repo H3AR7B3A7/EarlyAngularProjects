@@ -22,7 +22,7 @@ export class MainContentComponent implements OnInit {
     private auth: AuthService,
     private router: Router
   ) {
-    router.events.subscribe(() => this.loadContactsForList())
+    this.router.events.subscribe(() => this.loadContactsForList())
   }
 
   ngOnInit(): void {
@@ -34,7 +34,7 @@ export class MainContentComponent implements OnInit {
     })
   }
 
-  loadContactsForList() {
+  private loadContactsForList() {
     this.route.params.subscribe(params => {
       const listId = params['id']
 
