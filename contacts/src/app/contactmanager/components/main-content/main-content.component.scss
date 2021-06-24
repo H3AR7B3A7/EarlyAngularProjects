@@ -1,15 +1,23 @@
 // @import "../../../../styles.scss";
 
-h1 {
-  text-align: center;
-}
-
 mat-card {
   width: unset;
   min-height: 200px;
   text-align: center;
   line-height: 1;
   font-size: 200px;
+}
+
+#listTitle {
+  font-size: 150%;
+  max-width: 60%;
+  float: left;
+}
+
+.search {
+  width: 40%;
+  float: right;
+  font-size: 11px;
 }
 
 .table {
