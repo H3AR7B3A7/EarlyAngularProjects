@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -13,6 +14,7 @@ import { ContactService } from '../../services/contact.service';
   styleUrls: ['./main-content.component.scss']
 })
 export class MainContentComponent implements OnInit {
+  @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   contacts$?: Observable<Contact[]>
@@ -37,6 +39,7 @@ export class MainContentComponent implements OnInit {
     this.contacts$ = this.contactService.contacts
     this.contacts$.subscribe(data => {
       this.contacts = new MatTableDataSource<Contact>(data)
+      this.contacts.sort = this.sort
       this.contacts.paginator = this.paginator
     })
   }
