@@ -1,11 +1,32 @@
 <mat-card class="logo" *ngIf="(contacts$ | async)?.length == 0">
   <mat-icon color="primary" inline="true">people_outline</mat-icon>
 </mat-card>
-<mat-card *ngIf="(contacts$ | async)?.length != 0">
+<div [hidden]="(contacts$ | async)?.length == 0">
   <h1>Contacts</h1>
-  <mat-selection-list>
+  <!-- <mat-selection-list>
     <mat-list-option *ngFor="let contact of contacts$ | async">
       {{ contact.name }} | {{ contact.email }} | {{ contact.number }}
     </mat-list-option>
-  </mat-selection-list>
-</mat-card>
+  </mat-selection-list> -->
+
+  <table mat-table [dataSource]="contacts" class="mat-elevation-z8 table">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let contact">{{ contact.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let contact">{{ contact.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="number">
+      <th mat-header-cell *matHeaderCellDef>Number</th>
+      <td mat-cell *matCellDef="let contact">{{ contact.number }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator class="background" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
