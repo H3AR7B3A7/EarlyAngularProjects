@@ -4,10 +4,10 @@
 @include mat-core();
 
 // Light theme:
-$primary: mat-palette($mat-indigo);
-$accent: mat-palette($mat-pink, A200, A100, A400);
-$warn: mat-palette($mat-red);
-$theme: mat-light-theme($primary, $accent, $warn);
+$app-primary: mat-palette($mat-indigo);
+$app-accent: mat-palette($mat-pink, A200, A100, A400);
+$app-warn: mat-palette($mat-red);
+$theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 @include angular-material-theme($theme);
 
@@ -22,6 +22,11 @@ $theme-dark: mat-dark-theme($primary-dark, $accent-dark, $warn-dark);
 .dark-theme-mode {
   @include angular-material-theme($theme-dark);
 }
+
+// Create your Sass color vars (will be available in all the project)
+// $primary: mat-color($app-primary);
+// $accent: mat-color($app-accent);
+// $warn: mat-color($app-warn);
 
 html,
 body {

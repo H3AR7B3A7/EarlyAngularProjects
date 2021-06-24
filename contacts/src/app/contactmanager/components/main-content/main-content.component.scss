@@ -1,3 +1,5 @@
+// @import "../../../../styles.scss";
+
 h1 {
   text-align: center;
 }
@@ -9,3 +11,96 @@ mat-card {
   line-height: 1;
   font-size: 200px;
 }
+
+.table {
+  width: 100%;
+  background-color:transparent !important;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+}
+
+.mat-header-cell {
+  border-bottom: 1px solid transparent !important;
+  padding-bottom: 1rem;
+  font-weight: bold;
+  font-size: 110%;
+  text-align: center;
+}
+
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+  text-align: center;
+}
+
+.mat-row:hover .mat-cell {
+  background-color: rgb(177, 177, 177);
+}
+
+.row-is-clicked {
+  font-weight: bold;
+}
+
+::ng-deep .mat-paginator-page-size-select {
+  width: 37px !important;
+}
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: transparent !important;
+}
+
+::ng-deep .mat-select-value {
+color: #3F51B5;
+  font-weight: bold;
+  font-size: 15px;
+}
+::ng-deep .mat-select-arrow {
+  color: #3F51B5;
+}
+::ng-deep .mat-option{
+padding: 0 !important;
+
+}
+::ng-deep .mat-option-text {
+  text-align: center;
+}
+
+// @import '~@angular/material/theming';
+// @include mat-core();
+// $sample-material-app-primary: mat-palette($mat-indigo);
+// $sample-material-app-accent: mat-palette($mat-pink, A200, A100, A400);
+// $sample-material-app-warn: mat-palette($mat-red);
+// $sample-material-app-theme: mat-light-theme($sample-material-app-primary, $sample-material-app-accent, $sample-material-app-warn);
+// $background: map-get($sample-material-app-theme, background);
+// $bg-color: #FF1010;
+// $background: map_merge($background, (card: $bg-color, dialog:$bg-color));
+// $theme: map_merge($sample-material-app-theme, (background: $background));
+// @include angular-material-theme($theme);
+// @include mat-paginator-theme($theme);
+// //Just so we can see a background color
+// html, body { height: 100%; background-color: bisque }
+
+.background {
+  background-color: unset;
+}
+
+// //default palette forground/background:
+// $light-foreground-palette: map-get($theme, foreground);
+// $light-background-palette: map-get($theme, background);
+
+// //dark palette forground/background:
+// $dark-foreground-palette: map-get($theme-dark, foreground);
+// $dark-background-palette: map-get($theme-dark, background);
+
+// .light-colors{
+//     background-color : mat-color($app-primary, default);
+//     color: mat-color($light-foreground-palette, text);
+// }
+// .dark-colors{
+//     background-color : mat-color($primary-dark, default);
+//     color: mat-color($dark-foreground-palette, text);
+// }
