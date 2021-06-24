@@ -24,6 +24,8 @@ export class MainContentComponent implements OnInit {
   displayedColumns: string[] = ['name', 'email', 'number']
   contacts!: MatTableDataSource<Contact>
 
+  title: string = 'Contacts'
+
   constructor(
     private route: ActivatedRoute,
     private contactService: ContactService,
@@ -44,6 +46,11 @@ export class MainContentComponent implements OnInit {
     })
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.contacts.filter = filterValue.trim().toLowerCase();
+  }
+
   private loadContactsForList() {
     this.route.params.subscribe(params => {
       const listId = params['id']
@@ -51,6 +58,8 @@ export class MainContentComponent implements OnInit {
       if (listId != this.currentListId && listId != null) {
         this.currentListId = listId
         this.contactService.loadContacts(listId)
+
+        this.title = this.contactService.dataStore.contactLists.find(v => v.id == listId)?.name || 'Contacts'
       }
     })
   }

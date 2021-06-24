@@ -2,13 +2,17 @@
   <mat-icon color="primary" inline="true">people_outline</mat-icon>
 </mat-card>
 <div [hidden]="(contacts$ | async)?.length == 0">
-  <h1>Contacts</h1>
+  <h1 id="listTitle">{{ title }}</h1>
   <!-- <mat-selection-list>
     <mat-list-option *ngFor="let contact of contacts$ | async">
       {{ contact.name }} | {{ contact.email }} | {{ contact.number }}
     </mat-list-option>
   </mat-selection-list> -->
 
+  <mat-form-field class="search">
+    <mat-label>Search...</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Performing miracles..." #input>
+  </mat-form-field>
   <table mat-table [dataSource]="contacts" matSort class="mat-elevation-z8 table">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>

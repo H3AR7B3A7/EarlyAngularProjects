@@ -43,9 +43,6 @@ export class SidenavComponent implements OnInit {
       })
 
     this.contactLists$ = this.contactService.contactLists
-    // this.contactLists.subscribe(data => {
-    //   console.log(data)
-    // })
 
     let data: any = null
     if (data = window.sessionStorage.getItem('auth-object')) {
