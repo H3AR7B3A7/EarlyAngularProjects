@@ -1,9 +1,11 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core'
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core'
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout'
 import { ContactService } from '../../services/contact.service';
 import { Observable } from 'rxjs';
 import { ContactList } from '../../models/ContactList';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
+import { MatSidenav } from '@angular/material/sidenav';
 
 const SMALL_WIDTH_BREAKPOINT = 720
 
@@ -13,6 +15,7 @@ const SMALL_WIDTH_BREAKPOINT = 720
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
+  @ViewChild(MatSidenav) sidenav!: MatSidenav
   @Output() loginEvent = new EventEmitter<boolean>()
 
   public isScreenSmall!: boolean;
@@ -27,7 +30,8 @@ export class SidenavComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private contactService: ContactService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +52,12 @@ export class SidenavComponent implements OnInit {
       data = JSON.parse(data)
       this.contactService.loadContactLists(data.id)
     }
+
+    this.router.events.subscribe(() => {
+      if (this.isScreenSmall) {
+        this.sidenav.close()
+      }
+    })
   }
 
   createNewListModal(content: any) {
