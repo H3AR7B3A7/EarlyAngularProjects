@@ -28,14 +28,16 @@ table {
   padding-bottom: 1rem;
   font-weight: bold;
   font-size: 110%;
-  text-align: center;
 }
 
 .mat-row .mat-cell {
   border-bottom: 1px solid transparent;
   border-top: 1px solid transparent;
   cursor: pointer;
-  text-align: center;
+}
+
+.name {
+  text-align: left !important;
 }
 
 .mat-row:hover .mat-cell {
