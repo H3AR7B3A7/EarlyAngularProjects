@@ -21,7 +21,7 @@ export class MainContentComponent implements OnInit {
 
   currentListId: number = 0
 
-  displayedColumns: string[] = ['name', 'email', 'number']
+  displayedColumns: string[] = ['name', 'email', 'number', 'delete']
   contacts!: MatTableDataSource<Contact>
 
   title: string = 'Contacts'
@@ -62,5 +62,10 @@ export class MainContentComponent implements OnInit {
         this.title = this.contactService.dataStore.contactLists.find(v => v.id == listId)?.name || 'Contacts'
       }
     })
+  }
+
+  deleteContact(contactId: number) {
+    this.contactService.deleteContact(contactId)
+    window.location.reload()
   }
 }

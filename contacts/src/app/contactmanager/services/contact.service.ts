@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, Observable } from 'rxjs'
 import { Contact } from '../models/Contact'
@@ -39,7 +39,7 @@ export class ContactService {
     return this._contactLists.asObservable()
   }
 
-  addContactList(contactList : ContactList) {
+  addContactList(contactList: ContactList) {
     return this.http.post<ContactList>(API + 'lists/', contactList)
       .subscribe(data => {
         this.dataStore.contactLists.push(data)
@@ -71,7 +71,7 @@ export class ContactService {
     return this._contacts.asObservable()
   }
 
-  addContact(contact: Contact){
+  addContact(contact: Contact) {
     return this.http.post<Contact>(API, contact)
       .subscribe(data => {
         this.dataStore.contacts.push(data)
@@ -80,10 +80,15 @@ export class ContactService {
       })
   }
 
-  deleteContact(contactId: number){
+  deleteContact(contactId: number) {
     return this.http.delete<Contact[]>(API + 'delete/' + contactId)
       .subscribe(() => {
         delete this.dataStore.contacts[contactId]
+
+        // const index = this.dataStore.contacts.indexOf(this.dataStore.contacts[contactId], 0);
+        // if (index > -1) {
+        //   this.dataStore.contacts.splice(index, 1);
+        // }
       })
   }
 }

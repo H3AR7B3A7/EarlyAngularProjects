@@ -6,6 +6,7 @@ import { ContactList } from '../../models/ContactList';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
+import { max } from 'rxjs/operators';
 
 const SMALL_WIDTH_BREAKPOINT = 720
 

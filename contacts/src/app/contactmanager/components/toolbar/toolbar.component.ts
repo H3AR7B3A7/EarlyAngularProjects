@@ -37,8 +37,13 @@ export class ToolbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openDeleteListModal(): void {
-
+  openDeleteListModal(content: any): void {
+    this.isDarkTheme = localStorage.getItem('theme') == 'dark' ? true : false
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
+      this.closeModal = `Closed with: ${res}`;
+    }, (res) => {
+      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
+    });
   }
 
   deleteList(): void {
