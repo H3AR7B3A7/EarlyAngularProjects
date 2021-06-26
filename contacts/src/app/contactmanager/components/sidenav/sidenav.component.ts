@@ -7,6 +7,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
 import { max } from 'rxjs/operators';
+import { FormControl, Validators } from '@angular/forms';
 
 const SMALL_WIDTH_BREAKPOINT = 720
 
@@ -82,5 +83,11 @@ export class SidenavComponent implements OnInit {
     this.contactService.addContactList(this.form)
     // this.modalService.dismissAll()
     window.location.reload() // TODO: Find cleaner way
+  }
+
+  name = new FormControl('', [Validators.required])
+
+  getNameErrorMessage() {
+    return 'You must enter a value'
   }
 }

@@ -57,8 +57,11 @@
             type="text"
             [(ngModel)]="form.name"
             required
-            #name="ngModel"
+            [formControl]="name"
           />
+          <mat-error *ngIf="name.invalid">{{
+            getNameErrorMessage()
+          }}</mat-error>
         </mat-form-field>
       </form>
     </div>
