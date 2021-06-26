@@ -77,8 +77,11 @@
             type="text"
             [(ngModel)]="form.name"
             required
-            #name="ngModel"
+            [formControl]="name"
           />
+          <mat-error *ngIf="name.invalid">{{
+            getNameErrorMessage()
+          }}</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
           <mat-label>Email</mat-label>
@@ -89,8 +92,11 @@
             type="text"
             [(ngModel)]="form.email"
             required
-            #name="ngModel"
+            [formControl]="email"
           />
+          <mat-error *ngIf="email.invalid">{{
+            getEmailErrorMessage()
+          }}</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
           <mat-label>Number</mat-label>
@@ -101,8 +107,11 @@
             type="text"
             [(ngModel)]="form.number"
             required
-            #name="ngModel"
+            [formControl]="number"
           />
+          <mat-error *ngIf="number.invalid">{{
+            getNumberErrorMessage()
+          }}</mat-error>
         </mat-form-field>
       </form>
     </div>

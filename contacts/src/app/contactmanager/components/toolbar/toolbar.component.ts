@@ -3,6 +3,7 @@ import { ActivationEnd, Router } from '@angular/router'
 import { ContactService } from '../../services/contact.service'
 import { filter, map } from 'rxjs/operators';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-toolbar',
@@ -77,5 +78,31 @@ export class ToolbarComponent implements OnInit {
     console.warn(this.form)
     this.contactService.addContact(this.form)
     window.location.reload()
+  }
+
+  name = new FormControl('', [Validators.required])
+
+  getNameErrorMessage() {
+    return 'You must enter a value'
+  }
+
+  email = new FormControl('', [Validators.required, Validators.email])
+
+  getEmailErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value'
+    }
+
+    return this.email.hasError('email') ? 'Not a valid email' : ''
+  }
+
+  number = new FormControl('', [Validators.required, Validators.pattern('[- +()0-9]+')])
+
+  getNumberErrorMessage() {
+    if (this.number.hasError('required')) {
+      return 'You must enter a value'
+    }
+
+    return this.number.hasError('pattern') ? 'Not a valid number' : ''
   }
 }

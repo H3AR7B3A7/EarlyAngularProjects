@@ -7,7 +7,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component'
 import { RouterModule, Routes } from '@angular/router'
 import { MaterialModule } from '../shared/material.module'
 import { LoginComponent } from './components/login/login.component'
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { ContactService } from './services/contact.service'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AuthInterceptorService } from './services/auth-interceptor.service'
@@ -38,6 +38,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgbModule
   ],
