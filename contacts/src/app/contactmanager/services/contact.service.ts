@@ -29,9 +29,9 @@ export class ContactService {
     return this.http.get<ContactList[]>(API + 'lists/' + userId)
       .subscribe(data => {
         this.dataStore.contactLists = data
-        this._contactLists.next(Object.assign({}, this.dataStore).contactLists)
+        this._contactLists.next(Object.assign({}, this.dataStore).contactLists) // ???
       }, error => {
-        console.warn("Failed to fetch contact lists!");
+        console.warn("Failed to fetch contact lists!")
       })
   }
 
@@ -43,6 +43,7 @@ export class ContactService {
     return this.http.post<ContactList>(API + 'lists/', contactList)
       .subscribe(data => {
         this.dataStore.contactLists.push(data)
+        this._contactLists.next(Object.assign({}, this.dataStore).contactLists) // ???
       }, error => {
         console.warn("Failed to add list!")
       })
@@ -52,6 +53,7 @@ export class ContactService {
     return this.http.delete<ContactList[]>(API + 'delete/lists/' + listId)
       .subscribe(() => {
         delete this.dataStore.contactLists[listId]
+        this._contactLists.next(Object.assign({}, this.dataStore).contactLists) // ???
       })
   }
 
@@ -61,9 +63,9 @@ export class ContactService {
     return this.http.get<Contact[]>(API + listId)
       .subscribe(data => {
         this.dataStore.contacts = data
-        this._contacts.next(Object.assign({}, this.dataStore).contacts)
+        this._contacts.next(Object.assign({}, this.dataStore).contacts) // ???
       }, error => {
-        console.warn("Failed to fetch contacts!");
+        console.warn("Failed to fetch contacts!")
       })
   }
 
@@ -75,6 +77,7 @@ export class ContactService {
     return this.http.post<Contact>(API, contact)
       .subscribe(data => {
         this.dataStore.contacts.push(data)
+        this._contacts.next(Object.assign({}, this.dataStore).contacts) // ???
       }, error => {
         console.warn("Failed to add contact!")
       })
@@ -84,10 +87,10 @@ export class ContactService {
     return this.http.delete<Contact[]>(API + 'delete/' + contactId)
       .subscribe(() => {
         delete this.dataStore.contacts[contactId]
-
-        // const index = this.dataStore.contacts.indexOf(this.dataStore.contacts[contactId], 0);
+        this._contacts.next(Object.assign({}, this.dataStore).contacts)  // ???
+        // const index = this.dataStore.contacts.indexOf(this.dataStore.contacts[contactId], 0)
         // if (index > -1) {
-        //   this.dataStore.contacts.splice(index, 1);
+        //   this.dataStore.contacts.splice(index, 1)
         // }
       })
   }
