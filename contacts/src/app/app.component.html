@@ -1,6 +1,7 @@
 <div
   [ngClass]="{ 'dark-theme-mode': isDarkTheme }"
   class="mat-app-background content"
+  [dir]="direction"
 >
   <mat-toolbar color="primary" class="toolbar">
     <span>MyContacts</span>
@@ -23,4 +24,7 @@
     </mat-slide-toggle>
   </mat-toolbar>
   <router-outlet></router-outlet>
+  <button (click)="toggleDirection()">
+    <mat-icon class="directionToggle" color="primary">swap_horiz</mat-icon>
+  </button>
 </div>

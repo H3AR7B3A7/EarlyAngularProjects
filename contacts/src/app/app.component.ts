@@ -9,6 +9,7 @@ import { AuthService } from './contactmanager/services/auth.service'
 export class AppComponent {
   title = 'contacts'
   isDarkTheme: boolean = false
+  direction: any = 'ltr'
   isLoggedIn: boolean = true
 
   constructor(
@@ -28,5 +29,9 @@ export class AppComponent {
   logout(): void {
     this.isLoggedIn = false
     this.auth.logout()
+  }
+
+  toggleDirection(): void {
+    this.direction = this.direction == 'ltr' ? 'rtl' : 'ltr'
   }
 }
