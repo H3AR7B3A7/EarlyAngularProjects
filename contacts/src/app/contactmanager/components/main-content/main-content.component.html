@@ -44,7 +44,7 @@
       <td
         mat-cell
         *matCellDef="let contact"
-        (click)="deleteContact(contact.id)"
+        (click)="openDeleteContactModal(deleteConfirm, contact.id)"
       >
         <mat-icon color="warn">delete_outline</mat-icon>
       </td>
@@ -59,3 +59,37 @@
     showFirstLastButtons
   ></mat-paginator>
 </div>
+
+<!-- DELETE CONFIRMATION MODAL -->
+
+<ng-template #deleteConfirm let-modal>
+  <div
+    [ngClass]="{ 'dark-theme-mode': isDarkTheme }"
+    class="mat-app-background content"
+  >
+    <div class="modal-header">
+      <h1 class="modal-title" id="modal-basic-title">Delete Contact</h1>
+    </div>
+
+    <div class="modal-body">Are you sure?</div>
+
+    <div class="modal-footer">
+      <button
+        mat-raised-button
+        color="warn"
+        class="m-1"
+        (click)="deleteContact()"
+      >
+        Delete
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        class="m-1"
+        (click)="modal.close('Save click')"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</ng-template>

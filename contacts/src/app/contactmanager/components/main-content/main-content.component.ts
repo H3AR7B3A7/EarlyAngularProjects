@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { Contact } from '../../models/Contact';
 import { AuthService } from '../../services/auth.service';
@@ -26,11 +27,17 @@ export class MainContentComponent implements OnInit {
 
   title: string = 'Contacts'
 
+  closeModal: string | undefined
+  isDarkTheme!: boolean
+
+  contactToDelete?: number
+
   constructor(
     private route: ActivatedRoute,
     private contactService: ContactService,
     private auth: AuthService,
     private router: Router,
+    private modalService: NgbModal,
   ) {
     this.router.events.subscribe(() => this.loadContactsForList())
   }
@@ -64,8 +71,28 @@ export class MainContentComponent implements OnInit {
     })
   }
 
-  deleteContact(contactId: number) {
-    this.contactService.deleteContact(contactId)
+  openDeleteContactModal(content: any, contactToDelete: number): void {
+    this.contactToDelete = contactToDelete
+    this.isDarkTheme = localStorage.getItem('theme') == 'dark' ? true : false
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
+      this.closeModal = `Closed with: ${res}`;
+    }, (res) => {
+      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
+    });
+  }
+
+  deleteContact() {
+    this.contactService.deleteContact(this.contactToDelete!)
     window.location.reload()
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }
