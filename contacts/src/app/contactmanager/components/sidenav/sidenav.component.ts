@@ -77,8 +77,8 @@ export class SidenavComponent implements OnInit {
   }
 
   addNewList() {
-    let userId = JSON.parse(sessionStorage.getItem('auth-object')!).id
-    this.contactService.addContactList(this.form.name, userId)
+    this.form.userId = JSON.parse(sessionStorage.getItem('auth-object')!).id
+    this.contactService.addContactList(this.form)
     // this.modalService.dismissAll()
     window.location.reload() // TODO: Find cleaner way
   }

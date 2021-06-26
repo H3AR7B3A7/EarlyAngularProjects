@@ -39,13 +39,12 @@ export class ContactService {
     return this._contactLists.asObservable()
   }
 
-  addContactList(name: string, userId: number) {
-    const list = { name, userId }
-    return this.http.post<ContactList>(API + 'lists/', list)
+  addContactList(contactList : ContactList) {
+    return this.http.post<ContactList>(API + 'lists/', contactList)
       .subscribe(data => {
         this.dataStore.contactLists.push(data)
       }, error => {
-        console.warn("Failed to add list!");
+        console.warn("Failed to add list!")
       })
   }
 
@@ -71,5 +70,14 @@ export class ContactService {
 
   get contacts(): Observable<Contact[]> {
     return this._contacts.asObservable()
+  }
+
+  addContact(contact: Contact){
+    return this.http.post<Contact>(API, contact)
+      .subscribe(data => {
+        this.dataStore.contacts.push(data)
+      }, error => {
+        console.warn("Failed to add contact!")
+      })
   }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core'
-import { ActivatedRoute, ActivationEnd, Router, RoutesRecognized } from '@angular/router'
+import { ActivationEnd, Router } from '@angular/router'
 import { ContactService } from '../../services/contact.service'
 import { filter, map } from 'rxjs/operators';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-toolbar',
@@ -11,11 +12,16 @@ import { filter, map } from 'rxjs/operators';
 export class ToolbarComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>()
 
+  closeModal: string | undefined
+  isDarkTheme!: boolean
+
   currentListId: number = 0
 
+  form: any = {}
+
   constructor(
-    private route: ActivatedRoute,
     private contactService: ContactService,
+    private modalService: NgbModal,
     private router: Router
   ) {
     this.router.events
@@ -39,5 +45,32 @@ export class ToolbarComponent implements OnInit {
     console.warn(this.currentListId)
     this.contactService.deleteContactList(this.currentListId)
     window.location.reload() // TODO: Find cleaner way
+  }
+
+  createNewContactModal(content: any) {
+    this.isDarkTheme = localStorage.getItem('theme') == 'dark' ? true : false
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
+      this.closeModal = `Closed with: ${res}`;
+    }, (res) => {
+      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  addContact(): void {
+    console.warn(this.currentListId)
+    this.form.contactListId = this.currentListId
+    console.warn(this.form)
+    this.contactService.addContact(this.form)
+    window.location.reload()
   }
 }
