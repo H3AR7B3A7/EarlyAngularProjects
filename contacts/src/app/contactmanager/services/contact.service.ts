@@ -49,7 +49,6 @@ export class ContactService {
   }
 
   deleteContactList(listId: number) {
-    console.log('test')
     return this.http.delete<ContactList[]>(API + 'delete/lists/' + listId)
       .subscribe(() => {
         delete this.dataStore.contactLists[listId]
@@ -78,6 +77,13 @@ export class ContactService {
         this.dataStore.contacts.push(data)
       }, error => {
         console.warn("Failed to add contact!")
+      })
+  }
+
+  deleteContact(contactId: number){
+    return this.http.delete<Contact[]>(API + 'delete/' + contactId)
+      .subscribe(() => {
+        delete this.dataStore.contacts[contactId]
       })
   }
 }
