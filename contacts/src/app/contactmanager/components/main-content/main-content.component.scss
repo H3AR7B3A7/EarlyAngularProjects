@@ -22,7 +22,7 @@ mat-card {
 
 .table {
   width: 100%;
-  background-color:transparent !important;
+  background-color: transparent !important;
 }
 
 table {
@@ -31,7 +31,75 @@ table {
   border-radius: 5px;
 }
 
+.mat-column-name {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 28% !important;
+  width: 28% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  padding-right: 15px;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.mat-column-email {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 35% !important;
+  width: 35% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  padding-right: 15px;
+
+  word-break: break-all;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.mat-column-number {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 20% !important;
+  width: 20% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  padding-right: 15px;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.mat-column-delete {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 12% !important;
+  width: 12% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
 .mat-header-cell {
+  word-break: keep-all !important;
   border-bottom: 1px solid transparent !important;
   padding-bottom: 1rem;
   font-weight: bold;
@@ -42,6 +110,7 @@ table {
   border-bottom: 1px solid transparent;
   border-top: 1px solid transparent;
   cursor: pointer;
+  padding-bottom: 1rem;
 }
 
 .name {
@@ -49,7 +118,7 @@ table {
 }
 
 .mat-row:hover .mat-cell {
-  background-color: rgb(177, 177, 177);
+  font-weight: bold;
 }
 
 .row-is-clicked {
@@ -64,16 +133,15 @@ table {
 }
 
 ::ng-deep .mat-select-value {
-color: #3F51B5;
+  color: #3f51b5;
   font-weight: bold;
   font-size: 15px;
 }
 ::ng-deep .mat-select-arrow {
-  color: #3F51B5;
+  color: #3f51b5;
 }
-::ng-deep .mat-option{
-padding: 0 !important;
-
+::ng-deep .mat-option {
+  padding: 0 !important;
 }
 ::ng-deep .mat-option-text {
   text-align: center;
