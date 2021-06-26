@@ -15,9 +15,13 @@ button {
 }
 
 .directionToggle {
-  right: 30px;
-  bottom: 30px;
   position: absolute;
   z-index: 99999;
+}
+
+.directionIcon {
+  bottom: 20px;
+  right: 20px;
+  position: fixed;
   font-size: 40px;
 }

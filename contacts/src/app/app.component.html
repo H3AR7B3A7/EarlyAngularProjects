@@ -24,7 +24,8 @@
     </mat-slide-toggle>
   </mat-toolbar>
   <router-outlet></router-outlet>
-  <button (click)="toggleDirection()">
-    <mat-icon class="directionToggle" color="primary">swap_horiz</mat-icon>
+  <button mat-button class="directionToggle" (click)="toggleDirection()">
+    <span class="spacer"></span
+    ><mat-icon class="directionIcon" color="primary">swap_horiz</mat-icon>
   </button>
 </div>
