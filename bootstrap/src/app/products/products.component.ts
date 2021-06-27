@@ -12,7 +12,16 @@ export class ProductsComponent implements OnInit {
   imageHeight: number = 50
   imageMargin: number = 2
   showImage: boolean = false
-  filter: string = ''
+  private _filter: string = ''
+
+  get filter(): string {
+    return this._filter
+  }
+
+  set filter(value: string) {
+    this._filter = value
+    console.log('In setter: ', value)
+  }
 
   products: Product[] = [
     {
