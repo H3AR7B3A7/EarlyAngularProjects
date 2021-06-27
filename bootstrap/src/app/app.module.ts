@@ -4,12 +4,14 @@ import { BrowserModule } from '@angular/platform-browser'
 import { RatingModule } from 'ng-starrating'
 
 import { AppComponent } from './app.component'
-import { ProductsComponent } from './products/products.component'
+import { ProductsComponent } from './products/products.component';
+import { ConvertToSpacesPipe } from './products/convert-to-spaces.pipe'
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsComponent
+    ProductsComponent,
+    ConvertToSpacesPipe
   ],
   imports: [
     BrowserModule,
