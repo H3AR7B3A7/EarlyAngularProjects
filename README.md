@@ -13,15 +13,22 @@ Angular is a TypeScript-based open-source web application framework led by the A
 ### Some libraries
 
 - Material
-> ng add @angular/material
+
+  > ng add @angular/material
 
 - Flex Layout
-> npm i @angular/flex-layout
+
+  > npm i @angular/flex-layout
 
 See: [Flexbox Layout Examples](https://tburleson-layouts-demos.firebaseapp.com/#/docs)
 
 - Bootstrap
-> ng add @ng-bootstrap/ng-bootstrap
+
+  > ng add @ng-bootstrap/ng-bootstrap
+
+- Font-Awesome
+
+  > npm i font-awesome
 
 ### VSC Extensions:
 
@@ -32,7 +39,6 @@ See: [Flexbox Layout Examples](https://tburleson-layouts-demos.firebaseapp.com/#
 - TSLint
 - Material Icon Theme
 
-
 ## Creating a Project
 
 Navigate to the desired folder and use following commands:
@@ -40,14 +46,12 @@ Navigate to the desired folder and use following commands:
 > ng n <name>
 > ng serve
 
-
 # Typescript
 
 [Official Typescript pages](https://www.typescriptlang.org/)
 
 TypeScript is an open-source language which builds on JavaScript, one of the world’s most used tools, by adding static type definitions.  
 Types provide a way to describe the shape of an object, providing better documentation, and allowing TypeScript to validate that your code is working correctly.
-
 
 ## Let
 
@@ -65,12 +69,10 @@ This will transpile to:
         ...
     }
 
-
 ## Const
 
 We should prefer to use 'const' where ever possible to create constants, or variables that never change.
 This goes only for the top level of the variable, and thus object properties can still be changed.
-
 
 ## Types
 
@@ -124,7 +126,6 @@ Most of the time Typescript is able to figure out what type a variable is suppos
 ### Void
 
 As in other languages we use this type to annotate that a function does not return a value.
-
 
 ## Functions
 
@@ -204,7 +205,6 @@ But arrow functions also allows lexical scoping of _this_:
 
 If we were to use the actual function instead of the arrow function this.name would be _Undefined_.
 
-
 ## Common Typescript Features
 
 ### Spread parameter
@@ -246,7 +246,6 @@ We can also say a generic type should adhere to some interface:
     }
 
 Now we can create multiple classes implementing the Shape interface with their own area() methods and pass them to allAreas().
-
 
 ## Classes, Interfaces and Inheritance
 
@@ -373,7 +372,6 @@ We can also extend members and functionality from other classes using inheritanc
             this.model = model;
         }
     }
-
 
 ## Decorators
 
@@ -512,7 +510,6 @@ Used to look into the parameter value of functions or constructors and perform o
         }
     }
 
-
 ## Advanced Types
 
 ### Partial
@@ -579,7 +576,6 @@ Import:
 
     import { MyService } from './my-service';
 
-
 # Angular
 
 ## Components
@@ -592,7 +588,7 @@ Import:
 --skip-tests (Don't generate spec.ts)  
 --inline-style (Don't generate stylesheet)  
 --inline-template (Don't generate html template)
---flat (Generate without parent folder)  
+--flat (Generate without parent folder)
 
 Example component decorator:
 
@@ -651,7 +647,6 @@ Example:
         changeDetection: ChangeDetectionStrategy.OnPush
     })
 
-
 ## The Component Lifecycle
 
 Available lifecycle hooks:
@@ -680,7 +675,6 @@ The _ngOnDestroy()_ method is called upon destruction of a component. Components
 
 The _ngOnChanges()_ method is called when the binding of a value changes. It accepts an object of type SimpleChanges as a parameter. The resulting objects holds a previousValue and currentValue, but also a boolean which tells us wether it is the 'first' change.
 
-
 ## Directives
 
 Directives are HTML attributes that extend the behavior or the appearance of standard HTML elements. When we apply them to an HTML element or even an Angular component, we can add custom behavior to it or alter its appearance. There are three types:
@@ -698,7 +692,8 @@ Built in _structural directives_:
 See _[jestProject](jestProject)_ for more examples.
 
 To create just an interface model:
->ng generate interface <name> --type=model
+
+> ng generate interface <name> --type=model
 
 ### ngIf
 
@@ -728,7 +723,6 @@ Used as a switch statement evaluating some property and rendering the appropriat
       <div *ngSwitchCase="'Justice League'">{{ hero.name }} is in the Justice League.</div>
     </ng-container>
 
-
 ## Pipes
 
 Pipes allow us to filter and map the outcome of our expressions on a view level. They transform data in the desired format and display the output in the template.
@@ -746,11 +740,11 @@ Some default examples:
     <p>{{ hero | json }}</p>
     <p>{{ delayedHero | async }}</p>
 
-
 ## Custom Pipes
 
-To create a pipe *in the current directory*:
->ng generate pipe <name>
+To create a pipe _in the current directory_:
+
+> ng generate pipe <name>
 
 Pipes are pure by default, which means they will not update when a value gets changed, only when a new value is assigned. So when we add an object to an existing array or change a value of an object and want it to be affected by the pipe we create a new array/object (immutability principle):
 
@@ -767,22 +761,24 @@ If the object changes a lot and they are many, this can affect performance.
 
 ## Custom Directives
 
-To create a directive *in the current directory*:
->ng generate directive <name>
+To create a directive _in the current directory_:
 
+> ng generate directive <name>
 
 ## Modules
 
-See _[ModulesAndStructure](ModulesAndStructure)_ for examples on the following topics. 
+See _[ModulesAndStructure](ModulesAndStructure)_ for examples on the following topics.
 
 To create a module:
->ng generate module <name>
+
+> ng generate module <name>
 
 --dry-run (Run without making changes to see what would happen)  
 --flat (Generate without parent folder)  
 --routing (Generate routing module)
 
 They contain:
+
 - Declarations: Registered components, directives and pipes
 - Imports: Other modules containing declarations to be used by this module
 - Exports: Artifacts available for other modules (aka the public API)
@@ -794,37 +790,41 @@ They contain:
 You can do this by running the command inside the module folder or using the module option.
 
 Using the module option:
->ng generate component cars/carList --module=cars
+
+> ng generate component cars/carList --module=cars
 
 ### Exposing Module Features
 
 To be able to add the the features template to the apps template using the selector we need to:
-- Add the component to the exports in the features module.ts. 
+
+- Add the component to the exports in the features module.ts.
 - Import the module in app.module.ts.
 
 ### Module Separation
 
 By functionality:
+
 - **Root** module: The main module, 'AppModule'
 - **Feature** modules: A set of functionalities (ex: Orders, Products, Customers, ...)
 - **Core** modules: Application wide artifacts (ex: Navbar, Footer, Loading spinner, ...)
 - **Shared** modules: Reusable artifacts imported by different feature modules
 
 By loading:
+
 - **Eager** loaded modules: Declared in imports
 - **Lazy** loaded modules: Through navigation
-
 
 ## Configuration & Environments
 
 We can run commands in different environments by using the following option in the CLI:
->ng <command> --configuration=<name>
 
-We can add other environments to the defaults (development and production) by creating the matching configuration files in the *environments folder*. The naming convention to follow here is: *environment.{name}.ts*.
+> ng <command> --configuration=<name>
+
+We can add other environments to the defaults (development and production) by creating the matching configuration files in the _environments folder_. The naming convention to follow here is: _environment.{name}.ts_.
 
 The environment file exports an environment object. By default a boolean 'production' property is already set. We need to define all required properties in this object. For example the URL of the backend API will be set here.
 
-When we created the environment, we can define the appropriate configurations in the *angular.json*: 
+When we created the environment, we can define the appropriate configurations in the _angular.json_:
 
     "configurations": {
         "production": {
@@ -842,13 +842,13 @@ When running **ng build --configuration=production** the CLI will replace the de
 ## Dependency Injection
 
 In previous examples our data was tightly coupled to our component, meaning it was declared inside them.
+
 - In real world application our data is rarely static.
 - We only want our component to handle 'presenting' the data, and not be concerned on how to get the data.
 
 We can generate a **service** that we can use to inject our data in any class that needs it.
->ng generate service cars/car
 
-
+> ng generate service cars/car
 
 ### Share a Dependency Through Components
 
@@ -944,10 +944,10 @@ We can't pass an interface to providers, so we create an **InjectionToken**:
         this.version = config.version;
     }
 
-
 ## Asynchronous Data Services
 
 Strategies:
+
 - Callback
 - Promise
 - Observables
@@ -969,6 +969,7 @@ Strategies:
         .then(getPhotos)
 
 Limitations:
+
 - They cannot be canceled
 - They are immediately executed
 - They are one time operations, no easy retry
@@ -978,16 +979,18 @@ Limitations:
 
 Observables will emit values over a period of time.
 To create an observable:
+
 - Operator "of"
 - Keyword "new" Observable
 
-*It is good practice to name observable variables ending with "$".*
+_It is good practice to name observable variables ending with "$"._
 
 Observables maintain a list of observers and inform them of data changes.
+
 - **Subscribe** : We can subscribe to an observable to follow multiple changes.
 - **toPromise** : We can use it to get a promise (single change).
 - **pipe** : We can pipe observed changes before subscribing to them.
-The pipe method allows for multiple params (from 'rxjs/operators') manipulating data like a recipe. 
+  The pipe method allows for multiple params (from 'rxjs/operators') manipulating data like a recipe.
 
 ### Reactive Functional Programming
 
@@ -998,16 +1001,18 @@ A programming paradigm for reactive programming (asynchronous dataflow programmi
 An in-memory web api for Angular demos and tests (not for production) that emulates CRUD operations over a REST API. It intercepts Angular Http and HttpClient requests that would otherwise go to the remote server and redirects them to an in-memory data store that you control.
 
 - Install the package
-> npm install angular-in-memory-web-api --save-dev
+
+  > npm install angular-in-memory-web-api --save-dev
 
 - Generate a service
-> ng g s services/data --skip-tests
+
+  > ng g s services/data --skip-tests
 
 - Make the DataService class implement InMemoryDbService
 - Implement the 'createDb' function and make it return an array (with or w/o data)
 - Add HttpClientInMemoryWebApiModule.forRoot(DataService) to the imports in the module.ts
 
-*We use .forRoot to implement the service as a singleton for the whole application.*
+_We use .forRoot to implement the service as a singleton for the whole application._
 
 ### HttpClientModule
 
@@ -1018,9 +1023,11 @@ The HttpClient service has methods representing all the possible HTTP verbs and 
 ### Auth Interceptor
 
 We can create a service and implement HttpInterceptor, or we can use:
+
 > ng g interceptor auth
 
 That implements the method:
+
 ```
 intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req)
@@ -1028,6 +1035,7 @@ intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> 
 ```
 
 And add a provider to the module:
+
 ```
 providers: [
     {
@@ -1041,6 +1049,7 @@ providers: [
 ### Handling HTTP Errors
 
 We can pipe our HTTP requests to catch errors using catchError:
+
 ```
 import { catchError, retry } from 'rxjs/operators'
 ...
@@ -1054,25 +1063,19 @@ getHeroes(): Observable<Hero[]> {
     )
 }
 ```
-*We can also easily add some retry logic.*
+
+_We can also easily add some retry logic._
 
 ### Cleaning Up Resources
 
 - Unsubscribe from observables manually
-- Use the *async* pipe
-
-
-
-
-
-
-
+- Use the _async_ pipe
 
 ## Testing
 
 ### Testing With(out) Testbed
 
-When Angular CLI generates components it also generates tests in *.spec.ts. These contain some boilerplate implementing a testbed for template testing, like in [this default example](jestProject/src/app/heroes/heroes.component.spec.ts). When we aren't testing against the template however, we can speed up testing by not using the testbed like in [this faster example](testProject/src/app/hero/hero.component.spec.ts).
+When Angular CLI generates components it also generates tests in \*.spec.ts. These contain some boilerplate implementing a testbed for template testing, like in [this default example](jestProject/src/app/heroes/heroes.component.spec.ts). When we aren't testing against the template however, we can speed up testing by not using the testbed like in [this faster example](testProject/src/app/hero/hero.component.spec.ts).
 
 ### Common commands
 
