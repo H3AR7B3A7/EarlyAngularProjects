@@ -19,7 +19,7 @@ export class ProductsComponent implements OnInit {
       "productCode": "GDN-0011",
       "releaseDate": "March 19, 2021",
       "description": "Leaf rake with 48-inch wooden handle.",
-      "price": 19.95,
+      "price": 19.9,
       "starRating": 3.2,
       "imageUrl": "https://www.sneeboer.com/wp-content/uploads/2021/04/8715093060450-1.jpg"
     },

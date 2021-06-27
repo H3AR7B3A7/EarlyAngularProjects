@@ -41,10 +41,19 @@
               />
             </td>
             <td>{{ product.productName }}</td>
-            <td>{{ product.productCode }}</td>
+            <td>{{ product.productCode | lowercase }}</td>
             <td>{{ product.releaseDate }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.starRating }}</td>
+            <td>{{ product.price | currency: "EUR":"symbol":"1.1-2" }}</td>
+            <td>
+              <star-rating
+                [value]="product.starRating"
+                [totalstars]="5"
+                checkedcolor="gold"
+                uncheckedcolor="black"
+                size="24px"
+                [readonly]="true"
+              ></star-rating>
+            </td>
           </tr>
         </tbody>
       </table>
