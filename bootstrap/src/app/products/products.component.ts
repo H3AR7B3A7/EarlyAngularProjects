@@ -21,6 +21,7 @@ export class ProductsComponent implements OnInit {
   set filter(value: string) {
     this._filter = value
     console.log('In setter: ', value)
+    this.filteredProducts = this.performFilter(value)
   }
 
   products: Product[] = [
@@ -46,6 +47,8 @@ export class ProductsComponent implements OnInit {
     },
   ]
 
+  filteredProducts: Product[] = this.products
+
   constructor() { }
 
   ngOnInit(): void {
@@ -55,4 +58,9 @@ export class ProductsComponent implements OnInit {
     this.showImage = !this.showImage
   }
 
+  performFilter(value: string): Product[] {
+    value = value.toLowerCase()
+    return this.products.filter((product: Product) =>
+      product.productName.toLocaleLowerCase().includes(value))
+  }
 }
