@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from './product';
 
 @Component({
   selector: 'app-products',
-  templateUrl: './products.component.html'
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
 
@@ -12,7 +14,7 @@ export class ProductsComponent implements OnInit {
   showImage: boolean = false
   filter: string = ''
 
-  products: any[] = [
+  products: Product[] = [
     {
       "productId": 1,
       "productName": "Leaf Rake",
