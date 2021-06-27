@@ -12,6 +12,8 @@ export class ProductsComponent implements OnInit {
   imageHeight: number = 50
   imageMargin: number = 2
   showImage: boolean = false
+  selectedRating: string = ''
+
   private _filter: string = ''
 
   get filter(): string {
@@ -62,5 +64,10 @@ export class ProductsComponent implements OnInit {
     value = value.toLowerCase()
     return this.products.filter((product: Product) =>
       product.productName.toLocaleLowerCase().includes(value))
+  }
+
+  onRatingClicked(message: string): void {
+    this.selectedRating = message
+    setTimeout(() => { this.selectedRating = '' }, 3000)
   }
 }
