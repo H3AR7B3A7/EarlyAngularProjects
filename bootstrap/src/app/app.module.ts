@@ -5,13 +5,15 @@ import { RatingModule } from 'ng-starrating'
 
 import { AppComponent } from './app.component'
 import { ProductsComponent } from './products/products.component';
-import { ConvertToSpacesPipe } from './products/convert-to-spaces.pipe'
+import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
+import { StarsComponent } from './shared/stars.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
-    ConvertToSpacesPipe
+    ConvertToSpacesPipe,
+    StarsComponent
   ],
   imports: [
     BrowserModule,
