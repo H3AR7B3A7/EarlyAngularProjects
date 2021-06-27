@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser'
 import { RatingModule } from 'ng-starrating'
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component'
 import { ProductsComponent } from './products/products.component';
@@ -18,7 +19,8 @@ import { StarsComponent } from './shared/stars.component'
   imports: [
     BrowserModule,
     FormsModule,
-    RatingModule
+    RatingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
