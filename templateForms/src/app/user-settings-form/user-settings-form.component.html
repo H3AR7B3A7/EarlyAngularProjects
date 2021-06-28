@@ -1,0 +1,91 @@
+<div class="container">
+  <h2>User Settings</h2>
+  <form>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input name="name" id="name" class="form-control" />
+    </div>
+    <div class="form-check">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="emailOffers"
+        name="emailOffers"
+      />
+      <label for="emailOffers" class="form-check-label"
+        >Email Special Offers</label
+      >
+    </div>
+
+    <h5 class="mt-4">User Interface Style</h5>
+    <div class="form-group">
+      <div class="form-check">
+        <input
+          type="radio"
+          class="form-check-input"
+          id="lightInterface"
+          name="interfaceStyle"
+          value="light"
+          checked
+        />
+        <label for="lightInterface" class="form-check-label">Light</label>
+      </div>
+      <div class="form-check">
+        <input
+          type="radio"
+          class="form-check-input"
+          id="mediumInterface"
+          name="interfaceStyle"
+          value="medium"
+        />
+        <label for="lightInterface" class="form-check-label">Medium</label>
+      </div>
+      <div class="form-check">
+        <input
+          type="radio"
+          class="form-check-input"
+          id="darkInterface"
+          name="interfaceStyle"
+          value="dark"
+        />
+        <label for="lightInterface" class="form-check-label">Dark</label>
+      </div>
+    </div>
+
+    <div class="form-group mt-4">
+      <label for="subscriptionType">Subscription Type</label>
+      <select id="subscriptionType" class="form-control">
+        <option>Monthly</option>
+        <option>Annual</option>
+        <option>Lifetime</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="notes">Notes</label>
+      <textarea
+        name="notes"
+        id="notes"
+        rows="3"
+        class="form-control"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="notes">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="notes">Date</label>
+      <input type="date" name="date" id="date" class="form-control" />
+    </div>
+
+    <button class="btn btn-primary mt-4">Send</button>
+  </form>
+</div>
