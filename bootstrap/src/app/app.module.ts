@@ -7,14 +7,18 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component'
 import { ProductsComponent } from './products/products.component';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
-import { StarsComponent } from './shared/stars.component'
+import { StarsComponent } from './shared/stars.component';
+import { ProductDetailComponent } from './products/product-detail.component';
+import { WelcomeComponent } from './welcome/welcome.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
     ConvertToSpacesPipe,
-    StarsComponent
+    StarsComponent,
+    ProductDetailComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
