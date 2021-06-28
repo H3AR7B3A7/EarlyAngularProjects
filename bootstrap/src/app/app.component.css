@@ -1,0 +1,13 @@
+.navbar-brand {
+  padding-left: 1rem;
+}
+
+.navbar-brand {
+  text-decoration: unset !important;
+  cursor: pointer !important;
+  font-weight: bold;
+}
+
+.nav-link {
+  font-size: large;
+}
