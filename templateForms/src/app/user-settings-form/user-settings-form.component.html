@@ -8,8 +8,11 @@
         id="name"
         class="form-control"
         [(ngModel)]="userSettings.name"
+        #classTest
+        required
       />
     </div>
+    <h6>(*class="{{ classTest.className }}")</h6>
     <div class="form-check">
       <input
         type="checkbox"

@@ -10,7 +10,7 @@ import { DatePipe } from '@angular/common'
 export class UserSettingsFormComponent implements OnInit {
 
   originalUserSettings: UserSettings = {
-    name: 'Steven',
+    name: '',
     emailOffers: true,
     interfaceStyle: 'dark',
     subscriptionType: 'Annual',
