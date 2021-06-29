@@ -4,17 +4,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { UserSettingsFormComponent } from './user-settings-form/user-settings-form.component';
+import { CircularObjectToJsonPipe } from './user-settings-form/circular-object-to-json.pipe';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserSettingsFormComponent
+    UserSettingsFormComponent,
+    CircularObjectToJsonPipe
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

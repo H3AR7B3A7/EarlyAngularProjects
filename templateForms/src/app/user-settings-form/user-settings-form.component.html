@@ -1,9 +1,14 @@
 <div class="container">
   <h2>User Settings</h2>
-  <form>
+  <form #form="ngForm">
     <div class="form-group">
       <label for="name">Name</label>
-      <input name="name" id="name" class="form-control" />
+      <input
+        name="name"
+        id="name"
+        class="form-control"
+        [(ngModel)]="userSettings.name"
+      />
     </div>
     <div class="form-check">
       <input
@@ -11,6 +16,7 @@
         class="form-check-input"
         id="emailOffers"
         name="emailOffers"
+        [(ngModel)]="userSettings.emailOffers"
       />
       <label for="emailOffers" class="form-check-label"
         >Email Special Offers</label
@@ -27,6 +33,7 @@
           name="interfaceStyle"
           value="light"
           checked
+          [(ngModel)]="userSettings.interfaceStyle"
         />
         <label for="lightInterface" class="form-check-label">Light</label>
       </div>
@@ -37,6 +44,7 @@
           id="mediumInterface"
           name="interfaceStyle"
           value="medium"
+          [(ngModel)]="userSettings.interfaceStyle"
         />
         <label for="lightInterface" class="form-check-label">Medium</label>
       </div>
@@ -47,6 +55,7 @@
           id="darkInterface"
           name="interfaceStyle"
           value="dark"
+          [(ngModel)]="userSettings.interfaceStyle"
         />
         <label for="lightInterface" class="form-check-label">Dark</label>
       </div>
@@ -54,7 +63,12 @@
 
     <div class="form-group mt-4">
       <label for="subscriptionType">Subscription Type</label>
-      <select id="subscriptionType" class="form-control">
+      <select
+        id="subscriptionType"
+        class="form-control"
+        name="subscriptionType"
+        [(ngModel)]="userSettings.subscriptionType"
+      >
         <option>Monthly</option>
         <option>Annual</option>
         <option>Lifetime</option>
@@ -68,6 +82,7 @@
         id="notes"
         rows="3"
         class="form-control"
+        [(ngModel)]="userSettings.notes"
       ></textarea>
     </div>
 
@@ -78,14 +93,26 @@
         name="password"
         id="password"
         class="form-control"
+        [(ngModel)]="userSettings.password"
       />
     </div>
 
     <div class="form-group">
       <label for="notes">Date</label>
-      <input type="date" name="date" id="date" class="form-control" />
+      <input
+        type="date"
+        name="date"
+        id="date"
+        class="form-control"
+        [(ngModel)]="userSettings.date"
+      />
     </div>
 
     <button class="btn btn-primary mt-4">Send</button>
   </form>
 </div>
+
+<br />
+<h5>{{ form.value | json }}</h5>
+<br />
+<p>{{ form | circularObjectToJson }}</p>
