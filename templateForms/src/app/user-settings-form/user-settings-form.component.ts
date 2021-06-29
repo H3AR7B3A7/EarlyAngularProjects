@@ -9,7 +9,7 @@ import { DatePipe } from '@angular/common'
 })
 export class UserSettingsFormComponent implements OnInit {
 
-  userSettings: UserSettings = {
+  originalUserSettings: UserSettings = {
     name: 'Steven',
     emailOffers: true,
     interfaceStyle: 'dark',
@@ -18,6 +18,8 @@ export class UserSettingsFormComponent implements OnInit {
     password: 'TopSecret',
     date: this.datePipe.transform(new Date, "yyyy-MM-dd")!
   }
+
+  userSettings: UserSettings = { ...this.originalUserSettings }
 
   constructor(
     private datePipe: DatePipe
