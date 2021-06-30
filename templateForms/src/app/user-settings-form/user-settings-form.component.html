@@ -8,9 +8,16 @@
         id="name"
         class="form-control"
         [(ngModel)]="userSettings.name"
+        #nameField="ngModel"
         #classTest
         required
       />
+      <div
+        [hidden]="nameField.valid || nameField.untouched"
+        class="alert alert-danger"
+      >
+        Enter a name
+      </div>
     </div>
     <h6>(*class="{{ classTest.className }}")</h6>
     <div class="form-check">
