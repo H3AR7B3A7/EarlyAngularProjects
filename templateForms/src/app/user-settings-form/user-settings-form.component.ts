@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { UserSettings } from '../data/user-settings'
 import { DatePipe } from '@angular/common'
+import { NgForm, NgModel } from '@angular/forms'
 
 @Component({
   selector: 'app-user-settings-form',
@@ -11,6 +12,7 @@ export class UserSettingsFormComponent implements OnInit {
 
   originalUserSettings: UserSettings = {
     name: '',
+    surname: '',
     emailOffers: true,
     interfaceStyle: 'dark',
     subscriptionType: 'Annual',
@@ -28,4 +30,11 @@ export class UserSettingsFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit(form: NgForm): void {
+    console.log('In onSubmit(): ', form.valid)
+  }
+
+  onBlur(field: NgModel) {
+    console.log('In onBlur(): ', field.valid)
+  }
 }

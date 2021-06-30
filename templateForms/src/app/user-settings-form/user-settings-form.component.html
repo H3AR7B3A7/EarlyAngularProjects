@@ -1,6 +1,6 @@
 <div class="container">
   <h2>User Settings</h2>
-  <form #form="ngForm">
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
     <div class="form-group">
       <label for="name">Name</label>
       <input
@@ -20,6 +20,31 @@
       </div>
     </div>
     <h6>(*class="{{ classTest.className }}")</h6>
+    <p>Dirty: {{ nameField.dirty }}</p>
+    <p>Pristine: {{ nameField.pristine }}</p>
+    <p>Touched: {{ nameField.touched }}</p>
+    <p>Untouched: {{ nameField.untouched }}</p>
+    <p>Valid: {{ nameField.valid }}</p>
+    <p>Invalid: {{ nameField.invalid }}</p>
+    <div class="form-group">
+      <label for="name">Surname</label>
+      <input
+        name="surname"
+        id="surname"
+        class="form-control"
+        [(ngModel)]="userSettings.name"
+        #surnameField="ngModel"
+        required
+        (blur)="onBlur(surnameField)"
+        [class.field-error]="form.submitted && surnameField.invalid"
+      />
+      <div
+        [hidden]="!form.submitted || surnameField.valid"
+        class="alert alert-danger"
+      >
+        Enter a surname
+      </div>
+    </div>
     <div class="form-check">
       <input
         type="checkbox"
