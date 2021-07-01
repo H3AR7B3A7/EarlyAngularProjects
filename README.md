@@ -10,7 +10,11 @@ Angular is a TypeScript-based open-source web application framework led by the A
 - **Install Typescript**: npm install -g typescript
 - **Install Angular**: npm install -g @angular/cli
 
-### Some libraries
+### Interesting Libraries
+
+- ESLint
+
+> ng add @angular-eslint/schematics
 
 - Material
 
@@ -43,8 +47,8 @@ See: [Flexbox Layout Examples](https://tburleson-layouts-demos.firebaseapp.com/#
 
 Navigate to the desired folder and use following commands:
 
-> ng n <name>
-> ng serve
+> ng n name --routing --prefix prefix --style scss --strict  
+> ng serve -o
 
 # Typescript
 
@@ -578,11 +582,17 @@ Import:
 
 # Angular
 
+## The CLI
+
+### Configuring Global CLI
+
+> ng config -g schematics.@schematics/angular:component.style scss
+
 ## Components
 
 ### Create a Component
 
-> ng generate component <name>
+> ng generate component name
 
 --dry-run (Run without making changes to see what would happen)  
 --skip-tests (Don't generate spec.ts)  
@@ -693,7 +703,7 @@ See _[jestProject](jestProject)_ for more examples.
 
 To create just an interface model:
 
-> ng generate interface <name> --type=model
+> ng generate interface name --type=model
 
 ### ngIf
 
@@ -744,7 +754,7 @@ Some default examples:
 
 To create a pipe _in the current directory_:
 
-> ng generate pipe <name>
+> ng generate pipe name
 
 Pipes are pure by default, which means they will not update when a value gets changed, only when a new value is assigned. So when we add an object to an existing array or change a value of an object and want it to be affected by the pipe we create a new array/object (immutability principle):
 
@@ -763,7 +773,7 @@ If the object changes a lot and they are many, this can affect performance.
 
 To create a directive _in the current directory_:
 
-> ng generate directive <name>
+> ng generate directive name
 
 ## Modules
 
@@ -771,7 +781,7 @@ See _[ModulesAndStructure](ModulesAndStructure)_ for examples on the following t
 
 To create a module:
 
-> ng generate module <name>
+> ng generate module name
 
 --dry-run (Run without making changes to see what would happen)  
 --flat (Generate without parent folder)  
