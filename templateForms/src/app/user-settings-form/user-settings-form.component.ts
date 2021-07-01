@@ -16,11 +16,15 @@ export class UserSettingsFormComponent implements OnInit {
   postErrorMessage: string = ''
   subscriptionTypes!: Observable<string[]>
 
+  singleModel = false
+  birthday?: Date
+
   originalUserSettings: UserSettings = {
     name: '',
     surname: '',
     emailOffers: true,
     interfaceStyle: 'dark',
+    interfaceStyle2: 'dark',
     subscriptionType: 'Annual',
     notes: 'Some notes ...',
     password: 'TopSecret',

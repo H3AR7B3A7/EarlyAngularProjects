@@ -58,6 +58,30 @@
       >
     </div>
 
+    <div class="form-group">
+      <label for="birthday">Birthday</label>
+      <input
+        type="text"
+        placeholder="Birthday"
+        class="form-control"
+        [(ngModel)]="birthday"
+        name="birthday"
+        id="birthday"
+        bsDatepicker
+        [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+      />
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-primary mt-4"
+      name="singleModel"
+      [(ngModel)]="singleModel"
+      btnCheckbox
+    >
+      {{ singleModel ? "On" : "Off" }}
+    </button>
+
     <h5 class="mt-4">User Interface Style</h5>
     <div class="form-group">
       <div class="form-check">
@@ -93,6 +117,38 @@
           [(ngModel)]="userSettings.interfaceStyle"
         />
         <label for="lightInterface" class="form-check-label">Dark</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="btn-group">
+        <label
+          class="btn btn-primary"
+          [(ngModel)]="userSettings.interfaceStyle2"
+          name="interfaceStyle2"
+          btnRadio="light"
+          tabindex="0"
+          role="button"
+          >Light</label
+        >
+        <label
+          class="btn btn-primary"
+          [(ngModel)]="userSettings.interfaceStyle2"
+          name="interfaceStyle2"
+          btnRadio="medium"
+          tabindex="0"
+          role="button"
+          >Medium</label
+        >
+        <label
+          class="btn btn-primary"
+          [(ngModel)]="userSettings.interfaceStyle2"
+          name="interfaceStyle2"
+          btnRadio="dark"
+          tabindex="0"
+          role="button"
+          >Dark</label
+        >
       </div>
     </div>
 
