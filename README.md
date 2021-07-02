@@ -588,6 +588,10 @@ Import:
 
 > ng config -g schematics.@schematics/angular:component.style scss
 
+On Windows the 'Global Config' file can be found here:
+
+    C:\Users\<User>\.angular-config.json
+
 ## Components
 
 ### Create a Component
@@ -828,7 +832,7 @@ By loading:
 
 We can run commands in different environments by using the following option in the CLI:
 
-> ng <command> --configuration=<name>
+> ng command --configuration=name
 
 We can add other environments to the defaults (development and production) by creating the matching configuration files in the _environments folder_. The naming convention to follow here is: _environment.{name}.ts_.
 
