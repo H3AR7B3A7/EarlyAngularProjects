@@ -592,6 +592,23 @@ On Windows the 'Global Config' file can be found here:
 
     C:\Users\<User>\.angular-config.json
 
+### Default templates
+
+On Windows we can find the templates that are generated with 'ng n name' here:
+
+```
+C:\Users\<User>\AppData\Roaming\npm\node_modules\@angular\cli\node_modules\@schematics\angular\application\files\src
+```
+
+We can:
+
+- Modify the html/style templates that are present to our liking
+- Add our own default favicon
+- Add other default resources to our assets folder by appending them with '.template'
+- Create and customize different environments
+- Create additional file structures we always want to be present in our projects
+- ...
+
 ## Components
 
 ### Create a Component
