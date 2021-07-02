@@ -1,27 +1,31 @@
-# Routing
+# Routing & Guards
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.2.
+Examples of:
 
-## Development server
+- Simple Routing
+- Nested Routing & Router Outlets
+- Routing Guard (Login Authentication)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## CLI Commands Used
 
-## Code scaffolding
+```
+ng n routing --style css --routing
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+cd routing
 
-## Build
+ng serve -o
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+ng g c login --skip-tests
 
-## Running unit tests
+ng g m parent -m app
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ng g c parent --routing --skip-tests
 
-## Running end-to-end tests
+ng g c parent/content --skip-tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+ng g c parent/more-content --skip-tests
 
-## Further help
+ng g g login/auth --skip-tests
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+ng g s login/login --skip-tests
+```
