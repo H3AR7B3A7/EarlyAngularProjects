@@ -4,11 +4,13 @@ import { ParentComponent } from './parent.component';
 import { ContentComponent } from './content/content.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MoreContentComponent } from './more-content/more-content.component';
+import { AuthGuard } from '../login/auth.guard';
 
 const routes: Routes = [
   {
     path: 'parent',
     component: ParentComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: 'content', component: ContentComponent },
       { path: 'more-content', component: MoreContentComponent }
@@ -24,7 +26,7 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forChild(routes)
   ]
 })
 export class ParentModule { }
