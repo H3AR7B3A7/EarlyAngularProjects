@@ -6,6 +6,18 @@
 ng n styleManagment --style scss --routing --inline-template
 
 ng add @angular-eslint/schematics
+
+ng g c header --skip-tests
+
+ng g m parent --routing
+
+ng g c parent --skip-tests
+
+ng g c parent/home --skip-tests
+
+ng g c parent/content --skip-tests
+
+ng g c parent/about --skip-tests
 ```
 
 ## Style Management
