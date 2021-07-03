@@ -615,6 +615,8 @@ We can also make changes to the default package.json & README.md here:
 C:\Users\<User>\AppData\Roaming\npm\node_modules\@angular\cli\node_modules\@schematics\angular\workspace\files
 ```
 
+_My global files are included in this project as an example, feel free to take a look and copy or modify them to your needs._
+
 ## Components
 
 ### Create a Component
