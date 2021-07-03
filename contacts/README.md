@@ -2,7 +2,6 @@
 
 Frontend for a contact manager application. Backend implementation can be found [here](https://github.com/H3AR7B3A7/ContactManagerBackend).
 
-
 ## Third Party Libraries
 
 ### JWT-decode
@@ -27,8 +26,6 @@ In angular.json:
 
 > npm i @ng-bootstrap/ng-bootstrap@11.0.0-beta.1 --force
 
-
-
-
 ---
-*Work in progress...*
+
+Date of creation: 6-11-2021

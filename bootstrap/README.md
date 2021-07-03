@@ -30,3 +30,7 @@ We can find more documentation on all HTML events [here](https://developer.mozil
 - ngOnDestroy()
 
 We can find more ong lifecycle hooks [here](https://angular.io/guide/lifecycle-hooks).
+
+---
+
+Date of creation: 6-27-2021

@@ -39,3 +39,7 @@ ng g s logger --project my-Logger
 
 ng build my-logger
 ```
+
+---
+
+Date of creation: 7-2-2021
