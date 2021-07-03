@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoggerService } from 'my-logger';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Routing';
+
+  constructor(
+    private logger: LoggerService
+  ) {
+    this.logger.log('Hello Library!')
+  }
 }

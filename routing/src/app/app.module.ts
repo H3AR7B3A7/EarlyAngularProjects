@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ParentModule } from './parent/parent.module';
 import { LoginComponent } from './login/login.component';
+import { MyLoggerModule } from 'my-logger';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ParentModule
+    ParentModule,
+    MyLoggerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
