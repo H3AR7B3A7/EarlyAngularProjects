@@ -609,6 +609,12 @@ We can:
 - Create additional file structures we always want to be present in our projects
 - ...
 
+We can also make changes to the default package.json & README.md here:
+
+```
+C:\Users\<User>\AppData\Roaming\npm\node_modules\@angular\cli\node_modules\@schematics\angular\workspace\files
+```
+
 ## Components
 
 ### Create a Component
