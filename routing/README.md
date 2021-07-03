@@ -1,4 +1,4 @@
-# Routing & Guards
+# Routing, Guards & Libraries
 
 Examples of:
 
@@ -6,7 +6,7 @@ Examples of:
 - Nested Routing & Router Outlets
 - Routing Guard (Login Authentication)
 
-## CLI Commands Used
+## CLI Commands for Routing
 
 ```
 ng n routing --style css --routing
@@ -28,4 +28,14 @@ ng g c parent/more-content --skip-tests
 ng g g login/auth --skip-tests
 
 ng g s login/login --skip-tests
+```
+
+## CLI Commands for Library
+
+```
+ng g library my-logger
+
+ng g s logger --project my-Logger
+
+ng build my-logger
 ```

@@ -1108,6 +1108,10 @@ _We can also easily add some retry logic._
 - Unsubscribe from observables manually
 - Use the _async_ pipe
 
+## Libraries
+
+> ng g library name
+
 ## Testing
 
 ### Testing With(out) Testbed
