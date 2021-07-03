@@ -1110,7 +1110,21 @@ _We can also easily add some retry logic._
 
 ## Libraries
 
-> ng g library name
+To create a library:
+
+> ng g library libraryName
+
+To add components to our library:
+
+> ng g c name --project libraryName
+
+We should not forget to build our library:
+
+> ng build libraryName
+
+To add 3d party libraries or our own previously created ones:
+
+> ng add libraryName
 
 ## Testing
 
