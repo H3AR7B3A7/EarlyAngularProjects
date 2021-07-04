@@ -3,12 +3,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-parent',
   template: `
-    <ul>
-      <li><a [routerLink]="['/']">Home</a></li>
-      <li><a [routerLink]="['/content']">Content</a></li>
-      <li><a [routerLink]="['/about']">About</a></li>
+  <div class="content">
+    <ul class="nav">
+      <a [routerLink]="['/']"><li>Home</li></a>
+      <a [routerLink]="['/content']"><li>Content</li></a>
+      <a [routerLink]="['/about']"><li>About</li></a>
     </ul>
-    <router-outlet></router-outlet>
+    <router-outlet class="content"></router-outlet>
+  </div>
   `,
   styleUrls: ['./parent.component.scss']
 })
