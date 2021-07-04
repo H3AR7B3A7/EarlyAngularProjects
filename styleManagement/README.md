@@ -184,6 +184,8 @@ a:hover {
 }
 ```
 
+We can find some advanced examples [here](https://github.com/pluralsight-styling-angular-apps/demos-v2/tree/module-04-15).
+
 ---
 
 Date of creation: 7-3-2021
