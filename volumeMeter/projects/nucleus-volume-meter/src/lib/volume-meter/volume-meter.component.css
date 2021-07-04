@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.crop {
+  overflow: hidden;
+  position: relative;
+  height: 100px;
+  max-height: 70px;
+}
+
+.img {
+  bottom: 0;
+  position: absolute;
+}
