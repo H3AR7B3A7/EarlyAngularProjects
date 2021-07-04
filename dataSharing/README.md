@@ -41,7 +41,7 @@ We can also bind our elements to functions through events to affect the componen
 In some.component.ts:
 
 ```
-someFunction: void {
+someFunction(): void {
   // Do something...
 }
 ```
@@ -49,7 +49,7 @@ someFunction: void {
 Template:
 
 ```
-<element (event)="someFunction">
+<element (event)="someFunction()">
 ```
 
 ### Two way data binding
@@ -68,15 +68,50 @@ Template:
 <input [(ngModel)]="name">
 ```
 
-We can find more on two-way binding [here](https://angular.io/guide/two-way-binding).
+We can find more on two-way data binding [here](https://angular.io/guide/two-way-binding).
 
 ## Communication Between Components
 
-### Parent to Child
+### Parent to Child with Input
+
+In parent.component.ts:
+
+```
+someValue = "Data passed to child"
+```
+
+Parent template:
+
+```
+<app-child [someInput]="someValue"></app-child>
+```
+
+In child.component.ts:
+
+```
+@Input someInput : any
+```
+
+### Parent to Child with Template Variables
+
+In parent template:
+
+```
+<app-child #someTemplateVariable></app-child>
+<element (click)="someTemplateVariable.someFunction("New value")">Click Me</element>
+```
+
+In child.component.ts:
+
+```
+someFunction(value: string) : void {
+  // Do something...
+}
+```
 
 ### Child to Parent with ViewChild
 
-### Child to Parent with EventEmitter
+### Child to Parent with EventEmitter & Output
 
 ### Unrelated Components with a Service
 
