@@ -162,6 +162,54 @@ handleSomeEvent(event: any): void {
 
 ### Unrelated Components with a Service
 
+We can also use a data service bound to root to share data between unrelated components.
+
+In service:
+
+```
+private sharedValue = new BehaviorSubject('')
+currentSharedValue = this.sharedValue.asObservable()
+
+changeSharedValue(newValue: string) {
+  this.sharedValue.next(newValue)
+}
+```
+
+Component changing data:
+
+```
+constructor(
+  private dataService: DataService
+) { }
+
+changeSharedData(): void {
+  this.dataService.changeSharedValue('New Shared Data')
+}
+```
+
+Component reading shared data:
+
+```
+value = 'Old Value'
+subscription!: Subscription;
+
+constructor(
+  private dataService: DataService
+) { }
+
+ngOnInit() {
+  this.subscription = this.dataService.currentSharedValue.subscribe(newValue => {
+    this.value = newValue
+  })
+}
+
+ngOnDestroy() {
+  this.subscription.unsubscribe()
+}
+```
+
+### More Examples
+
 We can find more examples [here](https://fireship.io/lessons/sharing-data-between-angular-components-four-methods/).
 
 ---
