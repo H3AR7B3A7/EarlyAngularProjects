@@ -1,8 +1,30 @@
 <div style="text-align: center" class="content">
   <h1>Welcome to {{ title }}!</h1>
 </div>
-<button (click)="myFunction()">Change Title</button>
+
+<h3>Parent:</h3>
+
+<button (click)="myFunction()">Change Parent Title</button>
+
 <br />
+
 Change the title to: <input type="text" [(ngModel)]="title" />
-<app-first-child></app-first-child>
-<app-second-child></app-second-child>
+
+<br />
+
+<button
+  (click)="myTemplateVariable.setTitle('Title changed with template variable')"
+>
+  Change Title In Second Child
+</button>
+
+<br />
+
+<app-first-child
+  [newTitle]="childTitleFromParent"
+  (eventClick)="handleEventClick($event)"
+></app-first-child>
+
+<br />
+
+<app-second-child #myTemplateVariable></app-second-child>

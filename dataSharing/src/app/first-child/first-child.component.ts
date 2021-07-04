@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-first-child',
   templateUrl: './first-child.component.html',
   styleUrls: ['./first-child.component.scss']
 })
-export class FirstChildComponent implements OnInit {
+export class FirstChildComponent {
 
-  constructor() { }
+  @Input() newTitle: any
 
-  ngOnInit(): void {
+  @Output() eventClick = new EventEmitter
+
+  handleClick(): void {
+    this.eventClick.emit('Title Set By Child')
   }
 
 }
