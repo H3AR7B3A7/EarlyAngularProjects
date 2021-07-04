@@ -1,6 +1,8 @@
-<div style="text-align:center" class="content">
-  <h1>
-	Welcome to {{ title }}!
-  </h1>
+<div style="text-align: center" class="content">
+  <h1>Welcome to {{ title }}!</h1>
 </div>
-<router-outlet></router-outlet>
+<button (click)="myFunction()">Change Title</button>
+<br />
+Change the title to: <input type="text" [(ngModel)]="title" />
+<app-first-child></app-first-child>
+<app-second-child></app-second-child>

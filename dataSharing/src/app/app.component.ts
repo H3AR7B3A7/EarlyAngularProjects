@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dataSharing';
+
+  myFunction(): void {
+    this.title = 'Data Sharing'
+  }
 }
