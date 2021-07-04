@@ -8,9 +8,13 @@ import { Component } from '@angular/core';
 export class SecondChildComponent {
 
   title = ''
+  parentTitle = "Title Set 'AfterViewInit' By: Second Child";
 
   setTitle(newTitle: string) {
     this.title = newTitle
   }
 
+  changeParentTitle(): void {
+    this.parentTitle = 'Title Changed By Second Child'
+  }
 }
