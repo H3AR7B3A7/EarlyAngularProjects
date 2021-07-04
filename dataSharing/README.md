@@ -109,9 +109,56 @@ someFunction(value: string) : void {
 }
 ```
 
+_We don't need to bind to functions, we can bind to variables in the child component in exactly the same way._
+
 ### Child to Parent with ViewChild
 
+In parent.component.ts:
+
+```
+export class AppComponent implements AfterViewInit {
+  value = 'My Value';
+
+  @ViewChild(SecondChildComponent) someChild!: any
+
+  ngAfterViewInit(): void {
+    this.value = this.someChild.someValue
+  }
+```
+
+In child.component.ts:
+
+```
+someValue = 'New Value'
+```
+
+_This value is only read 'AfterViewInit'. The parent would need some sort of event to update the value when it gets changed in the child component._
+
 ### Child to Parent with EventEmitter & Output
+
+In child.component.ts:
+
+```
+@Output() someEvent = new EventEmitter
+
+someFunction(): void {
+  this.someEvent.emit('Some data...')
+}
+```
+
+In parent template:
+
+```
+<app-child (someEvent)="handleSomeEvent($event)"></app-child>
+```
+
+In parent.component.ts:
+
+```
+handleSomeEvent(event: any): void {
+  // Do something
+}
+```
 
 ### Unrelated Components with a Service
 
