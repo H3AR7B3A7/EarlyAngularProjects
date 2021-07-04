@@ -57,9 +57,11 @@ This way we do not have to include the path when importing a stylesheet:
 
 ## Naming Conventions
 
-BEM (Block Element Modifier) is a methodology that helps you to create reusable components and code sharing in front-end development.
+**BEM** (Block Element Modifier) is a highly useful, powerful, and simple naming convention that makes your front-end code easier to read and understand, easier to work with, easier to scale, more robust and explicit, and a lot more strict. It is a methodology that helps you to create reusable components and code sharing in front-end development.
 
-- We should **classes** to style our elements
+**SMACSS** is another way to examine your design process and a way to fit those rigid frameworks into a flexible thought process. It is an attempt to document a consistent approach to site development when using CSS.
+
+- We should use **classes** to style our elements
 - We should (try to) not override styles
 
 ## CSS
