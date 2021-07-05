@@ -14,6 +14,6 @@ export class VolumeMeterComponent {
   cropHeight: number = 0
 
   ngOnChanges(): void {
-    this.cropHeight = this.volume
+    this.cropHeight = this.volume / 100 * this.size
   }
 }
