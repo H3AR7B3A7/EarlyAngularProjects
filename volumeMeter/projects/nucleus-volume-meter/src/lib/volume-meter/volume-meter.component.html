@@ -1,9 +1,9 @@
-<div class="container" style="height: 100px">
+<div [style.height.px]="size" [style.transform]="'translateY(' + size + 'px)'">
   <div
     class="crop"
     [style.height.px]="cropHeight"
     [style.transform]="'translateY(-' + cropHeight + 'px)'"
   >
-    <img class="img" [src]="path" alt="volume-meter" />
+    <img class="img" [src]="path" [style.height.px]="size" alt="volume-meter" />
   </div>
 </div>

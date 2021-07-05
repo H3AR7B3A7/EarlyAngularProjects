@@ -7,10 +7,11 @@ import { Component, Input } from '@angular/core';
 })
 export class VolumeMeterComponent {
 
+  @Input() size!: number
   @Input() volume!: number
   @Input() path!: string
 
-  cropHeight: number = 100
+  cropHeight: number = 0
 
   ngOnChanges(): void {
     this.cropHeight = this.volume

@@ -1,12 +1,5 @@
-.container {
-  max-height: 80px;
-  height: 80px;
-}
-
 .crop {
   overflow: hidden;
-  position: relative;
-  max-height: 80px;
 }
 
 .img {
