@@ -1,0 +1,9 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.img {
+  bottom: 0;
+  position: absolute;
+}

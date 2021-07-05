@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { VolumeMeterComponent } from 'projects/nucleus-volume-meter/src/public-api';
-
-
-
-
+import { VolumeMeterAltComponent, VolumeMeterComponent } from 'projects/nucleus-volume-meter/src/public-api';
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VolumeMeterComponent
+    VolumeMeterComponent,
+    VolumeMeterAltComponent
   ],
   imports: [
     BrowserModule

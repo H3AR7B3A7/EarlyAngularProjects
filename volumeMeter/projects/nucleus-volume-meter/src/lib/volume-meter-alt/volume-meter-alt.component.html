@@ -1,0 +1,17 @@
+<div
+  [style.height.px]="size * multiplier"
+  [style.transform]="'translateY(' + size * multiplier + 'px)'"
+>
+  <div
+    class="wrapper"
+    [style.width.px]="size * multiplier"
+    [style.transform]="'translateY(-' + size / multiplier + 'px)'"
+  >
+    <img
+      class="img"
+      [src]="path"
+      [style.width.px]="(volume * size * multiplier) / 100"
+      alt="volume-meter"
+    />
+  </div>
+</div>
