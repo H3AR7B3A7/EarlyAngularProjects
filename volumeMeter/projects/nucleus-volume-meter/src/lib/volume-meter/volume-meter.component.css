@@ -1,13 +1,12 @@
-* {
-  margin: 0;
-  padding: 0;
+.container {
+  max-height: 80px;
+  height: 80px;
 }
 
 .crop {
   overflow: hidden;
   position: relative;
-  height: 100px;
-  max-height: 70px;
+  max-height: 80px;
 }
 
 .img {
