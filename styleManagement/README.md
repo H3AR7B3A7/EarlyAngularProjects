@@ -188,6 +188,93 @@ a:hover {
 
 We can find some advanced examples [here](https://github.com/pluralsight-styling-angular-apps/demos-v2/tree/module-04-15).
 
+## Conditional Styling
+
+### Using [class]
+
+In template:
+
+```
+[class.green]="event.time === '9:00 PM'"
+```
+
+In stylesheet:
+
+```
+.green{
+  color: green;
+}
+```
+
+### Using [ngClass]
+
+In template:
+
+```
+[ngClass]="{ blue: event.time === '7:00 PM' }"
+[ngClass]="getClass(event)"
+```
+
+In component.ts:
+
+```
+getClass(event: Event) {
+  const isAtEight = event.time === '8:00 PM'
+  return { bold: isAtEight }
+}
+```
+
+Or:
+
+```
+getClass(event: Event) {
+  if(event.time === '8:00 PM')
+    return 'green bold'
+  return ''
+}
+```
+
+Or:
+
+```
+getClass(event: Event) {
+  if(event.time === '8:00 PM')
+    return ['green', 'bold']
+  return []
+}
+```
+
+_We can pass it an object inline, or return it with a function._
+
+### Using [style]
+
+In template:
+
+```
+[style.color]="'red'"
+```
+
+### Using [ngStyle]
+
+In template:
+
+```
+[ngStyle]="{ 'font-style': event.time === '7:00 PM' ? 'italic' : 'normal' }"
+[ngStyle]="getStyle()"
+```
+
+In component.ts:
+
+```
+getStyle() : any {
+  if(event.time === '7:00 PM')
+    return { 'font-style': 'italic', 'font-weight': 'bold' }
+  return {}
+}
+```
+
+_We need to use any as return type because the objects returned have different members._
+
 ---
 
 Date of creation: 7-3-2021

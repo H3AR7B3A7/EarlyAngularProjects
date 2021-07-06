@@ -1,0 +1,16 @@
+<div
+  [class.green]="event.time === '9:00 PM'"
+  [ngClass]="{ blue: event.time === '7:00 PM' }"
+  [ngClass]="getClass(event)"
+  [ngStyle]="{ 'font-weight': event.time === '7:00 PM' ? 'bold' : 'normal' }"
+  [ngStyle]="{ 'font-style': event.time === '7:00 PM' ? 'italic' : 'normal' }"
+  *ngFor="let event of events"
+  class="container"
+>
+  <!-- The last [class] / [ngClass] / [ngStyle] wins ! -->
+  <h2>{{ event.name }}</h2>
+  <p *ngIf="event.time">Time: {{ event.time }}</p>
+  <p [style.color]="'red'" [style.font-weight]="'bold'" *ngIf="!event.time">
+    Timing of the event unknown...
+  </p>
+</div>
