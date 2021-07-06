@@ -1,11 +1,8 @@
-<div
-  [style.height.px]="size * multiplier"
-  [style.transform]="'translateY(' + size * multiplier + 'px)'"
->
+<div>
   <div
     class="wrapper"
     [style.width.px]="size * multiplier"
-    [style.transform]="'translateY(-' + size / multiplier + 'px)'"
+    [style.height.px]="size * multiplier"
   >
     <img
       class="img"
