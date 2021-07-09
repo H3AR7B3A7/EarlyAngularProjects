@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-header',
   template: `
-    <p class="header">
+    <h1 class="header">
       My Header
-    </p>
+    </h1>
   `,
   styleUrls: ['./header.component.scss']
 })
