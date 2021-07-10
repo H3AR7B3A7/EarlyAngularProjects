@@ -1,4 +1,4 @@
-# TemplateForms
+# Template Forms
 
 Template forms, while easy to use, are not testable in our unit tests.
 
