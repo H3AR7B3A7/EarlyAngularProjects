@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   profileForm!: FormGroup
 
   ngOnInit(): void {
-    this.firstName = new FormControl("John", Validators.required)
+    this.firstName = new FormControl("John", [Validators.required, Validators.pattern('[a-zA-Z].*')])
     this.lastName = new FormControl("Doe", Validators.required)
     this.profileForm = new FormGroup({
       firstName: this.firstName,

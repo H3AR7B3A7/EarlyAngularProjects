@@ -15,7 +15,20 @@
         }"
       >
         <label for="firstName">First Name</label>
-        <em *ngIf="!validateFirstName()">Required</em>
+        <em
+          *ngIf="
+            !validateFirstName() &&
+            profileForm.controls.firstName.errors?.required
+          "
+          >Required</em
+        >
+        <em
+          *ngIf="
+            !validateFirstName() &&
+            profileForm.controls.firstName.errors?.pattern
+          "
+          >Must start with a letter</em
+        >
         <input
           formControlName="firstName"
           type="text"
