@@ -1,0 +1,30 @@
+form div {
+  text-align: left;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+em {
+  float: right;
+  color: #e05c65;
+  padding-left: 10px;
+}
+
+.error input {
+  background-color: #e3c3c5;
+}
+
+.error {
+  & ::-webkit-input-placeholder {
+    color: #999;
+  }
+  & ::-moz-placeholder {
+    color: #999;
+  }
+  & :-moz-placeholder {
+    color: #999;
+  }
+  & :-ms-input-placeholder {
+    color: #999;
+  }
+}
