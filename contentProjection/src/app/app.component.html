@@ -2,7 +2,7 @@
   <h1>Welcome to {{ title }}!</h1>
 
   <div class="row" *ngFor="let topic of topics">
-    <div class="col-md-10">
+    <div class="col-md-4">
       <app-collapsible [title]="topic.title">
         <h6>{{ topic.author }}</h6>
         <p>

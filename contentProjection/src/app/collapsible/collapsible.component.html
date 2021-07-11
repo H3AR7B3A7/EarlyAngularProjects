@@ -1,1 +1,4 @@
-<p>collapsible works!</p>
+<div (click)="toggleContent()" class="collapsible pointable">
+  <h4 class="collapsible-title">{{ title }}</h4>
+  <ng-content *ngIf="visible" class="collapsible-content"></ng-content>
+</div>
