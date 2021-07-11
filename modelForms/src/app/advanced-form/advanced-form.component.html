@@ -1,7 +1,7 @@
 <div style="text-align: center" class="content">
   <h1>Welcome to {{ title }}!</h1>
   <hr />
-  <div class="col-md-4 content">
+  <div class="col-md-12 content">
     <form
       [formGroup]="profileForm"
       autocomplete="off"
@@ -34,7 +34,7 @@
           type="text"
           id="firstName"
           class="form-control"
-          placeholder="Last Name..."
+          placeholder="First Name..."
         />
       </div>
       <div
@@ -53,6 +53,69 @@
           placeholder="Last Name..."
         />
       </div>
+
+      <div formGroupName="address">
+        <div class="form-group">
+          <label for="street">Street</label>
+          <input
+            formControlName="street"
+            type="text"
+            id="street"
+            class="form-control"
+            placeholder="Street..."
+          />
+        </div>
+        <div class="form-group">
+          <label for="number">Number</label>
+          <input
+            formControlName="number"
+            type="text"
+            id="number"
+            class="form-control"
+            placeholder="#..."
+          />
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input
+            formControlName="city"
+            type="text"
+            id="city"
+            class="form-control"
+            placeholder="City..."
+          />
+        </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <input
+            formControlName="country"
+            type="text"
+            id="country"
+            class="form-control"
+            placeholder="Country..."
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="about">About</label>
+        <textarea
+          formControlName="about"
+          id="about"
+          class="form-control"
+          placeholder="About..."
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="image">Image</label>
+        <input
+          formControlName="img"
+          type="text"
+          id="img"
+          class="form-control"
+          placeholder="Image..."
+        />
+      </div>
+
       <button type="submit" class="btn btn-primary">Save</button>
       <button type="button" class="btn btn-default" (click)="cancel()">
         Cancel

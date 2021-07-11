@@ -1,6 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
+interface Address {
+  street: string,
+  number: string,
+  city: string,
+  country: string
+}
+
+interface Profile {
+  firstName: string,
+  lastName: string,
+  address: Address,
+  about?: string,
+  img?: string
+}
 
 @Component({
   selector: 'app-advanced-form',
@@ -12,39 +26,72 @@ export class AdvancedFormComponent implements OnInit {
 
   private firstName!: FormControl
   private lastName!: FormControl
+  private street!: FormControl
+  private number!: FormControl
+  private city!: FormControl
+  private country!: FormControl
+  private about?: FormControl
+  private img?: FormControl
 
   profileForm!: FormGroup
+  address!: FormGroup
 
   constructor(
-    private router: Router
+    private _fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    this.firstName = new FormControl("John", [Validators.required, Validators.pattern('[a-zA-Z].*')])
-    this.lastName = new FormControl("Doe", Validators.required)
-    this.profileForm = new FormGroup({
-      firstName: this.firstName,
-      lastName: this.lastName
+    // THE LONG WAY
+    // this.firstName = new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z].*')])
+    // this.lastName = new FormControl('', Validators.required)
+    // this.street = new FormControl('', Validators.required)
+    // this.number = new FormControl('', Validators.required)
+    // this.city = new FormControl('', Validators.required)
+    // this.country = new FormControl('', Validators.required)
+    // this.about = new FormControl('')
+    // this.img = new FormControl('')
+    // this.profileForm = new FormGroup({
+    //   firstName: this.firstName,
+    //   lastName: this.lastName,
+    //   address: new FormGroup({
+    //     street: this.street,
+    //     number: this.number,
+    //     city: this.city,
+    //     country: this.country
+    //   }),
+    //   about: this.about,
+    //   img: this.img
+    // })
+
+    this.profileForm = this._fb.group({
+      firstName: ['', [Validators.required, Validators.pattern('[a-zA-Z].*')]],
+      lastName: ['', Validators.required],
+      address: this._fb.group({
+        street: ['', Validators.required],
+        number: ['', Validators.required],
+        city: ['', Validators.required],
+        country: ['', Validators.required]
+      }),
+      about: ['', Validators.required],
+      img: ['', Validators.required]
     })
   }
 
   cancel() {
-    this.router.navigate(['/advanced'])
+    console.log('Cancelled')
   }
 
   saveProfile(value: any) {
-    if (this.profileForm.valid) {
-      console.log('saved: ' + value.firstName + ' ' + value.lastName)
-    } else {
-      console.log('not valid')
-    }
+
+    console.log('saved: ' + JSON.stringify(this.profileForm.value))
+
   }
 
   validateFirstName() {
-    return this.firstName.valid || this.firstName.untouched
+    return true // this.firstName.valid || this.firstName.untouched
   }
 
   validateLastName() {
-    return this.lastName.valid || this.lastName.untouched
+    return true // this.lastName.valid || this.lastName.untouched
   }
 }
