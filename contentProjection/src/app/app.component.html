@@ -5,11 +5,11 @@
     <div class="col-md-4">
       <app-collapsible>
         <div title>
-          {{ topic.title }}
+          {{ topic.title | uppercase }}
           <i *ngIf="topic.hyped" class="glyphicon glyphicon-fire"></i>
         </div>
         <div body>
-          <h6>{{ topic.author }}</h6>
+          <h6>{{ topic.author | uppercase }}</h6>
           <p>
             {{ topic.content }}
           </p>
