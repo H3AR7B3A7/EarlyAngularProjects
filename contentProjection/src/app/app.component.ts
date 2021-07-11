@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 interface Topic {
   title: string,
   author: string,
-  content: string
+  content: string,
+  hyped: boolean
 }
 
 @Component({
@@ -18,22 +19,26 @@ export class AppComponent {
     {
       title: 'First',
       author: 'Some author',
-      content: 'Some content'
+      content: 'Some content',
+      hyped: true
     },
     {
       title: 'Second',
       author: 'Some author',
-      content: 'Some content'
+      content: 'Some content',
+      hyped: true
     },
     {
       title: 'Third',
       author: 'Some author',
-      content: 'Some content'
+      content: 'Some content',
+      hyped: false
     },
     {
       title: 'Fourth',
       author: 'Some author',
-      content: 'Some content'
+      content: 'Some content',
+      hyped: false
     },
   ]
 }
