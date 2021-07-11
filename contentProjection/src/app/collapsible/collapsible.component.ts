@@ -6,8 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./collapsible.component.scss']
 })
 export class CollapsibleComponent {
-
-  @Input() title!: string
   visible = false
 
   toggleContent() {
