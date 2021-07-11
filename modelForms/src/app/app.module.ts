@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { AdvancedFormComponent } from './advanced-form/advanced-form.component';
-import { SimpleFormComponent } from './simple-form/simple-form.component';
+import { AppComponent, SimpleFormComponent, AdvancedFormComponent } from '../app/index';
 
 const routes: Routes = [
   { path: 'advanced', component: AdvancedFormComponent },
