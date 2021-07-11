@@ -1,0 +1,14 @@
+<div style="text-align: center" class="content">
+  <h1>Welcome to {{ title }}!</h1>
+
+  <div class="row" *ngFor="let topic of topics">
+    <div class="col-md-10">
+      <app-collapsible [title]="topic.title">
+        <h6>{{ topic.author }}</h6>
+        <p>
+          {{ topic.content }}
+        </p>
+      </app-collapsible>
+    </div>
+  </div>
+</div>
