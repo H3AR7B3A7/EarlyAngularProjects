@@ -10,24 +10,21 @@
     >
       <div
         class="form-group"
-        [ngClass]="{
-          error: !validateFirstName()
-        }"
+        [ngClass]="{ error: firstName.invalid && firstName.dirty }"
       >
         <label for="firstName">First Name</label>
         <em
           *ngIf="
-            !validateFirstName() &&
-            profileForm.controls.firstName.errors?.required
+            firstName?.invalid &&
+            ((firstName?.dirty && firstName?.errors?.required) || mouseOverSave)
           "
           >Required</em
         >
         <em
           *ngIf="
-            !validateFirstName() &&
-            profileForm.controls.firstName.errors?.pattern
+            firstName?.invalid && firstName?.dirty && firstName?.errors?.pattern
           "
-          >Must start with a letter</em
+          >Should start with a letter</em
         >
         <input
           formControlName="firstName"
@@ -39,12 +36,12 @@
       </div>
       <div
         class="form-group"
-        [ngClass]="{
-          error: !validateLastName()
-        }"
+        [ngClass]="{ error: lastName.invalid && lastName.dirty }"
       >
         <label for="lastName">Last Name</label>
-        <em *ngIf="!validateLastName()">Required</em>
+        <em *ngIf="lastName?.invalid && (lastName?.dirty || mouseOverSave)"
+          >Required</em
+        >
         <input
           formControlName="lastName"
           type="text"
@@ -55,8 +52,14 @@
       </div>
 
       <div formGroupName="address">
-        <div class="form-group">
+        <div
+          class="form-group"
+          [ngClass]="{ error: street.invalid && street.dirty }"
+        >
           <label for="street">Street</label>
+          <em *ngIf="street?.invalid && (street?.dirty || mouseOverSave)"
+            >Required</em
+          >
           <input
             formControlName="street"
             type="text"
@@ -65,8 +68,14 @@
             placeholder="Street..."
           />
         </div>
-        <div class="form-group">
+        <div
+          class="form-group"
+          [ngClass]="{ error: number.invalid && number.dirty }"
+        >
           <label for="number">Number</label>
+          <em *ngIf="number?.invalid && (number?.dirty || mouseOverSave)"
+            >Required</em
+          >
           <input
             formControlName="number"
             type="text"
@@ -75,8 +84,14 @@
             placeholder="#..."
           />
         </div>
-        <div class="form-group">
+        <div
+          class="form-group"
+          [ngClass]="{ error: city.invalid && city.dirty }"
+        >
           <label for="city">City</label>
+          <em *ngIf="city?.invalid && (city?.dirty || mouseOverSave)"
+            >Required</em
+          >
           <input
             formControlName="city"
             type="text"
@@ -85,8 +100,14 @@
             placeholder="City..."
           />
         </div>
-        <div class="form-group">
+        <div
+          class="form-group"
+          [ngClass]="{ error: country.invalid && country.dirty }"
+        >
           <label for="country">Country</label>
+          <em *ngIf="country?.invalid && (country?.dirty || mouseOverSave)"
+            >Required</em
+          >
           <input
             formControlName="country"
             type="text"
@@ -96,8 +117,18 @@
           />
         </div>
       </div>
-      <div class="form-group">
+      <div
+        class="form-group"
+        [ngClass]="{ error: about?.invalid && about?.dirty }"
+      >
         <label for="about">About</label>
+        <em
+          *ngIf="
+            about?.invalid &&
+            ((about?.dirty && about?.errors?.maxlength) || mouseOverSave)
+          "
+          >Can't have more than 200 chars</em
+        >
         <textarea
           formControlName="about"
           id="about"
@@ -116,10 +147,28 @@
         />
       </div>
 
-      <button type="submit" class="btn btn-primary">Save</button>
+      <span
+        (mouseenter)="mouseOverSave = true"
+        (mouseleave)="mouseOverSave = false"
+      >
+        <button
+          [ngClass]="{ formInvalid: profileForm.invalid && mouseOverSave }"
+          type="submit"
+          class="btn btn-primary"
+        >
+          Save
+        </button>
+      </span>
       <button type="button" class="btn btn-default" (click)="cancel()">
         Cancel
       </button>
     </form>
   </div>
+  <img
+    *ngIf="
+      profileForm.controls.img.valid && profileForm.controls.img.value != ''
+    "
+    [src]="profileForm.controls.img.value"
+    alt="img"
+  />
 </div>
