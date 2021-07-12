@@ -3,8 +3,8 @@
   <button class="button">Sort</button>
   <button class="button">Filter</button>
   <div class="pirate" *ngFor="let pirate of pirates">
-    <h3>{{ pirate.name }}</h3>
-    <h5>{{ pirate.position }}</h5>
-    <p>{{ pirate.date }}</p>
+    <h3>{{ pirate.name | uppercase }}</h3>
+    <h5>{{ pirate.position | position | titlecase }}</h5>
+    <p>{{ pirate.date | date }}</p>
   </div>
 </div>
