@@ -62,6 +62,7 @@ export class AppComponent {
 
   filterPirates(position: 0 | 1 | 2 | 3) {
     this.filteredBy = position
+    this.sortedBy = undefined
     if (position == 0) {
       this.filteredPirates = this.pirates
     } else {
