@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'filterAndSort';
+  filteredBy: 0 | 1 | 2 | 3 = 0
+  sortedBy: 'name' | 'date' | undefined
 
   pirates = [
     {
@@ -55,4 +57,36 @@ export class AppComponent {
       date: new Date("2004-11-03"),
     },
   ]
+
+  filteredPirates = [...this.pirates]
+
+  filterPirates(position: 0 | 1 | 2 | 3) {
+    this.filteredBy = position
+    if (position == 0) {
+      this.filteredPirates = this.pirates
+    } else {
+      this.filteredPirates = this.pirates.filter(p => p.position == position)
+    }
+  }
+
+  sortPirates(value: 'name' | 'date') {
+    this.sortedBy = value
+    if (value == 'name') {
+      this.filteredPirates = this.filteredPirates.sort((p1, p2) => sortByNameAsc(p1, p2))
+    } else {
+      this.filteredPirates.sort((p1, p2) => sortByDateDesc(p1, p2))
+    }
+  }
+}
+
+function sortByNameAsc(p1: any, p2: any): any {
+  if (p1.name > p2.name) return 1
+  else if (p1.name === p2.name) return 0
+  else return -1
+}
+
+function sortByDateDesc(p1: any, p2: any) {
+  if (p1.date < p2.date) return 1
+  else if (p1.date === p2.date) return 0
+  else return -1
 }

@@ -1,8 +1,54 @@
 <div style="text-align: center" class="content">
   <h1>Welcome to {{ title }}!</h1>
-  <button class="button">Sort</button>
-  <button class="button">Filter</button>
-  <div class="pirate" *ngFor="let pirate of pirates">
+  Filter by:
+  <div class="filter">
+    <button
+      (click)="filterPirates(0)"
+      class="button"
+      [ngClass]="{ selected: filteredBy == 0 }"
+    >
+      All
+    </button>
+    <button
+      (click)="filterPirates(1)"
+      class="button"
+      [ngClass]="{ selected: filteredBy == 1 }"
+    >
+      Leader
+    </button>
+    <button
+      (click)="filterPirates(2)"
+      class="button"
+      [ngClass]="{ selected: filteredBy == 2 }"
+    >
+      Fighter
+    </button>
+    <button
+      (click)="filterPirates(3)"
+      class="button"
+      [ngClass]="{ selected: filteredBy == 3 }"
+    >
+      Shipmate
+    </button>
+  </div>
+  Sort by:
+  <div class="sort">
+    <button
+      (click)="sortPirates('name')"
+      class="button"
+      [ngClass]="{ selected: sortedBy == 'name' }"
+    >
+      Name
+    </button>
+    <button
+      (click)="sortPirates('date')"
+      class="button"
+      [ngClass]="{ selected: sortedBy == 'date' }"
+    >
+      Date
+    </button>
+  </div>
+  <div class="pirate" *ngFor="let pirate of filteredPirates">
     <h3>{{ pirate.name | uppercase }}</h3>
     <h5>{{ pirate.position | position | titlecase }}</h5>
     <p>{{ pirate.date | date }}</p>

@@ -3,12 +3,25 @@
   background-color: goldenrod;
   color: white;
   padding: 0.5rem;
-  margin: 0.5rem;
   cursor: pointer;
 
   &:hover {
     background-color: darkgoldenrod;
   }
+}
+
+.selected {
+  background-color: darkgoldenrod;
+}
+
+.filter {
+  display: inline-block;
+  margin: 0.5rem;
+}
+
+.sort {
+  display: inline-block;
+  margin: 0.5rem;
 }
 
 .pirate {
