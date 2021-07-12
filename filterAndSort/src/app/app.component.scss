@@ -1,0 +1,19 @@
+.button {
+  border-style: none;
+  background-color: goldenrod;
+  color: white;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darkgoldenrod;
+  }
+}
+
+.pirate {
+  border: 1px solid goldenrod;
+  margin: 1rem;
+  border-radius: 10px;
+  background-color: lightgoldenrodyellow;
+}

@@ -1,5 +1,10 @@
-<div style="text-align:center" class="content">
-  <h1>
-	Welcome to {{ title }}!
-  </h1>
+<div style="text-align: center" class="content">
+  <h1>Welcome to {{ title }}!</h1>
+  <button class="button">Sort</button>
+  <button class="button">Filter</button>
+  <div class="pirate" *ngFor="let pirate of pirates">
+    <h3>{{ pirate.name }}</h3>
+    <h5>{{ pirate.position }}</h5>
+    <p>{{ pirate.date }}</p>
+  </div>
 </div>
