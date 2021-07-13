@@ -1,0 +1,17 @@
+content {
+}
+
+button {
+  display: block;
+  margin: 5px auto 5px;
+  width: 10rem;
+  padding: 5px;
+  background-color: rebeccapurple;
+  color: white;
+  border: none;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: purple;
+  }
+}

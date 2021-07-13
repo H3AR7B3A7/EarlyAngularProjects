@@ -1,5 +1,7 @@
-<div style="text-align:center" class="content">
-  <h1>
-	Welcome to {{ title }}!
-  </h1>
+<div style="text-align: center" class="content">
+  <h1>Welcome to {{ title }}!</h1>
+  <button (click)="successToast()">Success</button>
+  <button (click)="infoToast()">Info</button>
+  <button (click)="warningToast()">Warning</button>
+  <button (click)="clearToasts()">Clear</button>
 </div>
