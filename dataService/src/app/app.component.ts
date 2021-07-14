@@ -11,6 +11,7 @@ import { TodoService } from './todo.service'
 export class AppComponent implements OnInit, OnDestroy {
   title = 'dataService'
   todos!: Todo[]
+  todos2!: Todo[]
   subscription!: Subscription
 
   constructor(
@@ -23,6 +24,11 @@ export class AppComponent implements OnInit, OnDestroy {
       data => this.todos = data
     )
     this.todoService.loadAll()
+
+    this.todoService.todos2.subscribe(
+      data => this.todos2 = data
+    )
+    this.todoService.loadAll2()
   }
 
   ngOnDestroy() {
@@ -31,5 +37,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   add(): void {
     this.todoService.addOne()
+  }
+
+  add2(): void {
+    this.todoService.addOne2()
   }
 }
