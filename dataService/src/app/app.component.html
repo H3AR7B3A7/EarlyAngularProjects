@@ -1,0 +1,8 @@
+<div style="text-align: center" class="content">
+  <h1>Welcome to {{ title }}!</h1>
+  <div *ngFor="let todo of todos">
+    <h2>{{ todo.title }}</h2>
+    <p>{{ todo.completed }}</p>
+  </div>
+  <button (click)="add()">Add One</button>
+</div>
