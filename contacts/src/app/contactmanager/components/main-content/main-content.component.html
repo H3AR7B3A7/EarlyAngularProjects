@@ -1,13 +1,9 @@
 <mat-card class="logo" *ngIf="(contacts$ | async)?.length == 0">
   <mat-icon color="primary" inline="true">people_outline</mat-icon>
 </mat-card>
+
 <div [hidden]="(contacts$ | async)?.length == 0">
   <h1 id="listTitle">{{ title }}</h1>
-  <!-- <mat-selection-list>
-    <mat-list-option *ngFor="let contact of contacts$ | async">
-      {{ contact.name }} | {{ contact.email }} | {{ contact.number }}
-    </mat-list-option>
-  </mat-selection-list> -->
 
   <mat-form-field class="search">
     <mat-label>Search...</mat-label>
