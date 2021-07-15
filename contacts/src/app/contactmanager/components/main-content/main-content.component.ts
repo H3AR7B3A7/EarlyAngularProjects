@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Contact } from '../../models/Contact';
 import { AuthService } from '../../services/auth.service';
 import { ContactService } from '../../services/contact.service';
@@ -32,6 +32,8 @@ export class MainContentComponent implements OnInit {
 
   contactToDelete?: number
 
+  contactSubscription!: Subscription
+
   constructor(
     private route: ActivatedRoute,
     private contactService: ContactService,
@@ -45,12 +47,15 @@ export class MainContentComponent implements OnInit {
   ngOnInit(): void {
     this.auth.checkLoggedInStatus()
 
-    this.contacts$ = this.contactService.contacts
-    this.contacts$.subscribe(data => {
+    this.contactService.contacts.subscribe(data => {
       this.contacts = new MatTableDataSource<Contact>(data)
       this.contacts.sort = this.sort
       this.contacts.paginator = this.paginator
     })
+  }
+
+  ngOnDestroy(): void {
+    this.contactSubscription.unsubscribe()
   }
 
   applyFilter(event: Event) {
@@ -66,7 +71,7 @@ export class MainContentComponent implements OnInit {
         this.currentListId = listId
         this.contactService.loadContacts(listId)
 
-        this.title = this.contactService.dataStore.contactLists.find(v => v.id == listId)?.name || 'Contacts'
+        this.title = this.contacts.data.find(v => v.id == listId)?.name || 'Contacts'
       }
     })
   }
@@ -83,7 +88,6 @@ export class MainContentComponent implements OnInit {
 
   deleteContact() {
     this.contactService.deleteContact(this.contactToDelete!)
-    window.location.reload()
   }
 
   private getDismissReason(reason: any): string {

@@ -6,7 +6,6 @@ import { ContactList } from '../../models/ContactList';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
-import { max } from 'rxjs/operators';
 import { FormControl, Validators } from '@angular/forms';
 
 const SMALL_WIDTH_BREAKPOINT = 720
@@ -22,7 +21,7 @@ export class SidenavComponent implements OnInit {
 
   public isScreenSmall!: boolean;
 
-  contactLists$!: Observable<ContactList[]>
+  contactLists: ContactList[] = []
 
   closeModal: string | undefined
   isDarkTheme!: boolean
@@ -44,7 +43,9 @@ export class SidenavComponent implements OnInit {
         this.isScreenSmall = state.matches
       })
 
-    this.contactLists$ = this.contactService.contactLists
+    this.contactService.contactLists.subscribe(data => {
+      this.contactLists = data
+    })
 
     let data: any = null
     if (data = window.sessionStorage.getItem('auth-object')) {
@@ -82,7 +83,7 @@ export class SidenavComponent implements OnInit {
     this.form.userId = JSON.parse(sessionStorage.getItem('auth-object')!).id
     this.contactService.addContactList(this.form)
     // this.modalService.dismissAll()
-    window.location.reload() // TODO: Find cleaner way
+    // window.location.reload() // TODO: Find cleaner way
   }
 
   name = new FormControl('', [Validators.required])

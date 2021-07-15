@@ -24,7 +24,9 @@ export class ToolbarComponent implements OnInit {
     private contactService: ContactService,
     private modalService: NgbModal,
     private router: Router
-  ) {
+  ) { }
+
+  ngOnInit(): void {
     this.router.events
       .pipe(
         filter(e => (e instanceof ActivationEnd) && (Object.keys(e.snapshot.params).length > 0)),
@@ -33,9 +35,6 @@ export class ToolbarComponent implements OnInit {
       .subscribe(params => {
         this.currentListId = params['id']
       });
-  }
-
-  ngOnInit(): void {
   }
 
   openDeleteListModal(content: any): void {
@@ -50,7 +49,6 @@ export class ToolbarComponent implements OnInit {
   deleteList(): void {
     console.warn(this.currentListId)
     this.contactService.deleteContactList(this.currentListId)
-    window.location.reload() // TODO: Find cleaner way
   }
 
   createNewContactModal(content: any) {
@@ -73,11 +71,8 @@ export class ToolbarComponent implements OnInit {
   }
 
   addContact(): void {
-    console.warn(this.currentListId)
     this.form.contactListId = this.currentListId
-    console.warn(this.form)
     this.contactService.addContact(this.form)
-    window.location.reload()
   }
 
   name = new FormControl('', [Validators.required])
