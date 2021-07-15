@@ -21,6 +21,13 @@ export class ContactService {
 
   constructor(private http: HttpClient) { }
 
+
+  // CONTACT LISTS
+
+  get contactLists(): Observable<ContactList[]> {
+    return this._contactLists.asObservable()
+  }
+
   loadContactLists(userId: number) {
     this.http.get<ContactList[]>(API + 'lists/' + userId)
       .subscribe(data => {
@@ -31,16 +38,11 @@ export class ContactService {
       })
   }
 
-  get contactLists(): Observable<ContactList[]> {
-    return this._contactLists.asObservable()
-  }
-
   addContactList(contactList: ContactList) {
     this.http.post<ContactList>(API + 'lists/', contactList)
       .subscribe((data: ContactList) => {
         console.warn(data)
         this.dataStore.contactLists.push(data)
-        // this._contactLists.next(Object.assign({}, this.dataStore).contactLists) // ???
       }, error => {
         console.warn("Failed to add list!")
       })
@@ -54,11 +56,16 @@ export class ContactService {
             this.dataStore.contactLists.splice(i, 1);
           }
         })
-        this._contactLists.next(Object.assign({}, this.dataStore).contactLists) // ???
+        // this._contactLists.next(Object.assign({}, this.dataStore).contactLists) // ???
       })
   }
 
 
+  // CONTACTS
+
+  get contacts(): Observable<Contact[]> {
+    return this._contacts.asObservable()
+  }
 
   loadContacts(listId: number) {
     this.http.get<Contact[]>(API + listId)
@@ -70,15 +77,10 @@ export class ContactService {
       })
   }
 
-  get contacts(): Observable<Contact[]> {
-    return this._contacts.asObservable()
-  }
-
   addContact(contact: Contact) {
     this.http.post<Contact>(API, contact)
       .subscribe(data => {
         this.dataStore.contacts.push(data)
-        this._contacts.next(Object.assign({}, this.dataStore).contacts) // ???
       }, error => {
         console.warn("Failed to add contact!")
       })
@@ -92,7 +94,6 @@ export class ContactService {
             this.dataStore.contacts.splice(i, 1);
           }
         })
-        this._contacts.next(Object.assign({}, this.dataStore).contacts)  // ???
       })
   }
 }
