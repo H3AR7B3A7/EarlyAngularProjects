@@ -21,9 +21,10 @@ export class MainContentComponent implements OnInit {
   contacts$?: Observable<Contact[]>
 
   currentListId: number = 0
+  currentParam: number = 0
 
   displayedColumns: string[] = ['name', 'email', 'number', 'delete']
-  contacts!: MatTableDataSource<Contact>
+  contacts: MatTableDataSource<Contact> = new MatTableDataSource<Contact>()
 
   title: string = 'Contacts'
 
@@ -65,13 +66,13 @@ export class MainContentComponent implements OnInit {
 
   private loadContactsForList() {
     this.route.params.subscribe(params => {
-      const listId = params['id']
+      this.currentParam = params['id']
 
-      if (listId != this.currentListId && listId != null) {
-        this.currentListId = listId
-        this.contactService.loadContacts(listId)
+      if (this.currentParam != this.currentListId && this.currentParam != null) {
+        this.currentListId = this.currentParam
+        this.contactService.loadContacts(this.currentParam)
 
-        this.title = this.contactService.dataStore.contactLists.find(v => v.id == listId)?.name || 'Contacts'
+        this.title = this.contactService.dataStore.contactLists.find(v => v.id == this.currentParam)?.name || 'Contacts'
       }
     })
   }

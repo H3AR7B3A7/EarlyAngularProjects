@@ -81,6 +81,7 @@ export class ContactService {
     this.http.post<Contact>(API, contact)
       .subscribe(data => {
         this.dataStore.contacts.push(data)
+        this._contacts.next(Object.assign({}, this.dataStore).contacts);
       }, error => {
         console.warn("Failed to add contact!")
       })
@@ -94,6 +95,7 @@ export class ContactService {
             this.dataStore.contacts.splice(i, 1);
           }
         })
+        this._contacts.next(Object.assign({}, this.dataStore).contacts);
       }, error => {
         console.warn("Failed to delete contact!")
       })
