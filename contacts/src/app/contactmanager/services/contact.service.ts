@@ -32,7 +32,7 @@ export class ContactService {
     this.http.get<ContactList[]>(API + 'lists/' + userId)
       .subscribe(data => {
         this.dataStore.contactLists = data
-        this._contactLists.next(Object.assign({}, this.dataStore).contactLists) // ???
+        this._contactLists.next(Object.assign({}, this.dataStore).contactLists)
       }, error => {
         console.warn("Failed to fetch contact lists!")
       })
@@ -41,7 +41,6 @@ export class ContactService {
   addContactList(contactList: ContactList) {
     this.http.post<ContactList>(API + 'lists/', contactList)
       .subscribe((data: ContactList) => {
-        console.warn(data)
         this.dataStore.contactLists.push(data)
       }, error => {
         console.warn("Failed to add list!")
@@ -56,7 +55,8 @@ export class ContactService {
             this.dataStore.contactLists.splice(i, 1);
           }
         })
-        // this._contactLists.next(Object.assign({}, this.dataStore).contactLists) // ???
+      }, error => {
+        console.warn("Failed to delete contact list!")
       })
   }
 
@@ -71,7 +71,7 @@ export class ContactService {
     this.http.get<Contact[]>(API + listId)
       .subscribe(data => {
         this.dataStore.contacts = data
-        this._contacts.next(Object.assign({}, this.dataStore).contacts) // ???
+        this._contacts.next(Object.assign({}, this.dataStore).contacts)
       }, error => {
         console.warn("Failed to fetch contacts!")
       })
@@ -94,6 +94,8 @@ export class ContactService {
             this.dataStore.contacts.splice(i, 1);
           }
         })
+      }, error => {
+        console.warn("Failed to delete contact!")
       })
   }
 }
