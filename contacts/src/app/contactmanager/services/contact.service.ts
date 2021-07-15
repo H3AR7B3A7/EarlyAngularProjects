@@ -14,7 +14,7 @@ export class ContactService {
   private _contactLists: BehaviorSubject<ContactList[]> = new BehaviorSubject<ContactList[]>([])
   private _contacts: BehaviorSubject<Contact[]> = new BehaviorSubject<Contact[]>([])
 
-  private dataStore: {
+  dataStore: {
     contacts: Contact[],
     contactLists: ContactList[]
   } = { contacts: [], contactLists: [] }

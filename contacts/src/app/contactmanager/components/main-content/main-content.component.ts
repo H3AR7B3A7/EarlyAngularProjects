@@ -71,7 +71,7 @@ export class MainContentComponent implements OnInit {
         this.currentListId = listId
         this.contactService.loadContacts(listId)
 
-        this.title = this.contacts.data.find(v => v.id == listId)?.name || 'Contacts'
+        this.title = this.contactService.dataStore.contactLists.find(v => v.id == listId)?.name || 'Contacts'
       }
     })
   }

@@ -47,7 +47,6 @@ export class ToolbarComponent implements OnInit {
   }
 
   deleteList(): void {
-    console.warn(this.currentListId)
     this.contactService.deleteContactList(this.currentListId)
   }
 
