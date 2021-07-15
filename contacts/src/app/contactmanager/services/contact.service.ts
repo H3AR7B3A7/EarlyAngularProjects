@@ -50,8 +50,8 @@ export class ContactService {
     this.http.delete<ContactList[]>(API + 'delete/lists/' + listId)
       .subscribe(() => {
         this.dataStore.contactLists.forEach((c, i) => {
-          if (c.id = listId) {
-            this.dataStore.contactLists.splice(i, i - 1);
+          if (c.id == listId) {
+            this.dataStore.contactLists.splice(i, 1);
           }
         })
         this._contactLists.next(Object.assign({}, this.dataStore).contactLists) // ???
@@ -76,9 +76,9 @@ export class ContactService {
 
   addContact(contact: Contact) {
     this.http.post<Contact>(API, contact)
-      .subscribe(() => {
-        this.dataStore.contacts.push(contact)
-        // this._contacts.next(Object.assign({}, this.dataStore).contacts) // ???
+      .subscribe(data => {
+        this.dataStore.contacts.push(data)
+        this._contacts.next(Object.assign({}, this.dataStore).contacts) // ???
       }, error => {
         console.warn("Failed to add contact!")
       })
@@ -87,12 +87,12 @@ export class ContactService {
   deleteContact(contactId: number) {
     this.http.delete<Contact[]>(API + 'delete/' + contactId)
       .subscribe(() => {
-        delete this.dataStore.contacts[contactId]
-        // this._contacts.next(Object.assign({}, this.dataStore).contacts)  // ???
-        // const index = this.dataStore.contacts.indexOf(this.dataStore.contacts[contactId], 0)
-        // if (index > -1) {
-        //   this.dataStore.contacts.splice(index, 1)
-        // }
+        this.dataStore.contacts.forEach((c, i) => {
+          if (c.id == contactId) {
+            this.dataStore.contacts.splice(i, 1);
+          }
+        })
+        this._contacts.next(Object.assign({}, this.dataStore).contacts)  // ???
       })
   }
 }
