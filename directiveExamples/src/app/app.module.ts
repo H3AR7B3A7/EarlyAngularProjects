@@ -3,11 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HoldableDirective } from './holdable.directive';
+import { CustomStyleDirective } from './custom-style.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HoldableDirective
+    HoldableDirective,
+    CustomStyleDirective
   ],
   imports: [
     BrowserModule
