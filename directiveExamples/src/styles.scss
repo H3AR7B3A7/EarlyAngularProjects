@@ -1,2 +1,9 @@
 @import "default-styles/_normalize";
 @import "default-styles/_root";
+
+body {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}

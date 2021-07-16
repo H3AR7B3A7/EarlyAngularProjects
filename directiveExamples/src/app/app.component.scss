@@ -1,0 +1,36 @@
+button {
+  justify-content: center;
+  display: block;
+  background-color: rebeccapurple;
+  color: white;
+  border: none;
+  padding: 5px;
+  width: 5rem;
+  border-radius: 10px;
+  margin: 10px auto;
+
+  &:hover {
+    background-color: palevioletred;
+  }
+}
+
+progress {
+  background: purple;
+  border-radius: 10px;
+  height: 10px;
+
+  &::-webkit-progress-bar {
+    background: rebeccapurple;
+    border-radius: 10px;
+  }
+  &::-webkit-progress-value {
+    background: palevioletred;
+    transition: 0.1s all ease;
+    border-radius: 10px;
+    height: 10px;
+  }
+}
+
+.warning {
+  color: palevioletred;
+}
