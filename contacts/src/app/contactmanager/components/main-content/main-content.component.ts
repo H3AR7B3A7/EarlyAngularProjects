@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -14,11 +14,9 @@ import { ContactService } from '../../services/contact.service';
   templateUrl: './main-content.component.html',
   styleUrls: ['./main-content.component.scss']
 })
-export class MainContentComponent implements OnInit {
+export class MainContentComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
-  contacts$?: Observable<Contact[]>
 
   currentListId: number = 0
   currentParam: number = 0
@@ -56,7 +54,9 @@ export class MainContentComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.contactSubscription.unsubscribe()
+    if (this.contactSubscription != undefined) {
+      this.contactSubscription.unsubscribe()
+    }
   }
 
   applyFilter(event: Event) {

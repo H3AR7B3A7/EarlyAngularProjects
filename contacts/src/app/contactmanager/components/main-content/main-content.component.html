@@ -1,8 +1,8 @@
-<mat-card class="logo" *ngIf="(contacts$ | async)?.length == 0">
+<mat-card class="logo" *ngIf="contacts.data?.length === 0">
   <mat-icon color="primary" inline="true">people_outline</mat-icon>
 </mat-card>
 
-<div [hidden]="(contacts$ | async)?.length == 0">
+<div [hidden]="contacts.data?.length === 0">
   <h1 id="listTitle">{{ title }}</h1>
 
   <mat-form-field class="search">

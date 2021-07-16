@@ -48,6 +48,7 @@ export class ToolbarComponent implements OnInit {
 
   deleteList(): void {
     this.contactService.deleteContactList(this.currentListId)
+    this.router.navigate(['/contacts'])
   }
 
   createNewContactModal(content: any) {

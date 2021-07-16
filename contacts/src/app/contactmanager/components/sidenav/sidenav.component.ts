@@ -78,9 +78,11 @@ export class SidenavComponent implements OnInit {
     }
   }
 
-  addNewList() {
+  async addNewList() {
     this.form.userId = JSON.parse(sessionStorage.getItem('auth-object')!).id
     this.contactService.addContactList(this.form)
+    this.router.navigate(['/contacts/'])
+    // TODO: Find way to navigate to new id
   }
 
   name = new FormControl('', [Validators.required])
