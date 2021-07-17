@@ -7,8 +7,6 @@ import { FormGroup, ValidationErrors, Validator, NG_VALIDATORS } from '@angular/
 })
 export class AboutOrImageValidator implements Validator {
 
-  constructor() { }
-
   validate(formGroup: FormGroup): ValidationErrors | null {
     let aboutControl = formGroup.controls['about']
     let imgControl = (<FormGroup>formGroup.root).controls['img']
@@ -19,5 +17,4 @@ export class AboutOrImageValidator implements Validator {
 
     return { validateAboutOrImage: false }
   }
-
 }
