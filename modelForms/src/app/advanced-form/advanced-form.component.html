@@ -3,6 +3,7 @@
   <hr />
   <div class="col-md-12 content">
     <form
+      validate-about-or-image
       [formGroup]="profileForm"
       autocomplete="off"
       novalidate
@@ -155,6 +156,7 @@
           [ngClass]="{ formInvalid: profileForm.invalid && mouseOverSave }"
           type="submit"
           class="btn btn-primary"
+          [disabled]="profileForm.invalid"
         >
           Save
         </button>

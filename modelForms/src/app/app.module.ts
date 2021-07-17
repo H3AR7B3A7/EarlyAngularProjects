@@ -4,6 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent, SimpleFormComponent, AdvancedFormComponent } from '../app/index';
+import { AboutOrImageValidator } from './advanced-form/validate-about-or-image.directive';
 
 const routes: Routes = [
   { path: 'advanced', component: AdvancedFormComponent },
@@ -14,7 +15,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     AdvancedFormComponent,
-    SimpleFormComponent
+    SimpleFormComponent,
+    AboutOrImageValidator
   ],
   imports: [
     BrowserModule,
