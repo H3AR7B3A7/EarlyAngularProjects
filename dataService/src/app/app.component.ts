@@ -13,6 +13,7 @@ export class AppComponent implements OnInit, OnDestroy {
   todos!: Todo[]
   todos2!: Todo[]
   subscription!: Subscription
+  subscription2!: Subscription
 
   constructor(
     private todoService: TodoService
@@ -20,12 +21,12 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    this.todoService.todos.subscribe(
+    this.subscription = this.todoService.todos.subscribe(
       data => this.todos = data
     )
     this.todoService.loadAll()
 
-    this.todoService.todos2.subscribe(
+    this.subscription2 = this.todoService.todos2.subscribe(
       data => this.todos2 = data
     )
     this.todoService.loadAll2()
@@ -33,6 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe()
+    this.subscription2.unsubscribe()
   }
 
   add(): void {
