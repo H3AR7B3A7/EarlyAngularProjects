@@ -81,6 +81,10 @@ To add packages we use:
 
 > yarn add packageName
 
+To find out why a package exists on your project:
+
+> yarn why packageName
+
 # Typescript
 
 [Official Typescript pages](https://www.typescriptlang.org/)
