@@ -27,8 +27,8 @@ import { Error404Component } from './errors/404.component'
 import { AuthService } from './user/auth.service'
 
 
-let toastr:Toastr = window['toastr'];
-let jQuery = window['$'];
+const toastr: Toastr = window['toastr']
+const jQuery = window['$']
 
 @NgModule({
   imports: [
@@ -56,24 +56,25 @@ let jQuery = window['$'];
     DurationPipe
   ],
   providers: [
-    EventService, 
-    { provide: TOASTR_TOKEN, useValue: toastr}, 
-    { provide: JQ_TOKEN, useValue: jQuery}, 
+    EventService,
+    { provide: TOASTR_TOKEN, useValue: toastr },
+    { provide: JQ_TOKEN, useValue: jQuery },
     EventResolver,
     EventListResolver,
     AuthService,
     VoterService,
-    { 
-      provide: 'canDeactivateCreateEvent', 
-      useValue: checkDirtyState 
+    {
+      provide: 'canDeactivateCreateEvent',
+      useValue: checkDirtyState
     }
   ],
   bootstrap: [EventsAppComponent]
 })
-export class AppModule {}
+export class AppModule { }
 
-export function checkDirtyState(component:CreateEventComponent) {
-  if (component.isDirty)
+export function checkDirtyState(component: CreateEventComponent): boolean {
+  if (component.isDirty) {
     return window.confirm('You have not saved this event, do you really want to cancel?')
+  }
   return true
 }

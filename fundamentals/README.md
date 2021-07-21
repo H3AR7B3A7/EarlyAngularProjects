@@ -11,3 +11,9 @@ Start the server:
 Serve the application:
 
 > npm start
+
+## Login Info
+
+Username: johnpapa
+
+Password: password

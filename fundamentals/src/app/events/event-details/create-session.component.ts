@@ -25,7 +25,7 @@ export class CreateSessionComponent implements OnInit {
   level: FormControl
   abstract: FormControl
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.name = new FormControl('', Validators.required)
     this.presenter = new FormControl('', Validators.required)
     this.duration = new FormControl('', Validators.required)
@@ -41,8 +41,8 @@ export class CreateSessionComponent implements OnInit {
     })
   }
 
-  saveSession(formValues) {
-    let session:ISession = {
+  saveSession(formValues): void {
+    const session: ISession = {
       id: undefined,
       name: formValues.name,
       duration: +formValues.duration,
@@ -54,7 +54,7 @@ export class CreateSessionComponent implements OnInit {
     this.saveNewSession.emit(session)
   }
 
-  cancel() {
+  cancel(): void {
     this.cancelAddSession.emit()
   }
 }
