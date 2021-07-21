@@ -1208,6 +1208,46 @@ Or don't edit browsers array and run individually:
 > ng test --browsers Edge  
 > ng test --browsers Firefox
 
+### General Concepts
+
+- Tests
+  - Unit Tests
+    - Isolated Unit Tests
+    - Integrated Unit Tests (including template)
+      - Shallow Test
+      - Deep Tests (including children)
+  - End-to-end Tests
+- AAA
+  - Arrange
+  - Act
+  - Assert
+- Mocking
+  - Mocking objects to mimic their behavior without their full functionality
+
+### Jasmine
+
+Jasmine is the default unit testing framework in Angular.
+
+Main functions:
+
+- describe()
+- beforeEach()
+- it()
+- expect()
+  - Matchers
+    - toBe()
+    - toContain()
+    - toBeDefined()
+
+### Karma
+
+Karma is the command line test runner. It can launch multiple browsers to run our tests depending on how it is configured.
+
+### Protractor
+
+Protractor was the default end-to-end testing framework in Angular, up until Angular 12.
+It is no longer recommended or even included, because there are better third party alternatives.
+
 ## Testing with Other Frameworks
 
 ### Jest
