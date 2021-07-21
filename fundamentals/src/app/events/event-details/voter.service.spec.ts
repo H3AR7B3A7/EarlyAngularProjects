@@ -6,7 +6,7 @@ import { VoterService } from './voter.service'
 
 describe('VoterService', () => {
   let voterService: VoterService
-  let mockHttp: HttpClient
+  let mockHttp: jasmine.SpyObj<HttpClient>
 
   beforeEach(() => {
     mockHttp = jasmine.createSpyObj('mockHttp', ['delete', 'post'])
