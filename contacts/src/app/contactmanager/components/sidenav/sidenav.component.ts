@@ -1,11 +1,11 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core'
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout'
-import { ContactService } from '../../services/contact.service';
-import { ContactList } from '../../models/ContactList';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from '@angular/router';
-import { MatSidenav } from '@angular/material/sidenav';
-import { FormControl, Validators } from '@angular/forms';
+import { ContactService } from '../../services/contact.service'
+import { ContactList } from '../../models/ContactList'
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import { Router } from '@angular/router'
+import { MatSidenav } from '@angular/material/sidenav'
+import { FormControl, Validators } from '@angular/forms'
 
 const SMALL_WIDTH_BREAKPOINT = 720
 
@@ -62,19 +62,19 @@ export class SidenavComponent implements OnInit {
   createNewListModal(content: any) {
     this.isDarkTheme = localStorage.getItem('theme') == 'dark' ? true : false
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
-      this.closeModal = `Closed with: ${res}`;
+      this.closeModal = `Closed with: ${res}`
     }, (res) => {
-      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
-    });
+      this.closeModal = `Dismissed ${this.getDismissReason(res)}`
+    })
   }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return 'by pressing ESC'
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+      return 'by clicking on a backdrop'
     } else {
-      return `with: ${reason}`;
+      return `with: ${reason}`
     }
   }
 

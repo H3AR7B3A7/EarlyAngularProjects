@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core'
 import { ActivationEnd, Router } from '@angular/router'
 import { ContactService } from '../../services/contact.service'
-import { filter, map } from 'rxjs/operators';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormControl, Validators } from '@angular/forms';
+import { filter, map } from 'rxjs/operators'
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import { FormControl, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-toolbar',
@@ -34,16 +34,16 @@ export class ToolbarComponent implements OnInit {
       )
       .subscribe(params => {
         this.currentListId = params['id']
-      });
+      })
   }
 
   openDeleteListModal(content: any): void {
     this.isDarkTheme = localStorage.getItem('theme') == 'dark' ? true : false
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
-      this.closeModal = `Closed with: ${res}`;
+      this.closeModal = `Closed with: ${res}`
     }, (res) => {
-      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
-    });
+      this.closeModal = `Dismissed ${this.getDismissReason(res)}`
+    })
   }
 
   deleteList(): void {
@@ -54,19 +54,19 @@ export class ToolbarComponent implements OnInit {
   createNewContactModal(content: any) {
     this.isDarkTheme = localStorage.getItem('theme') == 'dark' ? true : false
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
-      this.closeModal = `Closed with: ${res}`;
+      this.closeModal = `Closed with: ${res}`
     }, (res) => {
-      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
-    });
+      this.closeModal = `Dismissed ${this.getDismissReason(res)}`
+    })
   }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return 'by pressing ESC'
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+      return 'by clicking on a backdrop'
     } else {
-      return `with: ${reason}`;
+      return `with: ${reason}`
     }
   }
 

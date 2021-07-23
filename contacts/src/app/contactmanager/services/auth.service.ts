@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders, HttpXhrBackend } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import jwt_decode from 'jwt-decode';
+import { HttpClient, HttpHeaders, HttpXhrBackend } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { Router } from '@angular/router'
+import jwt_decode from 'jwt-decode'
 
 const AUTH_API = 'http://localhost:8080/api/auth/'
 const httpOptions = {
@@ -57,10 +57,10 @@ export class AuthService {
   private decodedJwt(): any {
     let jwt = JSON.parse(sessionStorage.getItem('auth-object')!)
     try {
-      return jwt_decode(jwt.token);
+      return jwt_decode(jwt.token)
     }
     catch (Error) {
-      return null;
+      return null
     }
   }
 }

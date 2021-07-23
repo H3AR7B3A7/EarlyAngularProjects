@@ -1,13 +1,13 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Observable, Subscription } from 'rxjs';
-import { Contact } from '../../models/Contact';
-import { AuthService } from '../../services/auth.service';
-import { ContactService } from '../../services/contact.service';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core'
+import { MatPaginator } from '@angular/material/paginator'
+import { MatSort } from '@angular/material/sort'
+import { MatTableDataSource } from '@angular/material/table'
+import { ActivatedRoute, Router } from '@angular/router'
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import { Observable, Subscription } from 'rxjs'
+import { Contact } from '../../models/Contact'
+import { AuthService } from '../../services/auth.service'
+import { ContactService } from '../../services/contact.service'
 
 @Component({
   selector: 'app-main-content',
@@ -60,8 +60,8 @@ export class MainContentComponent implements OnInit, OnDestroy {
   }
 
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.contacts.filter = filterValue.trim().toLowerCase();
+    const filterValue = (event.target as HTMLInputElement).value
+    this.contacts.filter = filterValue.trim().toLowerCase()
   }
 
   private loadContactsForList() {
@@ -81,10 +81,10 @@ export class MainContentComponent implements OnInit, OnDestroy {
     this.contactToDelete = contactToDelete
     this.isDarkTheme = localStorage.getItem('theme') == 'dark' ? true : false
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
-      this.closeModal = `Closed with: ${res}`;
+      this.closeModal = `Closed with: ${res}`
     }, (res) => {
-      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
-    });
+      this.closeModal = `Dismissed ${this.getDismissReason(res)}`
+    })
   }
 
   deleteContact() {
@@ -93,11 +93,11 @@ export class MainContentComponent implements OnInit, OnDestroy {
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return 'by pressing ESC'
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+      return 'by clicking on a backdrop'
     } else {
-      return `with: ${reason}`;
+      return `with: ${reason}`
     }
   }
 }
