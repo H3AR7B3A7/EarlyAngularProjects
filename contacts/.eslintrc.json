@@ -37,7 +37,17 @@
       "rules": {}
     }
   ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "rules": {
     "semi": ["error", "never"]
+  },
+  "env": {
+    "jasmine": true,
+    "browser": true,
+    "node": true
   }
 }

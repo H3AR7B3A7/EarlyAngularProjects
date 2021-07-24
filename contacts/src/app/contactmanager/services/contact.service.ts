@@ -28,26 +28,26 @@ export class ContactService {
     return this._contactLists.asObservable()
   }
 
-  loadContactLists(userId: number) {
+  loadContactLists(userId: number): void {
     this.http.get<ContactList[]>(API + 'lists/' + userId)
       .subscribe(data => {
         this.dataStore.contactLists = data
         this._contactLists.next(Object.assign({}, this.dataStore).contactLists)
-      }, error => {
+      }, () => {
         console.warn("Failed to fetch contact lists!")
       })
   }
 
-  addContactList(contactList: ContactList) {
+  addContactList(contactList: ContactList): void {
     this.http.post<ContactList>(API + 'lists/', contactList)
       .subscribe((data: ContactList) => {
         this.dataStore.contactLists.push(data)
-      }, error => {
+      }, () => {
         console.warn("Failed to add list!")
       })
   }
 
-  deleteContactList(listId: number) {
+  deleteContactList(listId: number): void {
     this.http.delete<ContactList[]>(API + 'delete/lists/' + listId)
       .subscribe(() => {
         this.dataStore.contactLists.forEach((c, i) => {
@@ -55,7 +55,7 @@ export class ContactService {
             this.dataStore.contactLists.splice(i, 1)
           }
         })
-      }, error => {
+      }, () => {
         console.warn("Failed to delete contact list!")
       })
   }
@@ -67,27 +67,27 @@ export class ContactService {
     return this._contacts.asObservable()
   }
 
-  loadContacts(listId: number) {
+  loadContacts(listId: number): void {
     this.http.get<Contact[]>(API + listId)
       .subscribe(data => {
         this.dataStore.contacts = data
         this._contacts.next(Object.assign({}, this.dataStore).contacts)
-      }, error => {
+      }, () => {
         console.warn("Failed to fetch contacts!")
       })
   }
 
-  addContact(contact: Contact) {
+  addContact(contact: Contact): void {
     this.http.post<Contact>(API, contact)
       .subscribe(data => {
         this.dataStore.contacts.push(data)
         this._contacts.next(Object.assign({}, this.dataStore).contacts)
-      }, error => {
+      }, () => {
         console.warn("Failed to add contact!")
       })
   }
 
-  deleteContact(contactId: number) {
+  deleteContact(contactId: number): void {
     this.http.delete<Contact[]>(API + 'delete/' + contactId)
       .subscribe(() => {
         this.dataStore.contacts.forEach((c, i) => {
@@ -96,7 +96,7 @@ export class ContactService {
           }
         })
         this._contacts.next(Object.assign({}, this.dataStore).contacts)
-      }, error => {
+      }, () => {
         console.warn("Failed to delete contact!")
       })
   }

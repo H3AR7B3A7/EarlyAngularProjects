@@ -8,15 +8,15 @@ import { AuthService } from './contactmanager/services/auth.service'
 })
 export class AppComponent implements OnInit {
   title = 'contacts'
-  isDarkTheme: boolean = false
-  direction: any = 'ltr'
-  isLoggedIn: boolean = true
+  isDarkTheme = false
+  direction: 'ltr' | 'rtl' = 'ltr'
+  isLoggedIn = true
 
   constructor(
     private auth: AuthService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.isDarkTheme = localStorage.getItem('theme') === "dark" ? true : false
     this.auth.checkLoggedInStatus()
     this.isLoggedIn = this.auth.isLoggedIn

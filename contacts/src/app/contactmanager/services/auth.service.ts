@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpXhrBackend } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
-import jwt_decode from 'jwt-decode'
+import jwt_decode, { JwtPayload } from 'jwt-decode'
 
 const AUTH_API = 'http://localhost:8080/api/auth/'
 const httpOptions = {
@@ -14,7 +14,7 @@ const http: HttpClient = new HttpClient(new HttpXhrBackend({ build: () => new XM
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedIn: boolean = false
+  isLoggedIn = false
   // jwtToken: any  // e.g. {"sub": "steven", "iat": 1624359332, "exp": 1624445732}
 
   constructor(
@@ -26,11 +26,8 @@ export class AuthService {
       username: username,
       password: password
     }, httpOptions).subscribe((data: any) => {
-      console.warn(data)
-      console.warn('Time' + Date.now() / 1000)
       window.sessionStorage.setItem('auth-object', JSON.stringify(data))
       this.isLoggedIn = true
-      // this.router.navigate(['/contacts'])
       window.location.reload() // TODO: Find cleaner way
     },
       err => {
@@ -46,21 +43,29 @@ export class AuthService {
   }
 
   checkLoggedInStatus(): void {
-    if (sessionStorage.getItem('auth-object') != null && this.decodedJwt().exp > Date.now() / 1000) {
-      this.isLoggedIn = true
-    } else {
-      this.isLoggedIn = false
-      this.router.navigate(['/contacts/login'])
+    const jwt = this.decodedJwt()
+    if (jwt) {
+      if (sessionStorage.getItem('auth-object') != null && jwt.exp as number > Date.now() / 1000) {
+        this.isLoggedIn = true
+      } else {
+        this.isLoggedIn = false
+        this.router.navigate(['/contacts/login'])
+      }
     }
   }
 
-  private decodedJwt(): any {
-    let jwt = JSON.parse(sessionStorage.getItem('auth-object')!)
-    try {
-      return jwt_decode(jwt.token)
+  private decodedJwt(): JwtPayload | null {
+    const authObject = sessionStorage.getItem('auth-object')
+    let jwt
+    if (authObject) {
+      jwt = JSON.parse(authObject)
+      try {
+        return jwt_decode(jwt.token)
+      }
+      catch (Error) {
+        return null
+      }
     }
-    catch (Error) {
-      return null
-    }
+    return null
   }
 }

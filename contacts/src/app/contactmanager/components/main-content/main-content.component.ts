@@ -1,10 +1,10 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core'
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core'
 import { MatPaginator } from '@angular/material/paginator'
 import { MatSort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table'
 import { ActivatedRoute, Router } from '@angular/router'
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap'
-import { Observable, Subscription } from 'rxjs'
+import { Subscription } from 'rxjs'
 import { Contact } from '../../models/Contact'
 import { AuthService } from '../../services/auth.service'
 import { ContactService } from '../../services/contact.service'
@@ -18,13 +18,13 @@ export class MainContentComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  currentListId: number = 0
-  currentParam: number = 0
+  currentListId = 0
+  currentParam = 0
 
   displayedColumns: string[] = ['name', 'email', 'number', 'delete']
   contacts: MatTableDataSource<Contact> = new MatTableDataSource<Contact>()
 
-  title: string = 'Contacts'
+  title = 'Contacts'
 
   closeModal: string | undefined
   isDarkTheme!: boolean
@@ -59,7 +59,7 @@ export class MainContentComponent implements OnInit, OnDestroy {
     }
   }
 
-  applyFilter(event: Event) {
+  applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value
     this.contacts.filter = filterValue.trim().toLowerCase()
   }
@@ -77,7 +77,7 @@ export class MainContentComponent implements OnInit, OnDestroy {
     })
   }
 
-  openDeleteContactModal(content: any, contactToDelete: number): void {
+  openDeleteContactModal(content: TemplateRef<unknown>, contactToDelete: number): void {
     this.contactToDelete = contactToDelete
     this.isDarkTheme = localStorage.getItem('theme') == 'dark' ? true : false
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
@@ -87,11 +87,13 @@ export class MainContentComponent implements OnInit, OnDestroy {
     })
   }
 
-  deleteContact() {
-    this.contactService.deleteContact(this.contactToDelete!)
+  deleteContact(): void {
+    if (this.contactToDelete) {
+      this.contactService.deleteContact(this.contactToDelete)
+    }
   }
 
-  private getDismissReason(reason: any): string {
+  private getDismissReason(reason: ModalDismissReasons): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC'
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {

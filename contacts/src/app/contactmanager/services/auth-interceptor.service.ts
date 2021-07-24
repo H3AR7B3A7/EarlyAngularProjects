@@ -19,8 +19,8 @@ export class AuthInterceptorService implements HttpInterceptor {
 
 
   getToken(): string {
-    let data: any = null
-    if (data = window.sessionStorage.getItem('auth-object')) {
+    let data: any = window.sessionStorage.getItem('auth-object')
+    if (data) {
       data = JSON.parse(data)
     }
     return data.token

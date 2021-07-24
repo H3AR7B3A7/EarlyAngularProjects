@@ -13,7 +13,11 @@ export class LoginComponent implements OnInit {
 
   hide = true
 
-  form: any = {}
+  form: { username: string, password: string } = {
+    username: '',
+    password: ''
+  }
+
   isLoggedIn = false
   // isLoginFailed = false
   // errorMessage = ''
@@ -42,13 +46,13 @@ export class LoginComponent implements OnInit {
 
   username = new FormControl('', [Validators.required])
 
-  getUsernameErrorMessage() {
+  getUsernameErrorMessage(): string {
     return 'You must enter a value'
   }
 
   password = new FormControl('', [Validators.required])
 
-  getPasswordErrorMessage() {
+  getPasswordErrorMessage(): string {
     return 'You must enter a value'
   }
 }

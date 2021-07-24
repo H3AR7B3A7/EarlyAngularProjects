@@ -1,9 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core'
+import { Component, OnInit, Output, EventEmitter, TemplateRef } from '@angular/core'
 import { ActivationEnd, Router } from '@angular/router'
 import { ContactService } from '../../services/contact.service'
 import { filter, map } from 'rxjs/operators'
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { FormControl, Validators } from '@angular/forms'
+import { Contact } from '../../models/Contact'
 
 @Component({
   selector: 'app-toolbar',
@@ -16,9 +17,14 @@ export class ToolbarComponent implements OnInit {
   closeModal: string | undefined
   isDarkTheme!: boolean
 
-  currentListId: number = 0
+  currentListId = 0
 
-  form: any = {}
+  form: { name: string, email: string, number: string, contactListId: number } = {
+    name: '',
+    email: '',
+    number: '',
+    contactListId: 0
+  }
 
   constructor(
     private contactService: ContactService,
@@ -37,7 +43,7 @@ export class ToolbarComponent implements OnInit {
       })
   }
 
-  openDeleteListModal(content: any): void {
+  openDeleteListModal(content: TemplateRef<unknown>): void {
     this.isDarkTheme = localStorage.getItem('theme') == 'dark' ? true : false
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
       this.closeModal = `Closed with: ${res}`
@@ -51,7 +57,7 @@ export class ToolbarComponent implements OnInit {
     this.router.navigate(['/contacts'])
   }
 
-  createNewContactModal(content: any) {
+  createNewContactModal(content: TemplateRef<unknown>): void {
     this.isDarkTheme = localStorage.getItem('theme') == 'dark' ? true : false
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
       this.closeModal = `Closed with: ${res}`
@@ -60,7 +66,7 @@ export class ToolbarComponent implements OnInit {
     })
   }
 
-  private getDismissReason(reason: any): string {
+  private getDismissReason(reason: ModalDismissReasons): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC'
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -72,18 +78,18 @@ export class ToolbarComponent implements OnInit {
 
   addContact(): void {
     this.form.contactListId = this.currentListId
-    this.contactService.addContact(this.form)
+    this.contactService.addContact(this.form as Contact)
   }
 
   name = new FormControl('', [Validators.required])
 
-  getNameErrorMessage() {
+  getNameErrorMessage(): string {
     return 'You must enter a value'
   }
 
   email = new FormControl('', [Validators.required, Validators.email])
 
-  getEmailErrorMessage() {
+  getEmailErrorMessage(): string {
     if (this.email.hasError('required')) {
       return 'You must enter a value'
     }
@@ -93,7 +99,7 @@ export class ToolbarComponent implements OnInit {
 
   number = new FormControl('', [Validators.required, Validators.pattern('[- +()0-9]+')])
 
-  getNumberErrorMessage() {
+  getNumberErrorMessage(): string {
     if (this.number.hasError('required')) {
       return 'You must enter a value'
     }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core'
+import { Component, EventEmitter, OnInit, Output, TemplateRef, ViewChild } from '@angular/core'
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout'
 import { ContactService } from '../../services/contact.service'
 import { ContactList } from '../../models/ContactList'
@@ -25,7 +25,10 @@ export class SidenavComponent implements OnInit {
   closeModal: string | undefined
   isDarkTheme!: boolean
 
-  form: any = {}
+  form: { name: string, userId: number } = {
+    name: '',
+    userId: 0
+  }
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -46,8 +49,8 @@ export class SidenavComponent implements OnInit {
       this.contactLists = data
     })
 
-    let data: any = null
-    if (data = window.sessionStorage.getItem('auth-object')) {
+    let data: any = window.sessionStorage.getItem('auth-object')
+    if (data) {
       data = JSON.parse(data)
       this.contactService.loadContactLists(data.id)
     }
@@ -59,7 +62,7 @@ export class SidenavComponent implements OnInit {
     })
   }
 
-  createNewListModal(content: any) {
+  createNewListModal(content: TemplateRef<unknown>): void {
     this.isDarkTheme = localStorage.getItem('theme') == 'dark' ? true : false
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
       this.closeModal = `Closed with: ${res}`
@@ -68,7 +71,7 @@ export class SidenavComponent implements OnInit {
     })
   }
 
-  private getDismissReason(reason: any): string {
+  private getDismissReason(reason: ModalDismissReasons): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC'
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -78,16 +81,19 @@ export class SidenavComponent implements OnInit {
     }
   }
 
-  async addNewList() {
-    this.form.userId = JSON.parse(sessionStorage.getItem('auth-object')!).id
-    this.contactService.addContactList(this.form)
+  addNewList(): void {
+    const authObject = sessionStorage.getItem('auth-object')
+    if (authObject) {
+      this.form.userId = JSON.parse(authObject).id
+    }
+    this.contactService.addContactList(this.form as ContactList)
     this.router.navigate(['/contacts/'])
     // TODO: Find way to navigate to new id
   }
 
   name = new FormControl('', [Validators.required])
 
-  getNameErrorMessage() {
+  getNameErrorMessage(): string {
     return 'You must enter a value'
   }
 }
