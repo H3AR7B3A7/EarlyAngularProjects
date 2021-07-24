@@ -4,12 +4,11 @@ import { BehaviorSubject, Observable } from 'rxjs'
 import { Contact } from '../models/Contact'
 import { ContactList } from '../models/ContactList'
 
-const API = 'http://localhost:8080/api/contacts/'
-
 @Injectable({
   providedIn: 'root'
 })
 export class ContactService {
+  readonly API = 'http://localhost:8080/api/contacts/'
 
   private _contactLists: BehaviorSubject<ContactList[]> = new BehaviorSubject<ContactList[]>([])
   private _contacts: BehaviorSubject<Contact[]> = new BehaviorSubject<Contact[]>([])
@@ -29,7 +28,7 @@ export class ContactService {
   }
 
   loadContactLists(userId: number): void {
-    this.http.get<ContactList[]>(API + 'lists/' + userId)
+    this.http.get<ContactList[]>(this.API + 'lists/' + userId)
       .subscribe(data => {
         this.dataStore.contactLists = data
         this._contactLists.next(Object.assign({}, this.dataStore).contactLists)
@@ -39,7 +38,7 @@ export class ContactService {
   }
 
   addContactList(contactList: ContactList): void {
-    this.http.post<ContactList>(API + 'lists/', contactList)
+    this.http.post<ContactList>(this.API + 'lists/', contactList)
       .subscribe((data: ContactList) => {
         this.dataStore.contactLists.push(data)
       }, () => {
@@ -48,7 +47,7 @@ export class ContactService {
   }
 
   deleteContactList(listId: number): void {
-    this.http.delete<ContactList[]>(API + 'delete/lists/' + listId)
+    this.http.delete<ContactList[]>(this.API + 'delete/lists/' + listId)
       .subscribe(() => {
         this.dataStore.contactLists.forEach((c, i) => {
           if (c.id == listId) {
@@ -68,7 +67,7 @@ export class ContactService {
   }
 
   loadContacts(listId: number): void {
-    this.http.get<Contact[]>(API + listId)
+    this.http.get<Contact[]>(this.API + listId)
       .subscribe(data => {
         this.dataStore.contacts = data
         this._contacts.next(Object.assign({}, this.dataStore).contacts)
@@ -78,7 +77,7 @@ export class ContactService {
   }
 
   addContact(contact: Contact): void {
-    this.http.post<Contact>(API, contact)
+    this.http.post<Contact>(this.API, contact)
       .subscribe(data => {
         this.dataStore.contacts.push(data)
         this._contacts.next(Object.assign({}, this.dataStore).contacts)
@@ -88,7 +87,7 @@ export class ContactService {
   }
 
   deleteContact(contactId: number): void {
-    this.http.delete<Contact[]>(API + 'delete/' + contactId)
+    this.http.delete<Contact[]>(this.API + 'delete/' + contactId)
       .subscribe(() => {
         this.dataStore.contacts.forEach((c, i) => {
           if (c.id == contactId) {
