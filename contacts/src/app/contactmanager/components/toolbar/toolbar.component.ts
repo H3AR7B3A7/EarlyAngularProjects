@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, TemplateRef } from '@angular/core'
+import { Component, EventEmitter, OnInit, Output, TemplateRef } from '@angular/core'
 import { ActivationEnd, Router } from '@angular/router'
 import { ContactService } from '../../services/contact.service'
 import { filter, map } from 'rxjs/operators'

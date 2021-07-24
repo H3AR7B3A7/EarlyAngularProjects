@@ -37,6 +37,7 @@
       "rules": {}
     }
   ],
+  "plugins": ["unused-imports"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -45,7 +46,8 @@
   "rules": {
     "semi": ["error", "never"],
     "brace-style": "error",
-    "quotes": ["error", "single"]
+    "quotes": ["error", "single"],
+    "unused-imports/no-unused-imports": "error"
   },
   "env": {
     "jasmine": true,

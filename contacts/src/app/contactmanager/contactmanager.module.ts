@@ -9,7 +9,7 @@ import { MaterialModule } from '../shared/material.module'
 import { LoginComponent } from './components/login/login.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { ContactService } from './services/contact.service'
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { AuthInterceptorService } from './services/auth-interceptor.service'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 

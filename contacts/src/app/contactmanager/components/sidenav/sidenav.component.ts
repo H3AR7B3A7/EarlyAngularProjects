@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output, TemplateRef, ViewChild } from '@angular/core'
-import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout'
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout'
 import { ContactService } from '../../services/contact.service'
 import { ContactList } from '../../models/ContactList'
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap'
