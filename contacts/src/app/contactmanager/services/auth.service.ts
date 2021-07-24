@@ -61,8 +61,7 @@ export class AuthService {
       jwt = JSON.parse(authObject)
       try {
         return jwt_decode(jwt.token)
-      }
-      catch (Error) {
+      } catch (Error) {
         return null
       }
     }
