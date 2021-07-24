@@ -1,21 +1,32 @@
 import { ContactService } from './contact.service'
 import { Contact } from '../models/Contact'
 import { ContactList } from '../models/ContactList'
-import { getTestBed, TestBed } from '@angular/core/testing'
+import { TestBed, getTestBed } from '@angular/core/testing'
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
+import { HttpClient } from '@angular/common/http'
+import { of } from 'rxjs'
 
 describe('ContactService', () => {
   let injector: TestBed
   let contactService: ContactService
+  let contactServiceMock: ContactService
   let httpMock: HttpTestingController
+  let mockHttp: unknown
 
   beforeEach(() => {
+    mockHttp = {
+      get: (x: string) => {
+        return of(CONTACT_LISTS.filter(list => list.userId === +x.substring(x.length - 1, x.length)))
+      }
+    }
+
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [ContactService]
     })
     injector = getTestBed()
     contactService = injector.inject(ContactService)
+    contactServiceMock = new ContactService(mockHttp as HttpClient)
     httpMock = injector.inject(HttpTestingController)
   })
 
@@ -32,13 +43,25 @@ describe('ContactService', () => {
       const req = httpMock.expectOne(contactService.API + 'lists/' + userId)
       expect(req.request.method).toBe('GET')
     })
+
+    it('Should populate data store', () => {
+      const userId = 1
+
+      contactServiceMock.loadContactLists(userId)
+
+      contactServiceMock.contactLists.subscribe(lists => {
+        expect(lists.length).toBe(2)
+        expect(lists).toEqual(CONTACT_LISTS.filter(list => list.userId === 1))
+        expect(contactServiceMock.dataStore.contactLists.length).toBe(2)
+      })
+    })
   })
 
   describe('addContactList', () => {
     it('Should add a ContactList', () => {
       const newList: ContactList = { id: 4, userId: 1, name: 'list4' }
 
-      contactService.addContactList(newList)
+      // contactService.addContactList(newList)
       // contactService.contactLists.subscribe(() => {
       //   expect(contactService.dataStore.contactLists.length).toBe(1)
       // })
