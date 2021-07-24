@@ -17,13 +17,13 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.isDarkTheme = localStorage.getItem('theme') === "dark" ? true : false
+    this.isDarkTheme = localStorage.getItem('theme') === 'dark' ? true : false
     this.auth.checkLoggedInStatus()
     this.isLoggedIn = this.auth.isLoggedIn
   }
 
   storeThemeSelection(): void {
-    localStorage.setItem('theme', this.isDarkTheme ? "dark" : "light")
+    localStorage.setItem('theme', this.isDarkTheme ? 'dark' : 'light')
   }
 
   logout(): void {

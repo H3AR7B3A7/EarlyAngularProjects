@@ -34,7 +34,7 @@ export class ContactService {
         this.dataStore.contactLists = data
         this._contactLists.next(Object.assign({}, this.dataStore).contactLists)
       }, () => {
-        console.warn("Failed to fetch contact lists!")
+        console.warn('Failed to fetch contact lists!')
       })
   }
 
@@ -43,7 +43,7 @@ export class ContactService {
       .subscribe((data: ContactList) => {
         this.dataStore.contactLists.push(data)
       }, () => {
-        console.warn("Failed to add list!")
+        console.warn('Failed to add list!')
       })
   }
 
@@ -56,7 +56,7 @@ export class ContactService {
           }
         })
       }, () => {
-        console.warn("Failed to delete contact list!")
+        console.warn('Failed to delete contact list!')
       })
   }
 
@@ -73,7 +73,7 @@ export class ContactService {
         this.dataStore.contacts = data
         this._contacts.next(Object.assign({}, this.dataStore).contacts)
       }, () => {
-        console.warn("Failed to fetch contacts!")
+        console.warn('Failed to fetch contacts!')
       })
   }
 
@@ -83,7 +83,7 @@ export class ContactService {
         this.dataStore.contacts.push(data)
         this._contacts.next(Object.assign({}, this.dataStore).contacts)
       }, () => {
-        console.warn("Failed to add contact!")
+        console.warn('Failed to add contact!')
       })
   }
 
@@ -97,7 +97,7 @@ export class ContactService {
         })
         this._contacts.next(Object.assign({}, this.dataStore).contacts)
       }, () => {
-        console.warn("Failed to delete contact!")
+        console.warn('Failed to delete contact!')
       })
   }
 }
