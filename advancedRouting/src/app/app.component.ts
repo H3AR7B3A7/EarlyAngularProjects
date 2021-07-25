@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
 
-import { AuthService } from './user/auth.service';
+import { AuthService } from './user/auth.service'
 
 @Component({
   selector: 'pm-root',
@@ -8,23 +8,23 @@ import { AuthService } from './user/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  pageTitle = 'Acme Product Management';
+  pageTitle = 'Acme Product Management'
 
   get isLoggedIn(): boolean {
-    return this.authService.isLoggedIn;
+    return this.authService.isLoggedIn
   }
 
   get userName(): string {
     if (this.authService.currentUser) {
-      return this.authService.currentUser.userName;
+      return this.authService.currentUser.userName
     }
-    return '';
+    return ''
   }
 
   constructor(private authService: AuthService) { }
 
   logOut(): void {
-    this.authService.logout();
-    console.log('Log out');
+    this.authService.logout()
+    console.log('Log out')
   }
 }

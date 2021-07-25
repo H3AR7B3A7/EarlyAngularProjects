@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core'
+import { Router } from '@angular/router'
 
-import { MessageService } from './message.service';
+import { MessageService } from './message.service'
 
 @Component({
   templateUrl: './message.component.html',
@@ -11,7 +11,7 @@ import { MessageService } from './message.service';
 })
 export class MessageComponent {
   get messages() {
-    return this.messageService.messages;
+    return this.messageService.messages
   }
 
   constructor(private messageService: MessageService,

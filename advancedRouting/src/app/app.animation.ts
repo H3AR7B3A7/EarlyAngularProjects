@@ -1,4 +1,4 @@
-import { trigger, animate, transition, style, group, query } from '@angular/animations';
+import { trigger, animate, transition, style, group, query } from '@angular/animations'
 
 export const slideInAnimation = trigger('slideInAnimation', [
   // Transition between any two states
@@ -19,4 +19,4 @@ export const slideInAnimation = trigger('slideInAnimation', [
       ], { optional: true })
     ])
   ])
-]);
+])

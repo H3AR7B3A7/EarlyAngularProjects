@@ -1,43 +1,43 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 
-import { User } from './user';
-import { MessageService } from '../messages/message.service';
+import { User } from './user'
+import { MessageService } from '../messages/message.service'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  currentUser: User;
+  currentUser: User
 
   get isLoggedIn(): boolean {
-    return !!this.currentUser;
+    return !!this.currentUser
   }
 
   constructor(private messageService: MessageService) { }
 
   login(userName: string, password: string): void {
     if (!userName || !password) {
-      this.messageService.addMessage('Please enter your userName and password');
-      return;
+      this.messageService.addMessage('Please enter your userName and password')
+      return
     }
     if (userName === 'admin') {
       this.currentUser = {
         id: 1,
-        userName: userName,
+        userName,
         isAdmin: true
-      };
-      this.messageService.addMessage('Admin login');
-      return;
+      }
+      this.messageService.addMessage('Admin login')
+      return
     }
     this.currentUser = {
       id: 2,
-      userName: userName,
+      userName,
       isAdmin: false
-    };
-    this.messageService.addMessage(`User: ${this.currentUser.userName} logged in`);
+    }
+    this.messageService.addMessage(`User: ${this.currentUser.userName} logged in`)
   }
 
   logout(): void {
-    this.currentUser = null;
+    this.currentUser = null
   }
 }
