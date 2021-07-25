@@ -1163,6 +1163,30 @@ To add 3d party libraries or our own previously created ones:
 
 > ng add libraryName
 
+## Production
+
+The angular CLI command to build our application used to te a parameter --prod to create a production build, because the default value was --dev.
+
+However, now the default creates a production build:
+
+> ng build
+
+By default lazy loaded modules get loaded on demand. We can change the strategy of our application in regards of when to load our lazy loaded modules.
+
+For example, in our app.module we add:
+
+```
+@NgModule({
+    imports: [
+        ...
+        RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})
+        ...
+    ]
+})
+```
+
+We can also create our own (more complex) preloading strategies.
+
 ## Testing
 
 ### Testing With(out) Testbed
