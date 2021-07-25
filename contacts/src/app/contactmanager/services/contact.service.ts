@@ -47,7 +47,7 @@ export class ContactService {
   }
 
   deleteContactList(listId: number): void {
-    this.http.delete<ContactList[]>(this.API + 'delete/lists/' + listId)
+    this.http.delete<ContactList[]>(this.API + 'lists/' + listId)
       .subscribe(() => {
         this.dataStore.contactLists.forEach((c, i) => {
           if (c.id == listId) {
@@ -87,7 +87,7 @@ export class ContactService {
   }
 
   deleteContact(contactId: number): void {
-    this.http.delete<Contact[]>(this.API + 'delete/' + contactId)
+    this.http.delete<Contact[]>(this.API + contactId)
       .subscribe(() => {
         this.dataStore.contacts.forEach((c, i) => {
           if (c.id == contactId) {

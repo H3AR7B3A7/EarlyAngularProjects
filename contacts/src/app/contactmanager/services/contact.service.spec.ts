@@ -91,7 +91,7 @@ describe('ContactService: ContactLists', () => {
 
       contactService.deleteContactList(id)
 
-      const req = httpMock.expectOne(contactService.API + 'delete/lists/' + id)
+      const req = httpMock.expectOne(contactService.API + 'lists/' + id)
       expect(req.request.method).toBe('DELETE')
     })
 
