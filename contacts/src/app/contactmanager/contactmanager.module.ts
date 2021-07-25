@@ -12,14 +12,15 @@ import { ContactService } from './services/contact.service'
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { AuthInterceptorService } from './services/auth-interceptor.service'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { AuthGuard } from './services/auth.guard'
 
 const routes: Routes = [
   {
     path: '', component: ContactmanagerAppComponent,
     children: [
       { path: 'login', component: LoginComponent },
-      { path: ':id', component: MainContentComponent },
-      { path: '', component: MainContentComponent },
+      { path: ':id', component: MainContentComponent, canActivate: [AuthGuard] },
+      { path: '', component: MainContentComponent, canActivate: [AuthGuard] },
     ]
   },
   { path: '**', redirectTo: '' }
