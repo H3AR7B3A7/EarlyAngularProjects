@@ -1,12 +1,12 @@
-import { DebugElement } from "@angular/core"
-import { ComponentFixture, TestBed } from "@angular/core/testing"
-import { By } from "@angular/platform-browser"
-import { RouterTestingModule } from "@angular/router/testing"
-import { Observable } from "rxjs"
-import { ContactList } from "../../models/ContactList"
-import { AuthService } from "../../services/auth.service"
-import { ContactService } from "../../services/contact.service"
-import { SidenavComponent } from "./sidenav.component"
+import { DebugElement } from '@angular/core'
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { By } from '@angular/platform-browser'
+import { RouterTestingModule } from '@angular/router/testing'
+import { Observable } from 'rxjs'
+import { ContactList } from '../../models/ContactList'
+import { AuthService } from '../../services/auth.service'
+import { ContactService } from '../../services/contact.service'
+import { SidenavComponent } from './sidenav.component'
 
 describe('SideNavComponent', () => {
   let mockAuthService: unknown
@@ -52,7 +52,7 @@ describe('SideNavComponent', () => {
     it('Should have the correct title in toolbar', () => {
       const toolbar = debugEl.query(By.css('mat-toolbar'))
       expect(toolbar).toBeTruthy()
-      expect(element.querySelector('mat-toolbar')?.textContent).toContain('Contact Lists');
+      expect(element.querySelector('mat-toolbar')?.textContent).toContain('Contact Lists')
     })
 
     it('Should render no list elements when list empty', () => {
