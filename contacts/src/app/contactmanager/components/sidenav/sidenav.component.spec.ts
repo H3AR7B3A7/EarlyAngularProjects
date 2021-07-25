@@ -2,6 +2,7 @@ import { DebugElement } from "@angular/core"
 import { ComponentFixture, TestBed } from "@angular/core/testing"
 import { By } from "@angular/platform-browser"
 import { RouterTestingModule } from "@angular/router/testing"
+import { Observable } from "rxjs"
 import { ContactList } from "../../models/ContactList"
 import { AuthService } from "../../services/auth.service"
 import { ContactService } from "../../services/contact.service"
@@ -21,7 +22,13 @@ describe('SideNavComponent', () => {
         return
       }
     } as AuthService
-    mockContactService = {} as ContactService
+    mockContactService = {
+      contactLists: {
+        subscribe: () => {
+          return
+        }
+      } as Observable<ContactList[]>
+    } as ContactService
 
     TestBed.configureTestingModule({
       declarations: [
@@ -46,6 +53,22 @@ describe('SideNavComponent', () => {
       const toolbar = debugEl.query(By.css('mat-toolbar'))
       expect(toolbar).toBeTruthy()
       expect(element.querySelector('mat-toolbar')?.textContent).toContain('Contact Lists');
+    })
+
+    it('Should render no list elements when list empty', () => {
+      component.contactLists = []
+      fixture.detectChanges()
+      const list = debugEl.query(By.css('mat-nav-list'))
+      expect(list).toBeTruthy()
+      expect(element.querySelector('mat-nav-list')?.childElementCount).toBe(component.contactLists.length + 1)
+    })
+
+    it('Should render correct number of elements', () => {
+      component.contactLists = [...CONTACT_LISTS]
+      fixture.detectChanges()
+      const list = debugEl.query(By.css('mat-nav-list'))
+      expect(list).toBeTruthy()
+      expect(element.querySelector('mat-nav-list')?.childElementCount).toBe(CONTACT_LISTS.length + 1)
     })
   })
 })
