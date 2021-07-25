@@ -1,4 +1,4 @@
-import { DebugElement } from '@angular/core'
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { RouterTestingModule } from '@angular/router/testing'
@@ -40,6 +40,12 @@ describe('SideNavComponent', () => {
       providers: [
         { provide: AuthService, useValue: mockAuthService },
         { provide: ContactService, useValue: mockContactService }
+      ],
+      // Use a different schema to avoid errors in CLI when writing shallow tests.
+      // This way we don't need to write DEEP complex tests,
+      // or implement a mock version of every component selector used in the template.
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
       ]
     })
     fixture = TestBed.createComponent(SidenavComponent)
@@ -53,6 +59,7 @@ describe('SideNavComponent', () => {
       const toolbar = debugEl.query(By.css('mat-toolbar'))
       expect(toolbar).toBeTruthy()
       expect(element.querySelector('mat-toolbar')?.textContent).toContain('Contact Lists')
+      expect(debugEl.query(By.css('mat-toolbar')).nativeElement.textContent).toContain('Contact Lists')
     })
 
     it('Should render no list elements when list empty', () => {
