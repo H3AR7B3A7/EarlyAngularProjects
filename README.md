@@ -1163,6 +1163,25 @@ To add 3d party libraries or our own previously created ones:
 
 > ng add libraryName
 
+## Routing
+
+HTML 5 Style:
+
+- LEverages HTML 5 history pushState
+- Default
+- More natural url
+- Requires url rewriting
+
+Hash-based:
+
+- Leverages url fragments
+- Does not require url rewriting
+- Set by using the option:
+
+```
+{ useHash: true }
+```
+
 ## Production
 
 The angular CLI command to build our application used to te a parameter --prod to create a production build, because the default value was --dev.
