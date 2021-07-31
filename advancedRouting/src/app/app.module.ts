@@ -24,7 +24,7 @@ import { AppRoutingModule } from './app-routing.module'
   declarations: [
     AppComponent,
     WelcomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   bootstrap: [AppComponent]
 })
