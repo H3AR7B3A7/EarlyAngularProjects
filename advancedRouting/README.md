@@ -86,3 +86,41 @@ ngOnInit(): void {
     ...
   }
 ```
+
+## Route Resolving
+
+For pre-fetching data we can use a route resolver.
+
+### Route's Data Property
+
+We can provide static data to a route using the data property.
+
+In the route:
+
+```
+{
+  path: '/products,
+  component: ProductListComponent,
+  data: { pageTitle: 'Product List' }
+}
+```
+
+To get the data:
+
+```
+constructor(
+  private route: ActivatedRoute,
+  ...
+) { }
+
+ngOnInit(): void {
+    this.pageTitle = this.route.snapshot.data['pageTitle']
+    ...
+  }
+```
+
+### Route Resolver
+
+For dynamic data we need to use a resolver.
+
+### Data Service
