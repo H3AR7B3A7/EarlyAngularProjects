@@ -166,3 +166,9 @@ ngOnInit(): void {
 ```
 
 ## Component-less Routes
+
+Component-less routes “consume” URL segments without instantiating components.
+
+Since there is no component containing a router-outlet, all the children will be displayed in the higher level outlet.
+
+Since there is no component associated with the route, the router will merge its params, data, and resolve into the children. As a result the sibling components can access the common parameters directly, without going through the parent route.
