@@ -99,7 +99,7 @@ In the route:
 
 ```
 {
-  path: '/products,
+  path: '/products',
   component: ProductListComponent,
   data: { pageTitle: 'Product List' }
 }
@@ -123,4 +123,46 @@ ngOnInit(): void {
 
 For dynamic data we need to use a resolver.
 
-### Data Service
+- Create a service
+- Implement the Resolve interface
+- Add the resolver to your routing
+- In the component, read the resolved data from the route
+
+## Child Routes
+
+Example:
+
+```
+{
+  path: 'products/:id/edit',
+  component: ProductEditComponent,
+  resolve: { resolvedData: ProductResolver },
+  children: [
+    {
+      path: '',
+      redirectTo: 'info',
+      pathMatch: 'full'
+    },
+    {
+      path: 'info',
+      component: ProductEditInfoComponent
+    },
+    {
+      path: 'tags',
+      component: ProductEditTagsComponent
+    }
+  ]
+}
+```
+
+### Using Resolved Data of Parent Component
+
+```
+ngOnInit(): void {
+  this.route.parent.data.subscribe(data => {
+    this.product = data['resolvedData'].product
+  })
+}
+```
+
+## Component-less Routes
