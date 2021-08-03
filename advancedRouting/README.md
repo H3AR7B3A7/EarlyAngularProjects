@@ -172,3 +172,24 @@ Component-less routes “consume” URL segments without instantiating component
 Since there is no component containing a router-outlet, all the children will be displayed in the higher level outlet.
 
 Since there is no component associated with the route, the router will merge its params, data, and resolve into the children. As a result the sibling components can access the common parameters directly, without going through the parent route.
+
+## Routing Animation
+
+- Import BrowserAnimationsModule
+- Define the desired animations
+- Register the animations with the component
+- Trigger the animation from the router outlet
+
+## Routing Events
+
+- NavigationStart
+- RoutesRecognized
+- NavigationEnd
+
+We can log router event in console by adding options to our routing:
+
+```
+RouterModule.forRoot(ROUTES, { enableTracing: true })
+```
+
+## Secondary Routes
