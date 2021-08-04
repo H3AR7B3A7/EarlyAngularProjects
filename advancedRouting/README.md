@@ -193,3 +193,25 @@ RouterModule.forRoot(ROUTES, { enableTracing: true })
 ```
 
 ## Secondary Routes
+
+We can have multiple router-outlets provided the secondary outlets have a name.
+
+When routing to a named router outlet, the url in the address bar reflects both primary and secondary route path. The secondary paths appear within parentheses after the primary path.
+
+![App Structure](app-structure.png)
+
+Some examples to route to secondary outlets in template or in code:
+
+```
+[routerLink]="[{ outlets: { popup: ['messages'] } }]"
+[routerLink]="['/products', product.id, 'edit', { outlets: { popup: ['summary', product-id] } }]"
+this.router.navigate([{ outlets: { popup: ['messages'] } }])
+```
+
+To clear the outlet:
+
+```
+[routerLink]="[{ outlets: { popup: null } }]"
+this.router.navigate([{ outlets: { popup: null } }])
+this.router.navigateByUrl('/login')
+```
