@@ -227,3 +227,28 @@ In order of execution:
 - resolve
 
 A guard automatically guards each of the routes children.
+
+## Lazy Loading
+
+Loading modules on demand when needed instead of on application start.
+
+Required:
+
+- Feature module
+- Routes grouped under a single parent
+- Not imported in another module
+
+We can also use preloading, aka eager lazy loading, to download lazy loaded modules behind the scene before the user routes to them.
+Preloading makes sense when we are confident modules will be loaded at some point.
+How modules are preloaded is based on the **preloading strategy**:
+
+- No preloading (on demand)
+- Pre-load all
+
+  ```
+  { preloadingStrategy: PreloadAllModules }
+  ```
+
+- Custom
+
+  We can create our own service and implement PreloadingStrategy to create our own custom strategy.
