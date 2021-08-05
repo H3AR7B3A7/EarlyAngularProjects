@@ -1,27 +1,42 @@
 # Security
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
+Security Design Considerations:
 
-## Development server
+- Authentication
+- Authorization
+- Transport Protection (HTTPS = TLS)
+- Cross Origin Resource Sharing (CORS)
+- Cross Site Request Forgery (CSRF)
+- Cross Site Scripting (XSS)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Single sign-on (SSO) is an authentication scheme that allows a user to log in with a single ID and password to any of several related, yet independent, software systems.
 
-## Code scaffolding
+Identity providers:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Google
+- Facebook
+- Twitter
+- Azure Active Directory (v2 / B2C)
+- Auth0
+- Okta
+- Ping Identity
+- Identity Server 4
+- ...
 
-## Build
+Client Libraries:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- angular-jwt
+- ADAL / MSAL
+- oidc-client
 
-## Running unit tests
+## OpenID
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Implementation
 
-## Running end-to-end tests
+### Connect Provider
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## OAuth2
 
-## Further help
+### Authorizing Calls to API
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Enhancing Security User Experience
