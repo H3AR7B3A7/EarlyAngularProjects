@@ -215,3 +215,15 @@ To clear the outlet:
 this.router.navigate([{ outlets: { popup: null } }])
 this.router.navigateByUrl('/login')
 ```
+
+## Guards
+
+In order of execution:
+
+- canDeactivate
+- canLoad
+- canActivateChild
+- canActivate
+- resolve
+
+A guard automatically guards each of the routes children.
