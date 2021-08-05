@@ -14,8 +14,24 @@ export class ProductEditComponent implements OnInit {
   pageTitle = 'Product Edit'
   errorMessage: string
 
-  product: Product
   private dataIsValid: { [key: string]: boolean } = {}
+
+  get isDirty(): boolean {
+    // Better to compare each property, so order doesn't matter...
+    return JSON.stringify(this.originalProduct) !== JSON.stringify(this.currentProduct)
+  }
+
+  private currentProduct: Product
+  private originalProduct: Product
+
+  get product(): Product {
+    return this.currentProduct
+  }
+
+  set product(value: Product) {
+    this.currentProduct = value
+    this.originalProduct = { ...value }
+  }
 
   constructor(
     private productService: ProductService,
@@ -33,7 +49,7 @@ export class ProductEditComponent implements OnInit {
     // )
 
     this.route.data.subscribe(data => {
-      const resolvedData: ProductResolved = data['resolvedData']
+      const resolvedData: ProductResolved = data.resolvedData
       this.errorMessage = resolvedData.error
       this.onProductRetrieved(resolvedData.product)
     })
@@ -82,6 +98,12 @@ export class ProductEditComponent implements OnInit {
     return (this.dataIsValid && Object.keys(this.dataIsValid).every(d => this.dataIsValid[d] === true))
   }
 
+  reset(): void {
+    this.dataIsValid = null
+    this.currentProduct = null
+    this.originalProduct = null
+  }
+
   saveProduct(): void {
     if (this.isValid()) {
       if (this.product.id === 0) {
@@ -104,7 +126,7 @@ export class ProductEditComponent implements OnInit {
     if (message) {
       this.messageService.addMessage(message)
     }
-
+    this.reset()
     this.router.navigate(['/products'])
   }
 
@@ -114,15 +136,15 @@ export class ProductEditComponent implements OnInit {
     if (this.product.productName &&
       this.product.productName.length >= 3 &&
       this.product.productCode) {
-      this.dataIsValid['info'] = true
+      this.dataIsValid.info = true
     } else {
-      this.dataIsValid['info'] = false
+      this.dataIsValid.info = false
     }
 
     if (this.product.category && this.product.category.length >= 3) {
-      this.dataIsValid['tags'] = true
+      this.dataIsValid.tags = true
     } else {
-      this.dataIsValid['tags'] = false
+      this.dataIsValid.tags = false
     }
   }
 }

@@ -22,7 +22,7 @@ export class ProductDetailComponent implements OnInit {
     // const id = +this.route.snapshot.paramMap.get('id')
     // this.getProduct(id)
 
-    const resolvedData: ProductResolved = this.route.snapshot.data['resolvedData']
+    const resolvedData: ProductResolved = this.route.snapshot.data.resolvedData
     this.errorMessage = resolvedData.error
     this.onProductRetrieved(resolvedData.product)
   }
