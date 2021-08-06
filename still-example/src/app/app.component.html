@@ -1,0 +1,9 @@
+<div class="container">
+  <router-outlet></router-outlet>
+  <button [routerLink]="[{ outlets: { still: ['still'] } }]">Take Still</button>
+  <button [routerLink]="[{ outlets: { still: null } }]">Remove Still</button>
+
+  <div class="still-container">
+    <router-outlet name="still" class="still"></router-outlet>
+  </div>
+</div>
