@@ -40,3 +40,7 @@ Client Libraries:
 ### Authorizing Calls to API
 
 ### Enhancing Security User Experience
+
+---
+
+Date of creation: 7-6-2021
