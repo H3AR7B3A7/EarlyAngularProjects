@@ -28,6 +28,27 @@ _Trying to implement these scenarios in a template form might prove difficult an
 
 Compared to with template forms, we need to create the form model ourselves in the component class.
 
+## Set / Patch Value
+
+We use setValue to set every value in the FormGroup.
+
+```
+this.customerForm.setValue({
+  firstName: 'Jack',
+  lastName: 'Harkness',
+  email: 'jack@torchwood.com'
+})
+```
+
+We use patchValue to set a subset of the values in a FormGroup.
+
+```
+this.customerForm.patchValue({
+  firstName: 'Jack',
+  lastName: 'Harkness'
+})
+```
+
 ---
 
 Date of creation: 7-10-2021
