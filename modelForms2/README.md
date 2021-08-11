@@ -2,4 +2,4 @@
 
 Pluralsight course project by Deborah Kurata.
 
-Go [here](modelForms/README.md) for more documentation.
+Go [here](../modelForms/README.md) for more documentation.
