@@ -49,6 +49,18 @@ this.customerForm.patchValue({
 })
 ```
 
+## Validation
+
+We can add an array with validators as a second parameter, and an array with asynchronous validators as a third parameter.
+
+```
+this.customerForm = this.fb.group({
+  firstName: ['', [Validators.required], []],
+})
+```
+
+Asynchronous validators are only called when all synchronous validators pass validation.
+
 ---
 
 Date of creation: 7-10-2021

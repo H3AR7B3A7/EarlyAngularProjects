@@ -36,6 +36,14 @@ The input tag automatically creates a FormControl.
 
 _We can use template reference variables (#) to access form model and form control states._
 
+## Validation
+
+Validation in template forms happens in the template itself:
+
+```
+<input type="text" required minlength="3" formControlName="firstName">
+```
+
 ## Used Libraries
 
 - Bootstrap
