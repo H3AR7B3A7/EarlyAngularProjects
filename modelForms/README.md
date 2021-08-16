@@ -64,3 +64,25 @@ Asynchronous validators are only called when all synchronous validators pass val
 ---
 
 Date of creation: 7-10-2021
+
+## Observing Changes
+
+FormControls and FormGroups have a valueChanges (/statusChanges) property that returns an observable.
+
+By watching these changes we can:
+
+- Adjust validation rules
+- Handle validation messages
+- Modify user interface elements
+- Provide automatic suggestions
+- ...
+
+## Reactive Transformations
+
+- **debounceTime**:  
+  Ignore events un till specified time has passed without another event.
+- **throttleTime**:  
+  Emits a value, then ignores subsequent values for a specified amount of time.
+- **distinctUntilChanged**:  
+  Suppresses duplicate consecutive items.
+- ...
