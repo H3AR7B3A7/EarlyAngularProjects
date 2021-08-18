@@ -86,3 +86,12 @@ By watching these changes we can:
 - **distinctUntilChanged**:  
   Suppresses duplicate consecutive items.
 - ...
+
+## Dynamically Duplicate Inputs
+
+- Define the input element(s)
+- Define a FormGroup if needed
+- Refactor to make copies
+- Create a FormArray
+- Loop through the FormArray
+- Duplicate the input element(s)
