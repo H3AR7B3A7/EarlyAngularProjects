@@ -81,6 +81,34 @@ Observables are lazy Push collections of multiple values. They are functions tha
 
 Unlike Promises, observables are not yet inherit to JavaScript. This is why Angular and React rely on the RxJS library for implementing observables.
 
+### Observable Creation Functions
+
+- **of() & from()**
+
+  Observable creation function for individually defined variables or data structures:
+
+  ```
+  const appleStream = of('Apple1', 'Apple2')
+  const appleStream = from(['Apple1', 'Apple2'])
+  ```
+
+- **fromEvent()**
+- **interval()**
+
+### Observer
+
+An observer consists of any of three optional functions:
+
+```
+const observer = {
+  next: apple => console.log(`Apple was emitted ${apple}`),
+  error: err => console.log(`Error occurred: ${err}`),
+  complete: () => console.log(`No more apples, go home`)
+}
+```
+
+### Operators
+
 ---
 
 Date of creation: 5-28-2021
