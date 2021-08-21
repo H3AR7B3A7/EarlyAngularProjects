@@ -25,9 +25,55 @@ As the Promise.prototype.then() and Promise.prototype.catch() methods return pro
 
 Promise.prototype.finally() is called when the promise is settled, whether fulfilled or rejected.
 
+## Async/await
+
+There’s a special syntax to work with promises in a more comfortable fashion, called “async/await”. It’s surprisingly easy to understand and use.
+
+Example:
+
+```
+async function f() {
+
+  let promise = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("done!"), 1000)
+  });
+
+  let result = await promise; // wait until the promise resolves (*)
+
+  alert(result); // "done!"
+}
+
+f();
+```
+
+The keyword 'async' before a function means one simple thing, a function always returns a promise. Other values are wrapped in a resolved promise automatically.
+
+The keyword 'await' makes JavaScript wait until that promise settles and returns its result.
+
 ## RxJS
 
+Reactive development is:
+
+- Quick to react to user interactions
+- Resilient to failure
+- Reactive tot state changes
+
 RxJs stands for "Reactive Extension for JavaScript". The RxJS library defines its own Observable class along with supporting methods for Reactive programming.
+
+Advantages:
+
+- One technique to rule them all
+- Compositional
+- Watchful
+- Lazy
+- Handles errors
+- Cancellable
+
+Used in Angular for:
+
+- Routing
+- Reactive forms
+- HttpClient
 
 ### Observable
 
