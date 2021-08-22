@@ -81,7 +81,7 @@ Observables are lazy Push collections of multiple values. They are functions tha
 
 Unlike Promises, observables are not yet inherit to JavaScript. This is why Angular and React rely on the RxJS library for implementing observables.
 
-### Observable Creation Functions
+### Observable Creation Operators
 
 - **of() & from()**
 
@@ -94,6 +94,7 @@ Unlike Promises, observables are not yet inherit to JavaScript. This is why Angu
 
 - **fromEvent()**
 - **interval()**
+- ...
 
 ### Observer
 
@@ -108,6 +109,26 @@ const observer = {
 ```
 
 ### Operators
+
+Except for creation operators, there are also a ton of operators for transformation, filtering, joining, aggregating...
+
+- **map()**: Transforms each value in the stream
+- **tap()**: Your best friend when debugging
+- **take()**: Limits the amount of values in the stream to be processed
+- ...
+
+We can pipe an observable stream through a set of these operators using pipe():
+
+```
+of(2, 4, 6)
+  .pipe(
+    map(item => item *2),
+    tap(item => console.log(item)),
+    take(2)
+  ).subscribe(console.log)
+```
+
+_See [here](https://rxjs.dev/guide/operators) for a list of all operators. Using the 'Operator Decision Tree' on this page we can easily find the right operator for the job._
 
 ---
 
