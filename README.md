@@ -96,17 +96,21 @@ Types provide a way to describe the shape of an object, providing better documen
 
 We use 'let' instead of 'var' to make sure our variable doesn't leak outside the scope:
 
-    let i = 3;
-    for (let i = 0; i < 10; i++){
-        ...
-    }
+```typescript
+let i = 3;
+for (let i = 0; i < 10; i++){
+    ...
+}
+```
 
 This will transpile to:
 
-    var i = 3;
-    for(var i_1 = 0; i_1 < 10; i_1++>){
-        ...
-    }
+```typescript
+var i = 3;
+for(var i_1 = 0; i_1 < 10; i_1++>){
+    ...
+}
+```
 
 ## Const
 
@@ -119,48 +123,72 @@ Most of the time Typescript is able to figure out what type a variable is suppos
 
 ### String
 
-    const brand: string = 'Chevrolet';
+```typescript
+const brand: string = 'Chevrolet'
+```
 
 ### Number
 
-    const age: number = 31;
+```typescript
+const age: number = 31
+```
 
 ### Boolean
 
-    const isNegative: boolean = false;
+```typescript
+const isNegative: boolean = false
+```
 
 ### Array
 
-    const brands: string[] = ['Ford','GM','Tesla'];
+```typescript
+const brands: string[] = ['Ford', 'GM', 'Tesla']
+```
 
 ### Any
 
-    const distances: any[] = ['1000km', 1000];
+```typescript
+const distances: any[] = ['1000km', 1000]
+```
 
 ### Custom Type
 
-    type Pet = 'Cat' | 'Dog';
-    const pet: Pet = 'Cat';
+```typescript
+type Pet = 'Cat' | 'Dog'
+const pet: Pet = 'Cat'
+```
 
 ### Enum
 
-    enum Brands { Ford, GM, Tesla, Nio};
-    const myCar: Brands = Brands.Tesla;
-    const carAtIndex: string = Brands[1]; // Result = GM
+```typescript
+enum Brands {
+  Ford,
+  GM,
+  Tesla,
+  Nio,
+}
+const myCar: Brands = Brands.Tesla
+const carAtIndex: string = Brands[1] // Result = GM
 
-    enum Brands { Ford = 1, GM, Tesla, Nio};
-    const carAtIndex: string = Brands[1]; // Result = Ford
+enum Brands {
+  Ford = 1,
+  GM,
+  Tesla,
+  Nio,
+}
+const carAtIndex: string = Brands[1] // Result = Ford
 
-    enum DistanceFromSun {
-        Mercury = 57900000,
-        Venus = 108200000,
-        Earth = 149600000,
-        Mars = 227900000,
-        Jupiter = 227900000,
-        Saturn = 1427000000,
-        Uranus = 2871000000,
-        Neptune = 4497100000
-    };
+enum DistanceFromSun {
+  Mercury = 57900000,
+  Venus = 108200000,
+  Earth = 149600000,
+  Mars = 227900000,
+  Jupiter = 227900000,
+  Saturn = 1427000000,
+  Uranus = 2871000000,
+  Neptune = 4497100000,
+}
+```
 
 ### Void
 
@@ -172,20 +200,24 @@ As in other languages we use this type to annotate that a function does not retu
 
 We can use optional params, but they have to go last:
 
-    function greet(name: string, greeting?: string): string {
-        if(!greeting){
-            greeting = 'Hello';
-        }
-        return greeting + ', ' + name;
-    }
+```typescript
+function greet(name: string, greeting?: string): string {
+  if (!greeting) {
+    greeting = 'Hello'
+  }
+  return greeting + ', ' + name
+}
+```
 
 ### Default Parameters
 
 With a default param we can simplify previous code snippet:
 
-    function greet(name: string, greeting: string = 'Hello'): string {
-        return `${greeting}, ${name}`;
-    }
+```typescript
+function greet(name: string, greeting: string = 'Hello'): string {
+  return `${greeting}, ${name}`
+}
+```
 
 Also note the **template string** in back-ticks with **string substitutions**.
 
@@ -193,25 +225,29 @@ Also note the **template string** in back-ticks with **string substitutions**.
 
 With rest params we can define an unknown amount of parameters.
 
-    function greetEveryone(greeting: string, ... names: string[]): string {
-        return greeting + ', ' + names.join(' and ') + '!';
-    }
+```typescript
+function greetEveryone(greeting: string, ...names: string[]): string {
+  return greeting + ', ' + names.join(' and ') + '!'
+}
+```
 
 ### Function Overloading
 
 JavaScript does not implement an elegant way to overload functions, so we need to write function declarations for each of the overloads before writing the general-purpose function that wraps the actual implementation:
 
-    function hello(names: string): string {}
-    function hello(names: string[]): string {}
-    function hello(names: any, greeting?: string): string {
-        let namesArray: string[];
-        if (Array.isArray(names)){
-            namesArray = names;
-        } else {
-            namesArray = [names];
-        }
-        ...
+```typescript
+function hello(names: string): string {}
+function hello(names: string[]): string {}
+function hello(names: any, greeting?: string): string {
+    let namesArray: string[];
+    if (Array.isArray(names)){
+        namesArray = names;
+    } else {
+        namesArray = [names];
     }
+    ...
+}
+```
 
 Notice that we had to check for the true type of the param of _any_ type.
 
@@ -219,28 +255,35 @@ Notice that we had to check for the true type of the param of _any_ type.
 
 The fat arrow function or Lambda:
 
-    const double = x => x * 2;
+```typescript
+const double = (x) => x * 2
+```
 
 Braces are required with multiple arguments:
 
-    const sum = (x, y) => x + y;
+```typescript
+const sum = (x, y) => x + y
+```
 
 Curly braces are required when containing statements:
 
-    const doubleOfSum = (x, y) => {
-        const sum = x + y;
-        return sum * 2;
-    }
+```typescript
+const doubleOfSum = (x, y) => {
+  const sum = x + y
+  return sum * 2
+}
+```
 
 But arrow functions also allows lexical scoping of _this_:
 
-    function delayedGreeting(name): void {
-        this.name = name;
-        this.greet = function(){
-            setTimeout(() =>
-            console.log('Hello ' + this.name), 0);
-        }
-    }
+```typescript
+function delayedGreeting(name): void {
+  this.name = name
+  this.greet = function () {
+    setTimeout(() => console.log('Hello ' + this.name), 0)
+  }
+}
+```
 
 If we were to use the actual function instead of the arrow function this.name would be _Undefined_.
 
@@ -250,9 +293,11 @@ If we were to use the actual function instead of the arrow function this.name wo
 
 We can use spread parameters in arrays or objects to not have to repeat ourselves:
 
-    const oldArray = [1, 2];
-    const newValue = 3;
-    const newArray = [...oldArray, newValue];
+```typescript
+const oldArray = [1, 2]
+const newValue = 3
+const newArray = [...oldArray, newValue]
+```
 
 Notice how the original array did not change, we call this principle **immutability**. Instead of changing it we created a new state.
 
@@ -260,29 +305,35 @@ Notice how the original array did not change, we call this principle **immutabil
 
 In collections or constructs like methods we can make use of generics to code behavior that we can employ, regardless of the type of data.
 
-    function method<T>(arg: T): T{
-        return arg;
-    }
+```typescript
+function method<T>(arg: T): T {
+  return arg
+}
+```
 
 Or with an array of a generic type:
 
-    function method<T>(arg: T[]): T[]{
-        return arg;
-    }
+```typescript
+function method<T>(arg: T[]): T[] {
+  return arg
+}
+```
 
 We can either create an array of some type or extend the array to a custom type to pass a valid argument to this function.  
 We can also say a generic type should adhere to some interface:
 
-    interface Shape {
-        area(): number;
-    }
-    function allAreas<T extends Shape>(...args: T[]): number {
-        let total = 0;
-        args.forEach (x => {
-            total += x.area();
-        });
-        return total;
-    }
+```typescript
+interface Shape {
+  area(): number
+}
+function allAreas<T extends Shape>(...args: T[]): number {
+  let total = 0
+  args.forEach((x) => {
+    total += x.area()
+  })
+  return total
+}
+```
 
 Now we can create multiple classes implementing the Shape interface with their own area() methods and pass them to allAreas().
 
@@ -292,21 +343,25 @@ Now we can create multiple classes implementing the Shape interface with their o
 
 A class fully written out contains a lot of 'boilerplate' code:
 
-    class Car {
-        make: string;
-        model: string;
+```typescript
+class Car {
+  make: string
+  model: string
 
-        constructor(make: string, model: string){
-            this.make = make;
-            this.model = model;
-        }
-    }
+  constructor(make: string, model: string) {
+    this.make = make
+    this.model = model
+  }
+}
+```
 
 Typescript makes writing this a breeze, by allowing accessors in the constructor params:
 
-    class Car {
-        constructor(public make: string, public model: string)
-    }
+```typescript
+class Car {
+  constructor(public make: string, public model: string)
+}
+```
 
 Typescript will create the public fields and assignments for us.
 
@@ -314,56 +369,68 @@ Typescript will create the public fields and assignments for us.
 
 We use interfaces as blueprints of code that define a particular schema. Artifacts (classes, function signatures, etc.) implementing an interface should comply with this schema.
 
-    interface Vehicle {
-        make: string;
-    }
+```typescript
+interface Vehicle {
+  make: string
+}
 
-    class Car implements Vehicle {
-        make: string;
-    }
+class Car implements Vehicle {
+  make: string
+}
+```
 
 This way we make sure every vehicle has the field 'make'. We use this to create consistency in our code.  
 Interfaces can also contain optionals:
 
-    interface Exception {
-        message: string;
-        id?: number;
-    }
+```typescript
+interface Exception {
+  message: string
+  id?: number
+}
+```
 
 We can do more with interfaces than just implement them and build more complex ones:
 
-    interface ErrorHandler {
-        exceptions: Exception[];
-        logException(message: string, id?: number): void
-    }
+```typescript
+interface ErrorHandler {
+  exceptions: Exception[]
+  logException(message: string, id?: number): void
+}
+```
 
 Or define interfaces for standalone object types, useful to define a templated constructor or method signature:
 
-    interface ExceptionHandlerSettings {
-        logAllExceptions: boolean;
-    }
+```typescript
+interface ExceptionHandlerSettings {
+  logAllExceptions: boolean
+}
+```
 
 Here is an example of the implementation of these:
 
-    class CustomErrorHandler implements ErrorHandler {
-        exceptions: Exception[] = [];
-        logAllExceptions: boolean
+```typescript
+class CustomErrorHandler implements ErrorHandler {
+    exceptions: Exception[] = [];
+    logAllExceptions: boolean
 
-        constructor(settings: ExceptionHandlerSettings){
-            this.logAllExceptions = settings.logAllExceptions;
-        }
-        logException(message: string, id?: number): void{
-            this exceptions.push({message, id});
-        }
+    constructor(settings: ExceptionHandlerSettings){
+        this.logAllExceptions = settings.logAllExceptions;
     }
+    logException(message: string, id?: number): void{
+        this exceptions.push({message, id});
+    }
+}
+```
 
 We can also **instantiate interfaces** in typescript, without involving any classes:
 
-    interface A {
-        a
-    }
-    const instance = <A> { a: 3};
-    instance.a = 5;
+```typescript
+interface A {
+  a
+}
+const instance = <A>{ a: 3 }
+instance.a = 5
+```
 
 This means you can create a **mocking library** very easily.
 
@@ -373,30 +440,38 @@ This instantiation of interfaces helps mocking frameworks to mock our dependenci
 
 Our code:
 
-    interface AuthService {
-        isAuthenticated
-    }
+```typescript
+interface AuthService {
+    isAuthenticated
+}
 
-    class Stuff {
-        constructor(private AuthService){}
+class Stuff {
+    constructor(private AuthService){}
 
-        execute(){
-            if(srv.isAuthenticated()){ console.log('access granted') }
-        } else { console.log('you do not have access') }
-    }
+    execute(){
+        if(srv.isAuthenticated()){ console.log('access granted') }
+    } else { console.log('you do not have access') }
+}
+```
 
 Mock:
 
-    class MockAuthService implements AuthService {
-        isAuthenticated(){ return true; }
-    }
+```typescript
+class MockAuthService implements AuthService {
+  isAuthenticated() {
+    return true
+  }
+}
 
-    const srv = new MockAuthService()
-    const stuff = new Stuff(srv);
+const srv = new MockAuthService()
+const stuff = new Stuff(srv)
+```
 
 We can instead simply create a mock by instantiating the interface instead:
 
-    const authServiceInstance = <AuthService>{};
+```typescript
+const authServiceInstance = <AuthService>{}
+```
 
 However, **be aware** that you are responsible for adding required method(s), because it starts as an empty object.
 
@@ -404,13 +479,15 @@ However, **be aware** that you are responsible for adding required method(s), be
 
 We can also extend members and functionality from other classes using inheritance. In the following example Sedan inherits the member 'make'. Like in other OOP languages we can overwrite methods if needed and we can use the parent constructor using the super() method:
 
-    class Sedan extends Car {
-        model: string;
-        constructor(make: string, model: string){
-            super(make);
-            this.model = model;
-        }
-    }
+```typescript
+class Sedan extends Car {
+  model: string
+  constructor(make: string, model: string) {
+    super(make)
+    this.model = model
+  }
+}
+```
 
 ## Decorators
 
@@ -420,92 +497,100 @@ Decorators are a way to add metadata to class declarations for use by dependency
 
 Here is a simple example:
 
-    function Banana(target: Function): void {
-        target.prototype.banana = function(): void {
-            console.log('We have bananas!')
-        }
-    }
+```typescript
+function Banana(target: Function): void {
+  target.prototype.banana = function (): void {
+    console.log('We have bananas!')
+  }
+}
 
-    @Banana
-    class FruitBasket {
-        constructor(){}
-    }
+@Banana
+class FruitBasket {
+  constructor() {}
+}
 
-    const basket = new FruitBasket();
-    basket.banana();
+const basket = new FruitBasket()
+basket.banana()
+```
 
 With a custom signature:
 
-    function Banana(message: string){
-        function Banana(target: Function) {
-            target.prototype.banana = function(): void {
-                console.log(message)
-            }
-        }
+```typescript
+function Banana(message: string) {
+  function Banana(target: Function) {
+    target.prototype.banana = function (): void {
+      console.log(message)
     }
+  }
+}
 
-    @Banana('Delicious bananas!!!')
-    class FruitBasket {
-        constructor(){}
-    }
+@Banana('Delicious bananas!!!')
+class FruitBasket {
+  constructor() {}
+}
+```
 
 ### Property Decorator
 
 Could be used to log log the values assigned to class fields when instantiating objects:
 
-    function Jedi(target: Object, ke: string){
-        let propertyValue: string = this(key);
+```typescript
+function Jedi(target: Object, ke: string) {
+  let propertyValue: string = this(key)
+  if (delete this[key]) {
+    Object.defineProperty(target, key, {
+      get: function () {
+        return propertyValue
+      },
+      set: function (newValue) {
+        propertyValue = newValue
+        console.log(`${propertyValue} is a Jedi`)
+      },
+    })
+  }
+}
+
+class Character {
+  @Jedi
+  name: string
+}
+
+const character = new Character()
+character.name = 'Luke'
+```
+
+Or when reacting to data changes:
+
+```typescript
+function NameChanger(callbackObject: any): Function{
+    return function(target: Object, key: string): void {
+        let propertyValue: string = this[key];
         if (delete this[key]){
             Object.defineProperty(target, key, {
-                get: function(){
+                get: function() {
                     return propertyValue;
                 },
                 set: function(newValue){
                     propertyValue = newValue;
-                    console.log(`${propertyValue} is a Jedi`);
+                    callbackObject.changeName.call(this, propertyValue);
                 }
             });
         }
     }
+}
 
-    class Character{
-        @Jedi
-        name: string;
-    }
-
-    const character = new Character();
-    character.name = 'Luke';
-
-Or when reacting to data changes:
-
-    function NameChanger(callbackObject: any): Function{
-        return function(target: Object, key: string): void {
-            let propertyValue: string = this[key];
-            if (delete this[key]){
-                Object.defineProperty(target, key, {
-                    get: function() {
-                        return propertyValue;
-                    },
-                    set: function(newValue){
-                        propertyValue = newValue;
-                        callbackObject.changeName.call(this, propertyValue);
-                    }
-                });
-            }
+class Character{
+    @NameChanger({
+        changeName: function(newValue: string): void{
+            console.log(`You are now known as ${newValue}`);
         }
-    }
+    });
+    name: string;
+}
 
-    class Character{
-        @NameChanger({
-            changeName: function(newValue: string): void{
-                console.log(`You are now known as ${newValue}`);
-            }
-        });
-        name: string;
-    }
-
-    let character = new Character();
-    character.name = 'Anakin';
+let character = new Character();
+character.name = 'Anakin';
+```
 
 This will trigger the custom function 'changeName()' when the name property is changed.
 
@@ -513,41 +598,55 @@ This will trigger the custom function 'changeName()' when the name property is c
 
 It is used to detect, log or intervene. Logging example:
 
-    function Log(){
-        return function(target, propertyKey: string, descriptor: PropertyDescriptor){
-            const oldMethod = descriptor.value;
-            descriptor.value = function newFunc(...args:any[]){
-                let result = oldMethod.apply(this, args);
-                console.log(`${propertyKey} is called with ${args.join(', ')} and result ${result}`);
-                return result;
-            }
-        }
+```typescript
+function Log() {
+  return function (
+    target,
+    propertyKey: string,
+    descriptor: PropertyDescriptor
+  ) {
+    const oldMethod = descriptor.value
+    descriptor.value = function newFunc(...args: any[]) {
+      let result = oldMethod.apply(this, args)
+      console.log(
+        `${propertyKey} is called with ${args.join(', ')} and result ${result}`
+      )
+      return result
     }
+  }
+}
 
-    class Hero{
-        @Log()
-        attack(...args:[]){ return args.join(); }
-    }
+class Hero {
+  @Log()
+  attack(...args: []) {
+    return args.join()
+  }
+}
 
-    const hero = new Hero();
-    hero.attack();
+const hero = new Hero()
+hero.attack()
+```
 
 ### Parameter Decorator
 
 Used to look into the parameter value of functions or constructors and perform operations elsewhere, such as logging or replicating data:
 
-    function Log(target: Function, key: string, parameterIndex: number){
-        const functionLogged = key || target.prototype.constructor.name;
-        console.log(`The parameter in position ${parameterIndex} at ${functionLogged} has been decorated`);
-    }
+```typescript
+function Log(target: Function, key: string, parameterIndex: number) {
+  const functionLogged = key || target.prototype.constructor.name
+  console.log(
+    `The parameter in position ${parameterIndex} at ${functionLogged} has been decorated`
+  )
+}
 
-    class Greeter {
-        greeting: string;
+class Greeter {
+  greeting: string
 
-        constructor(@Log phrase: string){
-            this.greeting = phrase;
-        }
-    }
+  constructor(@Log phrase: string) {
+    this.greeting = phrase
+  }
+}
+```
 
 ## Advanced Types
 
@@ -555,65 +654,81 @@ Used to look into the parameter value of functions or constructors and perform o
 
 Object that includes only _part_ of an interface:
 
-    interface Hero {
-        name: string;
-        power: number;
-    }
+```typescript
+interface Hero {
+    name: string;
+    power: number;
+}
 
-    const hero: Partial<Hero> = {
-        name = 'Iron Man';
-    }
+const hero: Partial<Hero> = {
+    name = 'Iron Man';
+}
+```
 
 ### Record
 
 How we create dictionaries in Typescript:
 
-    interface Hero {
-        powers: {
-            [key: string]: number
-        }
-    }
+```typescript
+interface Hero {
+  powers: {
+    [key: string]: number
+  }
+}
+```
 
 Or with a Record:
 
-    interface Hero {
-        powers: Record<string, number>
-    }
+```typescript
+interface Hero {
+  powers: Record<string, number>
+}
+```
 
 ### Union
 
 We can mix types with unions:
 
-    interface Hero {
-        powers: number[] | Record<string, number>;
-    }
+```typescript
+interface Hero {
+  powers: number[] | Record<string, number>
+}
+```
 
 ### Nullable
 
 We can allow Types to be null or undefined:
 
-    interface Hero {
-        powers: number[] | null | undefined;
-    }
+```typescript
+interface Hero {
+  powers: number[] | null | undefined
+}
+```
 
 _Note to check nullable values before using them!_
 **Optional chaining**:
 
-    for (let i = 0; i < hero.powers?.length; i++){
-        ...
-    }
+```typescript
+for (let i = 0; i < hero.powers?.length; i++){
+    ...
+}
+```
 
 ### Modules
 
 Export from file 'my-service':
 
-    export class MyService {
-        getData() { ... }
-    }
+```typescript
+export class MyService {
+    getData() { ... }
+}
+```
 
 Import:
 
-    import { MyService } from './my-service';
+```typescript
+import { MyService } from './my-service'
+```
 
 # Angular
 
@@ -625,15 +740,13 @@ Import:
 
 On Windows the 'Global Config' file can be found here:
 
-    C:\Users\<User>\.angular-config.json
+> C:\Users\<User>\.angular-config.json
 
 ### Default templates
 
 On Windows we can find the templates that are generated with 'ng n name' here:
 
-```
-C:\Users\<User>\AppData\Roaming\npm\node_modules\@angular\cli\node_modules\@schematics\angular\application\files\src
-```
+> C:\Users\<User>\AppData\Roaming\npm\node_modules\@angular\cli\node_modules\@schematics\angular\application\files\src
 
 We can:
 
@@ -646,9 +759,7 @@ We can:
 
 We can also make changes to the default package.json & README.md here:
 
-```
-C:\Users\<User>\AppData\Roaming\npm\node_modules\@angular\cli\node_modules\@schematics\angular\workspace\files
-```
+> C:\Users\<User>\AppData\Roaming\npm\node_modules\@angular\cli\node_modules\@schematics\angular\workspace\files
 
 _My global files are included in this project as an example, feel free to take a look and copy or modify them to your needs._
 
@@ -666,15 +777,19 @@ _My global files are included in this project as an example, feel free to take a
 
 Example component decorator:
 
-    @Component({
-        selector: 'app-hero',
-        templateUrl: './hero.component.html',
-        styleUrls: ['./hero.component.css']
-    })
+```typescript
+@Component({
+    selector: 'app-hero',
+    templateUrl: './hero.component.html',
+    styleUrls: ['./hero.component.css']
+})
+```
 
 To render the template of the new component we add the selector to _app.component.html_:
 
-    <app-hero></app-hero>
+```html
+<app-hero></app-hero>
+```
 
 ### Binding Components in Templates
 
@@ -698,14 +813,16 @@ ViewEncapsulation enumeration values:
 
 Example:
 
-    import { Component, ViewEncapsulation } from '@angular/core';
+```typescript
+import { Component, ViewEncapsulation } from '@angular/core';
 
-    @Component({
-        selector: 'app-hero',
-        templateUrl: './hero.component.html',
-        styleUrls: ['./hero.component.css'],
-        encapsulation: ViewEncapsulation.Emulated
-    })
+@Component({
+    selector: 'app-hero',
+    templateUrl: './hero.component.html',
+    styleUrls: ['./hero.component.css'],
+    encapsulation: ViewEncapsulation.Emulated
+})
+```
 
 ### Changing Detection Strategies
 
@@ -713,13 +830,15 @@ Every component has a _'change detector'_ that compares changed properties with 
 
 Example:
 
-    import { Component, ChangeDetectionStrategy } from '@angular/core';
+```typescript
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-    @Component({
-        selector: 'app-hero',
-        templateUrl: './hero.component.html',
-        changeDetection: ChangeDetectionStrategy.OnPush
-    })
+@Component({
+    selector: 'app-hero',
+    templateUrl: './hero.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
+```
 
 ## The Component Lifecycle
 
@@ -773,29 +892,37 @@ To create just an interface model:
 
 Used for the conditional rendering of HTML elements in the DOM.
 
-    <p *ngIf="team === 'Avengers'; else noHero">{{ name }} is an avenger!</p>
-    <ng-template #noHero>
-        <p>No avengers found</p>
-    </ng-template>
+```html
+<p *ngIf="team === 'Avengers'; else noHero">{{ name }} is an avenger!</p>
+<ng-template #noHero>
+  <p>No avengers found</p>
+</ng-template>
+```
 
 ### ngFor
 
 Used for iterating through a collection of elements and rendering a template for each one.
 
-    <ul>
-      <li *ngFor="let hero of listOfHeroes>
-        {{ hero.name }}
-      </li>
-    </ul>
+```html
+<ul>
+    <li *ngFor="let hero of listOfHeroes>
+    {{ hero.name }}
+    </li>
+</ul>
+```
 
 ### ngSwitch
 
 Used as a switch statement evaluating some property and rendering the appropriate HTML element.
 
-    <ng-container [ngSwitch]="hero.team">
-      <div *ngSwitchCase="'Avengers'">{{ hero.name }} is an Avenger.</div>
-      <div *ngSwitchCase="'Justice League'">{{ hero.name }} is in the Justice League.</div>
-    </ng-container>
+```html
+<ng-container [ngSwitch]="hero.team">
+  <div *ngSwitchCase="'Avengers'">{{ hero.name }} is an Avenger.</div>
+  <div *ngSwitchCase="'Justice League'">
+    {{ hero.name }} is in the Justice League.
+  </div>
+</ng-container>
+```
 
 ## Pipes
 
@@ -803,16 +930,18 @@ Pipes allow us to filter and map the outcome of our expressions on a view level.
 
 Some default examples:
 
-    <p>{{ 'Example' | uppercase }}</p>
-    <p>{{ 'Example' | lowercase }}</p>
-    <p>{{ 0.123 | percent }}</p>
-    <p>{{ 100 | currency }}</p>
-    <p>{{ 100 | currency:'EUR' }}</p>
-    <p>{{ listOfHeroes | slice:2:4 }}</p>
-    <p>{{ today | date }}</p>
-    <p>{{ today | date:'fullDate' }}</p>
-    <p>{{ hero | json }}</p>
-    <p>{{ delayedHero | async }}</p>
+```html
+<p>{{ 'Example' | uppercase }}</p>
+<p>{{ 'Example' | lowercase }}</p>
+<p>{{ 0.123 | percent }}</p>
+<p>{{ 100 | currency }}</p>
+<p>{{ 100 | currency:'EUR' }}</p>
+<p>{{ listOfHeroes | slice:2:4 }}</p>
+<p>{{ today | date }}</p>
+<p>{{ today | date:'fullDate' }}</p>
+<p>{{ hero | json }}</p>
+<p>{{ delayedHero | async }}</p>
+```
 
 ## Custom Pipes
 
@@ -822,14 +951,18 @@ To create a pipe _in the current directory_:
 
 Pipes are pure by default, which means they will not update when a value gets changed, only when a new value is assigned. So when we add an object to an existing array or change a value of an object and want it to be affected by the pipe we create a new array/object (immutability principle):
 
-    listOfHeroes: Hero[] = [...heroes, heroX];
+```typescript
+listOfHeroes: Hero[] = [...heroes, heroX];
+```
 
 To change this behavior we can also make the pipe impure:
 
-    @Pipe({
-      name: 'sort',
-      pure: false
-    })
+```typescript
+@Pipe({
+    name: 'sort',
+    pure: false
+})
+```
 
 If the object changes a lot and they are many, this can affect performance.
 
@@ -900,16 +1033,18 @@ The environment file exports an environment object. By default a boolean 'produc
 
 When we created the environment, we can define the appropriate configurations in the _angular.json_:
 
-    "configurations": {
-        "production": {
-            "fileReplacements": [
-                {
-                    "replace": "src/environments/environment.ts",
-                    "with": "src/environments/environment.prod.ts"
-                }
-            ]
-        }
+```json
+"configurations": {
+    "production": {
+        "fileReplacements": [
+            {
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+            }
+        ]
     }
+}
+```
 
 When running **ng build --configuration=production** the CLI will replace the default environment file with the one for production.
 
@@ -928,33 +1063,41 @@ We can generate a **service** that we can use to inject our data in any class th
 
 Add selector to parent template:
 
-    <app-favorite-cars></app-favorite-cars>
+```html
+<app-favorite-cars></app-favorite-cars>
+```
 
 Add the service to providers in parent component:
 
-    @Component({
-        selector: 'app-car-list',
-        templateUrl: './car-list.component.html',
-        styleUrls: ['./car-list.component.css'],
-        providers: [CarService]
-    })
+```typescript
+@Component({
+    selector: 'app-car-list',
+    templateUrl: './car-list.component.html',
+    styleUrls: ['./car-list.component.css'],
+    providers: [CarService]
+})
+```
 
 #### Restricting DI Down the Tree
 
 We can restrict DI down to only one level by using the 'viewProviders' attribute:
 
-    @Component({
-        selector: 'app-car-list',
-        templateUrl: './car-list.component.html',
-        styleUrls: ['./car-list.component.css'],
-        viewProviders: [CarService]
-    })
+```typescript
+@Component({
+    selector: 'app-car-list',
+    templateUrl: './car-list.component.html',
+    styleUrls: ['./car-list.component.css'],
+    viewProviders: [CarService]
+})
+```
 
 #### Restricting Provider Lookup
 
 The **@Host()** decorator will prevent bubbling up the hierarchy to look for the dependency, it will instead throw an exception.
 
-    constructor(@Host() private carService: CarService) { }
+```typescript
+constructor(@Host() private carService: CarService) { }
+```
 
 The **@Optional()** decorator will prevent this error.
 The **@SkipSelf()** and **@Self()** decorators will respectively make the injector skip or check the local injector of the current component. When skipping it will start looking higher in the hierarchy.
@@ -963,60 +1106,74 @@ The **@SkipSelf()** and **@Self()** decorators will respectively make the inject
 
 The provider argument we used before was a shorthand for:
 
-    providers: [{provide: CarService, useClass: CarService}]
+```typescript
+providers: [{ provide: CarService, useClass: CarService }]
+```
 
 The useClass property overwrites the initial implementation. It could also take a factory function that returns one of multiple services depending on a condition:
 
-    export function carFactory(isFavorite: boolean){
-        return () => {
-            if (isFavorite) {
-                return new FavoriteCarService();
-            }
-            return new CarService();
-        };
-    }
-    ...
-    providers: [{provide: CarService, useFactory: carFactory(true)}]
+```typescript
+export function carFactory(isFavorite: boolean){
+    return () => {
+        if (isFavorite) {
+            return new FavoriteCarService();
+        }
+        return new CarService();
+    };
+}
+...
+providers: [{provide: CarService, useFactory: carFactory(true)}]
+```
 
 If the 2 services also inject other dependencies into their constructor, we have to add them to the **deps** property of the provide object literal:
 
-    providers: [{provide: CarService, useFactory: carFactory(true), deps: [HttpClient]}]
+```typescript
+providers: [
+  { provide: CarService, useFactory: carFactory(true), deps: [HttpClient] },
+]
+```
 
 And inject it into the factory:
 
-    export function carFactory(isFavorite: boolean){
-        return (http: HttpClient) => {
-            if (isFavorite) {
-                return new FavoriteCarService();
-            }
-            return new CarService();
-        };
+```typescript
+export function carFactory(isFavorite: boolean) {
+  return (http: HttpClient) => {
+    if (isFavorite) {
+      return new FavoriteCarService()
     }
+    return new CarService()
+  }
+}
+```
 
 ### Dependency Injection of Values
 
 When the dependency we want to provide is not a class, but a value, we can use the **useValue** syntax:
 
-    export interface AppConfig {
-        title: string,
-        version: number
-    }
+```typescript
+export interface AppConfig {
+    title: string,
+    version: number
+}
 
-    export const appSettings: AppConfig = {
-        title: 'My app'
-        version: 1.0
-    ;}
+export const appSettings: AppConfig = {
+    title: 'My app'
+    version: 1.0
+;}
+```
 
 We can't pass an interface to providers, so we create an **InjectionToken**:
 
-    export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');
-    ...
-    providers: [{provide: APP_CONFIG, useValue: appSettings}]
-    ...
-    constructor (@Inject(APP_CONFIG) config: AppConfig){
-        this.title = config.title;
-        this.version = config.version;
-    }
+```typescript
+export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');
+...
+providers: [{provide: APP_CONFIG, useValue: appSettings}]
+...
+constructor (@Inject(APP_CONFIG) config: AppConfig){
+    this.title = config.title;
+    this.version = config.version;
+}
+```
 
 ## Asynchronous Data Services
 
@@ -1028,19 +1185,21 @@ Strategies:
 
 ### Callback Hell
 
-    getRootFolder(folder => {
-        getAssetsFolder(folder, assets => {
-            getPhotos(assets, photos => {
-                ...
-            })
+```typescript
+getRootFolder(folder => {
+    getAssetsFolder(folder, assets => {
+        getPhotos(assets, photos => {
+            ...
         })
     })
+})
+```
 
 ### Promises
 
-    getRootFolder()
-        .then(getAssetsFolder)
-        .then(getPhotos)
+```typescript
+getRootFolder().then(getAssetsFolder).then(getPhotos)
+```
 
 Limitations:
 
@@ -1102,7 +1261,7 @@ We can create a service and implement HttpInterceptor, or we can use:
 
 That implements the method:
 
-```
+```typescript
 intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req)
 }
@@ -1110,7 +1269,7 @@ intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> 
 
 And add a provider to the module:
 
-```
+```typescript
 providers: [
     {
         provide: HTTP_INTERCEPTORS,
@@ -1124,7 +1283,7 @@ providers: [
 
 We can pipe our HTTP requests to catch errors using catchError:
 
-```
+```typescript
 import { catchError, retry } from 'rxjs/operators'
 ...
 getHeroes(): Observable<Hero[]> {
@@ -1194,7 +1353,7 @@ By default lazy loaded modules get loaded on demand. We can change the strategy 
 
 For example, in our app.module we add:
 
-```
+```typescript
 @NgModule({
     imports: [
         ...
@@ -1223,11 +1382,13 @@ When Angular CLI generates components it also generates tests in \*.spec.ts. The
 
 To always get code coverage, edit _angular.json_:
 
-    "test": {
-        "options": {
-            "codeCoverage": true
-        }
+```json
+"test": {
+    "options": {
+        "codeCoverage": true
     }
+}
+```
 
 To run tests on _Edge_ browser:
 
@@ -1239,12 +1400,14 @@ To run tests on _FireFox_ browser:
 
 And edit _karma.conf.js_:
 
-    plugins: [
-        require('karma-edge-launcher'),
-        require('karma-firefox-launcher')
-     ]
-    ...
-    browsers: ['Chrome','Edge','Firefox']
+```json
+plugins: [
+    require('karma-edge-launcher'),
+    require('karma-firefox-launcher')
+    ]
+...
+browsers: ['Chrome','Edge','Firefox']
+```
 
 Or don't edit browsers array and run individually:
 

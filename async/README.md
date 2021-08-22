@@ -31,7 +31,7 @@ There’s a special syntax to work with promises in a more comfortable fashion, 
 
 Example:
 
-```
+```typescript
 async function f() {
 
   let promise = new Promise((resolve, reject) => {
@@ -87,7 +87,7 @@ Unlike Promises, observables are not yet inherit to JavaScript. This is why Angu
 
   Observable creation function for individually defined variables or data structures:
 
-  ```
+  ```typescript
   const appleStream = of('Apple1', 'Apple2')
   const appleStream = from(['Apple1', 'Apple2'])
   ```
@@ -100,7 +100,7 @@ Unlike Promises, observables are not yet inherit to JavaScript. This is why Angu
 
 An observer consists of any of three optional functions:
 
-```
+```typescript
 const observer = {
   next: apple => console.log(`Apple was emitted ${apple}`),
   error: err => console.log(`Error occurred: ${err}`),
@@ -119,7 +119,7 @@ Except for creation operators, there are also a ton of operators for transformat
 
 We can pipe an observable stream through a set of these operators using pipe():
 
-```
+```typescript
 of(2, 4, 6)
   .pipe(
     map(item => item *2),
@@ -129,6 +129,22 @@ of(2, 4, 6)
 ```
 
 _See [here](https://rxjs.dev/guide/operators) for a list of all operators. Using the 'Operator Decision Tree' on this page we can easily find the right operator for the job._
+
+Under the hood of the map operator:
+
+```typescript
+import { Observable } from 'rxjs'
+
+export function map(fn) {
+  return (input) => new Observable(observer => {
+    return input.subscribe({
+      next: value => observer.next(fn(value)),
+      error: err => observer.error(err),
+      complete: () => observer.complete()
+    })
+  })
+}
+```
 
 ---
 
