@@ -147,6 +147,33 @@ export function map(fn) {
 }
 ```
 
+### Async Pipe
+
+The async pipe subscribes to an Observable or Promise and returns the latest value it has emitted. When a new value is emitted, the async pipe marks the component to be checked for changes. When the component gets destroyed, the async pipe unsubscribes automatically to avoid potential memory leaks.
+
+```typescript
+products$ = this.productService.products$;
+```
+
+```html
+products$ | async
+```
+
+Benefits:
+
+- No need to subscribe
+- No need to unsubscribe
+- Option to improve performance by modifying change detection
+
+_Angular uses **change detection** to track changes to application data structures, so it knows when to update the UI with changed data._
+
+```
+@Component({
+  templateUrl: './product-list.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+```
+
 ### Catch Error
 
 The operator 'catchError()' is an error handling operator:
@@ -165,17 +192,36 @@ If an error occurs:
 - Returns a replacement Observable
 - Optionally rethrow the error
 
+```typescript
+return this.http.get<Product[]>(this.productUrl).pipe(
+  catchError((err) => {
+    console.error(err);
+    return of([
+      { id: 1, productName: "cart" },
+      { id: 2, productName: "hammer" },
+    ]);
+  })
+);
 ```
-return this.http.get<Product[]>(this.productUrl)
-  .pipe(
-    catchError(err => {
-      console.error(err);
-      return of([
-        { id: 1, productName: 'cart' },
-        { id: 2, productName: 'hammer' }
-      ]);
-    })
-  )
+
+### Trow Error
+
+The operator 'throwError()' is a creation function. It creates an Observable that emits no items.
+
+- Observable<never>
+- Immediately emits an error notification
+
+```typescript
+getProducts(): Observable<Product[]> {
+  return this.http.get<Product[]>(this.productUrl).pipe(
+    catchError(this.handleError)
+  );
+}
+
+private handleError(err) {
+  ...
+  return throwError(errorMessage);
+}
 ```
 
 ---
