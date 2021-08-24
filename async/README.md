@@ -33,9 +33,8 @@ Example:
 
 ```typescript
 async function f() {
-
   let promise = new Promise((resolve, reject) => {
-    setTimeout(() => resolve("done!"), 1000)
+    setTimeout(() => resolve("done!"), 1000);
   });
 
   let result = await promise; // wait until the promise resolves (*)
@@ -88,8 +87,8 @@ Unlike Promises, observables are not yet inherit to JavaScript. This is why Angu
   Observable creation function for individually defined variables or data structures:
 
   ```typescript
-  const appleStream = of('Apple1', 'Apple2')
-  const appleStream = from(['Apple1', 'Apple2'])
+  const appleStream = of("Apple1", "Apple2");
+  const appleStream = from(["Apple1", "Apple2"]);
   ```
 
 - **fromEvent()**
@@ -102,10 +101,10 @@ An observer consists of any of three optional functions:
 
 ```typescript
 const observer = {
-  next: apple => console.log(`Apple was emitted ${apple}`),
-  error: err => console.log(`Error occurred: ${err}`),
-  complete: () => console.log(`No more apples, go home`)
-}
+  next: (apple) => console.log(`Apple was emitted ${apple}`),
+  error: (err) => console.log(`Error occurred: ${err}`),
+  complete: () => console.log(`No more apples, go home`),
+};
 ```
 
 ### Operators
@@ -122,10 +121,11 @@ We can pipe an observable stream through a set of these operators using pipe():
 ```typescript
 of(2, 4, 6)
   .pipe(
-    map(item => item *2),
-    tap(item => console.log(item)),
+    map((item) => item * 2),
+    tap((item) => console.log(item)),
     take(2)
-  ).subscribe(console.log)
+  )
+  .subscribe(console.log);
 ```
 
 _See [here](https://rxjs.dev/guide/operators) for a list of all operators. Using the 'Operator Decision Tree' on this page we can easily find the right operator for the job._
@@ -133,17 +133,49 @@ _See [here](https://rxjs.dev/guide/operators) for a list of all operators. Using
 Under the hood of the map operator:
 
 ```typescript
-import { Observable } from 'rxjs'
+import { Observable } from "rxjs";
 
 export function map(fn) {
-  return (input) => new Observable(observer => {
-    return input.subscribe({
-      next: value => observer.next(fn(value)),
-      error: err => observer.error(err),
-      complete: () => observer.complete()
-    })
-  })
+  return (input) =>
+    new Observable((observer) => {
+      return input.subscribe({
+        next: (value) => observer.next(fn(value)),
+        error: (err) => observer.error(err),
+        complete: () => observer.complete(),
+      });
+    });
 }
+```
+
+### Catch Error
+
+The operator 'catchError()' is an error handling operator:
+
+- Takes in an input stream, subscribers
+- Creates an output stream
+
+When a source item is emitted:
+
+- Item is emitted to the output stream
+
+If an error occurs:
+
+- Catches the error
+- Unsubscribes from the input stream
+- Returns a replacement Observable
+- Optionally rethrow the error
+
+```
+return this.http.get<Product[]>(this.productUrl)
+  .pipe(
+    catchError(err => {
+      console.error(err);
+      return of([
+        { id: 1, productName: 'cart' },
+        { id: 2, productName: 'hammer' }
+      ]);
+    })
+  )
 ```
 
 ---
