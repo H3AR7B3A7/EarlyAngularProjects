@@ -224,6 +224,28 @@ private handleError(err) {
 }
 ```
 
+### Declarative Approach
+
+Declarative vs procedural:
+
+- Leverage the power of RxJS Observables and Operators
+- Effectively combine streams
+- Easily share observables
+- Readily react to user actions
+- No onInit / onDestroy
+
+Service:
+
+```typescript
+products$ = this.http.get<Product[]>(this.productsUrl);
+```
+
+Component:
+
+```typescript
+products$ = this.productService.products$;
+```
+
 ---
 
 Date of creation: 5-28-2021
