@@ -1,30 +1,36 @@
 <div class="card">
   <div class="card-header">
-    {{pageTitle}}
+    {{ pageTitle }}
   </div>
 
   <div class="card-body">
     <div class="container">
       <div class="row justify-content-between">
         <div class="col-3">
-          <select class="form-control"
-                  (change)="onSelected($event.target.value)">
+          <select
+            class="form-control"
+            (change)="onSelected($event.target.value)"
+          >
             <option value="0">- Display All -</option>
-            <option *ngFor="let category of categories"
-                    [value]="category.id">{{ category.name }}</option>
+            <option *ngFor="let category of categories" [value]="category.id">
+              {{ category.name }}
+            </option>
           </select>
         </div>
         <div class="col-2">
-          <button type="button"
-                  class="btn btn-outline-secondary"
-                  (click)="onAdd()">Add Product</button>
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            (click)="onAdd()"
+          >
+            Add Product
+          </button>
         </div>
       </div>
     </div>
 
     <div class="table-responsive">
-      <table class="table mb-0"
-             *ngIf="products$ | async as products">
+      <table class="table mb-0" *ngIf="products$ | async as products">
         <thead>
           <tr>
             <th>Product</th>
@@ -38,18 +44,16 @@
           <tr>
             <td>{{ product.productName }}</td>
             <td>{{ product.productCode }}</td>
-            <td>{{ product.categoryId }}</td>
-            <td>{{ product.price | currency:"USD":"symbol":"1.2-2" }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.price | currency: "USD":"symbol":"1.2-2" }}</td>
             <td>{{ product.quantityInStock }}</td>
           </tr>
         </tbody>
       </table>
     </div>
-
   </div>
 </div>
 
-<div class="alert alert-danger"
-     *ngIf="errorMessage">
+<div class="alert alert-danger" *ngIf="errorMessage">
   {{ errorMessage }}
 </div>
