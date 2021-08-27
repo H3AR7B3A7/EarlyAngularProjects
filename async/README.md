@@ -246,6 +246,18 @@ Component:
 products$ = this.productService.products$;
 ```
 
+### Combining Streams
+
+- Combining to single stream
+  - Merge
+  - Concat
+- Flattening Higher order Observables
+  - MergeAll
+- Emitting combined values
+  - CombineLatest
+  - ForkJoin
+  - WithLatestFrom
+
 ---
 
 Date of creation: 5-28-2021
