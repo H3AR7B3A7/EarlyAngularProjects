@@ -1,4 +1,4 @@
-import { Product } from './product';
+import { Product } from './product'
 
 export class ProductData {
 
@@ -53,5 +53,5 @@ export class ProductData {
       quantityInStock: 12,
       supplierIds: [9, 10]
     }
-  ];
+  ]
 }

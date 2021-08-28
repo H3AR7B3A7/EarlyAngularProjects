@@ -1,4 +1,4 @@
-import { ProductCategory } from './product-category';
+import { ProductCategory } from './product-category'
 
 export class ProductCategoryData {
 
@@ -15,5 +15,5 @@ export class ProductCategoryData {
       id: 5,
       name: 'Gaming'
     }
-  ];
+  ]
 }
