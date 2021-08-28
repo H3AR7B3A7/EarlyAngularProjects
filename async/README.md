@@ -281,7 +281,7 @@ products$ = this.productService.products$;
   - ForkJoin
   - WithLatestFrom
 
-## Subject / BehaviorSubject
+### Subject / BehaviorSubject
 
 What is a Subject? An RxJS Subject is a special type of Observable that allows values to be multicasted to many Observers. While plain Observables are unicast (each subscribed Observer owns an independent execution of the Observable), Subjects are multicast.
 
@@ -290,6 +290,29 @@ _A Subject is like an Observable, but can multicast to many Observers. Subjects 
 They are both an observable and an observer.
 
 Compared to a Subject, BehaviorSubject takes in an initial value. We could also pipe the observable from a subject using the startWith() operator to set an initial value.
+
+### Merge
+
+Combination function:
+
+- Takes a set of streams, subscribes
+- Creates an output stream
+- Emits an item in output-stream whenever an item is emitted from any of the input-streams
+- Completes when all input streams complete
+
+### Scan
+
+A transformation operator that accumulates items from a stream
+
+- Takes in an input stream, subscribes
+- Creates an output stream
+- Items emitted are accumulated as specified by a provided function
+- Intermediate results are emitted to the output stream
+
+Used for:
+
+- Totalling amounts
+- Accumulation items into an array
 
 ---
 
