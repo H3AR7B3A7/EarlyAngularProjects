@@ -314,6 +314,44 @@ Used for:
 - Totalling amounts
 - Accumulation items into an array
 
+### Caching
+
+Why:
+
+- Improves responsiveness
+- Reduces bandwidth and network consumption
+- Reduces backend server load
+- Reduces redundant computations
+
+shareReplay() is a multicast operator:
+
+- Returns a Subject that shares a single subscriptionto the underlying source
+- Takes in an optional buffer size, which is the number of items cached and replayed
+- On a subscrive it replays a specified number of emissions
+- The items stay cached forever, even after there are no more subscribers
+
+Used for:
+
+- Caching data in the application
+
+### Cache Invalidation
+
+Evaluate:
+
+- Fluidity of the data
+
+  If there are a lot of changes, caching might not be a good idea.
+
+- Users behavior (application runtime?)
+
+  If the application gets closed often cache will be cleared
+
+Consider:
+
+- Invalidation the cache on a time interval
+- Allowing the user to control when data is refreshed
+- Always getting fresh data on update operations
+
 ---
 
 Date of creation: 5-28-2021
