@@ -174,6 +174,29 @@ _Angular uses **change detection** to track changes to application data structur
 })
 ```
 
+**Default**
+
+It uses the default _CheckAlways_ strategy, in which change detection is automatic until explicitly deactivated.
+
+**OnPush**
+
+Only detects changes made to input properties and events from child components and observables bound in the template using an async pipe.
+
+Triggers when:
+
+- An @Inputs() changes
+- A component event handler gets triggered
+- An observable linked to the template via the async pipe emits a new value
+
+It uses the _CheckOnce_ strategy, meaning that automatic change detection is deactivated until reactivated by setting the strategy to Default (CheckAlways). Change detection can still be explicitly invoked. This strategy applies to all child directives and cannot be overridden.
+
+Pitfalls:
+
+- Avoid direct object mutation
+- Avoid manually subscribing in ngOnInit
+
+For more, read [this](https://blog.angular-university.io/onpush-change-detection-how-it-works/).
+
 ### Catch Error
 
 The operator 'catchError()' is an error handling operator:
