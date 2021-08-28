@@ -57,6 +57,10 @@
   </div>
 </div>
 
-<div class="alert alert-danger" *ngIf="errorMessage">
+<!-- <div class="alert alert-danger" *ngIf="errorMessage">
+  {{ errorMessage }}
+</div> -->
+
+<div class="alert alert-danger" *ngIf="errorMessage$ | async as errorMessage">
   {{ errorMessage }}
 </div>
