@@ -1390,20 +1390,25 @@ To always get code coverage, edit _angular.json_:
 }
 ```
 
-To run tests on _Edge_ browser:
-
-> npm install karma-edge-launcher --save-dev
-
 To run tests on _FireFox_ browser:
 
-> npm install karma-firefox-launcher --save-dev
+> npm install karma-firefox-launcher
+
+To run tests on _Edge_ browser:
+
+> npm install karma-edge-launcher
+
+To run tests on _Chromium-Edge_ browser:
+
+> npm install -D @chiragrupani/karma-chromium-edge-launcher
 
 And edit _karma.conf.js_:
 
 ```json
 plugins: [
-    require('karma-edge-launcher'),
-    require('karma-firefox-launcher')
+    require('karma-firefox-launcher'),
+    // require('karma-edge-launcher'),
+    require('@chiragrupani/karma-chromium-edge-launcher'),
     ]
 ...
 browsers: ['Chrome','Edge','Firefox']
