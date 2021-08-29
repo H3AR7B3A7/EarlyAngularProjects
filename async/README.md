@@ -375,6 +375,21 @@ To prevent this, we should use higher-order mapping operators:
 
 _They automatically subscribe and unsubscribe from the inner Observables, and flatten and emit the resulting values to the output observable._
 
+### Related Data Streams
+
+- Get it all
+  - Declarative pattern
+  - Combine streams
+  - Displays instantly
+  - Gets all data
+- Just in time
+  - More complex code
+  - Higher order mapping operators
+  - Display delay
+  - Only retrieves required data
+
+### Ancillary Streams
+
 ---
 
 Date of creation: 5-28-2021
