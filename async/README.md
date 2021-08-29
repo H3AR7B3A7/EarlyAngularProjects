@@ -388,7 +388,9 @@ _They automatically subscribe and unsubscribe from the inner Observables, and fl
   - Display delay
   - Only retrieves required data
 
-### Ancillary Streams
+### Combining Streams
+
+_We can combine all the streams for a view in one stream using the combineLatest operator. This way we only need one stream (the view-model stream) and async pipe in the template._
 
 ---
 
