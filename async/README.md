@@ -352,6 +352,29 @@ Consider:
 - Allowing the user to control when data is refreshed
 - Always getting fresh data on update operations
 
+### Higher Order Observables
+
+Bad practice of nested subscriptions:
+
+```typescript
+of(3, 7);
+pipe(map((id) => this.http.get<Supplier>(`${this.url}/${id}`))).subscribe((o) =>
+  o.subscribe()
+);
+```
+
+- This makes the code more error prone and complex.
+- It will not work with an async pipe.
+- We can't unsubscribe.
+
+To prevent this, we should use higher-order mapping operators:
+
+- concatMap
+- mergeMap
+- switchMap
+
+_They automatically subscribe and unsubscribe from the inner Observables, and flatten and emit the resulting values to the output observable._
+
 ---
 
 Date of creation: 5-28-2021
