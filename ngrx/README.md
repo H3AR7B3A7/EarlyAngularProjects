@@ -85,6 +85,10 @@ Pure function:
 - Given the same arguments, will always return the same value (doesn't use variables outside of function scope)
 - No observable side-effects (doesn't mutate variables outside of function scope)
 
+## Install The Store
+
+> ng add @ngrx/store
+
 ---
 
 Date of creation: 8-30-2021

@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
-
+import { Store } from '@ngrx/store'
 import { Subscription } from 'rxjs'
-
 import { Product } from '../product'
 import { ProductService } from '../product.service'
 
@@ -14,7 +13,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   pageTitle = 'Products'
   errorMessage: string
 
-  displayCode: boolean
+  // displayCode: boolean
 
   products: Product[]
 
@@ -22,7 +21,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
   selectedProduct: Product | null
   sub: Subscription
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private store: Store<any>,
+    private productService: ProductService
+  ) { }
 
   ngOnInit(): void {
     this.sub = this.productService.selectedProductChanges$.subscribe(
@@ -40,7 +42,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   checkChanged(): void {
-    this.displayCode = !this.displayCode
+    // this.displayCode = !this.displayCode
+    this.store.dispatch(
+      { type: '[Product] Toggle Product Code' }
+    )
   }
 
   newProduct(): void {
