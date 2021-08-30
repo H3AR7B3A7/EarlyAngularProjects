@@ -1,6 +1,6 @@
-import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { InMemoryDbService } from 'angular-in-memory-web-api'
 
-import { Product } from './product';
+import { Product } from './product'
 
 export class ProductData implements InMemoryDbService {
 
@@ -41,7 +41,7 @@ export class ProductData implements InMemoryDbService {
                 description: 'Standard two-button video game controller',
                 starRating: 4.6
             }
-        ];
-        return { products };
+        ]
+        return { products }
     }
 }

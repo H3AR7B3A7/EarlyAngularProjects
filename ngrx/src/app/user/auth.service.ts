@@ -1,18 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 
-import { User } from './user';
+import { User } from './user'
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthService {
-    currentUser: User | null;
-    redirectUrl: string;
+    currentUser: User | null
+    redirectUrl: string
 
     constructor() { }
 
     isLoggedIn(): boolean {
-        return !!this.currentUser;
+        return !!this.currentUser
     }
 
     login(userName: string, password: string): void {
@@ -23,10 +23,10 @@ export class AuthService {
             id: 2,
             userName,
             isAdmin: false
-        };
+        }
     }
 
     logout(): void {
-        this.currentUser = null;
+        this.currentUser = null
     }
 }

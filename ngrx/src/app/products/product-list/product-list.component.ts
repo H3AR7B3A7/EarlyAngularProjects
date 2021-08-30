@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core'
 
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs'
 
-import { Product } from '../product';
-import { ProductService } from '../product.service';
+import { Product } from '../product'
+import { ProductService } from '../product.service'
 
 @Component({
   selector: 'pm-product-list',
@@ -11,44 +11,44 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-  pageTitle = 'Products';
-  errorMessage: string;
+  pageTitle = 'Products'
+  errorMessage: string
 
-  displayCode: boolean;
+  displayCode: boolean
 
-  products: Product[];
+  products: Product[]
 
   // Used to highlight the selected product in the list
-  selectedProduct: Product | null;
-  sub: Subscription;
+  selectedProduct: Product | null
+  sub: Subscription
 
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
     this.sub = this.productService.selectedProductChanges$.subscribe(
       currentProduct => this.selectedProduct = currentProduct
-    );
+    )
 
     this.productService.getProducts().subscribe({
       next: (products: Product[]) => this.products = products,
       error: err => this.errorMessage = err
-    });
+    })
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    this.sub.unsubscribe()
   }
 
   checkChanged(): void {
-    this.displayCode = !this.displayCode;
+    this.displayCode = !this.displayCode
   }
 
   newProduct(): void {
-    this.productService.changeSelectedProduct(this.productService.newProduct());
+    this.productService.changeSelectedProduct(this.productService.newProduct())
   }
 
   productSelected(product: Product): void {
-    this.productService.changeSelectedProduct(product);
+    this.productService.changeSelectedProduct(product)
   }
 
 }
