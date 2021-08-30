@@ -13,7 +13,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   pageTitle = 'Products'
   errorMessage: string
 
-  // displayCode: boolean
+  displayCode: boolean
 
   products: Product[]
 
