@@ -180,13 +180,13 @@ deleteItem(id){
 
 ```
 
-In parent template:
+In the parent template:
 
 ```html
 <router-outlet (activate)="onActivate($event)"></router-outlet>
 ```
 
-In parent component:
+In parent.component.ts:
 
 ```typescript
 onActivate(componentReference) {
