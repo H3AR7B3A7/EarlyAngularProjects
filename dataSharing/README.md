@@ -134,7 +134,7 @@ someValue = 'New Value'
 
 _This value is only read 'AfterViewInit'. The parent would need some sort of event to update the value when it gets changed in the child component._
 
-### Child to Parent with EventEmitter & Output
+### Child to Parent with EventEmitter Output
 
 In child.component.ts:
 
@@ -157,6 +157,46 @@ In parent.component.ts:
 ```
 handleSomeEvent(event: any): void {
   // Do something
+}
+```
+
+### Child to Parent over a Router Outlet
+
+We can use the onActivate method to get a reference to the component that gets loaded into the router-outlet.
+
+In child.component.ts:
+
+```typescript
+
+@Output() deleteEvent = new EventEmitter
+@Output() addEvent = new EventEmitter
+
+deleteItem(id){
+    this.deleteEvent.emit(id)
+}
+  addItem(data) {
+    this.deleteEvent.emit(data)
+}
+
+```
+
+In parent template:
+
+```html
+<router-outlet (activate)="onActivate($event)"></router-outlet>
+```
+
+In parent component:
+
+```typescript
+onActivate(componentReference) {
+   componentReference.deleteEvent.subscribe((id) => {
+      // implementation
+   });
+
+   componentReference.addEvent.subscribe((data) => {
+      // implementation
+   })
 }
 ```
 
