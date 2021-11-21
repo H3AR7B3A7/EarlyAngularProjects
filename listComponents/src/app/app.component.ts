@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { of } from 'rxjs'
+import { ItemService } from './item.service'
 
 interface Item {
   title: string,
@@ -12,44 +12,12 @@ interface Item {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  aList$ = of([
-    { title: 'a', active: false },
-    { title: 'b', active: false },
-    { title: 'c', active: true },
-    { title: 'a', active: false },
-    { title: 'b', active: false },
-    { title: 'c', active: false },
-    { title: 'a', active: false },
-    { title: 'b', active: false },
-    { title: 'c', active: false },
-    { title: 'a', active: false },
-    { title: 'b', active: true },
-    { title: 'c', active: false },
-    { title: 'a', active: false },
-    { title: 'b', active: false },
-    { title: 'c', active: false },
-    { title: 'a', active: false },
-    { title: 'b', active: false },
-    { title: 'c', active: false },
-    { title: 'a', active: false },
-    { title: 'b', active: false },
-    { title: 'c', active: false },
-    { title: 'a', active: false },
-    { title: 'b', active: false },
-    { title: 'c', active: false },
-    { title: 'a', active: false },
-    { title: 'b', active: false },
-    { title: 'c', active: false },
-    { title: 'a', active: false },
-    { title: 'b', active: false },
-    { title: 'c', active: false },
-    { title: 'a', active: false },
-    { title: 'b', active: false },
-    { title: 'c', active: false },
-    { title: 'a', active: false },
-    { title: 'b', active: false },
-    { title: 'c', active: false },
-  ])
+
+  constructor(
+    private itemService: ItemService
+  ) { }
+
+  aList$ = this.itemService.getItems()
 
   currentSelection: Item[] = []
 
