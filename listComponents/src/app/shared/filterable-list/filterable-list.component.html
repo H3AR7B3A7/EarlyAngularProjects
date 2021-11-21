@@ -1,0 +1,8 @@
+<div class="container">
+  <input type="text" [(ngModel)]="filter" placeholder="Filter..." />
+  <div class="list">
+    <ul>
+      <li *ngFor="let item of filteredItems">{{ item.title }}</li>
+    </ul>
+  </div>
+</div>
