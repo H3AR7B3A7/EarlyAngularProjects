@@ -26,6 +26,10 @@ $padding: 5px;
   }
 }
 
+.selected {
+  background-color: #d8e4b6 !important;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;

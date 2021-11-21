@@ -1,4 +1,9 @@
 <div class="container">
   <h1>List Components</h1>
-  <app-filterable-list [items]="aList"></app-filterable-list>
+  <app-filterable-list
+    [items]="(aList$ | async)!"
+    (selectionChanged)="handleSelectionChanged($event)"
+  ></app-filterable-list>
+  In parent:
+  <p *ngFor="let item of currentSelection">{{ item.title }}</p>
 </div>

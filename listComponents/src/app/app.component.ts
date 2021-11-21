@@ -1,7 +1,9 @@
 import { Component } from '@angular/core'
+import { of } from 'rxjs'
 
 interface Item {
-  title: string
+  title: string,
+  active: boolean
 }
 
 @Component({
@@ -10,48 +12,48 @@ interface Item {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  aList: Item[] = [
-    { title: 'a' },
-    { title: 'b' },
-    { title: 'c' },
-    { title: 'a' },
-    { title: 'b' },
-    { title: 'c' },
-    { title: 'a' },
-    { title: 'b' },
-    { title: 'c' },
-    { title: 'a' },
-    { title: 'b' },
-    { title: 'c' },
-    { title: 'a' },
-    { title: 'b' },
-    { title: 'c' },
-    { title: 'a' },
-    { title: 'b' },
-    { title: 'c' },
-    { title: 'a' },
-    { title: 'b' },
-    { title: 'c' },
-    { title: 'a' },
-    { title: 'b' },
-    { title: 'c' },
-    { title: 'a' },
-    { title: 'b' },
-    { title: 'c' },
-    { title: 'a' },
-    { title: 'b' },
-    { title: 'c' },
-    { title: 'a' },
-    { title: 'b' },
-    { title: 'c' },
-    { title: 'a' },
-    { title: 'b' },
-    { title: 'c' },
-    { title: 'a' },
-    { title: 'b' },
-    { title: 'c' },
-    { title: 'a' },
-    { title: 'b' },
-    { title: 'c' },
-  ]
+  aList$ = of([
+    { title: 'a', active: false },
+    { title: 'b', active: false },
+    { title: 'c', active: true },
+    { title: 'a', active: false },
+    { title: 'b', active: false },
+    { title: 'c', active: false },
+    { title: 'a', active: false },
+    { title: 'b', active: false },
+    { title: 'c', active: false },
+    { title: 'a', active: false },
+    { title: 'b', active: true },
+    { title: 'c', active: false },
+    { title: 'a', active: false },
+    { title: 'b', active: false },
+    { title: 'c', active: false },
+    { title: 'a', active: false },
+    { title: 'b', active: false },
+    { title: 'c', active: false },
+    { title: 'a', active: false },
+    { title: 'b', active: false },
+    { title: 'c', active: false },
+    { title: 'a', active: false },
+    { title: 'b', active: false },
+    { title: 'c', active: false },
+    { title: 'a', active: false },
+    { title: 'b', active: false },
+    { title: 'c', active: false },
+    { title: 'a', active: false },
+    { title: 'b', active: false },
+    { title: 'c', active: false },
+    { title: 'a', active: false },
+    { title: 'b', active: false },
+    { title: 'c', active: false },
+    { title: 'a', active: false },
+    { title: 'b', active: false },
+    { title: 'c', active: false },
+  ])
+
+  currentSelection: Item[] = []
+
+  handleSelectionChanged($event: Item[]) {
+    this.currentSelection = $event
+  }
 }

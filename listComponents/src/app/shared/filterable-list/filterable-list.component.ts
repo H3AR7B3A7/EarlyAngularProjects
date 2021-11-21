@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 
 @Component({
   selector: 'app-filterable-list',
@@ -21,6 +21,10 @@ export class FilterableListComponent implements OnInit {
     this.filteredItems = this.filter !== '' ? this.performFilter(this.filter) : this.items
   }
 
+  @Output() selectionChanged = new EventEmitter<any[]>()
+
+  selection: any[] = []
+
   ngOnInit(): void {
     this.filteredItems = this.items
   }
@@ -29,5 +33,19 @@ export class FilterableListComponent implements OnInit {
     console.log('Filter: ' + this.filter)
     filterBy = filterBy.toLocaleLowerCase()
     return this.items.filter((item: any) => item.title.toLocaleLowerCase().indexOf(filterBy) !== -1)
+  }
+
+  toggleSelected(item: any): void {
+    if (this.selection.includes(item)) {
+      const index = this.selection.indexOf(item)
+      this.selection.splice(index, 1)
+    } else {
+      this.selection.push(item)
+    }
+    this.selectionChanged.emit(this.selection)
+  }
+
+  isSelected(item: any) {
+    return this.selection.includes(item) ? ['selected'] : []
   }
 }
