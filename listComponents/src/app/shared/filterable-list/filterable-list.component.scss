@@ -1,33 +1,64 @@
 $width: 20rem;
 $padding: 5px;
+$container-color: hsl(187, 52%, 40%);
+$shadow: hsla(0, 0%, 30%, 0.4);
+$list-color: hsl(187, 52%, 60%);
+$scrollbar-light: hsl(187, 52%, 30%);
+$scrollbar-dark: hsl(187, 52%, 20%);
+$scrollbar-lightest: hsl(0, 0%, 80%);
+$selected: hsl(188, 62%, 80%);
+$active: hsl(0, 0%, 77%);
+$border: hsl(0, 0%, 20%);
 
 .container {
-  background-color: pink;
+  background-color: $container-color;
   padding: $padding;
   width: $width + 0.6;
   height: 50%;
+  position: relative;
+  text-align: center;
+  border-radius: $padding;
   & input {
-    width: $width;
+    width: 75%;
     text-align: center;
+    margin-bottom: $padding;
+    border-radius: $padding;
+    border: solid $border 1px;
+    box-shadow: inset 0 0 5px 2px $shadow;
+
+    &:focus {
+      outline: none;
+      box-shadow: inset 0 0 5px 1px $shadow, 0 0 5px 1px $shadow;
+    }
   }
 }
 
 .list {
-  background-color: aquamarine;
+  background-color: $list-color;
   width: $width;
   overflow-y: scroll;
   max-height: 90%;
-  scrollbar-color: #0a4c95 #c2d2e4;
+  scrollbar-color: $scrollbar-dark $scrollbar-light;
+  text-align: left;
+  border-radius: $padding;
+  padding-top: $padding;
+  padding-bottom: $padding;
   & ul {
     list-style: none;
     & li {
       padding-left: 1rem;
+      height: 1.5rem;
+      cursor: pointer;
     }
   }
 }
 
 .selected {
-  background-color: #d8e4b6 !important;
+  background-color: $selected !important;
+}
+
+.active {
+  background-color: $active !important;
 }
 
 /* width */
@@ -37,16 +68,16 @@ $padding: 5px;
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #c2d2e4;
-  box-shadow: inset 0 0 5px grey;
+  background: $scrollbar-lightest;
+  box-shadow: inset 0 0 5px $shadow;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #0a4c95;
+  background: $scrollbar-dark;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #1b5da6;
+  background: $scrollbar-light;
 }

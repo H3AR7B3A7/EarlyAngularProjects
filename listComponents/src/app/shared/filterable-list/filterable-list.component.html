@@ -5,8 +5,10 @@
       <li
         *ngFor="let item of filteredItems"
         (click)="toggleSelected(item)"
-        [style.backgroundColor]="item.active ? 'lightblue' : ''"
-        [ngClass]="isSelected(item)"
+        (mouseenter)="handleMouseEnter(item)"
+        (mouseleave)="handleMouseLeave(item)"
+        [style.border]="item.border"
+        [ngClass]="{ selected: isSelected(item), active: item.active }"
       >
         {{ item.title }}
       </li>

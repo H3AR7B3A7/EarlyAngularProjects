@@ -46,6 +46,14 @@ export class FilterableListComponent implements OnInit {
   }
 
   isSelected(item: any) {
-    return this.selection.includes(item) ? ['selected'] : []
+    return this.selection.includes(item)
+  }
+
+  handleMouseEnter(item: any): void {
+    item.border = 'solid 1px'
+  }
+
+  handleMouseLeave(item: any): void {
+    item.border = 'none'
   }
 }
