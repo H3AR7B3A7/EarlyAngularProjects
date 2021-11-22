@@ -7,6 +7,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 })
 export class FilterableListComponent implements OnInit {
 
+  @Input() search: boolean = true
+
   @Input() items!: any[]
   filteredItems: any[] = []
 

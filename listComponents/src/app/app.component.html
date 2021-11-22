@@ -1,9 +1,34 @@
 <div class="container">
-  <h1>List Components</h1>
+  <!-- FILTERABLE LIST -->
+  <h1>Filterable List</h1>
   <app-filterable-list
     [items]="(aList$ | async)!"
     (selectionChanged)="handleSelectionChanged($event)"
   ></app-filterable-list>
   In parent:
   <p *ngFor="let item of currentSelection">{{ item.title }}</p>
+
+  <!-- TRANSFER -->
+
+  <h1>Transfer</h1>
+  <div class="wrapper">
+    <div class="box">
+      <app-filterable-list
+        [items]="(aShortList$ | async)!"
+        (selectionChanged)="handleSelectionChanged2($event)"
+      ></app-filterable-list>
+    </div>
+
+    <div class="box">
+      <!-- <app-filterable-list
+        [items]="(currentSelectedItems | async)!"
+        [search]="false"
+      ></app-filterable-list> -->
+      <ul>
+        <li *ngFor="let item of currentSelectedItems | async">
+          {{ item.title }}
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

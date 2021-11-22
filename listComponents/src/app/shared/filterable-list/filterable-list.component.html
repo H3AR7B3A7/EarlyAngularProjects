@@ -1,5 +1,11 @@
 <div class="container">
-  <input type="text" [(ngModel)]="filter" placeholder="Search..." />
+  <input
+    *ngIf="search"
+    type="text"
+    [(ngModel)]="filter"
+    placeholder="Search..."
+  />
+  <div *ngIf="!search" style="height: 1.8rem"></div>
   <div class="list">
     <ul>
       <li

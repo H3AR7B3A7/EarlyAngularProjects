@@ -3,3 +3,26 @@
   background-color: burlywood;
   padding: 5px;
 }
+
+.wrapper {
+  width: 50rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: beige;
+  padding: 5px;
+  border-radius: 5px;
+
+  & ul {
+    width: 10rem;
+    background-color: grey;
+    padding: 5px;
+    margin: 1rem;
+    border-radius: 5px;
+
+    & li {
+      list-style: none;
+      cursor: pointer;
+    }
+  }
+}
