@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core'
 
 @Component({
   selector: 'app-filterable-list',
   templateUrl: './filterable-list.component.html',
   styleUrls: ['./filterable-list.component.scss']
 })
-export class FilterableListComponent implements OnInit {
+export class FilterableListComponent implements OnChanges {
 
   @Input() search: boolean = true
 
@@ -27,12 +27,11 @@ export class FilterableListComponent implements OnInit {
 
   selection: any[] = []
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.filteredItems = this.items
   }
 
   performFilter(filterBy: string): any[] {
-    console.log('Filter: ' + this.filter)
     filterBy = filterBy.toLocaleLowerCase()
     return this.items.filter((item: any) => item.title.toLocaleLowerCase().indexOf(filterBy) !== -1)
   }

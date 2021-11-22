@@ -6,7 +6,7 @@
     placeholder="Search..."
   />
   <div *ngIf="!search" style="height: 1.8rem"></div>
-  <div class="list">
+  <div *ngIf="filteredItems && filteredItems.length > 0" class="list">
     <ul>
       <li
         *ngFor="let item of filteredItems"
