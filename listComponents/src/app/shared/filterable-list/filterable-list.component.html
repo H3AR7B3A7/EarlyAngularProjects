@@ -8,16 +8,18 @@
   <div *ngIf="!search" style="height: 1.8rem"></div>
   <div *ngIf="filteredItems && filteredItems.length > 0" class="list">
     <ul>
-      <li
-        *ngFor="let item of filteredItems"
-        (click)="toggleSelected(item)"
-        (mouseenter)="handleMouseEnter(item)"
-        (mouseleave)="handleMouseLeave(item)"
-        [style.border]="item.border"
-        [ngClass]="{ selected: isSelected(item), active: item.active }"
-      >
-        {{ item.title }}
-      </li>
+      <ng-container *ngFor="let item of filteredItems">
+        <li
+          *ngIf="!(isSelected(item) && hideSelected)"
+          (click)="toggleSelected(item)"
+          (mouseenter)="handleMouseEnter(item)"
+          (mouseleave)="handleMouseLeave(item)"
+          [style.border]="item.border"
+          [ngClass]="{ selected: isSelected(item), active: item.active }"
+        >
+          {{ item.title }}
+        </li>
+      </ng-container>
     </ul>
   </div>
 </div>

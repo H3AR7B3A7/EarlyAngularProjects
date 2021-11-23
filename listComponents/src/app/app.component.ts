@@ -24,14 +24,15 @@ export class AppComponent {
   secondList = []
 
   currentSelection: Item[] = []
+  currentSelection2: Item[] = []
 
-  private _currentSelection2 = new BehaviorSubject<Item[]>([])
+  // private _currentSelection2 = new BehaviorSubject<Item[]>([])
 
-  get currentSelectedItems(): Observable<Item[]> {
-    return this._currentSelection2.asObservable().pipe(
-      tap(items => console.log(items))
-    )
-  }
+  // get currentSelectedItems(): Observable<Item[]> {
+  //   return this._currentSelection2.asObservable().pipe(
+  //     tap(items => console.log(items))
+  //   )
+  // }
 
   constructor(
     private itemService: ItemService
@@ -41,8 +42,14 @@ export class AppComponent {
     this.currentSelection = $event
   }
 
-  handleSelectionChanged2($event: Item[]) {
-    // console.log($event)
-    this._currentSelection2.next($event)
+  handleToBeAdded($event: Item[]) {
+    // this._currentSelection2.next($event)
+    this.currentSelection2 = $event
+  }
+
+  handleToBeRemoved($event: Item[]) {
+    // this._currentSelection2.next($event)
+    let index = this.currentSelection2.indexOf($event[0])
+    this.currentSelection2.splice(index, 1)
   }
 }

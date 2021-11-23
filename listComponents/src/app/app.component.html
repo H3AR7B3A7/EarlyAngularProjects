@@ -15,14 +15,16 @@
     <div class="box">
       <app-filterable-list
         [items]="(aShortList$ | async)!"
-        (selectionChanged)="handleSelectionChanged2($event)"
+        [hideSelected]="true"
+        (selectionChanged)="handleToBeAdded($event)"
       ></app-filterable-list>
     </div>
 
     <div class="box">
       <app-filterable-list
-        [items]="(currentSelectedItems | async)!"
+        [items]="currentSelection2"
         [search]="false"
+        (selectionChanged)="handleToBeRemoved($event)"
       ></app-filterable-list>
       <!-- <ul>
         <li *ngFor="let item of currentSelectedItems | async">

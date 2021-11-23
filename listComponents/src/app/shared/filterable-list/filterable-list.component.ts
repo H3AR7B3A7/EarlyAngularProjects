@@ -7,7 +7,8 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angu
 })
 export class FilterableListComponent implements OnChanges {
 
-  @Input() search: boolean = true
+  @Input() search = true
+  @Input() hideSelected = false
 
   @Input() items!: any[]
   filteredItems: any[] = []
@@ -44,6 +45,7 @@ export class FilterableListComponent implements OnChanges {
       this.selection.push(item)
     }
     this.selectionChanged.emit(this.selection)
+    item.border = 'none'
   }
 
   isSelected(item: any) {
