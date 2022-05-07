@@ -7,18 +7,19 @@ import { ExampleDialogComponent } from './example-dialog/example-dialog.componen
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: [ './app.component.scss' ]
 })
 export class AppComponent  {
   animal: string;
   name: string;
+  style: string;
 
   constructor(public dialog: MatDialog) {}
 
   openDialog() {
     const config: MatDialogConfig = {
-      width: '15rem',
-      height: '20rem',
+      width: '16rem',
+      height: '18rem',
       hasBackdrop: false, // Default = true
       data: {name: this.name, animal: this.animal},
     }

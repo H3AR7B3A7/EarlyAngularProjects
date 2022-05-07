@@ -1,4 +1,5 @@
-<ol>
+<mat-card>
+<ul>
   <li>
     <mat-form-field appearance="fill">
       <mat-label>What's your name?</mat-label>
@@ -6,9 +7,24 @@
     </mat-form-field>
   </li>
   <li>
-    <button mat-raised-button (click)="openDialog()">Pick one</button>
+    <button mat-raised-button color="primary" (click)="openDialog()">Pick one</button>
   </li>
   <li *ngIf="animal">
     You chose: <i>{{ animal }}</i>
   </li>
-</ol>
+  <li>
+    <mat-slide-toggle color="primary"></mat-slide-toggle> Primary
+  </li>
+  <li>
+    <mat-slide-toggle></mat-slide-toggle> Accent
+  </li>
+  <li>
+    <label for="radio">Radio</label>
+    <mat-radio-group id="radio" aria-label="Select an option" [(ngModel)]="style">
+      <mat-radio-button value="Accent"></mat-radio-button>
+      <mat-radio-button color="primary" value="Primary"></mat-radio-button>
+    </mat-radio-group>
+    {{ style }}
+  </li>
+</ul>
+</mat-card>
