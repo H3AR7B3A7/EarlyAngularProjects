@@ -14,9 +14,17 @@
 
 We can create an account on npm [here](https://www.npmjs.com/signup).
 
+Log in to npm:
+
+> npm adduser
+
+> npm login
+
 > cd dist/[library-name]
 
-> npm publish
+Make sure to have a unique name / version for the library in package.json
+
+> npm publish --access=public
 
 ---
 
