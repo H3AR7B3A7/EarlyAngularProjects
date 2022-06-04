@@ -26,6 +26,10 @@ Make sure to have a unique name / version for the library in package.json
 
 > npm publish --access=public
 
+# To use the library in your project
+
+> npm install [library-name]
+
 ---
 
 Date of creation: 5-29-2022
