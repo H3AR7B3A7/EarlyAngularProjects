@@ -1,4 +1,12 @@
-<div class="container">
-    <img *ngIf="img" [src]="img" alt="spinner-img"/>
-    <span *ngIf="text">{{ text }}</span>
+<div class="container" [ngStyle]="getContainerStyle()">
+    <img *ngIf="img; else other" [src]="img" alt="spinner-img" [ngStyle]="getStyle()" />
+    <div class="transform">
+        <span *ngIf="text; else other" [ngStyle]="getStyle()">{{ text }}</span>
+    </div>
 </div>
+
+<ng-template #other class="transform">
+    <span [ngStyle]="getStyle()">
+        <ng-content></ng-content>
+    </span>
+</ng-template>
