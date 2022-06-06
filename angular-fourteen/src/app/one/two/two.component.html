@@ -1,0 +1,63 @@
+<form [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      name="password"
+      autocomplete="on"
+      type="password"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <mat-error *ngIf="form.controls.password.invalid">
+      {{ checkErrors('password') }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Confirm Password</mat-label>
+    <input
+      matInput
+      name="password"
+      autocomplete="on"
+      type="password"
+      placeholder="Confirm your password..."
+      formControlName="confirmPassword"
+    />
+    <mat-error *ngIf="form.controls.confirmPassword.invalid">
+      {{ checkErrors('confirmPassword') }}
+    </mat-error>
+    <mat-error *ngIf="form.hasError('not_matching')">
+      The password doesn't match!
+    </mat-error>
+  </mat-form-field>
+</form>
+
+<br />
+<hr />
+<br />
+
+<pre>
+Password:
+{{ form.controls.password.errors | json }}
+</pre>
+
+<pre>
+Confirm Password:
+{{ form.controls.confirmPassword.errors | json }}
+</pre>
+
+<pre>
+Form
+{{ form.errors | json }}
+</pre>
+
+<pre>
+               __
+              (  )
+               ||
+               ||
+           ___|""|__.._
+          /____________\
+          \____________/~~~.
+</pre>
