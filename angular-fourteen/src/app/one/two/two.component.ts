@@ -54,7 +54,6 @@ export class TwoComponent implements OnInit {
   }
 
   checkErrors(control: string) {
-    console.log(this.form);
     const errors = (this.form.controls as any)[control].errors;
     return this.getErrorMessage(errors);
   }
