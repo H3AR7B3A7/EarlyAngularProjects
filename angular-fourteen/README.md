@@ -24,7 +24,11 @@ bootstrapApplication(AppComponent);
 })
 ```
 
-- Remove app.module.ts
+- Remove *app.module.ts*
+- To add components the CLI can no longer add imports to the module:
+
+> ng g c [component-name] --skip-imports
+
 
 ## Strongly-Typed Reactive Forms
 
