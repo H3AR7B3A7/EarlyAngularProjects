@@ -2,17 +2,29 @@
 
 ## Standalone Components
 
-### Bootstrapping main.ts:
+- Change bootstrapping in main.ts:
 
 ```typescript
 bootstrapApplication(AppComponent);
 ```
 
-### Component Decorator
+- Add some fields to the component decorator:
+  - Standalone flag
+  - Imports array
 
 ```typescript
-
+@Component({
+  standalone: true,
+  imports: [
+    AppRoutingModule
+  ],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
 ```
+
+- Remove app.module.ts
 
 ## Strongly-Typed Reactive Forms
 
