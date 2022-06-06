@@ -17,6 +17,11 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2020",
+    "paths": {
+      "spin-anything": [
+        "dist/spin-anything"
+      ]
+    },
     "module": "es2020",
     "lib": [
       "es2020",

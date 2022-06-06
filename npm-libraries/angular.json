@@ -105,6 +105,37 @@
           }
         }
       }
+    },
+    "spin-anything": {
+      "projectType": "library",
+      "root": "projects/spin-anything",
+      "sourceRoot": "projects/spin-anything/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/spin-anything/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/spin-anything/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/spin-anything/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/spin-anything/src/test.ts",
+            "tsConfig": "projects/spin-anything/tsconfig.spec.json",
+            "karmaConfig": "projects/spin-anything/karma.conf.js"
+          }
+        }
+      }
     }
   }
 }
