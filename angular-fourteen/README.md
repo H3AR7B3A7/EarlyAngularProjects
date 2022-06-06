@@ -29,7 +29,6 @@ bootstrapApplication(AppComponent);
 
     > ng g c [component-name] --skip-imports
 
-
 ## Strongly-Typed Reactive Forms
 
 ```typescript
