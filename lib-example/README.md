@@ -8,7 +8,7 @@
 
 > ng build [library-name]
 
-## Contributing to NPM
+## Contributing a Lib to NPM
 
 [Official documentation](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry)
 
@@ -26,7 +26,13 @@ Make sure to have a unique name / version for the library in package.json
 
 > npm publish --access=public
 
-# To use the library in your project
+## Remove a Lib from NPM
+
+> unpublish [library-name] --force
+
+*Force is only required to delete it entirely.*
+
+## To use the library in your project
 
 > npm install [library-name]
 
