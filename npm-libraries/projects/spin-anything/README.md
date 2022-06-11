@@ -8,7 +8,7 @@ Spin text, images or anything else easily.
 import { SpinAnythingModule } from '@h3ar7b3a7/spin-anything/src/public-api';
 
 @NgModule({
-  imports: [BrowserModule, SpinAnythingModule ],
+  imports: [ BrowserModule, SpinAnythingModule ],
   /* ... */
 })
 ```
