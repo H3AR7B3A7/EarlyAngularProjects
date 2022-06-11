@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MyLibModule } from '@h3ar7b3a7/my-lib';
+import { MyLibModule } from '@h3ar7b3a7/my-lib/src/public-api';
 
 import { AppComponent } from './app.component';
 
