@@ -110,7 +110,7 @@
       "projectType": "library",
       "root": "projects/spin-anything",
       "sourceRoot": "projects/spin-anything/src",
-      "prefix": "lib",
+      "prefix": "h3ar7b3a7",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",

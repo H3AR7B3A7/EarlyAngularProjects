@@ -21,6 +21,10 @@
       "@h3ar7b3a7/spin-anything": [
         "dist/spin-anything",
         "dist/spin-anything/spin-anything"
+      ],
+      "@h3ar7b3a7/spin-anything/*": [
+        "projects/spin-anything/*",
+        "projects/spin-anything"
       ]
     },
     "module": "es2020",
