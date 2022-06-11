@@ -4,8 +4,6 @@ Spin text, images or anything else easily.
 
 ## Import
 
-> npm i @h3ar7b3a7/spin-anything
-
 ```typescript
 import { SpinAnythingModule } from '@h3ar7b3a7/spin-anything/src/public-api';
 
@@ -46,4 +44,4 @@ import { SpinAnythingModule } from '@h3ar7b3a7/spin-anything/src/public-api';
 ></spinner>
 ```
 
-[Example on Stackblitz](https://stackblitz.com/edit/angular-ivy-mxj7mi?file=src/app/app.component.html)
+There are some more examples in [this Stackblitz](https://stackblitz.com/edit/angular-ivy-mxj7mi?file=src/app/app.component.html)
