@@ -14,3 +14,17 @@ Spin text, images or anything else easily.
 - fontSize: default = '20'
 - relativeFontSize
 - fontStyle: default = 'normal'
+
+## Example
+
+```html
+<spinner
+  text="Parameter"
+  img="/assets/img/dragon.png"
+  relativeSize="15"
+  speed="5"
+  color="blue"
+  weight="bold"
+  relativeFontSize="2"
+></spinner>
+```

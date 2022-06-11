@@ -21,7 +21,7 @@ export class SpinAnythingComponent {
     const sizeProp = this.relativeSize
       ? this.relativeSize + 'rem'
       : this.size + 'px';
-    return { width: sizeProp };
+    return { width: sizeProp, height: sizeProp };
   }
 
   getStyle() {
