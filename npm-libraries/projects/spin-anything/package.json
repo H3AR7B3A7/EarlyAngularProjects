@@ -1,6 +1,6 @@
 {
   "name": "@h3ar7b3a7/spin-anything",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
     "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/my-lib/"
@@ -10,11 +10,11 @@
     "save": "dependencies"
   },
   "peerDependencies": {
-    "@angular/core": "^11.0.0"
+    "@angular/core": "^14.0.0"
   },
   "devDependencies": {
-    "copyfiles": "file:../../node_modules/copyfiles",
-    "typescript": "file:../../node_modules/typescript"
+    "copyfiles": "^2.4.1",
+    "typescript": "^4.7.2"
   },
   "keywords": [
     "spin",
