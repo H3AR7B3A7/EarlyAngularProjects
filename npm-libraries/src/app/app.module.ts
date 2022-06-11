@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { SpinAnythingModule } from 'spin-anything';
+import { SpinAnythingModule } from '@h3ar7b3a7/spin-anything';
 
 import { AppComponent } from './app.component';
 
@@ -10,4 +10,4 @@ import { AppComponent } from './app.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

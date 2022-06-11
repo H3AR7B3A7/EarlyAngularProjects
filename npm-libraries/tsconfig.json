@@ -18,7 +18,7 @@
     "importHelpers": true,
     "target": "es2020",
     "paths": {
-      "spin-anything": [
+      "@h3ar7b3a7/spin-anything": [
         "dist/spin-anything",
         "dist/spin-anything/spin-anything"
       ]

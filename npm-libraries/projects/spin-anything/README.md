@@ -2,6 +2,19 @@
 
 Spin text, images or anything else easily.
 
+## Import
+
+> npm i @h3ar7b3a7/spin-anything
+
+```typescript
+import { SpinAnythingModule } from '@h3ar7b3a7/spin-anything/src/public-api';
+
+@NgModule({
+  imports: [BrowserModule, SpinAnythingModule ],
+  /* ... */
+})
+```
+
 ## Inputs
 
 - img
@@ -15,12 +28,16 @@ Spin text, images or anything else easily.
 - relativeFontSize
 - fontStyle: default = 'normal'
 
-## Example
+## Examples
+
+```html
+<spinner>Example</spinner>
+```
 
 ```html
 <spinner
-  text="Parameter"
-  img="/assets/img/dragon.png"
+  text="Example"
+  img="/assets/img/some_image.png"
   relativeSize="15"
   speed="5"
   color="blue"
@@ -28,3 +45,5 @@ Spin text, images or anything else easily.
   relativeFontSize="2"
 ></spinner>
 ```
+
+[Example on Stackblitz](https://stackblitz.com/edit/angular-ivy-mxj7mi?file=src/app/app.component.html)
