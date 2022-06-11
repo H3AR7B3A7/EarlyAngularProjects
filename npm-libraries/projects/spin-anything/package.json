@@ -1,6 +1,6 @@
 {
   "name": "@h3ar7b3a7/spin-anything",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
     "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/my-lib/"
