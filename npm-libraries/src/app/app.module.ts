@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {
-  SpinAnythingModule,
-} from 'projects/spin-anything/src/public-api';
+import { SpinAnythingModule } from 'spin-anything';
 
 import { AppComponent } from './app.component';
 

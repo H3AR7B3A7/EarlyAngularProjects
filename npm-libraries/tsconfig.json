@@ -19,7 +19,8 @@
     "target": "es2020",
     "paths": {
       "spin-anything": [
-        "dist/spin-anything"
+        "dist/spin-anything",
+        "dist/spin-anything/spin-anything"
       ]
     },
     "module": "es2020",
