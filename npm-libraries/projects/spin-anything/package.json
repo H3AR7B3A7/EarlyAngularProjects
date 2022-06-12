@@ -1,6 +1,6 @@
 {
   "name": "@h3ar7b3a7/spin-anything",
-  "version": "0.0.16",
+  "version": "0.0.18",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
     "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/my-lib/"
@@ -22,5 +22,12 @@
     "spinning",
     "loader",
     "loading"
-  ]
+  ],
+  "description": "Spin text, images or anything else easily.",
+  "main": "karma.conf.js",
+  "dependencies": {
+    "tslib": "^2.4.0"
+  },
+  "author": "h3ar7b3a7",
+  "license": "ISC"
 }
