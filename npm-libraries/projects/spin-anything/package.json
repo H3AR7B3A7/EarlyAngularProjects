@@ -3,14 +3,14 @@
   "version": "0.0.18",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
-    "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/my-lib/"
+    "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/spin-anything/"
   },
   "schematics": "./schematics/collection.json",
   "ng-add": {
     "save": "dependencies"
   },
   "peerDependencies": {
-    "@angular/core": "^14.0.0"
+    "@angular/core": "^14.0.1"
   },
   "devDependencies": {
     "copyfiles": "^2.4.1",
@@ -25,9 +25,6 @@
   ],
   "description": "Spin text, images or anything else easily.",
   "main": "karma.conf.js",
-  "dependencies": {
-    "tslib": "^2.4.0"
-  },
   "author": "h3ar7b3a7",
   "license": "ISC"
 }
