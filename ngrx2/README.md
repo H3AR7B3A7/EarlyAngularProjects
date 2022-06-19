@@ -1,5 +1,7 @@
 # Ngrx
 
+[Example app](https://github.com/ngrx/platform/tree/127ccc99663442ea1a902e459ae9fb1041fd7f80/example-app)
+
 ## Used Commands
 
 yarn install angular-in-memory-web-api
