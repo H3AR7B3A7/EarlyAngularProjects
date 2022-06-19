@@ -6,6 +6,7 @@
 
 yarn install angular-in-memory-web-api
 ng add @ngrx/store@latest --no-minimal
+ng add @ngrx/store-devtools@latest
 ng add @angular-eslint/schematics@latest
 ng add @cypress/schematic@latest
 ng g m core

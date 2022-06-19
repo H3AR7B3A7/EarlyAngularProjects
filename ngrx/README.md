@@ -96,7 +96,7 @@ Pure function:
 
 -Run
 
-> ng add @ngrx/store-devtools
+> ng add @ngrx/store-devtools@latest
 
 - Initialize the devtools module
 
