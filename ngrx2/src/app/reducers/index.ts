@@ -19,4 +19,4 @@ export const reducers: ActionReducerMap<State, Actions> = {
 }
 
 
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : []
+export const metaReducers: MetaReducer<State, Actions>[] = !environment.production ? [] : []
