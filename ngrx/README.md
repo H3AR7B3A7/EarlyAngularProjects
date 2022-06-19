@@ -88,6 +88,17 @@ Pure function:
 ## Install The Store
 
 > ng add @ngrx/store
+> ng add @ngrx/store@latest --no-minimal --statePath core/reducers
+
+## Install The Devtools
+
+- Install Chrome Redux DevTools
+
+-Run
+
+> ng add @ngrx/store-devtools
+
+- Initialize the devtools module
 
 ---
 

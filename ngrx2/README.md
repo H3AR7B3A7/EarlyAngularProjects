@@ -36,3 +36,7 @@ ng add @ngrx/store@latest --no-minimal --statePath core/reducers
 @ngrx/entity
 @ngrx/store
 @ngrx/store-devtools
+
+---
+
+Date of creation: 6-19-2022
