@@ -1,5 +1,22 @@
 # Ngrx
 
+## Used Commands
+
+yarn install angular-in-memory-web-api
+ng add @ngrx/store@latest --no-minimal
+ng add @angular-eslint/schematics@latest
+ng add @cypress/schematic@latest
+ng g m core
+ng g m shared
+ng g c home
+ng g m developers
+ng g c developers
+ng g m products
+ng g c products
+ng g c core/nav-bar
+
+## Info
+
 - Redux + RxJS
 - Single source of truth
 - Immutable Data

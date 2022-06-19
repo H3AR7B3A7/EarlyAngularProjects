@@ -1,4 +1,4 @@
-import { Injectable, NgModule } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core'
 
 @Injectable()
 export class EnsureModuleLoadedOnceGuard {
@@ -6,7 +6,7 @@ export class EnsureModuleLoadedOnceGuard {
         if (targetModule) {
             throw new Error(
                 `${targetModule.constructor.name} has already been loaded. Import this module in the AppModule only.`
-            );
+            )
         }
     }
 }
