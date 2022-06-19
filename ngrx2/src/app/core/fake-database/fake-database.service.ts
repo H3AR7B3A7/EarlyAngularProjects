@@ -14,6 +14,13 @@ export class FakeDatabase implements InMemoryDbService {
                     name: 'Steven',
                     team: 'Goldfish'
                 }
+            ],
+            products: [
+                {
+                    id: 1,
+                    name: 'Laptop',
+                    price: 1200
+                }
             ]
         }
     }
