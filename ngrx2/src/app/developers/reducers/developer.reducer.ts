@@ -1,7 +1,7 @@
 import { Developer } from '../developer.model'
 
 import * as AppState from '../../reducers/app.state'
-import { createAction, createFeatureSelector, createReducer, on } from '@ngrx/store'
+import { createAction, createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store'
 export interface State extends AppState.State {
     developers: DeveloperState
 }
@@ -32,5 +32,6 @@ export const developerReducer = createReducer<DeveloperState>(
     })
 )
 
+const getDeveloperState = createFeatureSelector<DeveloperState>('developers')
 
-export const getDevelopers = createFeatureSelector<DeveloperState>('developers')
+export const getDevelopers = createSelector(getDeveloperState, (state: DeveloperState) => state.developers)
