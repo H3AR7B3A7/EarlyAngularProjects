@@ -1,33 +1,36 @@
-import { Developer } from './developer.model'
-import * as developers from '../actions/developer.action';
+import { Developer } from '../developer.model'
 
-export interface State {
+import * as AppState from '../../reducers/app.state'
+import { createAction, createFeatureSelector, createReducer, on } from '@ngrx/store'
+export interface State extends AppState.State {
+    developers: DeveloperState
+}
+
+export interface DeveloperState {
     developers: Developer[]
 }
 
-const initialState: State = {
+const initialState: DeveloperState = {
     developers: []
 }
 
-export function reducer(state = initialState, action: developers.Actions): State {
-    switch (action.type) {
-        case developers.ADD_DEVELOPER:
-            return {
-                ...state,
-                developers: [...state.developers, { id: 9, name: 'me', team: 'seeks' }]
-            };
+// TODO : Add payload to the actions
+export const developerReducer = createReducer<DeveloperState>(
+    initialState,
+    on(createAction('[Developer] Add'), (state): DeveloperState => {
+        return {
+            ...state,
+            developers: [...state.developers, { id: Math.random(), name: 'New Developer', team: 'New Team' }]
+        }
+    }),
+    on(createAction('[Developer] Remove'), (state): DeveloperState => {
+        const newDevelopers = state.developers.slice(1)
+        return {
+            ...state,
+            developers: newDevelopers
+        }
+    })
+)
 
-        case developers.REMOVE_DEVELOPER:
-            const newDevelopers = { ...state.developers }
-            newDevelopers.pop()
-            return {
-                ...state,
-                developers: [...newDevelopers]
-            };
 
-        default:
-            return state;
-    }
-}
-
-export const getDevelopers = (state: State) => state.developers
+export const getDevelopers = createFeatureSelector<DeveloperState>('developers')
