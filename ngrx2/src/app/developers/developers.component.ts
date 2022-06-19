@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { Store } from '@ngrx/store'
-import { State } from '../products/reducers'
-import { getDevelopers } from './reducers/developer.reducer'
+import { getDevelopers } from './state/developer.reducer'
+import { State } from './state/developer.state'
 
 @Component({
   selector: 'app-developers',

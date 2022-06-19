@@ -1,14 +1,5 @@
-import { Developer } from '../developer.model'
-
-import * as AppState from '../../reducers/app.state'
 import { createAction, createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store'
-export interface State extends AppState.State {
-    developers: DeveloperState
-}
-
-export interface DeveloperState {
-    developers: Developer[]
-}
+import { DeveloperState } from './developer.state'
 
 const initialState: DeveloperState = {
     developers: []

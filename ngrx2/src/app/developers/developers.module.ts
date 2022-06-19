@@ -4,7 +4,7 @@ import { DevelopersComponent } from './developers.component'
 import { SharedModule } from '../shared/shared.module'
 import { RouterModule, Routes } from '@angular/router'
 import { StoreModule } from '@ngrx/store'
-import { developerReducer } from './reducers/developer.reducer'
+import { developerReducer } from './state/developer.reducer'
 
 const developerRoutes: Routes = [
   { path: '', component: DevelopersComponent }

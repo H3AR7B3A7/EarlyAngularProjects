@@ -1,1 +1,4 @@
-<p>products works!</p>
+<h3>Products</h3>
+{{products$ | async | json}}
+<button (click)="add()">ADD</button>
+<button (click)="remove()">REMOVE</button>

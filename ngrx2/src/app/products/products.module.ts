@@ -4,7 +4,7 @@ import { ProductsComponent } from './products.component'
 import { SharedModule } from '../shared/shared.module'
 import { RouterModule, Routes } from '@angular/router'
 import { StoreModule } from '@ngrx/store'
-import { reducers } from './reducers'
+import { productReducer } from './state/product.reducer'
 
 const productRoutes: Routes = [
   { path: '', component: ProductsComponent }
@@ -17,7 +17,7 @@ const productRoutes: Routes = [
   imports: [
     SharedModule,
     RouterModule.forChild(productRoutes),
-    StoreModule.forFeature('products', reducers),
+    StoreModule.forFeature('products', productReducer),
 
   ]
 })
