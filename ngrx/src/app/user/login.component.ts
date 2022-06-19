@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core'
 import { NgForm } from '@angular/forms'
 import { Router } from '@angular/router'
 import { Store } from '@ngrx/store'
-import { Subscription } from 'rxjs'
 
 import { AuthService } from './auth.service'
 import { getMaskUsername, State } from './state/user.reducer'
+import * as UserActions from './state/user.actions'
+
 
 @Component({
   templateUrl: './login.component.html',
@@ -15,7 +16,6 @@ export class LoginComponent implements OnInit {
   pageTitle = 'Log In'
 
   maskUsername: boolean
-  sub: Subscription
 
   constructor(
     private authService: AuthService,
@@ -24,11 +24,12 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.sub = this.store.select(getMaskUsername).subscribe(
-      maskUsername => {
-        this.maskUsername = maskUsername
-      }
-    )
+    // TODO : Unsubscribe
+    console.log('init')
+    this.store.select(getMaskUsername).subscribe(brol => {
+      console.log('maskUsername', brol)
+      this.maskUsername = brol
+    })
   }
 
   cancel(): void {
@@ -37,9 +38,7 @@ export class LoginComponent implements OnInit {
 
   checkChanged(): void {
     // this.maskUsername = !this.maskUsername
-    this.store.dispatch(
-      { type: '[User] Toggle Username Mask' }
-    )
+    this.store.dispatch(UserActions.maskUsername())
   }
 
   login(loginForm: NgForm): void {

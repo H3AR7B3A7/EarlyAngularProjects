@@ -8,3 +8,11 @@ export const setCurrentProduct = createAction('[Product] Set Current Product', p
 export const clearCurrentProduct = createAction('[Product] Clear Current Product');
 
 export const initializeCurrentProduct = createAction('[Product] Initialize Current Product');
+
+// COMPLEX OPERATIONS
+
+export const loadProducts = createAction('[Product] Load');
+
+export const loadSuccess = createAction('[Product] Load Success', props<{ products: Product[] }>());
+
+export const loadFail = createAction('[Product] Load Fail', props<{ error: string }>());
