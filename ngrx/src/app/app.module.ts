@@ -10,8 +10,8 @@ import { MenuComponent } from './home/menu.component'
 import { WelcomeComponent } from './home/welcome.component'
 import { PageNotFoundComponent } from './home/page-not-found.component'
 import { UserModule } from './user/user.module'
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { environment } from '../environments/environment'
 
 @NgModule({

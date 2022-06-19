@@ -5,8 +5,8 @@ import { AppComponent } from './app.component'
 import { HomeComponent } from './home/home.component'
 import { CoreModule } from './core/core.module'
 import { AppRoutingModule } from './app.routing'
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { environment } from '../environments/environment'
 
 @NgModule({
