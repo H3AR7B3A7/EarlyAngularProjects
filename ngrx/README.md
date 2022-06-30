@@ -100,6 +100,32 @@ Pure function:
 
 - Initialize the devtools module
 
+## Install Effects
+
+> ng add @ngrx/effects@latest
+
+### Operators in Effects
+
+SwitchMap
+
+- Cancels the current subscription/request and can cause race conditions
+- Use for get requests or cancelable requests like searches
+
+ConcatMap
+
+- Runs subscriptions/requests in order and is less performant
+- Use for get, post and put requests when order is important
+
+MergeMap
+
+- Runs subscription/requests in parallel and is more performant
+- Use for get, put, post and delete requests when order is not important
+
+ExhaustMap
+
+- Ignores all subsequent subscriptions/requests until it completes
+- Use for login when you don't want more requests until the initial one is complete
+
 ---
 
 Date of creation: 8-30-2021

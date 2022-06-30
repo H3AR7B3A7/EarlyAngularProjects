@@ -12,7 +12,8 @@ import { PageNotFoundComponent } from './home/page-not-found.component'
 import { UserModule } from './user/user.module'
 import { StoreModule } from '@ngrx/store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
-import { environment } from '../environments/environment'
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects'
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { environment } from '../environments/environment'
     UserModule,
     AppRoutingModule,
     StoreModule.forRoot({}),
-    StoreDevtoolsModule.instrument({ name: 'ACME Demo App DevTools', maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ name: 'ACME Demo App DevTools', maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([])
   ],
   declarations: [
     AppComponent,
