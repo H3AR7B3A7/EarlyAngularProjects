@@ -16,33 +16,19 @@ export class ProductListComponent implements OnInit {
   pageTitle = 'Products'
   errorMessage: string
 
-  displayCode: boolean
-
-  products: Product[]
-
-  // Used to highlight the selected product in the list
-  selectedProduct: Product | null
   products$: Observable<Product[]>
+  selectedProduct$: Observable<Product>
+  showProductCode$: Observable<boolean>
 
   constructor(
     private store: Store<State>,
-    private productService: ProductService
   ) { }
 
   ngOnInit(): void {
-    // TODO : Unsubscribe
-    this.store.select(getCurrentProduct).subscribe(
-      currentProduct => this.selectedProduct = currentProduct
-    )
-
+    this.selectedProduct$ = this.store.select(getCurrentProduct)
     this.products$ = this.store.select(getProducts)
-
     this.store.dispatch(ProductActions.loadProducts())
-
-    // TODO : Unsubscribe
-    this.store.select(getShowProductCode).subscribe(
-      showProductCode => this.displayCode = showProductCode
-    )
+    this.showProductCode$ = this.store.select(getShowProductCode)
   }
 
   checkChanged(): void {
