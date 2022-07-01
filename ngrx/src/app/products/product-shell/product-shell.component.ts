@@ -4,7 +4,7 @@ import { Observable } from 'rxjs'
 
 import { Product } from '../product'
 import { getCurrentProduct, getError, getProducts, getShowProductCode, State } from '../state'
-import * as ProductActions from '../state/product.actions'
+import { ProductPageActions } from '../state/actions'
 
 @Component({
   templateUrl: './product-shell.component.html'
@@ -24,21 +24,21 @@ export class ProductShellComponent implements OnInit {
     this.selectedProduct$ = this.store.select(getCurrentProduct)
     this.products$ = this.store.select(getProducts)
     this.errorMessage$ = this.store.select(getError)
-    this.store.dispatch(ProductActions.loadProducts())
+    this.store.dispatch(ProductPageActions.loadProducts())
     this.showProductCode$ = this.store.select(getShowProductCode)
   }
 
   showProductCodeChanged(): void {
     this.store.dispatch(
-      ProductActions.toggleProductCode()
+      ProductPageActions.toggleProductCode()
     )
   }
 
   initializeNewProduct(): void {
-    this.store.dispatch(ProductActions.initializeCurrentProduct())
+    this.store.dispatch(ProductPageActions.initializeCurrentProduct())
   }
 
   productSelected(product: Product): void {
-    this.store.dispatch(ProductActions.setCurrentProduct({ productId: product.id }))
+    this.store.dispatch(ProductPageActions.setCurrentProduct({ productId: product.id }))
   }
 }
