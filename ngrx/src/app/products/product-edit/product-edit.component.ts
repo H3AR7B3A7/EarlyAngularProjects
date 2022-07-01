@@ -9,7 +9,6 @@ import { GenericValidator } from '../../shared/generic-validator'
 import { NumberValidators } from '../../shared/number.validator'
 import { Store } from '@ngrx/store'
 import { getCurrentProduct, State } from '../state/product.reducer'
-
 import * as ProductActions from '../state/product.actions'
 
 @Component({

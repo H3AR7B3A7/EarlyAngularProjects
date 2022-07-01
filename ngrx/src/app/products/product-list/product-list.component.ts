@@ -4,7 +4,6 @@ import { Observable } from 'rxjs'
 
 import { Product } from '../product'
 import { getCurrentProduct, getError, getProducts, getShowProductCode, State } from '../state/product.reducer'
-
 import * as ProductActions from '../state/product.actions'
 
 @Component({
