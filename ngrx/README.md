@@ -1,6 +1,7 @@
 # NgRX
 
 Pluralsight course project by Deborah Kurata.
+[GitHub Repository](https://github.com/DeborahK/Angular-NgRx-GettingStarted)
 
 ## What is NgRX?
 

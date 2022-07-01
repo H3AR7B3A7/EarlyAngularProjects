@@ -4,11 +4,10 @@ import { Observable } from 'rxjs'
 import { tap } from 'rxjs/operators'
 
 import { Product } from '../product'
-import { ProductService } from '../product.service'
 import { GenericValidator } from '../../shared/generic-validator'
 import { NumberValidators } from '../../shared/number.validator'
 import { Store } from '@ngrx/store'
-import { getCurrentProduct, State } from '../state/product.reducer'
+import { getCurrentProduct, State } from '../state'
 import * as ProductActions from '../state/product.actions'
 
 @Component({
@@ -27,7 +26,6 @@ export class ProductEditComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private productService: ProductService,
     private store: Store<State>) {
     this.validationMessages = {
       productName: {
