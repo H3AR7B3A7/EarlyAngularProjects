@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store'
 import { AuthService } from './auth.service'
 import { getMaskUsername, State } from './state/user.reducer'
 import * as UserActions from './state/user.actions'
+import { Observable } from 'rxjs'
 
 
 @Component({
@@ -15,7 +16,7 @@ import * as UserActions from './state/user.actions'
 export class LoginComponent implements OnInit {
   pageTitle = 'Log In'
 
-  maskUsername: boolean
+  maskUsername$: Observable<boolean>
 
   constructor(
     private authService: AuthService,
@@ -24,12 +25,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // TODO : Unsubscribe
-    console.log('init')
-    this.store.select(getMaskUsername).subscribe(brol => {
-      console.log('maskUsername', brol)
-      this.maskUsername = brol
-    })
+    this.maskUsername$ = this.store.select(getMaskUsername)
   }
 
   cancel(): void {
@@ -37,7 +33,6 @@ export class LoginComponent implements OnInit {
   }
 
   checkChanged(): void {
-    // this.maskUsername = !this.maskUsername
     this.store.dispatch(UserActions.maskUsername())
   }
 

@@ -26,7 +26,7 @@
                     !userNameVar.valid
                 }"
                 id="userNameId"
-                [type]="maskUsername ? 'password' : 'text'"
+                [type]="(maskUsername$ | async) ? 'password' : 'text'"
                 placeholder="User Name (required)"
                 required
                 ngModel
@@ -106,7 +106,7 @@
               class="form-check-input"
               type="checkbox"
               (change)="checkChanged()"
-              [checked]="maskUsername"
+              [checked]="maskUsername$ | async"
             />
             Mask user name
           </label>
