@@ -127,6 +127,12 @@ ExhaustMap
 - Ignores all subsequent subscriptions/requests until it completes
 - Use for login when you don't want more requests until the initial one is complete
 
+## State Module
+
+In some cases we might want to share state between 2 or more lazy loaded modules.
+
+![state-module](state-module.png)
+
 ---
 
 Date of creation: 8-30-2021
