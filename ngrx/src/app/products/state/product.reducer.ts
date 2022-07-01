@@ -8,15 +8,17 @@ export interface State extends AppState.State {
   products: ProductState
 }
 export interface ProductState {
-  showProductCode: boolean,
-  currentProduct: Product,
-  products: Product[],
+  showProductCode: boolean
+  currentProduct: Product
+  products: Product[]
+  error: string
 }
 
 const initialState: ProductState = {
   showProductCode: true,
   currentProduct: null,
-  products: []
+  products: [],
+  error: ''
 }
 
 export const productReducer = createReducer<ProductState>(
@@ -48,7 +50,15 @@ export const productReducer = createReducer<ProductState>(
   on(ProductActions.loadSuccess, (state, action): ProductState => {
     return {
       ...state,
-      products: action.products
+      products: action.products,
+      error: ''
+    }
+  }),
+  on(ProductActions.loadFail, (state, action): ProductState => {
+    return {
+      ...state,
+      products: [],
+      error: action.error
     }
   })
 )
@@ -68,3 +78,8 @@ export const getProducts = createSelector(getProductFeatureState, state => state
 //   getCurrentProductId,
 //   (state, currentProductId) => state.products.find(p => p.id === currentProductId)
 // )
+
+export const getError = createSelector(
+  getProductFeatureState,
+  state => state.error
+)
