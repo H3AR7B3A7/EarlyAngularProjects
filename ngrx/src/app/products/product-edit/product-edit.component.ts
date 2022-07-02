@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 import { Product } from '../product'
@@ -7,7 +7,8 @@ import { NumberValidators } from '../../shared/number.validator'
 
 @Component({
   selector: 'pm-product-edit',
-  templateUrl: './product-edit.component.html'
+  templateUrl: './product-edit.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductEditComponent implements OnInit, OnChanges {
   pageTitle = 'Product Edit'
