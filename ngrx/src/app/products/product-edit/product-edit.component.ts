@@ -1,32 +1,33 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { Observable } from 'rxjs'
-import { tap } from 'rxjs/operators'
 
 import { Product } from '../product'
 import { GenericValidator } from '../../shared/generic-validator'
 import { NumberValidators } from '../../shared/number.validator'
-import { Store } from '@ngrx/store'
-import { getCurrentProduct, State } from '../state'
-import { ProductPageActions } from '../state/actions'
 
 @Component({
   selector: 'pm-product-edit',
   templateUrl: './product-edit.component.html'
 })
-export class ProductEditComponent implements OnInit {
+export class ProductEditComponent implements OnInit, OnChanges {
   pageTitle = 'Product Edit'
-  errorMessage = ''
+
+  @Input() errorMessage: string;
+  @Input() selectedProduct: Product;
+  @Output() create = new EventEmitter<Product>();
+  @Output() update = new EventEmitter<Product>();
+  @Output() delete = new EventEmitter<Product>();
+  @Output() clearCurrent = new EventEmitter<void>();
+
   productForm: FormGroup
 
   displayMessage: { [key: string]: string } = {}
   private validationMessages: { [key: string]: { [key: string]: string } }
   private genericValidator: GenericValidator
-  product$: Observable<Product | null>
 
   constructor(
-    private fb: FormBuilder,
-    private store: Store<State>) {
+    private fb: FormBuilder
+  ) {
     this.validationMessages = {
       productName: {
         required: 'Product name is required.',
@@ -50,13 +51,17 @@ export class ProductEditComponent implements OnInit {
       starRating: ['', NumberValidators.range(1, 5)],
       description: ''
     })
-    this.product$ = this.store.select(getCurrentProduct).pipe(
-      tap(product => this.displayProduct(product))
-    )
 
     this.productForm.valueChanges.subscribe(
       () => this.displayMessage = this.genericValidator.processMessages(this.productForm)
     )
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.selectedProduct) {
+      const product = changes.selectedProduct.currentValue as Product;
+      this.displayProduct(product);
+    }
   }
 
   blur(): void {
@@ -89,10 +94,10 @@ export class ProductEditComponent implements OnInit {
   deleteProduct(product: Product): void {
     if (product && product.id) {
       if (confirm(`Really delete the product: ${product.productName}?`)) {
-        this.store.dispatch(ProductPageActions.deleteProduct({ productId: product.id }))
+        this.delete.emit(this.selectedProduct)
       }
     } else {
-      this.store.dispatch(ProductPageActions.clearCurrentProduct())
+      this.clearCurrent.emit()
     }
   }
 
@@ -102,9 +107,9 @@ export class ProductEditComponent implements OnInit {
         const product = { ...originalProduct, ...this.productForm.value }
 
         if (product.id === 0) {
-          this.store.dispatch(ProductPageActions.createProduct({ product }))
+          this.create.emit(product)
         } else {
-          this.store.dispatch(ProductPageActions.updateProduct({ product }))
+          this.update.emit(product)
         }
       }
     }
