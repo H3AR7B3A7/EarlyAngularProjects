@@ -1,7 +1,11 @@
 # NgRX
 
 Pluralsight course project by Deborah Kurata.
+
+Angular NgRx: Getting Started
 [GitHub Repository](https://github.com/DeborahK/Angular-NgRx-GettingStarted)
+
+Also see: Play by Play Angular and NgRx
 
 ## What is NgRX?
 
@@ -132,6 +136,48 @@ ExhaustMap
 In some cases we might want to share state between 2 or more lazy loaded modules.
 
 ![state-module](state-module.png)
+
+## Additional NgRx Libraries
+
+ngrx/entity
+
+- Helps with CRUD operations on collections of entities
+- Provides helper functions for managing entity collections
+- Reduces the amount of boilerplate code needed to manage entity collections
+
+ngrx/schematics
+
+- Helps with scaffolding new NgRx projects
+  - ng generate store
+  - ng generate reducer
+  - ng generate action
+  - ng generate effect
+  - ng generate feature
+  - ng generate container
+  - ng generate entity
+
+ngrx/router-store
+
+- Connects the router to the store
+- Dispatches router navigation actions
+
+ngrx/data
+
+- Abstracts away the NgRx entity code
+- Configuration and convention, not code
+  - No actions or action creators
+  - No reducers
+  - No selectors
+  - No effects
+  - No code generation
+- Extension points for customization
+
+ngrx/component (experimental)
+
+- Set of Helpers to enable more fully reactive applications
+  - ngrxPush pipe
+  - ngrxLet directive
+  - ...
 
 ---
 
