@@ -5,7 +5,7 @@ Spin text, images or anything else easily.
 ## Import
 
 ```typescript
-import { SpinAnythingModule } from '@h3ar7b3a7/spin-anything/src/public-api';
+import { SpinAnythingModule } from '@h3ar7b3a7/spin-anything';
 
 @NgModule({
   imports: [ BrowserModule, SpinAnythingModule ],
@@ -43,5 +43,3 @@ import { SpinAnythingModule } from '@h3ar7b3a7/spin-anything/src/public-api';
   relativeFontSize="2"
 ></spinner>
 ```
-
-There are some more examples in [this Stackblitz](https://stackblitz.com/edit/angular-ivy-mxj7mi?file=src/app/app.component.html).
