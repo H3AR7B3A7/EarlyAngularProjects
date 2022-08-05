@@ -1,6 +1,6 @@
 {
   "name": "@h3ar7b3a7/spin-anything",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
     "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/spin-anything/"
@@ -20,7 +20,6 @@
     "loading"
   ],
   "description": "Spin text, images or anything else easily.",
-  "main": "karma.conf.js",
   "author": "h3ar7b3a7",
   "license": "ISC",
   "homepage": "https://stackblitz.com/edit/angular-ivy-mxj7mi?file=src/app/app.component.html"
