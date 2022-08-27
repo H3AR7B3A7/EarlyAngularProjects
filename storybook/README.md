@@ -18,4 +18,8 @@
 
 _Update Storybook configuration in .storybook/main.js and restart the Storybook Server._
 
-##
+## Composite component
+
+> ng g c task-list
+
+> ng g class task-list/task-list.stories --skip-tests
