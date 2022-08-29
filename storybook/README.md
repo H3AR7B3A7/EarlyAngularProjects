@@ -23,3 +23,7 @@ _Update Storybook configuration in .storybook/main.js and restart the Storybook 
 > ng g c task-list
 
 > ng g class task-list/task-list.stories --skip-tests
+
+## ngxs
+
+> yarn add @ngxs/store @ngxs/logger-plugin @ngxs/devtools-plugin

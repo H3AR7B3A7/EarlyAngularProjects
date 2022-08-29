@@ -11,14 +11,14 @@ export default {
     component: TaskListComponent,
     decorators: [
         moduleMetadata({
-            //👇 Imports both components to allow component composition with Storybook
+            //👇 Imports both components to allow component composition with storybook
             declarations: [TaskListComponent, TaskComponent],
             imports: [CommonModule],
         }),
         //👇 Wraps our stories with a decorator
         componentWrapperDecorator(story => `<div style="margin: 3em">${story}</div>`),
     ],
-    title: 'TaskList',
+    title: 'PureTaskList',
 } as Meta;
 
 const Template: Story = args => ({

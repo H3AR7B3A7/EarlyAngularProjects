@@ -1,0 +1,5 @@
+<app-task-list
+  [tasks]="tasks$ | async"
+  (onArchiveTask)="archiveTask($event)"
+  (onPinTask)="pinTask($event)"
+></app-task-list>

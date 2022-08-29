@@ -1,0 +1,8 @@
+.list-items {
+    border-radius: 15px;
+}
+
+.list-items:first-child {
+    /* border-radius: 15px; */
+    /* background-color: pink; */
+}
