@@ -8,9 +8,11 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
+import { InboxComponent } from './inbox/inbox.component';
+import { InboxScreenComponent } from './inbox/inbox-screen/inbox-screen.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, InboxComponent, InboxScreenComponent],
   imports: [
     BrowserModule,
     TasksModule,

@@ -8,7 +8,7 @@ import { TasksComponent } from './tasks.component';
 
 @NgModule({
   imports: [CommonModule, NgxsModule.forFeature([TasksState])],
-  exports: [TaskComponent, TasksComponent],
+  exports: [TaskComponent, TasksComponent, TaskListComponent],
   declarations: [TaskComponent, TasksComponent, TaskListComponent],
   providers: [],
 })
