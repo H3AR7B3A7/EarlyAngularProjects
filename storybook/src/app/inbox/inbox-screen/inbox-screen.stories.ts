@@ -1,11 +1,11 @@
-import {moduleMetadata, Meta, Story} from '@storybook/angular';
+import { moduleMetadata, Meta, Story } from '@storybook/angular';
 
-import {CommonModule} from '@angular/common';
-import {TasksModule} from '../../tasks/tasks.module';
-import {InboxScreenComponent} from "./inbox-screen.component";
-import {NgxsModule, Store} from "@ngxs/store";
-import {TasksState} from "../../state/task.state";
-import {fireEvent, within} from "@storybook/testing-library";
+import { CommonModule } from '@angular/common';
+import { TasksModule } from '../../tasks/tasks.module';
+import { InboxScreenComponent } from './inbox-screen.component';
+import { NgxsModule, Store } from '@ngxs/store';
+import { TasksState } from '../../state/task.state';
+import { fireEvent, within } from '@storybook/testing-library';
 
 // To solve: NullInjectorError: No provider for Store!
 export default {
@@ -20,7 +20,7 @@ export default {
   title: 'InboxScreen',
 } as Meta;
 
-const Template: Story = args => ({
+const Template: Story = (args) => ({
   props: args,
 });
 
@@ -32,7 +32,7 @@ Error.args = {
 };
 
 export const WithInteractions = Template.bind({});
-WithInteractions.play = async ({canvasElement}) => {
+WithInteractions.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   // Simulates pinning the first task
   await fireEvent.click(canvas.getByLabelText('pinTask-1'));

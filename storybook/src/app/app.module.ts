@@ -27,4 +27,4 @@ import { InboxScreenComponent } from './inbox/inbox-screen/inbox-screen.componen
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -12,4 +12,4 @@ import { TasksComponent } from './tasks.component';
   declarations: [TaskComponent, TasksComponent, TaskListComponent],
   providers: [],
 })
-export class TasksModule { }
+export class TasksModule {}
