@@ -14,7 +14,7 @@
 
 ## Accessibility
 
-> yarn add @storybook/addon-a11y --save-dev
+> yarn add @storybook/addon-a11y
 
 _Update Storybook configuration in .storybook/main.js and restart the Storybook Server._
 
