@@ -9,7 +9,8 @@
     "test": "jest --watchAll",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006",
-    "build-storybook": "npm run docs:json && build-storybook"
+    "build-storybook": "npm run docs:json && build-storybook",
+    "test-storybook": "test-storybook"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +25,7 @@
     "@ngxs/devtools-plugin": "^3.7.4",
     "@ngxs/logger-plugin": "^3.7.4",
     "@ngxs/store": "^3.7.4",
+    "@storybook/test-runner": "^0.7.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
