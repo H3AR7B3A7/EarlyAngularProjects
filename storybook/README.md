@@ -4,7 +4,9 @@
 
 > yarn storybook
 
-## Create Component
+## Used commands
+
+### Create Component
 
 > ng g c task
 
@@ -12,23 +14,43 @@
 
 > ng g interface task/task
 
-## Accessibility
+### Accessibility
 
 > yarn add @storybook/addon-a11y
 
 _Update Storybook configuration in .storybook/main.js and restart the Storybook Server._
 
-## Composite component
+### Composite component
 
 > ng g c task-list
 
 > ng g class task-list/task-list.stories --skip-tests
 
-## ngxs
+### ngxs
 
 > yarn add @ngxs/store @ngxs/logger-plugin @ngxs/devtools-plugin
 
-## Test Runner
+### Deploy Storybook
+
+To output a static Storybook in the storybook-static directory:
+
+> yarn build-storybook
+
+## Component-Driven Development
+
+CDD allows us to gradually expand complexity as we move up the component hierarchy. Among the benefits are a more focused development process and increased coverage of all possible UI permutations. In short, CDD helps us build higher-quality and more complex user interfaces.
+
+## Testing
+
+- **Manual tests** rely on developers to manually look at a component to verify it for correctness. They help us sanity check a component’s appearance as we build.
+
+- **Accessibility tests** with a11y addon verify that the component is accessible to everyone. They're great for allowing us to collect information about how people with certain types of disabilities use our components.
+
+- **Interaction tests** with the play function verify that the component behaves as expected when interacting with it. They're great for testing the behavior of a component when it's in use.
+
+- **Visual regression tests**, also called visual tests, are designed to catch changes in appearance. They work by capturing screenshots of every story and comparing them commit-to-commit to surface changes. It's perfect for verifying graphical elements like layout, color, size, and contrast.
+
+### Test Runner
 
 > yarn add @storybook/test-runner
 
@@ -47,16 +69,6 @@ _While storybook is running, run this command in another terminal:_
 > yarn test-storybook -- --watch
 
 In the [official documentation](https://storybook.js.org/docs/angular/writing-tests/interaction-testing)) or [the Testing Handbook](https://storybook.js.org/tutorials/ui-testing-handbook) we can find more about interaction tests.
-
-## Component-Driven Development
-
-CDD allows us to gradually expand complexity as we move up the component hierarchy. Among the benefits are a more focused development process and increased coverage of all possible UI permutations. In short, CDD helps us build higher-quality and more complex user interfaces.
-
-## Deploy Storybook
-
-To output a static Storybook in the storybook-static directory:
-
-> yarn build-storybook
 
 ## Chromatic
 
@@ -107,3 +119,9 @@ jobs:
 ## GitHub Secrets
 
 Secrets are secure environment variables provided by GitHub so that you don't need to hard code the project-token.
+
+## Visual Regression Testing
+
+When we make a PR there will be "🟡 UI Tests" section, where we get notified about changes in the UI.
+
+By having to review these changes we can ensure they don't occur by accident. If a change is intentional, we'll need to update the baseline to compare future tests to the latest version of the story.
