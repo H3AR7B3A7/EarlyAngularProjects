@@ -1,5 +1,29 @@
 # Storybook
 
+## Install Storybook
+
+> npx storybook init
+
+Add builder to angular.json:
+
+```json
+{
+  "storybook": {
+    "builder": "@storybook/angular:start-storybook",
+    "options": {
+      "browserTarget": "angular-cli:build",
+      "port": 6006
+    }
+  },
+  "build-storybook": {
+    "builder": "@storybook/angular:build-storybook",
+    "options": {
+      "browserTarget": "angular-cli:build"
+    }
+  }
+}
+```
+
 ## Run Storybook
 
 > yarn storybook
